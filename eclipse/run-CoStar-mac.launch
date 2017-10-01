@@ -12,5 +12,5 @@
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="gov.nasa.jpf.tool.RunJPF"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="${resource_loc}"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="jpf-constar"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="jpf-costar"/>
 </launchConfiguration>
