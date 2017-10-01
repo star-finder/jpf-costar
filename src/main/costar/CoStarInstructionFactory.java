@@ -10,7 +10,6 @@ public class CoStarInstructionFactory extends ConcolicInstructionFactory {
 	
 	@Override
 	public Instruction aload(int localVarIndex) {
-		System.out.println("aload");
 		return new ALOAD(localVarIndex);
 	}
 
