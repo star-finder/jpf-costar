@@ -2,7 +2,7 @@
 #
 # default jdart tools
 #
-shell=constar.ConStar
+shell=costar.CoStar
 symbolic.dp=z3
 symbolic.dp.z3.bitvectors=true
 

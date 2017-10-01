@@ -1,4 +1,4 @@
-@include=../../config/jdart.jpf
+@include=../../config/costar.jpf
 
 target=features.simple.Input
 
