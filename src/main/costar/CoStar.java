@@ -28,7 +28,7 @@ public class CoStar extends JDart {
 
 	@Override
 	public void start(String[] strings) {
-		System.out.println("ConStar!!!");
+		System.out.println("CoStar!!!");
 		run();
 	}
 

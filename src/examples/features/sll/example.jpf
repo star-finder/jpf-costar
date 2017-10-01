@@ -1,0 +1,9 @@
+@include=../../config/costar.jpf
+
+target=features.sll.Input
+
+concolic.method.travel=features.sll.Input.travel(root:Lfeatures/sll/Node;)
+concolic.method.travel.config=all_fields_symbolic
+
+concolic.method.foo=features.sll.Input.foo(i:int)
+concolic.method.foo.config=all_fields_symbolic
