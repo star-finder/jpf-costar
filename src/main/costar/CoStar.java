@@ -4,6 +4,8 @@ import costar.config.CoStarConfig;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.JPFShell;
+import gov.nasa.jpf.jdart.ConcolicExplorer;
+import gov.nasa.jpf.jdart.config.ConcolicConfig;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.util.LogManager;
 
@@ -14,6 +16,8 @@ public class CoStar implements JPFShell {
 	private CoStarConfig cc;
 
 	private JPFLogger logger;
+	
+	public static final String CONFIG_KEY_COSTAR_EXPLORER = "costar.costar_explorer_instance";
 
 	public CoStar(Config config) {
 		LogManager.init(config);
@@ -44,6 +48,7 @@ public class CoStar implements JPFShell {
 			listener += ";" + jpfConf.getString("listener");
 		jpfConf.setProperty("listener", listener);
 		jpfConf.setProperty("perturb.class", CoStarPerturbator.class.getName());
+		jpfConf.setProperty(CONFIG_KEY_COSTAR_EXPLORER, CoStarExplorer.class.getName());
 
 		logger.info(jpfConf);
 
@@ -52,6 +57,11 @@ public class CoStar implements JPFShell {
 		jpf.run();
 
 		logger.info("CoStar.run() -- end");
+	}
+	
+	public static CoStarExplorer getCoStarExplorer(Config config) {
+		CoStarExplorer explorer = config.getEssentialInstance(CONFIG_KEY_COSTAR_EXPLORER, CoStarExplorer.class);
+	    return explorer;
 	}
 
 }

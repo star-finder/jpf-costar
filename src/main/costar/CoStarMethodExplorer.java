@@ -9,6 +9,10 @@ public class CoStarMethodExplorer {
 	boolean initValuation;
 	
 	boolean nextValuation;
+	
+	public CoStarMethodExplorer() {
+		this.constraintsTree = new CoStarConstrainstTree();
+	}
 
 	public boolean hasMoreChoices() {
 		if (!initValuation) {

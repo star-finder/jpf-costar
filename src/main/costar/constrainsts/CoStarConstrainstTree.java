@@ -16,7 +16,7 @@ public class CoStarConstrainstTree {
 	}
 
 	public boolean findNext() {
-		return false;
+		return true;
 	}
 
 }

@@ -1,5 +1,6 @@
 package costar;
 
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.perturb.OperandPerturbator;
 import gov.nasa.jpf.util.JPFLogger;
@@ -7,23 +8,29 @@ import gov.nasa.jpf.vm.ChoiceGenerator;
 import gov.nasa.jpf.vm.StackFrame;
 
 public class CoStarPerturbator implements OperandPerturbator {
-	
+
 	private JPFLogger logger = JPF.getLogger("costar");
+
+	private final CoStarExplorer explorer;
+
+	public CoStarPerturbator(Config config) {
+		this.explorer = CoStar.getCoStarExplorer(config);
+	}
 
 	@Override
 	public Class<? extends ChoiceGenerator<?>> getChoiceGeneratorType() {
-		return null;
+		return CoStarChoiceGenerator.class;
 	}
 
 	@Override
 	public ChoiceGenerator<?> createChoiceGenerator(String id, StackFrame frame, Object refObject) {
-		logger.info("here here here");
-		return new CoStarChoiceGenerator();
+		explorer.newAnalysis();
+		
+		return new CoStarChoiceGenerator(id, explorer);
 	}
 
 	@Override
 	public boolean perturb(ChoiceGenerator<?> cg, StackFrame frame) {
-		logger.info("CoStar Perturbator");
 		return false;
 	}
 
