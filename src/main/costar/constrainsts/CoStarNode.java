@@ -12,4 +12,10 @@ public class CoStarNode {
 	
 	public CoStarNode[] childrend;
 	
+	public boolean isOpen;
+	
+	public CoStarNode() {
+		isOpen = true;
+	}
+	
 }

@@ -25,12 +25,17 @@ public class CoStarPerturbator implements OperandPerturbator {
 	@Override
 	public ChoiceGenerator<?> createChoiceGenerator(String id, StackFrame frame, Object refObject) {
 		explorer.newAnalysis();
-		
+
 		return new CoStarChoiceGenerator(id, explorer);
 	}
 
 	@Override
-	public boolean perturb(ChoiceGenerator<?> cg, StackFrame frame) {
+	public boolean perturb(ChoiceGenerator<?> cg, StackFrame sf) {
+		if (explorer.hasMoreChoices()) {
+			explorer.newPath(sf);
+			return true;
+		}
+
 		return false;
 	}
 
