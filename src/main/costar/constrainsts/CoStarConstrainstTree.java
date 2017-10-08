@@ -1,5 +1,8 @@
 package costar.constrainsts;
 
+import gov.nasa.jpf.vm.Instruction;
+import gov.nasa.jpf.vm.ThreadInfo;
+
 public class CoStarConstrainstTree {
 	
 	CoStarNode root;
@@ -17,6 +20,10 @@ public class CoStarConstrainstTree {
 
 	public boolean findNext() {
 		return true;
+	}
+
+	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx) {
+		
 	}
 
 }
