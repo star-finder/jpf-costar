@@ -3,10 +3,14 @@ package costar;
 import costar.bytecode.ALOAD;
 import costar.bytecode.GETFIELD;
 import costar.bytecode.GETSTATIC;
+import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.jdart.ConcolicInstructionFactory;
+import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 
 public class CoStarInstructionFactory extends ConcolicInstructionFactory {
+	
+	private JPFLogger logger = JPF.getLogger("costar");
 	
 	@Override
 	public Instruction aload(int localVarIndex) {
