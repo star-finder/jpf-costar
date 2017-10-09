@@ -101,9 +101,6 @@ public class CoStarMethodExplorer {
 	public void initializeMethod(ThreadInfo ti, StackFrame sf) {
 		logger.info("Initializing concolic execution of " + methodInfo.getFullName());
 
-		// mark root frame
-		sf.setFrameAttr(RootFrame.getInstance());
-
 		symContext = new SymbolicObjectsContext(ti.getHeap(), anaConf.getSymbolicFieldsExclude(),
 				anaConf.getSymbolicFieldsInclude(), anaConf.getSpecialExclude());
 
