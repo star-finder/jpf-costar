@@ -1,8 +1,6 @@
 package costar.constrainsts;
 
 import gov.nasa.jpf.JPF;
-import gov.nasa.jpf.constraints.api.Expression;
-import gov.nasa.jpf.jdart.constraints.InternalConstraintsTree.BranchEffect;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -16,7 +14,7 @@ public class CoStarConstrainstTree {
 	private CoStarNode current;
 	
 	public CoStarConstrainstTree() {
-		this.root = new CoStarNode();
+		this.root = new CoStarNode(null, null, null, null, true);
 		this.current = root;
 	}
 	
@@ -25,11 +23,21 @@ public class CoStarConstrainstTree {
 	}
 
 	public boolean findNext() {
-		for (int i = 0; i < current.childrend.length; i++) {
-			if (current.childrend[i].isOpen) {
-				current.childrend[i].isOpen = false;
-				return true;
-			}	
+		while (current != null) {
+			if (current.childrend == null) {
+				current = current.parent;
+				continue;
+			}
+			
+			for (int i = 0; i < current.childrend.length; i++) {
+				if (!current.childrend[i].hasVisited) {
+					logger.info(current.childrend[i].formula);
+					current.childrend[i].hasVisited = true; // should call solver here
+					return true;
+				}	
+			}
+			
+			current = current.parent;
 		}
 		
 		return false;
@@ -37,15 +45,20 @@ public class CoStarConstrainstTree {
 
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, String[] constraints) {
 		if (current.childrend == null) {
-			current.childrend = new CoStarNode[constraints.length];
-			current.childrend[0] = new CoStarNode();
-			current.childrend[1] = new CoStarNode();
-					
-			current.childrend[0].formula = constraints[0];
-			current.childrend[1].formula = constraints[1];
+			int length = constraints.length;
+			current.childrend = new CoStarNode[length];
 			
-			current.childrend[chosenIdx].isOpen = false;
+			for (int i = 0; i < length; i++) {
+				current.childrend[i] = new CoStarNode(current, null, constraints[i], inst, false);
+			}
+			
+			current.childrend[chosenIdx].hasVisited = true;
+			current = current.childrend[chosenIdx];
 		}
+	}
+	
+	public void reset() {
+		current = root;
 	}
 
 }

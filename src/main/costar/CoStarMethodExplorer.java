@@ -44,10 +44,12 @@ public class CoStarMethodExplorer {
 	}
 	
 	private void prepareFirstExecution(StackFrame sf) {
+		constraintsTree.reset();
 		initValuation = true;
 	}
 
 	private void prepareReexecution(StackFrame sf) {
+		constraintsTree.reset();
 		nextValuation = false;
 	}
 

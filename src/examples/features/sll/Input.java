@@ -12,10 +12,20 @@ public class Input {
 	}
 	
 	public void foo(int i) {
-		if (i > 0)
-			return;
-		else
-			return;
+		if (i > 0) {
+			if (i > 0) {
+				return;
+			} else {
+				return;
+			}
+		}
+		else {
+			if (i > 0) {
+				return;
+			} else {
+				return;
+			}
+		}
 	}
 
 	public static void main(String[] args) {

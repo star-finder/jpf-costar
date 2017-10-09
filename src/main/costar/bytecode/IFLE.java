@@ -18,9 +18,7 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 	}
 
 	@Override
-	public Instruction execute(ThreadInfo ti) {
-		logger.info("IFLE");
-		
+	public Instruction execute(ThreadInfo ti) {		
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 
 		if (analysis == null)
