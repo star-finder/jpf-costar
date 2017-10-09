@@ -25,11 +25,11 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 			return super.execute(ti);
 
 		StackFrame sf = ti.getModifiableTopFrame();
-//		Expression<?> exp = (Expression<?>) sf.getOperandAttr();
-//		if (exp == null) {
-//			return super.execute(ti);
-//		}
-
+		Expression<?> exp = (Expression<?>) sf.getOperandAttr();
+		if (exp == null) {
+			return super.execute(ti);
+		}
+	
 		ConcolicUtil.Pair<Integer> v1 = ConcolicUtil.popInt(sf);
 		
 		Integer i1 = v1.conc;

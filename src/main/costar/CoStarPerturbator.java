@@ -5,6 +5,7 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.perturb.OperandPerturbator;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ChoiceGenerator;
+import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 
 public class CoStarPerturbator implements OperandPerturbator {
@@ -23,8 +24,8 @@ public class CoStarPerturbator implements OperandPerturbator {
 	}
 
 	@Override
-	public ChoiceGenerator<?> createChoiceGenerator(String id, StackFrame frame, Object refObject) {
-		explorer.newAnalysis();
+	public ChoiceGenerator<?> createChoiceGenerator(String id, StackFrame sf, Object refObject) {
+		explorer.newAnalysis(id, sf, (MethodInfo) refObject);
 
 		return new CoStarChoiceGenerator(id, explorer);
 	}
