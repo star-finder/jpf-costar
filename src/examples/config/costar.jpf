@@ -10,3 +10,4 @@ symbolic.dp=z3
 # logging and jpf output
 #
 log.info=costar
+log.finest=jdart
