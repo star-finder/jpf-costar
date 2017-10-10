@@ -19,12 +19,10 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		int objRef = sf.peek();
 		ElementInfo ei = ti.getElementInfo(objRef);
-		if (ei != null) {
-			Object sym_v = ei.getObjectAttr();
-			
-			if (sym_v != null)
-				System.out.println(sym_v);
-		}
+		Object sym_v = sf.getLocalAttr(index);
+		
+		if (sym_v != null)
+			System.out.println(sym_v);
 		
 		return super.execute(ti);
 	}

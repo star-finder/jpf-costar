@@ -1,7 +1,9 @@
 package costar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import costar.config.CoStarConfig;
 import costar.constrainsts.CoStarConstrainstTree;
@@ -45,6 +47,8 @@ public class CoStarMethodExplorer {
 	private ConcolicMethodConfig methodConfig;
 
 	private Object[] initParams;
+	
+	private Map<String, Integer> stackMap;
 
 	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi) {
 		this.methodInfo = mi;
@@ -52,6 +56,7 @@ public class CoStarMethodExplorer {
 		this.anaConf = methodConfig.getAnalysisConfig();
 
 		this.constraintsTree = new CoStarConstrainstTree();
+		this.stackMap = new HashMap<String, Integer>();
 	}
 
 	public boolean hasMoreChoices() {
@@ -83,8 +88,14 @@ public class CoStarMethodExplorer {
 	private void prepareFirstExecution(StackFrame sf) {
 		initValuation = new Valuation();
 		constraintsTree.reset();
-		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
-			sv.readInitial(initValuation, sf);
+		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
+			if (sv.getVariable().getType() != null)
+				sv.readInitial(initValuation, sf);
+			else {
+				int stackPos = stackMap.get(sv.getVariable().getName());
+				sf.setOperandAttr(stackPos, sv.getVariable());
+			}
+		}
 	}
 
 	private void prepareReExecution(StackFrame sf) {
@@ -110,9 +121,9 @@ public class CoStarMethodExplorer {
 		List<Variable<?>> vlist = new ArrayList<>();
 		logger.info("Symbolic variables:");
 		logger.info("===================");
-		for (SymbolicVariable<?> var : symContext.getSymbolicVars()) {
-			logger.info(var.getVariable().getName());
-			vlist.add(var.getVariable());
+		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
+			logger.info(sv.getVariable().getName());
+			vlist.add(sv.getVariable());
 		}
 		logger.info();
 	}
@@ -162,6 +173,10 @@ public class CoStarMethodExplorer {
 				ElementInfo ei = heap.get(ref);
 				if (ei != null)
 					symContext.processObject(ei, name, true);
+				stackMap.put(name, stackIdx);
+				Variable<?> var = Variable.create(null, name);
+				SymbolicParam<?> sp = new SymbolicParam<>(var, stackIdx);
+				symContext.addStackVar(sp);
 			} else { // primitive type
 				Type<?> t = ConcolicUtil.forTypeCode(tc);
 				Variable<?> var = Variable.create(t, name);
