@@ -7,6 +7,7 @@ import java.util.Map;
 
 import costar.config.CoStarConfig;
 import costar.constrainsts.CoStarConstrainstTree;
+import costar.objects.SymbolicObjectsContext;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.Variable;
@@ -17,7 +18,6 @@ import gov.nasa.jpf.jdart.SymbolicVariable;
 import gov.nasa.jpf.jdart.config.AnalysisConfig;
 import gov.nasa.jpf.jdart.config.ConcolicMethodConfig;
 import gov.nasa.jpf.jdart.config.ParamConfig;
-import gov.nasa.jpf.jdart.objects.SymbolicObjectsContext;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
