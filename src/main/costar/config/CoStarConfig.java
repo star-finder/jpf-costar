@@ -12,16 +12,11 @@ import gov.nasa.jpf.constraints.solvers.ConstraintSolverFactory;
 import gov.nasa.jpf.constraints.types.TypeContext;
 import gov.nasa.jpf.jdart.config.AnalysisConfig;
 import gov.nasa.jpf.jdart.config.ConcolicMethodConfig;
+import starlib.solver.Solver;
 
 public class CoStarConfig {
 
 	private static final String CONF_PREFIX = "concolic";
-
-	private ConstraintSolver solver;
-
-	private TypeContext types = new TypeContext(true);
-
-	protected final AnalysisConfig globalConfig = new AnalysisConfig();
 
 	private final Map<String, ConcolicMethodConfig> concolicMethods = new HashMap<>();
 
@@ -36,18 +31,6 @@ public class CoStarConfig {
 
 	public Collection<ConcolicMethodConfig> getMethodConfigs() {
 		return concolicMethods.values();
-	}
-
-	public void setConstraintSolver(ConstraintSolver solver) {
-		this.solver = solver;
-	}
-
-	public ConstraintSolver getSolver() {
-		return solver;
-	}
-
-	public TypeContext getTypes() {
-		return types;
 	}
 
 	public Config generateJPFConfig() {
@@ -100,10 +83,6 @@ public class CoStarConfig {
 	}
 
 	private void initialize(Config conf) {
-		// create a constraint solver
-		ConstraintSolverFactory cFactory = new ConstraintSolverFactory(conf);
-		this.solver = cFactory.createSolver(conf);
-
 		// parse symbolic method info
 		if (conf.hasValue(CONF_PREFIX + ".method")) {
 			String id = conf.getString(CONF_PREFIX + ".method");

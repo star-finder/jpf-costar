@@ -28,6 +28,7 @@ import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
+import starlib.formula.Formula;
 
 public class CoStarMethodExplorer {
 
@@ -77,7 +78,7 @@ public class CoStarMethodExplorer {
 		return ti.getAttr(CoStarMethodExplorer.class);
 	}
 
-	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, String[] constraints) {
+	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, Formula[] constraints) {
 		constraintsTree.decision(ti, inst, chosenIdx, constraints);
 	}
 

@@ -1,6 +1,7 @@
 package costar.constrainsts;
 
 import gov.nasa.jpf.vm.Instruction;
+import starlib.formula.Formula;
 
 public class CoStarNode {
 	
@@ -8,14 +9,14 @@ public class CoStarNode {
 	
 	public CoStarNode[] childrend;
 	
-	public String formula;
+	public Formula formula;
 	
 	public Instruction inst;
 	
 	public boolean hasVisited;
 	
 	public CoStarNode(CoStarNode parent, CoStarNode[] children,
-			String formula, Instruction inst, boolean hasVisited) {
+			Formula formula, Instruction inst, boolean hasVisited) {
 		this.parent = parent;
 		this.childrend = children;
 		this.formula = formula;

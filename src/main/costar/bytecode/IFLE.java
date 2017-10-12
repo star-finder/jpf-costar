@@ -8,6 +8,11 @@ import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Formula;
+import starlib.formula.Variable;
+import starlib.formula.expression.Comparator;
+import starlib.formula.expression.LiteralExpression;
+import starlib.formula.expression.VariableExpression;
 
 public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 
@@ -32,10 +37,18 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 	
 		ConcolicUtil.Pair<Integer> v1 = ConcolicUtil.popInt(sf);
 		
+		Variable var = new Variable(exp.toString(0), "");
+		VariableExpression varExp = new VariableExpression(var);
+		LiteralExpression litExp = new LiteralExpression(0);
+		
 		Integer i1 = v1.conc;
-		String[] constraints = new String[2];
-		constraints[0] = v1.symb.toString() + " <= 0";
-		constraints[1] = v1.symb.toString() + " > 0";
+		Formula[] constraints = new Formula[2];
+		
+		constraints[0] = new Formula();
+		constraints[0].addComparisonTerm(Comparator.LE, varExp, litExp);
+		
+		constraints[1] = new Formula();
+		constraints[1].addComparisonTerm(Comparator.GT, varExp, litExp);
 		
 		if (i1 <= 0) {
 			analysis.decision(ti, this, 0, constraints);

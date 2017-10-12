@@ -1,10 +1,14 @@
 package costar.constrainsts;
 
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.ThreadInfo;
+import gov.nasa.jpf.vm.VM;
+import starlib.formula.Formula;
+import starlib.solver.Solver;
 
 public class CoStarConstrainstTree {
 	
@@ -14,9 +18,15 @@ public class CoStarConstrainstTree {
 	
 	private CoStarNode current;
 	
+	private Solver solver;
+	
+	private Config config;
+	
 	public CoStarConstrainstTree() {
 		this.root = new CoStarNode(null, null, null, null, true);
 		this.current = root;
+		this.solver = new Solver();
+		this.config = VM.getVM().getConfig();
 	}
 	
 	public CoStarNode getCurrent() {
@@ -32,8 +42,20 @@ public class CoStarConstrainstTree {
 			
 			for (int i = 0; i < current.childrend.length; i++) {
 				if (!current.childrend[i].hasVisited) {
+					Formula formula = current.childrend[i].formula;
 					logger.info(current.childrend[i].formula);
-					current.childrend[i].hasVisited = true; // should call solver here
+					boolean isSat = solver.checkSat(formula, config);
+					
+					if (isSat) {
+						String model = solver.getModel();
+						// build new valuation based on the model
+						logger.info(model);
+					} else {
+						logger.info("UNSAT");
+					}
+					
+					current.childrend[i].hasVisited = true;
+					
 					return new Valuation();
 				}	
 			}
@@ -44,7 +66,7 @@ public class CoStarConstrainstTree {
 		return null;
 	}
 
-	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, String[] constraints) {
+	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, Formula[] constraints) {
 		if (current.childrend == null) {
 			int length = constraints.length;
 			current.childrend = new CoStarNode[length];

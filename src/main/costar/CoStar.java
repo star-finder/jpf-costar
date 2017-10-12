@@ -62,6 +62,7 @@ public class CoStar implements JPFShell {
 		if (!explorer.isConfigured()) {
 			explorer.configure(new CoStarConfig(config));
 		}
+		
 		return explorer;
 	}
 
