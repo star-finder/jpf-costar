@@ -1,6 +1,7 @@
 package costar.constrainsts;
 
 import gov.nasa.jpf.JPF;
+import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -22,7 +23,7 @@ public class CoStarConstrainstTree {
 		return current;
 	}
 
-	public boolean findNext() {
+	public Valuation findNext() {
 		while (current != null) {
 			if (current.childrend == null) {
 				current = current.parent;
@@ -33,14 +34,14 @@ public class CoStarConstrainstTree {
 				if (!current.childrend[i].hasVisited) {
 					logger.info(current.childrend[i].formula);
 					current.childrend[i].hasVisited = true; // should call solver here
-					return true;
+					return new Valuation();
 				}	
 			}
 			
 			current = current.parent;
 		}
 		
-		return false;
+		return null;
 	}
 
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, String[] constraints) {

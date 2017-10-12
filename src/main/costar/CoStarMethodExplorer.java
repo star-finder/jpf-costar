@@ -10,6 +10,7 @@ import costar.constrainsts.CoStarConstrainstTree;
 import costar.objects.SymbolicObjectsContext;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
+import gov.nasa.jpf.constraints.api.ValuationEntry;
 import gov.nasa.jpf.constraints.api.Variable;
 import gov.nasa.jpf.constraints.types.Type;
 import gov.nasa.jpf.jdart.ConcolicUtil;
@@ -39,15 +40,17 @@ public class CoStarMethodExplorer {
 	private CoStarConstrainstTree constraintsTree;
 
 	private Valuation initValuation;
+	
+	private Valuation currValuation;
 
-	private boolean nextValuation;
+	private Valuation nextValuation;
 
 	private MethodInfo methodInfo;
 
 	private ConcolicMethodConfig methodConfig;
 
 	private Object[] initParams;
-	
+
 	private Map<String, Integer> stackMap;
 
 	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi) {
@@ -64,9 +67,10 @@ public class CoStarMethodExplorer {
 			return true;
 		}
 
-		if (!nextValuation)
+		if (nextValuation == null)
 			nextValuation = constraintsTree.findNext();
-		return nextValuation;
+
+		return nextValuation != null;
 	}
 
 	public static CoStarMethodExplorer getCurrentAnalysis(ThreadInfo ti) {
@@ -81,6 +85,7 @@ public class CoStarMethodExplorer {
 		if (initValuation == null) {
 			prepareFirstExecution(sf);
 		} else {
+			advanceValuation();
 			prepareReExecution(sf);
 		}
 	}
@@ -88,6 +93,7 @@ public class CoStarMethodExplorer {
 	private void prepareFirstExecution(StackFrame sf) {
 		initValuation = new Valuation();
 		constraintsTree.reset();
+
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
 			if (sv.getVariable().getType() != null)
 				sv.readInitial(initValuation, sf);
@@ -96,13 +102,35 @@ public class CoStarMethodExplorer {
 				sf.setOperandAttr(stackPos, sv.getVariable());
 			}
 		}
+		
+		currValuation = initValuation;
+	}
+
+	public boolean advanceValuation() {
+		if (nextValuation == null)
+			nextValuation = constraintsTree.findNext();
+
+		if (nextValuation != null) {
+			for (Variable v : currValuation.getVariables()) {
+				if (!nextValuation.containsValueFor(v)) {
+					nextValuation.addEntry(new ValuationEntry(v, nextValuation.getValue(v)));
+				}
+			}
+		}
+		
+		currValuation = nextValuation;
+		nextValuation = null;
+
+		return currValuation != null;
 	}
 
 	private void prepareReExecution(StackFrame sf) {
 		constraintsTree.reset();
-		nextValuation = false;
-//		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
-//			sv.apply(currValuation, sf);
+		
+		// handle heap at this step
+
+		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
+			sv.apply(currValuation, sf);
 	}
 
 	public void makeCurrentAnalysis(ThreadInfo ti) {

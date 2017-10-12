@@ -32,6 +32,8 @@ public class CoStarPerturbator implements OperandPerturbator {
 
 	@Override
 	public boolean perturb(ChoiceGenerator<?> cg, StackFrame sf) {
+		sf.getClassInfo();
+		
 		if (explorer.hasMoreChoices()) {
 			explorer.newPath(sf);
 			return true;
