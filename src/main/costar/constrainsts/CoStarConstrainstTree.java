@@ -42,21 +42,23 @@ public class CoStarConstrainstTree {
 			
 			for (int i = 0; i < current.childrend.length; i++) {
 				if (!current.childrend[i].hasVisited) {
+					current.childrend[i].hasVisited = true;
+					
 					Formula formula = current.childrend[i].formula;
 					logger.info(current.childrend[i].formula);
 					boolean isSat = solver.checkSat(formula, config);
 					
 					if (isSat) {
+						Valuation newVal = new Valuation();
+						
 						String model = solver.getModel();
 						// build new valuation based on the model
 						logger.info(model);
+						
+						return newVal;
 					} else {
-						logger.info("UNSAT");
+						continue;
 					}
-					
-					current.childrend[i].hasVisited = true;
-					
-					return new Valuation();
 				}	
 			}
 			
