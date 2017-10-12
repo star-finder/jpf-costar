@@ -12,6 +12,8 @@ public class Input {
 	}
 	
 	public void foo(int i) {
+		System.out.println("i = " + i);
+		
 		if (i > 0) {
 			if (i > 0) {
 				return;
