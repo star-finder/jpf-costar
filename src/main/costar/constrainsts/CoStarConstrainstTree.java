@@ -86,10 +86,10 @@ public class CoStarConstrainstTree {
 			for (int i = 0; i < length; i++) {
 				current.childrend[i] = new CoStarNode(current, null, constraints[i], inst, false);
 			}
-			
-			current.childrend[chosenIdx].hasVisited = true;
-			current = current.childrend[chosenIdx];
 		}
+		
+		current.childrend[chosenIdx].hasVisited = true;
+		current = current.childrend[chosenIdx];
 	}
 	
 	public void reset() {
