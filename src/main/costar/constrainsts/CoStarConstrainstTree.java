@@ -5,6 +5,7 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
+import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
@@ -22,11 +23,14 @@ public class CoStarConstrainstTree {
 	
 	private Config config;
 	
-	public CoStarConstrainstTree() {
+	private MethodInfo methodInfo;
+	
+	public CoStarConstrainstTree(MethodInfo mi) {
 		this.root = new CoStarNode(null, null, null, null, true);
 		this.current = root;
 		this.solver = new Solver();
 		this.config = VM.getVM().getConfig();
+		this.methodInfo = mi;
 	}
 	
 	public CoStarNode getCurrent() {
@@ -45,15 +49,21 @@ public class CoStarConstrainstTree {
 					current.childrend[i].hasVisited = true;
 					
 					Formula formula = current.childrend[i].formula;
-					logger.info(current.childrend[i].formula);
+					logger.info("Constraint = " + current.childrend[i].formula);
 					boolean isSat = solver.checkSat(formula, config);
 					
 					if (isSat) {
 						Valuation newVal = new Valuation();
 						
+						// var = new Variable(type, name)
+						// value
+						// --> entry = new ValuationEntry(var, value)
+						// newVal.add(var, entry);
+						
 						String model = solver.getModel();
+						Formula modelF = ModelToValuation.toValuation(model);
 						// build new valuation based on the model
-						logger.info(model);
+						logger.info("Model = " + model);
 						
 						return newVal;
 					} else {

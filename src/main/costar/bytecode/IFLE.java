@@ -1,6 +1,8 @@
 package costar.bytecode;
 
 import costar.CoStarMethodExplorer;
+import costar.constrainsts.CoStarConstrainstTree;
+import costar.constrainsts.CoStarNode;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Expression;
 import gov.nasa.jpf.jdart.ConcolicUtil;
@@ -25,7 +27,7 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 	@Override
 	public Instruction execute(ThreadInfo ti) {		
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
-
+		
 		if (analysis == null)
 			return super.execute(ti);
 
@@ -44,10 +46,19 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 		Integer i1 = v1.conc;
 		Formula[] constraints = new Formula[2];
 		
-		constraints[0] = new Formula();
-		constraints[0].addComparisonTerm(Comparator.LE, varExp, litExp);
+		CoStarConstrainstTree tree = analysis.getConstrainstTree();
+		CoStarNode current = tree.getCurrent();
 		
-		constraints[1] = new Formula();
+		if (current.formula == null) {
+			constraints[0] = new Formula();
+			constraints[1] = new Formula();
+		}
+		else {
+			constraints[0] = current.formula.copy();
+			constraints[1] = current.formula.copy();
+		}
+		
+		constraints[0].addComparisonTerm(Comparator.LE, varExp, litExp);
 		constraints[1].addComparisonTerm(Comparator.GT, varExp, litExp);
 		
 		if (i1 <= 0) {

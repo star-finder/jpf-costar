@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="lib/jconstraints-0.9.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/starlib-jpf.jar"/>
 	<classpathentry kind="lib" path="lib/starlib.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-4.7-complete.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

@@ -12,7 +12,7 @@ public class Input {
 	}
 	
 	public void foo(int i) {
-		System.out.println("i = " + i);
+		System.out.println("Input i = " + i);
 		
 		if (i > 0) {
 			if (i > 0) {

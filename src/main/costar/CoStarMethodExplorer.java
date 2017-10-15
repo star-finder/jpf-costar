@@ -59,7 +59,7 @@ public class CoStarMethodExplorer {
 		this.methodConfig = cc.getMethodConfig(id);
 		this.anaConf = methodConfig.getAnalysisConfig();
 
-		this.constraintsTree = new CoStarConstrainstTree();
+		this.constraintsTree = new CoStarConstrainstTree(mi);
 		this.stackMap = new HashMap<String, Integer>();
 	}
 
@@ -227,6 +227,10 @@ public class CoStarMethodExplorer {
 		default:
 			return sf.peek(offset);
 		}
+	}
+
+	public CoStarConstrainstTree getConstrainstTree() {
+		return constraintsTree;
 	}
 
 }
