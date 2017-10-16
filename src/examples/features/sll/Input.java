@@ -3,12 +3,14 @@ package features.sll;
 public class Input {
 	
 	public void travel(Node root) {
-		if (root == null)
+		if (root == null) {
+			System.out.println("root = null");
 			return;
-		else if (root.next == null)
+		}	
+		else {
+			System.out.println("root != null");
 			return;
-		else
-			return;
+		}
 	}
 	
 	public void foo(int i) {
@@ -35,7 +37,7 @@ public class Input {
 		Node root = new Node(0, null);
 		in.travel(root);
 		
-		in.foo(1);
+//		in.foo(1);
 	}
 	
 }

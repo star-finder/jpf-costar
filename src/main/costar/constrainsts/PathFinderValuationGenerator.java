@@ -7,6 +7,7 @@ import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.FieldInfo;
 import starlib.formula.Formula;
+import starlib.formula.HeapFormula;
 import starlib.formula.PureFormula;
 import starlib.formula.Variable;
 import starlib.jpf.testsuites.PathFinderVisitor;
@@ -28,8 +29,10 @@ public class PathFinderValuationGenerator extends PathFinderVisitor {
 		logger.info("Formula to valuation = " + formula);
 		
 		ValuationVisitor visitor = new ValuationVisitor(this);
+		HeapFormula hf = formula.getHeapFormula();
 		PureFormula pf = formula.getPureFormula();
 		
+		hf.accept(visitor);
 		pf.accept(visitor);
 	} 
 

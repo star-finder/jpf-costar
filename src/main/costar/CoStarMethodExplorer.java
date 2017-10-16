@@ -12,6 +12,7 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.ValuationEntry;
 import gov.nasa.jpf.constraints.api.Variable;
+import gov.nasa.jpf.constraints.types.BuiltinTypes;
 import gov.nasa.jpf.constraints.types.Type;
 import gov.nasa.jpf.jdart.ConcolicUtil;
 import gov.nasa.jpf.jdart.SymbolicParam;
@@ -201,7 +202,7 @@ public class CoStarMethodExplorer {
 				if (ei != null)
 					symContext.processObject(ei, name, true);
 				stackMap.put(name, stackIdx);
-				Variable<?> var = Variable.create(null, name);
+				Variable<?> var = Variable.create(BuiltinTypes.SINT32, name);
 				SymbolicParam<?> sp = new SymbolicParam<>(var, stackIdx);
 				symContext.addStackVar(sp);
 			} else { // primitive type

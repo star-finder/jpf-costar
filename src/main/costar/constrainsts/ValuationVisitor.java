@@ -11,6 +11,8 @@ import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.VariableExpression;
 import starlib.formula.pure.ComparisonTerm;
+import starlib.formula.pure.EqNullTerm;
+import starlib.jpf.PathFinderUtils;
 import starlib.jpf.testsuites.PathFinderVisitor;
 
 public class ValuationVisitor extends PathFinderVisitor {
@@ -20,6 +22,22 @@ public class ValuationVisitor extends PathFinderVisitor {
 	public ValuationVisitor(PathFinderVisitor that) {
 		super(that);
 		val = ((PathFinderValuationGenerator) that).getValuation();
+	}
+	
+	@Override
+	public void visit(EqNullTerm term) {
+		Variable var = term.getVar();
+		
+		if (!initVars.contains(var)) {
+			initVars.add(var);
+			
+			Type type = BuiltinTypes.SINT32;
+			String name = var.getName();
+			Object value = new Integer(0);
+			
+			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+			val.addEntry(e);
+		}
 	}
 
 	@Override
@@ -33,8 +51,8 @@ public class ValuationVisitor extends PathFinderVisitor {
 		
 		Variable var = null;
 		Type type = null;
-		Object value = null;
 		String name = null, typeStr = null, valueStr = null;
+		Object value = null;
 		
 		if (comp == Comparator.EQ && exp1 instanceof VariableExpression && 
 				!initVars.containsAll(vars1) && (vars2.isEmpty() || initVars.containsAll(vars2))) {
