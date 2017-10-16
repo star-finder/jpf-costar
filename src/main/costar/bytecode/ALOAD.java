@@ -58,7 +58,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 			constraints[1] = current.formula.copy();
 		}
 		
-		constraints[0].addPointToTermMockUp(var, "Node");
+		constraints[0].addPointToTermMockUp(var, "features_sll_Node");
 		constraints[1].addNEqNullTerm(var);
 		
 		if (i1 == 0) {

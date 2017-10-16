@@ -38,7 +38,9 @@ public class ValuationVisitor extends PathFinderVisitor {
 			initVars.add(var);
 			
 			Type type = BuiltinTypes.SINT32;
-			String typeStr = "features.sll.Node"; //var.getType();
+			String typeStr = var.getType();
+			typeStr = typeStr.replaceAll("__", "$");
+			typeStr = typeStr.replaceAll("_", ".");
 			String name = var.getName();
 			
 			ClassInfo ci = ClassLoaderInfo.getCurrentResolvedClassInfo(typeStr);
