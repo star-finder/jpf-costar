@@ -6,13 +6,19 @@ import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.ValuationEntry;
 import gov.nasa.jpf.constraints.types.BuiltinTypes;
 import gov.nasa.jpf.constraints.types.Type;
+import gov.nasa.jpf.vm.ClassInfo;
+import gov.nasa.jpf.vm.ClassLoaderInfo;
+import gov.nasa.jpf.vm.ElementInfo;
+import gov.nasa.jpf.vm.Heap;
+import gov.nasa.jpf.vm.ThreadInfo;
+import gov.nasa.jpf.vm.VM;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.VariableExpression;
+import starlib.formula.heap.PointToTerm;
 import starlib.formula.pure.ComparisonTerm;
 import starlib.formula.pure.EqNullTerm;
-import starlib.jpf.PathFinderUtils;
 import starlib.jpf.testsuites.PathFinderVisitor;
 
 public class ValuationVisitor extends PathFinderVisitor {
@@ -22,6 +28,29 @@ public class ValuationVisitor extends PathFinderVisitor {
 	public ValuationVisitor(PathFinderVisitor that) {
 		super(that);
 		val = ((PathFinderValuationGenerator) that).getValuation();
+	}
+	
+	@Override
+	public void visit(PointToTerm term) {
+		Variable var = term.getRoot();
+		
+		if (!initVars.contains(var)) {
+			initVars.add(var);
+			
+			Type type = BuiltinTypes.SINT32;
+			String typeStr = "features.sll.Node"; //var.getType();
+			String name = var.getName();
+			
+			ClassInfo ci = ClassLoaderInfo.getCurrentResolvedClassInfo(typeStr);
+			ThreadInfo ti = VM.getVM().getCurrentThread();
+			Heap heap = ti.getHeap();
+			ElementInfo ei = heap.newObject(ci, ti);
+			
+			Object value = new Integer(ei.getObjectRef());
+			
+			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+			val.addEntry(e);
+		}
 	}
 	
 	@Override

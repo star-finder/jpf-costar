@@ -173,11 +173,11 @@ public class ValuationGenerator {
 	}
 	
 	private static String standarizeType(String type) {
-		if (type.contains("."))
-			type = type.substring(type.lastIndexOf('.') + 1);
-		
-		if (type.contains("$"))
-			type = type.substring(type.lastIndexOf('$') + 1);
+//		if (type.contains("."))
+//			type = type.substring(type.lastIndexOf('.') + 1);
+//		
+//		if (type.contains("$"))
+//			type = type.substring(type.lastIndexOf('$') + 1);
 		
 		return type;
 	}
