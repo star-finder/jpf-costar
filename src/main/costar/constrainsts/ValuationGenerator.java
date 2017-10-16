@@ -7,8 +7,7 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 import gov.nasa.jpf.Config;
-import gov.nasa.jpf.JPF;
-import gov.nasa.jpf.util.JPFLogger;
+import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.LocalVarInfo;
@@ -46,7 +45,7 @@ public class ValuationGenerator {
 		first = true;
 	}
 
-	public static Formula toValuation(String model) {
+	public static Valuation toValuation(String model) {
 		model = model.replaceAll("FLOAT 0.", "0");
 		String[] tmp = model.split(";");
 
@@ -74,7 +73,7 @@ public class ValuationGenerator {
 		return toValuation(f, pure);
 	}
 	
-	private static Formula toValuation(Formula f, String pure) {
+	private static Valuation toValuation(Formula f, String pure) {
 		String objName = "obj";
 		String clsName = ci.getSimpleName();
 		
@@ -150,7 +149,10 @@ public class ValuationGenerator {
 			}
 		}
 		
-		return f;
+		PathFinderValuationGenerator jpfGen = new PathFinderValuationGenerator(knownTypeVars, initVars, null, objName, clsName, insFields, staFields);
+		jpfGen.visit(f);
+		
+		return jpfGen.getValuation();
 	}
 
 	private static String standarizeModel(String model) {

@@ -128,8 +128,6 @@ public class CoStarMethodExplorer {
 	private void prepareReExecution(StackFrame sf) {
 		constraintsTree.reset();
 		
-		// handle heap at this step
-
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
 			sv.apply(currValuation, sf);
 	}
