@@ -61,7 +61,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		constraints[0].addEqNullTerm(var);
 		constraints[1].addNEqNullTerm(var);
 		
-		if (i1 == -1) {
+		if (i1 == 0) {
 			analysis.decision(ti, this, 0, constraints);
 		} else {
 			analysis.decision(ti, this, 1, constraints);
