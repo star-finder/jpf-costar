@@ -1,6 +1,7 @@
 package costar.constrainsts;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
@@ -18,7 +19,7 @@ public class PathFinderValuationGenerator extends PathFinderVisitor {
 	
 	private Valuation val;
 	
-	public PathFinderValuationGenerator(List<Variable> knownTypeVars, List<Variable> initVars, StringBuffer test,
+	public PathFinderValuationGenerator(HashMap<String,String> knownTypeVars, HashSet<Variable> initVars, StringBuffer test,
 			String objName, String clsName, FieldInfo[] insFields, FieldInfo[] staFields) {
 		super(knownTypeVars, initVars, test, objName, clsName, insFields, staFields);
 		val = new Valuation();
