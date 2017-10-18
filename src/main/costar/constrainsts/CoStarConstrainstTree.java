@@ -1,5 +1,6 @@
 package costar.constrainsts;
 
+import costar.valuation.ValuationGenerator;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;

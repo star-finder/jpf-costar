@@ -1,4 +1,4 @@
-package costar.constrainsts;
+package costar.valuation;
 
 import java.util.List;
 
@@ -19,40 +19,19 @@ import starlib.formula.expression.VariableExpression;
 import starlib.formula.heap.PointToTerm;
 import starlib.formula.pure.ComparisonTerm;
 import starlib.formula.pure.EqNullTerm;
+import starlib.formula.pure.EqTerm;
+import starlib.jpf.PathFinderUtils;
 import starlib.jpf.testsuites.PathFinderVisitor;
 
-public class ValuationVisitor extends PathFinderVisitor {
+public class ConcreteValuationGeneratorVisitor extends ValuationGeneratorVisitor {
 
-	private Valuation val;
-
-	public ValuationVisitor(PathFinderVisitor that) {
+	public ConcreteValuationGeneratorVisitor(ValuationGeneratorVisitor that) {
 		super(that);
-		val = ((PathFinderValuationGenerator) that).getValuation();
 	}
 	
 	@Override
 	public void visit(PointToTerm term) {
-		Variable var = term.getRoot();
-		
-		if (!initVars.contains(var)) {
-			initVars.add(var);
-			
-			Type type = BuiltinTypes.SINT32;
-			String typeStr = var.getType();
-			typeStr = typeStr.replaceAll("__", "$");
-			typeStr = typeStr.replaceAll("_", ".");
-			String name = var.getName();
-			
-			ClassInfo ci = ClassLoaderInfo.getCurrentResolvedClassInfo(typeStr);
-			ThreadInfo ti = VM.getVM().getCurrentThread();
-			Heap heap = ti.getHeap();
-			ElementInfo ei = heap.newObject(ci, ti);
-			
-			Object value = new Integer(ei.getObjectRef());
-			
-			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
-			val.addEntry(e);
-		}
+		genNewObjectValuation(term.getRoot());
 	}
 	
 	@Override
@@ -67,7 +46,35 @@ public class ValuationVisitor extends PathFinderVisitor {
 			Object value = new Integer(0);
 			
 			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
-			val.addEntry(e);
+			valuation.addEntry(e);
+		}
+	}
+	
+	@Override
+	public void visit(EqTerm term) {
+		Variable var1 = term.getVar1();
+		Variable var2 = term.getVar2();
+		
+		if (initVars.contains(var2) && !initVars.contains(var1)) {
+			initVars.add(var1);
+			
+			Type type = getType(var1.getType());
+			String name = var1.getName();
+			Object value = valuation.getValue(var2.getName());
+			
+			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+			valuation.addEntry(e);
+		}
+		
+		if (initVars.contains(var1) && !initVars.contains(var2)) {
+			initVars.add(var2);
+			
+			Type type = getType(var2.getType());
+			String name = var2.getName();
+			Object value = valuation.getValue(var1.getName());
+			
+			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+			valuation.addEntry(e);
 		}
 	}
 
@@ -104,23 +111,33 @@ public class ValuationVisitor extends PathFinderVisitor {
 		}
 		
 		if (typeStr != null) {
-			if (typeStr.equals("boolean")) {
+			type = getType(typeStr);
+			
+			if (type == BuiltinTypes.BOOL) {
 				if (valueStr.equals("0"))
-					valueStr = "false";
+					value = new Boolean(false);
 				else
-					valueStr = "true";
-				
-				type = BuiltinTypes.BOOL;
-				value = new Boolean(valueStr);
-			} else if (typeStr.equals("int")) {
-				type = BuiltinTypes.SINT32;
+					value = new Boolean(true);
+			} else if (type == BuiltinTypes.SINT8) {
+				value = new Byte(valueStr);
+			} else if (type == BuiltinTypes.UINT16) {
+				value = new Character(valueStr.charAt(0));
+			} else if (type == BuiltinTypes.SINT16) {
+				value = new Short(valueStr);
+			} else if (type == BuiltinTypes.SINT32) {
 				value = new Integer(valueStr);
+			} else if (type == BuiltinTypes.SINT64) {
+				value = new Long(valueStr);
+			} else if (type == BuiltinTypes.FLOAT) {
+				value = new Float(valueStr);
+			} else if (type == BuiltinTypes.DOUBLE) {
+				value = new Double(valueStr);
 			}
 		}
 		
 		if (type != null && name != null && value != null) {
 			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
-			val.addEntry(e);
+			valuation.addEntry(e);
 		}
 	}
 

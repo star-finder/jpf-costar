@@ -1,7 +1,10 @@
-package costar.constrainsts;
+package costar.valuation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -18,6 +21,7 @@ import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 import starlib.formula.expression.VariableExpression;
+import starlib.jpf.PathFinderUtils;
 import starlib.precondition.Precondition;
 import starlib.precondition.PreconditionLexer;
 import starlib.precondition.PreconditionParser;
@@ -81,30 +85,7 @@ public class ValuationGenerator {
 		FieldInfo[] insFields = ci.getInstanceFields();
 		FieldInfo[] staFields = ci.getDeclaredStaticFields();
 		
-		List<Variable> knownTypeVars = new ArrayList<Variable>();
-		
-		for (LocalVarInfo arg : args) {
-			if (!arg.getName().equals("this")) {
-				String name = arg.getName();
-				String type = standarizeType(arg.getType());
-				
-				knownTypeVars.add(new Variable(name, type));
-			}
-		}
-		
-		for (FieldInfo field : insFields) {
-			String name = "this_" + field.getName();
-			String type = standarizeType(field.getType());
-				
-			knownTypeVars.add(new Variable(name, type));
-		}
-		
-		for (FieldInfo field : staFields) {
-			String name = clsName + "_" + field.getName();
-			String type = standarizeType(field.getType());
-				
-			knownTypeVars.add(new Variable(name, type));
-		}
+		HashMap<String,String> knownTypeVars = PathFinderUtils.initTypeVarMap(ci,mi);
 		
 		f.updateType(knownTypeVars);
 		f.removeTerm();
@@ -119,7 +100,8 @@ public class ValuationGenerator {
 				String name = nameAndValue[0];
 				String value = nameAndValue[1];
 				
-				for (Variable var : knownTypeVars) {
+				for(Entry<String, String> entry : knownTypeVars.entrySet()) {
+					Variable var = new Variable(entry.getKey(), entry.getValue());
 					if (var.isPrim() && var.getName().equals(name)) {
 						Expression exp1 = new VariableExpression(new Variable(name, var.getType()));
 						Expression exp2 = new LiteralExpression(value);
@@ -129,7 +111,7 @@ public class ValuationGenerator {
 			}
 		}
 		
-		List<Variable> initVars = new ArrayList<Variable>();
+		HashSet<Variable> initVars = new HashSet<Variable>();
 		
 		for (FieldInfo field : insFields) {
 			if (field.isFinal() || field.isPrivate() || field.isProtected()) {
@@ -149,7 +131,7 @@ public class ValuationGenerator {
 			}
 		}
 		
-		PathFinderValuationGenerator jpfGen = new PathFinderValuationGenerator(knownTypeVars, initVars, null, objName, clsName, insFields, staFields);
+		ValuationGeneratorVisitor jpfGen = new ValuationGeneratorVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields);
 		jpfGen.visit(f);
 		
 		return jpfGen.getValuation();
