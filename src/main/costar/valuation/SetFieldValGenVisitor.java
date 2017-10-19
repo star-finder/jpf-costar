@@ -1,6 +1,5 @@
 package costar.valuation;
 
-import gov.nasa.jpf.constraints.types.BuiltinTypes;
 import gov.nasa.jpf.jdart.objects.SymbolicObject;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
@@ -10,9 +9,9 @@ import gov.nasa.jpf.vm.VM;
 import starlib.formula.Variable;
 import starlib.formula.heap.PointToTerm;
 
-public class SetFieldValuationGeneratorVisitor extends ValuationGeneratorVisitor {
+public class SetFieldValGenVisitor extends ValGenVisitor {
 	
-	public SetFieldValuationGeneratorVisitor(ValuationGeneratorVisitor that) {
+	public SetFieldValGenVisitor(ValGenVisitor that) {
 		super(that);
 	}
 	

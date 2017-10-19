@@ -131,10 +131,12 @@ public class ValuationGenerator {
 			}
 		}
 		
-		ValuationGeneratorVisitor jpfGen = new ValuationGeneratorVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields);
+		Valuation valuation = new Valuation();
+		
+		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation);
 		jpfGen.visit(f);
 		
-		return jpfGen.getValuation();
+		return valuation;
 	}
 
 	private static String standarizeModel(String model) {

@@ -2,16 +2,9 @@ package costar.valuation;
 
 import java.util.List;
 
-import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.ValuationEntry;
 import gov.nasa.jpf.constraints.types.BuiltinTypes;
 import gov.nasa.jpf.constraints.types.Type;
-import gov.nasa.jpf.vm.ClassInfo;
-import gov.nasa.jpf.vm.ClassLoaderInfo;
-import gov.nasa.jpf.vm.ElementInfo;
-import gov.nasa.jpf.vm.Heap;
-import gov.nasa.jpf.vm.ThreadInfo;
-import gov.nasa.jpf.vm.VM;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
@@ -20,12 +13,10 @@ import starlib.formula.heap.PointToTerm;
 import starlib.formula.pure.ComparisonTerm;
 import starlib.formula.pure.EqNullTerm;
 import starlib.formula.pure.EqTerm;
-import starlib.jpf.PathFinderUtils;
-import starlib.jpf.testsuites.PathFinderVisitor;
 
-public class ConcreteValuationGeneratorVisitor extends ValuationGeneratorVisitor {
+public class ConValGenVisitor extends ValGenVisitor {
 
-	public ConcreteValuationGeneratorVisitor(ValuationGeneratorVisitor that) {
+	public ConValGenVisitor(ValGenVisitor that) {
 		super(that);
 	}
 	

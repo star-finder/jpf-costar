@@ -17,46 +17,28 @@ import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Heap;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
-import starlib.StarVisitor;
 import starlib.formula.Formula;
 import starlib.formula.HeapFormula;
 import starlib.formula.PureFormula;
 import starlib.formula.Variable;
-import starlib.formula.pure.PureTerm;
-import starlib.jpf.PathFinderUtils;
+import starlib.formula.heap.HeapTerm;
+import starlib.jpf.testsuites.InitVarsVisitor;
 
-public class ValuationGeneratorVisitor extends StarVisitor {
+public class ValGenVisitor extends InitVarsVisitor {
 	
 	private JPFLogger logger = JPF.getLogger("costar");
 	
-	protected HashMap<String,String> knownTypeVars;
-	protected HashSet<Variable> initVars;
-	protected String objName;
-	protected String clsName;
-	protected FieldInfo[] insFields;
-	protected FieldInfo[] staFields;
-	
 	protected Valuation valuation;
 	
-	public ValuationGeneratorVisitor(HashMap<String,String> knownTypeVars, HashSet<Variable> initVars,
-			String objName, String clsName, FieldInfo[] insFields, FieldInfo[] staFields) {
-		this.knownTypeVars = knownTypeVars;
-		this.initVars = initVars;
-		this.objName = objName;
-		this.clsName = clsName;
-		this.insFields = insFields;
-		this.staFields = staFields;
-		this.valuation = new Valuation();
+	public ValGenVisitor(HashMap<String,String> knownTypeVars, HashSet<Variable> initVars,
+			String objName, String clsName, FieldInfo[] insFields, FieldInfo[] staFields, Valuation valuation) {
+		super(knownTypeVars, initVars, objName, clsName, insFields, staFields);
+		this.valuation = valuation;
 	}
 	
-	public ValuationGeneratorVisitor(ValuationGeneratorVisitor other) {
-		this.knownTypeVars = other.knownTypeVars;
-		this.initVars = other.initVars;
-		this.objName = other.objName;
-		this.clsName = other.clsName;
-		this.insFields = other.insFields;
-		this.staFields = other.staFields;
-		this.valuation = other.valuation;
+	public ValGenVisitor(ValGenVisitor that) {
+		super(that);
+		this.valuation = that.valuation;
 	}
 	
 	@Override
@@ -65,9 +47,9 @@ public class ValuationGeneratorVisitor extends StarVisitor {
 		HeapFormula hf = formula.getHeapFormula();
 		PureFormula pf = formula.getPureFormula();
 		
-		ConcreteValuationGeneratorVisitor conVisitor = new ConcreteValuationGeneratorVisitor(this);
-		NoConcreteValuationGeneratorVisitor noConVisitor = new NoConcreteValuationGeneratorVisitor(this);
-		SetFieldValuationGeneratorVisitor setFieldVisitor = new SetFieldValuationGeneratorVisitor(this);
+		ConValGenVisitor conVisitor = new ConValGenVisitor(this);
+		NoConValGenVisitor noConVisitor = new NoConValGenVisitor(this);
+		SetFieldValGenVisitor setFieldVisitor = new SetFieldValGenVisitor(this);
 		
 		hf.accept(conVisitor);
 		pf.accept(conVisitor);
@@ -76,18 +58,9 @@ public class ValuationGeneratorVisitor extends StarVisitor {
 	}
 	
 	@Override
-	public void visit(PureFormula formula) {
-		int oldLength = initVars.size();
-		while (true) {
-			
-			for (PureTerm pureTerm : formula.getPureTerms()) {
-				pureTerm.accept(this);
-			}
-			
-			int newLength = initVars.size();
-			
-			if (newLength == oldLength) break;
-			else oldLength = newLength;
+	public void visit(HeapFormula formula) {
+		for (HeapTerm heapTerm : formula.getHeapTerms()) {
+			heapTerm.accept(this);
 		}
 	}
 	
@@ -151,10 +124,6 @@ public class ValuationGeneratorVisitor extends StarVisitor {
 			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), type.getDefaultValue());
 			valuation.addEntry(e);
 		}
-	}
-	
-	public Valuation getValuation() {
-		return valuation;
 	}
 	
 }
