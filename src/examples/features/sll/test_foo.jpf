@@ -1,3 +1,4 @@
 @include=./example.jpf
 
 concolic.method=foo
+costar.precondition=pre foo == i > 0-100
