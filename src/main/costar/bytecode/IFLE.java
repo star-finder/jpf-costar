@@ -1,5 +1,8 @@
 package costar.bytecode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
@@ -44,22 +47,26 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 		LiteralExpression litExp = new LiteralExpression(0);
 		
 		Integer i1 = v1.conc;
-		Formula[] constraints = new Formula[2];
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		if (current.formula == null) {
-			constraints[0] = new Formula();
-			constraints[1] = new Formula();
-		}
-		else {
-			constraints[0] = current.formula.copy();
-			constraints[1] = current.formula.copy();
-		}
+		List<Formula> formulas = current.formulas;
 		
-		constraints[0].addComparisonTerm(Comparator.LE, varExp, litExp);
-		constraints[1].addComparisonTerm(Comparator.GT, varExp, litExp);
+		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
+		constraints.add(new ArrayList<Formula>()); // <= formulas
+		constraints.add(new ArrayList<Formula>()); // > formulas
+		
+		for (Formula formula : formulas) {
+			Formula f0 = formula.copy();
+			Formula f1 = formula.copy();
+			
+			f0.addComparisonTerm(Comparator.LE, varExp, litExp);
+			f1.addComparisonTerm(Comparator.GT, varExp, litExp);
+			
+			constraints.get(0).add(f0);
+			constraints.get(1).add(f1);
+		}
 		
 		if (i1 <= 0) {
 			analysis.decision(ti, this, 0, constraints);

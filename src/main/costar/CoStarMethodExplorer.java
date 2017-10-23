@@ -83,10 +83,6 @@ public class CoStarMethodExplorer {
 		constraintsTree.decision(ti, inst, chosenIdx, constraints);
 	}
 
-	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, Formula[] constraints) {
-		constraintsTree.decision(ti, inst, chosenIdx, constraints);
-	}
-
 	public void newPath(StackFrame sf) {
 		if (initValuation == null) {
 			prepareFirstExecution(sf);

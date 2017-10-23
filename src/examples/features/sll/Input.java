@@ -34,10 +34,10 @@ public class Input {
 
 	public static void main(String[] args) {
 		Input in = new Input();
-//		Node root = new Node(0, null);
-//		in.travel(root);
+		Node root = new Node(0, null);
+		in.travel(root);
 		
-		in.foo(1);
+//		in.foo(1);
 	}
 	
 }

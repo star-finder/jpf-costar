@@ -13,12 +13,14 @@ import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
 import starlib.formula.heap.PointToTerm;
+import starlib.jpf.NoErrorProperty;
 
 public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 	
@@ -50,49 +52,45 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		Formula f = current.formula.copy();
+		List<Formula> formulas = current.formulas;
+		
+		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
+		constraints.add(new ArrayList<Formula>()); // null formulas
+		constraints.add(new ArrayList<Formula>()); // not null formulas
 			
-		if (Utilities.isNull(f, var.getName())) {
-			if (i1 != 0) {
-				// throw error here
+		for (Formula formula : formulas) {
+			Formula f = formula.copy();
+			
+			if (Utilities.isNull(f, var.getName())) {
+				constraints.get(0).add(f);
 			} else {
-				// no need to do anything
-			}
-		} else {
-			HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
-			if (ht instanceof PointToTerm) {
-				if (i1 == 0) {
-					// throw error here
-				} else {
-					// no need to do anything
-				}
-			} else if (ht instanceof InductiveTerm) {
-				InductiveTerm it = (InductiveTerm) ht;
-				Formula[] fs = it.unfold();
-
-				List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-				constraints.add(new ArrayList<Formula>()); // null formulas
-				constraints.add(new ArrayList<Formula>()); // not null formulas
-				
-				for (int i = 0; i < fs.length; i++) {
-					Formula cf = f.copy();
-					cf.unfold(it, i);
+				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
+				if (ht instanceof PointToTerm) {
+					constraints.get(1).add(f);
+				} else if (ht instanceof InductiveTerm) {
+					InductiveTerm it = (InductiveTerm) ht;
+					Formula[] fs = it.unfold();
 					
-					if (Utilities.isNull(cf, var.getName())) {
-						// add to null
-						constraints.get(0).add(cf);
-					} else {
-						// should be not null, add to not null
-						constraints.get(1).add(cf);
+					for (int i = 0; i < fs.length; i++) {
+						Formula cf = f.copy();
+						cf.unfold(it, i);
+						
+						if (Utilities.isNull(cf, var.getName())) {
+							constraints.get(0).add(cf);
+						} else {
+							constraints.get(1).add(cf);
+						}
 					}
-				}
-				
-				if (i1 == 0) {
-					analysis.decision(ti, this, 0, constraints);
-				} else {
-					analysis.decision(ti, this, 1, constraints);
-				}
-			}	
+				}	
+			}
+		}
+		
+		if (!constraints.get(0).isEmpty() && !constraints.get(1).isEmpty()) {
+			if (i1 == 0) {
+				analysis.decision(ti, this, 0, constraints);
+			} else {
+				analysis.decision(ti, this, 1, constraints);
+			}
 		}
 		
 		return super.execute(ti);

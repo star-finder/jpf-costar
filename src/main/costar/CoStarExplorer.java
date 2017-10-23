@@ -1,5 +1,8 @@
 package costar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -12,9 +15,9 @@ import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
-import starlib.formula.Variable;
 import starlib.precondition.Precondition;
 import starlib.precondition.PreconditionLexer;
+import starlib.precondition.PreconditionMap;
 import starlib.precondition.PreconditionParser;
 
 public class CoStarExplorer {
@@ -36,24 +39,18 @@ public class CoStarExplorer {
 		String key = id.substring(id.lastIndexOf('.') + 1, id.indexOf('('));
 		analysis = new CoStarMethodExplorer(cc, key, mi);
 		
-		Config conf = VM.getVM().getConfig();
-		String pre = conf.getProperty("costar.precondition");
+		List<Formula> fs = new ArrayList<Formula>();
+		Precondition pre = PreconditionMap.find(mi.getBaseName());
 		
 		if (pre != null) {
-			ANTLRInputStream in = new ANTLRInputStream(pre);
-			PreconditionLexer lexer = new PreconditionLexer(in);
-	        CommonTokenStream tokens = new CommonTokenStream(lexer);
-	        PreconditionParser parser = new PreconditionParser(tokens);
-	        
-	        Precondition[] ps = parser.pres().ps;
-			
-			logger.info("Precondition = " + ps[0].getFormula());
-				
-			Formula f = ps[0].getFormula();
-			
-			analysis.getConstrainstTree().getCurrent().formula = f;
-			conf.setProperty("costar.precondition", null);
+			logger.info("Precondition = " + pre);	
+			Formula f = pre.getFormula();
+			fs.add(f);
+		} else {
+			fs.add(new Formula());
 		}
+		
+		analysis.getConstrainstTree().getCurrent().formulas = fs;
 
 		ThreadInfo ti = VM.getVM().getCurrentThread();
 		analysis.initializeMethod(ti, sf);

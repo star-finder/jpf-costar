@@ -6,6 +6,7 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.JPFShell;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.util.LogManager;
+import starlib.precondition.Initializer;
 
 public class CoStar implements JPFShell {
 
@@ -47,6 +48,8 @@ public class CoStar implements JPFShell {
 		jpfConf.setProperty("listener", listener);
 		jpfConf.setProperty("perturb.class", CoStarPerturbator.class.getName());
 		jpfConf.setProperty(CONFIG_KEY_COSTAR_EXPLORER, CoStarExplorer.class.getName());
+		
+		initialize(jpfConf);
 
 		logger.info(jpfConf);
 
@@ -57,6 +60,20 @@ public class CoStar implements JPFShell {
 		logger.info("CoStar.run() -- end");
 	}
 
+	public static void initialize(Config jpfConf) {
+		String data = jpfConf.getProperty("costar.data");
+		if (data != null)
+			Initializer.initDataNode(data);
+		
+		String pred = jpfConf.getProperty("costar.predicate");
+		if (pred != null)
+			Initializer.initPredicate(pred);
+		
+		String pre = jpfConf.getProperty("costar.precondition");
+		if (pre != null)
+			Initializer.initPrecondition(pre);
+	}
+	
 	public static CoStarExplorer getCoStarExplorer(Config config) {
 		CoStarExplorer explorer = config.getEssentialInstance(CONFIG_KEY_COSTAR_EXPLORER, CoStarExplorer.class);
 		if (!explorer.isConfigured()) {
