@@ -50,14 +50,14 @@ public class CoStarConstrainstTree {
 					current.childrend[i].hasVisited = true;
 					
 					List<Formula> fs = current.childrend[i].formulas;
-					logger.info("Constraint = " + fs.toString());
+					logger.info("New constraint = " + fs.toString());
 					boolean isSat = Solver.checkSat(fs, config);
 					
 					if (isSat) {
 						String model = Solver.getModel();
 						Valuation val = ValuationGenerator.toValuation(model);
 						// build new valuation based on the model
-						logger.info("Model = " + model);
+						logger.info("New model = " + model);
 						logger.info("New valuation = " + val);
 						
 						return val;

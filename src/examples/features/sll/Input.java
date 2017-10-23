@@ -35,7 +35,7 @@ public class Input {
 	public static void main(String[] args) {
 		Input in = new Input();
 		Node root = new Node(0, null);
-		in.travel(root);
+		in.travel(null);
 		
 //		in.foo(1);
 	}

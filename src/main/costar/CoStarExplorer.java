@@ -40,7 +40,7 @@ public class CoStarExplorer {
 		analysis = new CoStarMethodExplorer(cc, key, mi);
 		
 		List<Formula> fs = new ArrayList<Formula>();
-		Precondition pre = PreconditionMap.find(mi.getBaseName());
+		Precondition pre = PreconditionMap.find(mi.getName());
 		
 		if (pre != null) {
 			logger.info("Precondition = " + pre);	
