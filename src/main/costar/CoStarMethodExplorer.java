@@ -78,6 +78,10 @@ public class CoStarMethodExplorer {
 	public static CoStarMethodExplorer getCurrentAnalysis(ThreadInfo ti) {
 		return ti.getAttr(CoStarMethodExplorer.class);
 	}
+	
+	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<List<Formula>> constraints) {
+		constraintsTree.decision(ti, inst, chosenIdx, constraints);
+	}
 
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, Formula[] constraints) {
 		constraintsTree.decision(ti, inst, chosenIdx, constraints);

@@ -1,5 +1,7 @@
 package costar.constrainsts;
 
+import java.util.List;
+
 import costar.valuation.ValuationGenerator;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
@@ -25,7 +27,7 @@ public class CoStarConstrainstTree {
 	private MethodInfo methodInfo;
 		
 	public CoStarConstrainstTree(MethodInfo mi) {
-		this.root = new CoStarNode(null, null, null, null, true);
+		this.root = new CoStarNode(null, null, (Formula) null, null, true);
 		this.current = root;
 		this.config = VM.getVM().getConfig();
 		this.methodInfo = mi;
@@ -69,6 +71,20 @@ public class CoStarConstrainstTree {
 		}
 		
 		return null;
+	}
+	
+	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<List<Formula>> constraints) {
+		if (current.childrend == null) {
+			int length = constraints.size();
+			current.childrend = new CoStarNode[length];
+			
+			for (int i = 0; i < length; i++) {
+				current.childrend[i] = new CoStarNode(current, null, constraints.get(i), inst, false);
+			}
+		}
+		
+		current.childrend[chosenIdx].hasVisited = true;
+		current = current.childrend[chosenIdx];
 	}
 
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, Formula[] constraints) {
