@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 
+import costar.CoStarUtilities;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.ValuationEntry;
@@ -49,12 +50,12 @@ public class ValGenVisitor extends InitVarsVisitor {
 		
 		ConValGenVisitor conVisitor = new ConValGenVisitor(this);
 		NoConValGenVisitor noConVisitor = new NoConValGenVisitor(this);
-		SetFieldValGenVisitor setFieldVisitor = new SetFieldValGenVisitor(this);
+//		SetFieldValGenVisitor setFieldVisitor = new SetFieldValGenVisitor(this);
 		
 		hf.accept(conVisitor);
 		pf.accept(conVisitor);
 		pf.accept(noConVisitor);
-		hf.accept(setFieldVisitor);
+//		hf.accept(setFieldVisitor);
 	}
 	
 	@Override
@@ -69,9 +70,7 @@ public class ValGenVisitor extends InitVarsVisitor {
 			initVars.add(var);
 			
 			Type type = BuiltinTypes.SINT32;
-			String typeStr = var.getType();
-			typeStr = typeStr.replaceAll("__", "$");
-			typeStr = typeStr.replaceAll("_", ".");
+			String typeStr = CoStarUtilities.toJavaType(var.getType());
 			String name = var.getName();
 			
 			ClassInfo ci = ClassLoaderInfo.getCurrentResolvedClassInfo(typeStr);

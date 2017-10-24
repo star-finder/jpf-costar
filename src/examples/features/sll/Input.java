@@ -34,7 +34,7 @@ public class Input {
 
 	public static void main(String[] args) {
 		Input in = new Input();
-		Node root = new Node(0, null);
+		Node root = new Node(0, new Node(1, null));
 		in.travel(null);
 		
 //		in.foo(1);

@@ -7,7 +7,6 @@ import java.util.Map;
 
 import costar.config.CoStarConfig;
 import costar.constrainsts.CoStarConstrainstTree;
-import costar.objects.SymbolicObjectsContext;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.ValuationEntry;
@@ -20,6 +19,7 @@ import gov.nasa.jpf.jdart.SymbolicVariable;
 import gov.nasa.jpf.jdart.config.AnalysisConfig;
 import gov.nasa.jpf.jdart.config.ConcolicMethodConfig;
 import gov.nasa.jpf.jdart.config.ParamConfig;
+import gov.nasa.jpf.jdart.objects.SymbolicObjectsContext;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
@@ -30,6 +30,7 @@ import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
 import starlib.formula.Formula;
+import starlib.formula.Utilities;
 
 public class CoStarMethodExplorer {
 
@@ -128,6 +129,7 @@ public class CoStarMethodExplorer {
 
 	private void prepareReExecution(StackFrame sf) {
 		constraintsTree.reset();
+		Utilities.reset();
 		
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
 			sv.apply(currValuation, sf);

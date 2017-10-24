@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 
+import costar.CoStarUtilities;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.vm.ClassInfo;
@@ -116,7 +117,7 @@ public class ValuationGenerator {
 		for (FieldInfo field : insFields) {
 			if (field.isFinal() || field.isPrivate() || field.isProtected()) {
 				String name = "this_" + field.getName();
-				String type = standarizeType(field.getType());
+				String type = CoStarUtilities.toS2SATType(field.getType());
 				
 				initVars.add(new Variable(name, type));
 			}
@@ -125,7 +126,7 @@ public class ValuationGenerator {
 		for (FieldInfo field : staFields) {
 			if (field.isFinal() || field.isPrivate() || field.isProtected()) {
 				String name = clsName + "_" + field.getName();
-				String type = standarizeType(field.getType());
+				String type = CoStarUtilities.toS2SATType(field.getType());
 				
 				initVars.add(new Variable(name, type));
 			}
@@ -154,16 +155,6 @@ public class ValuationGenerator {
 		}
 
 		return ret.substring(1);
-	}
-	
-	private static String standarizeType(String type) {
-		if (type.contains("."))
-			type = type.replaceAll(".", "_");
-		
-		if (type.contains("$"))
-			type = type.replaceAll("$", "__");
-		
-		return type;
 	}
 
 }
