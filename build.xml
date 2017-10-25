@@ -44,7 +44,6 @@
   <!-- get the jdart path properties -->
   <property file="${starlib}/jpf.properties"/>
 
-
   <!-- compiler settings -->
   <property name="src_level"     value="8"/>
   <property name="debug"         value="on"/>
@@ -68,6 +67,8 @@
 
     <!-- add in what we need from the jdart -->
     <pathelement path="${jpf-jdart.native_classpath}"/>
+
+    <!-- add in what we need from the starlib -->
     <pathelement path="${starlib.native_classpath}"/>
 
   </path>
