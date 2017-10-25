@@ -7,8 +7,13 @@ public class Input {
 			System.out.println("root = null");
 			return;
 		}	
-		else {
+		else if (root.next == null ){
 			System.out.println("root != null");
+			System.out.println("root.next == null");
+			return;
+		} else {
+			System.out.println("root != null");
+			System.out.println("root.next != null");
 			return;
 		}
 	}
@@ -35,7 +40,7 @@ public class Input {
 	public static void main(String[] args) {
 		Input in = new Input();
 		Node root = new Node(0, new Node(1, null));
-		in.travel(null);
+		in.travel(root);
 		
 //		in.foo(1);
 	}

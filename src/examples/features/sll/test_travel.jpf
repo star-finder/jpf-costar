@@ -1,6 +1,6 @@
 @include=./example.jpf
 
 concolic.method=travel
-costar.data=data features_sll_Node {features_sll_Node next}
-costar.predicate=pred sll(root) == root = null || root::features_sll_Node<next> * sll(next)
+costar.data=data features_sll_Node {int elem; features_sll_Node next}
+costar.predicate=pred sll(root) == root = null || root::features_sll_Node<elem,next> * sll(next)
 costar.precondition=pre travel == sll(root)

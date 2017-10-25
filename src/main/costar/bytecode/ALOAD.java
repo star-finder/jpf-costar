@@ -11,6 +11,8 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Expression;
 import gov.nasa.jpf.jdart.ConcolicUtil;
 import gov.nasa.jpf.util.JPFLogger;
+import gov.nasa.jpf.vm.ElementInfo;
+import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -51,8 +53,9 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		Variable var = (Variable) sf.getLocalAttr(index);
 		
-		ConcolicUtil.Pair<Integer> v1 = ConcolicUtil.popInt(sf);
-		Integer i1 = v1.conc;
+		// is pop here correct
+//		ConcolicUtil.Pair<Integer> v = ConcolicUtil.popInt(sf);
+		int objRef = sf.peek();
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
@@ -95,9 +98,20 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		}
 		
 		if (!constraints.get(0).isEmpty() && !constraints.get(1).isEmpty()) {
-			if (i1 == 0) {
+			if (objRef == 0) {
 				analysis.decision(ti, this, 0, constraints);
 			} else {
+				ElementInfo ei = ti.getModifiableElementInfo(objRef);
+				
+				Formula f = constraints.get(1).get(0);
+				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
+				
+				Variable[] vars = ht.getVarsNoRoot();
+				for (int i = 0; i < vars.length; i++) {
+					FieldInfo fi = ei.getFieldInfo(i);
+					ei.setFieldAttr(fi, vars[i]);
+				}
+				
 				analysis.decision(ti, this, 1, constraints);
 			}
 		}

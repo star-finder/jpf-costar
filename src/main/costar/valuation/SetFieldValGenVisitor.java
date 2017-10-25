@@ -18,7 +18,7 @@ public class SetFieldValGenVisitor extends ValGenVisitor {
 	@Override
 	public void visit(PointToTerm term) {
 		Variable root = term.getRoot();
-		Variable[] vars = term.getVars();
+		Variable[] vars = term.getVarsNoRoot();
 		
 		Object value = valuation.getValue(root.getName());
 		
@@ -26,44 +26,46 @@ public class SetFieldValGenVisitor extends ValGenVisitor {
 		Heap heap = ti.getHeap();
 		ElementInfo ei = heap.get((Integer) value);
 		
+		if (ei == null) return;
+		
 		for (int i = 0; i < vars.length; i++) {
 			FieldInfo fi = ei.getFieldInfo(i);
 			String fiType = fi.getType();
 			String name = vars[i].getName();
 			
-			Object attr = null;
+//			Object attr = null;
 			
 			if (fiType.equals("boolean")) {
 				ei.setBooleanField(fi, (Boolean) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else if (fiType.equals("byte")) {
 				ei.setByteField(fi, (Byte) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else if (fiType.equals("char")) {
 				ei.setCharField(fi, (Character) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else if (fiType.equals("short")) {
 				ei.setShortField(fi, (Short) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else if (fiType.equals("int")) {
 				ei.setIntField(fi, (Integer) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else if (fiType.equals("long")) {
 				ei.setLongField(fi, (Long) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else if (fiType.equals("float")) {
 				ei.setFloatField(fi, (Float) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else if (fiType.equals("double")) {
 				ei.setDoubleField(fi, (Double) valuation.getValue(name));
-				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
+//				attr = gov.nasa.jpf.constraints.api.Variable.create(getType(fiType), name);
 			} else {
 				// reference type
 				ei.setReferenceField(fi, (Integer) valuation.getValue(name));
-				attr = new SymbolicObject(name);
+//				attr = new SymbolicObject(name);
 			}
 			
-			ei.setFieldAttr(fi, attr);
+//			ei.setFieldAttr(fi, attr);
 		}
 	}
 
