@@ -78,7 +78,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
 				if (ht instanceof PointToTerm) {
-					constraints.get(1).add(rename(var, fields, f));
+					constraints.get(1).add(CoStarUtilities.rename(var, fields, f));
 				} else if (ht instanceof InductiveTerm) {
 					InductiveTerm it = (InductiveTerm) ht;
 					Formula[] fs = it.unfold();
@@ -90,7 +90,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						if (Utilities.isNull(cf, var.getName())) {
 							constraints.get(0).add(cf);
 						} else {
-							constraints.get(1).add(rename(var, fields, cf));
+							constraints.get(1).add(CoStarUtilities.rename(var, fields, cf));
 						}
 					}
 				}	
@@ -117,22 +117,6 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		}
 		
 		return super.execute(ti);
-	}
-	
-	public Formula rename(Variable var, Variable[] fields, Formula f) {
-		HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
-		if (ht instanceof PointToTerm) {
-			Variable[] fromVars = ((PointToTerm) ht).getVarsNoRoot();
-			Variable[] toVars = new Variable[fromVars.length];
-			
-			for (int i = 0; i < fields.length; i++) {
-				toVars[i] = new Variable(var.getName() + "_" + fields[i].getName(), "");
-			}
-			
-			return f.substitute(fromVars, toVars, null);
-		} else {
-			return f;
-		}
 	}
 
 }

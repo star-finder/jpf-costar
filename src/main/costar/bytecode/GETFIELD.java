@@ -86,7 +86,7 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
 				if (ht instanceof PointToTerm) {
-					constraints.get(1).add(rename(fiVar, fields, f));
+					constraints.get(1).add(CoStarUtilities.rename(fiVar, fields, f));
 				} else if (ht instanceof InductiveTerm) {
 					InductiveTerm it = (InductiveTerm) ht;
 					Formula[] fs = it.unfold();
@@ -98,7 +98,7 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 						if (Utilities.isNull(cf, fiVar.getName())) {
 							constraints.get(0).add(cf);
 						} else {
-							constraints.get(1).add(rename(fiVar, fields, cf));
+							constraints.get(1).add(CoStarUtilities.rename(fiVar, fields, cf));
 						}
 					}
 				}	
@@ -125,22 +125,6 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		}
 		
 		return super.execute(ti);
-	}
-	
-	public Formula rename(Variable var, Variable[] fields, Formula f) {
-		HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
-		if (ht instanceof PointToTerm) {
-			Variable[] fromVars = ((PointToTerm) ht).getVarsNoRoot();
-			Variable[] toVars = new Variable[fromVars.length];
-			
-			for (int i = 0; i < fields.length; i++) {
-				toVars[i] = new Variable(var.getName() + "_" + fields[i].getName(), "");
-			}
-			
-			return f.substitute(fromVars, toVars, null);
-		} else {
-			return f;
-		}
 	}
 	
 }

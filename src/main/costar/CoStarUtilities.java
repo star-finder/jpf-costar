@@ -1,5 +1,11 @@
 package costar;
 
+import starlib.formula.Formula;
+import starlib.formula.Utilities;
+import starlib.formula.Variable;
+import starlib.formula.heap.HeapTerm;
+import starlib.formula.heap.PointToTerm;
+
 public class CoStarUtilities {
 	
 	public static String toS2SATType(String type) {
@@ -20,6 +26,22 @@ public class CoStarUtilities {
 			type = type.replaceAll("_", ".");
 		
 		return type;
+	}
+	
+	public static Formula rename(Variable var, Variable[] fields, Formula f) {
+		HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
+		if (ht instanceof PointToTerm) {
+			Variable[] fromVars = ((PointToTerm) ht).getVarsNoRoot();
+			Variable[] toVars = new Variable[fromVars.length];
+			
+			for (int i = 0; i < fields.length; i++) {
+				toVars[i] = new Variable(var.getName() + "_" + fields[i].getName(), "");
+			}
+			
+			return f.substitute(fromVars, toVars, null);
+		} else {
+			return f;
+		}
 	}
 	
 	public static void main(String[] args) {
