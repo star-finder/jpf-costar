@@ -21,28 +21,20 @@ public class Input {
 	public void foo(int i) {
 		System.out.println("Input i = " + i);
 		
-		if (i > 0) {
-			if (i > 0) {
-				return;
-			} else {
-				return;
-			}
+		if (i + 5 > 0) {
+			return;
 		}
 		else {
-			if (i > 0) {
-				return;
-			} else {
-				return;
-			}
+			return;
 		}
 	}
 
 	public static void main(String[] args) {
 		Input in = new Input();
-		Node root = new Node(0, new Node(1, null));
-		in.travel(root);
+//		Node root = new Node(0, new Node(1, null));
+//		in.travel(root);
 		
-//		in.foo(1);
+		in.foo(1);
 	}
 	
 }
