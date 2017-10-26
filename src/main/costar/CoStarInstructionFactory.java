@@ -1,6 +1,7 @@
 package costar;
 
 import costar.bytecode.ALOAD;
+import costar.bytecode.FLOAD;
 import costar.bytecode.GETFIELD;
 import costar.bytecode.GETSTATIC;
 import costar.bytecode.IFLE;
@@ -10,6 +11,12 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
+import star.bytecode.FADD;
+import star.bytecode.FDIV;
+import star.bytecode.FMUL;
+import star.bytecode.FNEG;
+import star.bytecode.FREM;
+import star.bytecode.FSUB;
 import star.bytecode.IADD;
 import star.bytecode.IAND;
 import star.bytecode.IDIV;
@@ -208,6 +215,41 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction lxor() {
 		return new LXOR();
+	}
+	
+	@Override
+	public Instruction fload(int localVarIndex) {
+		return new FLOAD(localVarIndex);
+	}
+
+	@Override
+	public Instruction fadd() {
+		return new FADD();
+	}
+
+	@Override
+	public Instruction fdiv() {
+		return new FDIV();
+	}
+
+	@Override
+	public Instruction fmul() {
+		return new FMUL();
+	}
+
+	@Override
+	public Instruction fneg() {
+		return new FNEG();
+	}
+
+	@Override
+	public Instruction frem() {
+		return new FREM();
+	}
+
+	@Override
+	public Instruction fsub() {
+		return new FSUB();
 	}
 
 	@Override
