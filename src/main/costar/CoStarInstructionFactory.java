@@ -5,6 +5,7 @@ import costar.bytecode.GETFIELD;
 import costar.bytecode.GETSTATIC;
 import costar.bytecode.IFLE;
 import costar.bytecode.ILOAD;
+import costar.bytecode.LLOAD;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.util.JPFLogger;
@@ -22,6 +23,18 @@ import star.bytecode.ISHR;
 import star.bytecode.ISUB;
 import star.bytecode.IUSHR;
 import star.bytecode.IXOR;
+import star.bytecode.LADD;
+import star.bytecode.LAND;
+import star.bytecode.LDIV;
+import star.bytecode.LMUL;
+import star.bytecode.LNEG;
+import star.bytecode.LOR;
+import star.bytecode.LREM;
+import star.bytecode.LSHL;
+import star.bytecode.LSHR;
+import star.bytecode.LSUB;
+import star.bytecode.LUSHR;
+import star.bytecode.LXOR;
 
 public class CoStarInstructionFactory extends InstructionFactory {
 
@@ -130,6 +143,71 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction ixor() {
 		return new IXOR();
+	}
+	
+	@Override
+	public Instruction lload(int localVarIndex) {
+		return new LLOAD(localVarIndex);
+	}
+
+	@Override
+	public Instruction ladd() {
+		return new LADD();
+	}
+
+	@Override
+	public Instruction land() {
+		return new LAND();
+	}
+
+	@Override
+	public Instruction ldiv() {
+		return new LDIV();
+	}
+
+	@Override
+	public Instruction lmul() {
+		return new LMUL();
+	}
+
+	@Override
+	public Instruction lneg() {
+		return new LNEG();
+	}
+
+	@Override
+	public Instruction lor() {
+		return new LOR();
+	}
+
+	@Override
+	public Instruction lrem() {
+		return new LREM();
+	}
+
+	@Override
+	public Instruction lshl() {
+		return new LSHL();
+	}
+
+	@Override
+	public Instruction lshr() {
+		return new LSHR();
+	}
+
+	@Override
+	public Instruction lsub() {
+		return new LSUB();
+	}
+
+	@Override
+	public Instruction lushr() {
+		return new LUSHR();
+	}
+
+	@Override
+	public Instruction lxor() {
+		return new LXOR();
 	}
 
 	@Override
