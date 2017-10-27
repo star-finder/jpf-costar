@@ -12,18 +12,30 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
+import star.bytecode.D2F;
+import star.bytecode.D2I;
+import star.bytecode.D2L;
 import star.bytecode.DADD;
 import star.bytecode.DDIV;
 import star.bytecode.DMUL;
 import star.bytecode.DNEG;
 import star.bytecode.DREM;
 import star.bytecode.DSUB;
+import star.bytecode.F2D;
+import star.bytecode.F2I;
+import star.bytecode.F2L;
 import star.bytecode.FADD;
 import star.bytecode.FDIV;
 import star.bytecode.FMUL;
 import star.bytecode.FNEG;
 import star.bytecode.FREM;
 import star.bytecode.FSUB;
+import star.bytecode.I2B;
+import star.bytecode.I2C;
+import star.bytecode.I2D;
+import star.bytecode.I2F;
+import star.bytecode.I2L;
+import star.bytecode.I2S;
 import star.bytecode.IADD;
 import star.bytecode.IAND;
 import star.bytecode.IDIV;
@@ -37,6 +49,9 @@ import star.bytecode.ISHR;
 import star.bytecode.ISUB;
 import star.bytecode.IUSHR;
 import star.bytecode.IXOR;
+import star.bytecode.L2D;
+import star.bytecode.L2F;
+import star.bytecode.L2I;
 import star.bytecode.LADD;
 import star.bytecode.LAND;
 import star.bytecode.LDIV;
@@ -294,6 +309,81 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new DSUB();
 	}
 
+	@Override
+	public Instruction i2b() {
+		return new I2B();
+	}
+
+	@Override
+	public Instruction i2c() {
+		return new I2C();
+	}
+
+	@Override
+	public Instruction i2d() {
+		return new I2D();
+	}
+
+	@Override
+	public Instruction i2f() {
+		return new I2F();
+	}
+
+	@Override
+	public Instruction i2l() {
+		return new I2L();
+	}
+
+	@Override
+	public Instruction i2s() {
+		return new I2S();
+	}
+
+	@Override
+	public Instruction l2d() {
+		return new L2D();
+	}
+
+	@Override
+	public Instruction l2f() {
+		return new L2F();
+	}
+
+	@Override
+	public Instruction l2i() {
+		return new L2I();
+	}
+
+	@Override
+	public Instruction f2d() {
+		return new F2D();
+	}
+
+	@Override
+	public Instruction f2i() {
+		return new F2I();
+	}
+
+	@Override
+	public Instruction f2l() {
+		return new F2L();
+	}
+
+	@Override
+	public Instruction d2f() {
+		return new D2F();
+	}
+
+	@Override
+	public Instruction d2i() {
+		return new D2I();
+	}
+
+	@Override
+	public Instruction d2l() {
+		return new D2L();
+	}
+	
 	@Override
 	public Instruction getfield(String fieldName, String clsName, String fieldDescriptor) {
 		return new GETFIELD(fieldName, clsName, fieldDescriptor);
