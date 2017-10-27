@@ -10,11 +10,11 @@ import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 
-public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
-
+public class IFNE extends gov.nasa.jpf.jvm.bytecode.IFNE {
+	
 	private JPFLogger logger = JPF.getLogger("costar");
 
-	public IFLE(int index) {
+	public IFNE(int index) {
 		super(index);
 	}
 
@@ -34,7 +34,7 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 		LiteralExpression litExp = new LiteralExpression(0);
 		
 		Instruction nxtInstr = IFInstrSymbHelper.
-				getNextInstructionAndSetPCChoice(ti, this, exp, litExp, Comparator.LE, Comparator.GT);
+				getNextInstructionAndSetPCChoice(ti, this, exp, litExp, Comparator.NE, Comparator.EQ);
 		
 		if (nxtInstr == getTarget())
 			conditionValue = true;
