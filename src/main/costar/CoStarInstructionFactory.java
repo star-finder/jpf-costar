@@ -5,7 +5,18 @@ import costar.bytecode.DLOAD;
 import costar.bytecode.FLOAD;
 import costar.bytecode.GETFIELD;
 import costar.bytecode.GETSTATIC;
+import costar.bytecode.IFEQ;
+import costar.bytecode.IFGE;
+import costar.bytecode.IFGT;
 import costar.bytecode.IFLE;
+import costar.bytecode.IFLT;
+import costar.bytecode.IFNE;
+import costar.bytecode.IF_ICMPEQ;
+import costar.bytecode.IF_ICMPGE;
+import costar.bytecode.IF_ICMPGT;
+import costar.bytecode.IF_ICMPLE;
+import costar.bytecode.IF_ICMPLT;
+import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.ILOAD;
 import costar.bytecode.LLOAD;
 import gov.nasa.jpf.JPF;
@@ -74,30 +85,60 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new ALOAD(localVarIndex);
 	}
 	
-//	@Override
-//	public Instruction ifeq(int targetPc) {
-//		return new IFEQ(targetPc);
-//	}
-//
-//	@Override
-//	public Instruction ifne(int targetPc) {
-//		return new IFNE(targetPc);
-//	}
-//
-//	@Override
-//	public Instruction ifgt(int targetPc) {
-//		return new IFGT(targetPc);
-//	}
-//
-//	@Override
-//	public Instruction ifge(int targetPc) {
-//		return new IFGE(targetPc);
-//	}
-//
-//	@Override
-//	public Instruction iflt(int targetPc) {
-//		return new IFLT(targetPc);
-//	}
+	@Override
+	public Instruction if_icmpeq(int targetPc) {
+		return new IF_ICMPEQ(targetPc);
+	}
+
+	@Override
+	public Instruction if_icmpne(int targetPc) {
+		return new IF_ICMPNE(targetPc);
+	}
+
+	@Override
+	public Instruction if_icmpge(int targetPc) {
+		return new IF_ICMPGE(targetPc);
+	}
+
+	@Override
+	public Instruction if_icmplt(int targetPc) {
+		return new IF_ICMPLT(targetPc);
+	}
+
+	@Override
+	public Instruction if_icmpgt(int targetPc) {
+		return new IF_ICMPGT(targetPc);
+	}
+
+	@Override
+	public Instruction if_icmple(int targetPc) {
+		return new IF_ICMPLE(targetPc);
+	}
+	
+	@Override
+	public Instruction ifeq(int targetPc) {
+		return new IFEQ(targetPc);
+	}
+
+	@Override
+	public Instruction ifne(int targetPc) {
+		return new IFNE(targetPc);
+	}
+
+	@Override
+	public Instruction ifgt(int targetPc) {
+		return new IFGT(targetPc);
+	}
+
+	@Override
+	public Instruction ifge(int targetPc) {
+		return new IFGE(targetPc);
+	}
+
+	@Override
+	public Instruction iflt(int targetPc) {
+		return new IFLT(targetPc);
+	}
 
 	@Override
 	public Instruction ifle(int targetPc) {

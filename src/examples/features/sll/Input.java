@@ -21,7 +21,7 @@ public class Input {
 	public void foo(int i) {
 		System.out.println("Input i = " + i);
 		
-		if (i + 5 > 0) {
+		if (i + 5 > 2) {
 			return;
 		}
 		else {

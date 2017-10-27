@@ -13,6 +13,7 @@ import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
+import starlib.formula.expression.LiteralExpression;
 
 public class IFInstrSymbHelper {
 	
@@ -46,8 +47,18 @@ public class IFInstrSymbHelper {
 			Formula f0 = formula.copy();
 			Formula f1 = formula.copy();
 			
-			f0.addComparisonTerm(trueComparator, sym_v1, sym_v2);
-			f1.addComparisonTerm(falseComparator, sym_v1, sym_v2);
+			if (sym_v1 != null) {
+				if (sym_v2 != null) {
+					f0.addComparisonTerm(trueComparator, sym_v1, sym_v2);
+					f1.addComparisonTerm(falseComparator, sym_v1, sym_v2);
+				} else {
+					f0.addComparisonTerm(trueComparator, sym_v1, new LiteralExpression(v2));
+					f1.addComparisonTerm(falseComparator, sym_v1, new LiteralExpression(v2));
+				}
+			} else {
+				f0.addComparisonTerm(trueComparator, new LiteralExpression(v1), sym_v2);
+				f1.addComparisonTerm(falseComparator, new LiteralExpression(v1), sym_v2);
+			}
 			
 			constraints.get(0).add(f0);
 			constraints.get(1).add(f1);
