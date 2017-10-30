@@ -5,6 +5,7 @@ import costar.bytecode.ATHROW;
 import costar.bytecode.DCMPG;
 import costar.bytecode.DCMPL;
 import costar.bytecode.DLOAD;
+import costar.bytecode.EXECUTENATIVE;
 import costar.bytecode.FCMPG;
 import costar.bytecode.FCMPL;
 import costar.bytecode.FLOAD;
@@ -30,9 +31,7 @@ import costar.bytecode.ILOAD;
 import costar.bytecode.LCMP;
 import costar.bytecode.LLOAD;
 import costar.bytecode.NEW;
-import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
-import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.NativeMethodInfo;
 import star.bytecode.D2F;
@@ -44,7 +43,6 @@ import star.bytecode.DMUL;
 import star.bytecode.DNEG;
 import star.bytecode.DREM;
 import star.bytecode.DSUB;
-import star.bytecode.EXECUTENATIVE;
 import star.bytecode.F2D;
 import star.bytecode.F2I;
 import star.bytecode.F2L;
@@ -90,8 +88,6 @@ import star.bytecode.LUSHR;
 import star.bytecode.LXOR;
 
 public class CoStarInstructionFactory extends InstructionFactory {
-
-	private JPFLogger logger = JPF.getLogger("costar");
 	
 	@Override
 	public Instruction aload(int localVarIndex) {
