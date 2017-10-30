@@ -30,7 +30,9 @@ import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.ILOAD;
 import costar.bytecode.LCMP;
 import costar.bytecode.LLOAD;
+import costar.bytecode.LOOKUPSWITCH;
 import costar.bytecode.NEW;
+import costar.bytecode.TABLESWITCH;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.NativeMethodInfo;
@@ -487,6 +489,16 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction getstatic(String fieldName, String clsName, String fieldDescriptor) {
 		return new GETSTATIC(fieldName, clsName, fieldDescriptor);
+	}
+	
+	@Override
+	public Instruction lookupswitch(int defaultTargetPc, int nEntries) {
+		return new LOOKUPSWITCH(defaultTargetPc, nEntries);
+	}
+
+	@Override
+	public Instruction tableswitch(int defaultTargetPc, int low, int high) {
+		return new TABLESWITCH(defaultTargetPc, low, high);
 	}
 	
 	@Override
