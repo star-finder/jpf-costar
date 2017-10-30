@@ -1,6 +1,7 @@
 package costar;
 
 import costar.bytecode.ALOAD;
+import costar.bytecode.ATHROW;
 import costar.bytecode.DCMPG;
 import costar.bytecode.DCMPL;
 import costar.bytecode.DLOAD;
@@ -28,10 +29,12 @@ import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.ILOAD;
 import costar.bytecode.LCMP;
 import costar.bytecode.LLOAD;
+import costar.bytecode.NEW;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
+import gov.nasa.jpf.vm.NativeMethodInfo;
 import star.bytecode.D2F;
 import star.bytecode.D2I;
 import star.bytecode.D2L;
@@ -41,6 +44,7 @@ import star.bytecode.DMUL;
 import star.bytecode.DNEG;
 import star.bytecode.DREM;
 import star.bytecode.DSUB;
+import star.bytecode.EXECUTENATIVE;
 import star.bytecode.F2D;
 import star.bytecode.F2I;
 import star.bytecode.F2L;
@@ -487,6 +491,21 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction getstatic(String fieldName, String clsName, String fieldDescriptor) {
 		return new GETSTATIC(fieldName, clsName, fieldDescriptor);
+	}
+	
+	@Override
+	public Instruction athrow() {
+		return new ATHROW();
+	}
+	
+	@Override
+	public Instruction new_(String clsName) {
+		return new NEW(clsName);
+	}
+	
+	@Override
+	public Instruction executenative(NativeMethodInfo mi) {
+		return new EXECUTENATIVE(mi);
 	}
 
 }
