@@ -7,10 +7,7 @@ import costar.CoStarMethodExplorer;
 import costar.CoStarUtilities;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
-import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Expression;
-import gov.nasa.jpf.jdart.ConcolicUtil;
-import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
@@ -27,8 +24,6 @@ import starlib.formula.heap.PointToTerm;
 
 public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 	
-	private JPFLogger logger = JPF.getLogger("costar");
-
 	public ALOAD(int index) {
 		super(index);
 	}
@@ -42,12 +37,12 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		StackFrame sf = ti.getModifiableTopFrame();
 		
-		Object exp = sf.getLocalAttr(index);
-		if (exp == null)
+		Object sym_v = sf.getLocalAttr(index);
+		if (sym_v == null)
 			return super.execute(ti);
 		
-		if (exp instanceof Expression<?>) {
-			Variable var = new Variable(((Expression<?>)exp).toString(0), "");
+		if (sym_v instanceof Expression<?>) {
+			Variable var = new Variable(((Expression<?>)sym_v).toString(0), "");
 			sf.setLocalAttr(index, var);
 		}
 		

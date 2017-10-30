@@ -7,8 +7,6 @@ import costar.CoStarMethodExplorer;
 import costar.CoStarUtilities;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
-import gov.nasa.jpf.JPF;
-import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
@@ -27,8 +25,6 @@ import starlib.formula.heap.PointToTerm;
 
 public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 	
-	private JPFLogger logger = JPF.getLogger("costar");
-
 	public GETFIELD(String fieldName, String classType, String fieldDescriptor) {
 		super(fieldName, classType, fieldDescriptor);
 	}
