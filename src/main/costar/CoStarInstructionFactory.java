@@ -15,6 +15,10 @@ import costar.bytecode.IFGT;
 import costar.bytecode.IFLE;
 import costar.bytecode.IFLT;
 import costar.bytecode.IFNE;
+import costar.bytecode.IFNONNULL;
+import costar.bytecode.IFNULL;
+import costar.bytecode.IF_ACMPEQ;
+import costar.bytecode.IF_ACMPNE;
 import costar.bytecode.IF_ICMPEQ;
 import costar.bytecode.IF_ICMPGE;
 import costar.bytecode.IF_ICMPGT;
@@ -88,6 +92,26 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction aload(int localVarIndex) {
 		return new ALOAD(localVarIndex);
+	}
+	
+	@Override
+	public Instruction ifnonnull(int targetPc) {
+		return new IFNONNULL(targetPc);
+	}
+
+	@Override
+	public Instruction ifnull(int targetPc) {
+		return new IFNULL(targetPc);
+	}
+	
+	@Override
+	public Instruction if_acmpeq(int targetPc) {
+		return new IF_ACMPEQ(targetPc);
+	}
+
+	@Override
+	public Instruction if_acmpne(int targetPc) {
+		return new IF_ACMPNE(targetPc);
 	}
 	
 	@Override

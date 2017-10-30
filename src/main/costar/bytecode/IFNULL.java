@@ -33,7 +33,7 @@ public class IFNULL extends gov.nasa.jpf.jvm.bytecode.IFNULL {
 		} else if (sym_v.toString().contains("newNode_")) {
 			return super.execute(ti);
 		} else {
-			int objRef = sf.peek();
+			int objRef = sf.pop();
 			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();

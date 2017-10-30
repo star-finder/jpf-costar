@@ -12,9 +12,9 @@ import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
 import starlib.formula.Variable;
 
-public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
+public class IF_ACMPNE extends gov.nasa.jpf.jvm.bytecode.IF_ACMPNE {
 	
-	public IFNONNULL(int targetPc) {
+	public IF_ACMPNE(int targetPc) {
 		super(targetPc);
 	}
 	
@@ -26,14 +26,16 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 			return super.execute(ti);
 		
 		StackFrame sf = ti.getModifiableTopFrame();
-		Object sym_v = sf.getOperandAttr();
+		Object sym_v1 = sf.getOperandAttr(1);
+		Object sym_v2 = sf.getOperandAttr(0);
 		
-		if(sym_v == null) {
+		if (sym_v1 == null && sym_v2 == null) {
 			return super.execute(ti);
-		} else if (sym_v.toString().contains("newNode_")) {
+		} else if (sym_v1.toString().contains("newNode_") || sym_v2.toString().contains("newNode_")) {
 			return super.execute(ti);
 		} else {
-			int objRef = sf.pop();
+			int objRef1 = sf.pop();
+			int objRef2 = sf.pop();
 			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
@@ -41,21 +43,21 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 			List<Formula> formulas = current.formulas;
 			
 			List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-			constraints.add(new ArrayList<Formula>()); // null formulas
-			constraints.add(new ArrayList<Formula>()); // not null formulas
+			constraints.add(new ArrayList<Formula>()); // eq formulas
+			constraints.add(new ArrayList<Formula>()); // not eq formulas
 			
 			for (Formula formula : formulas) {
 				Formula f0 = formula.copy();
 				Formula f1 = formula.copy();
 				
-				f0.addEqNullTerm(new Variable(sym_v.toString(), ""));
-				f1.addNEqNullTerm(new Variable(sym_v.toString(), ""));
+				f0.addEqTerm(new Variable(sym_v1.toString(), ""), new Variable(sym_v2.toString(), ""));
+				f0.addNEqTerm(new Variable(sym_v1.toString(), ""), new Variable(sym_v2.toString(), ""));
 				
 				constraints.get(0).add(f0);
 				constraints.get(1).add(f1);
 			}
 			
-			if (objRef != 0) {
+			if (objRef1 != objRef2) {
 				analysis.decision(ti, this, 1, constraints);
 				return getTarget();
 			} else {
@@ -63,6 +65,7 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 				return getNext(ti);
 			}
 		}
+		
 	}
 
 }
