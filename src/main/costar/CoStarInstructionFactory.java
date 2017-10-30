@@ -1,7 +1,11 @@
 package costar;
 
 import costar.bytecode.ALOAD;
+import costar.bytecode.DCMPG;
+import costar.bytecode.DCMPL;
 import costar.bytecode.DLOAD;
+import costar.bytecode.FCMPG;
+import costar.bytecode.FCMPL;
 import costar.bytecode.FLOAD;
 import costar.bytecode.GETFIELD;
 import costar.bytecode.GETSTATIC;
@@ -18,6 +22,7 @@ import costar.bytecode.IF_ICMPLE;
 import costar.bytecode.IF_ICMPLT;
 import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.ILOAD;
+import costar.bytecode.LCMP;
 import costar.bytecode.LLOAD;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
@@ -281,6 +286,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 	
 	@Override
+	public Instruction lcmp() {
+		return new LCMP();
+	}
+	
+	@Override
 	public Instruction fload(int localVarIndex) {
 		return new FLOAD(localVarIndex);
 	}
@@ -316,6 +326,16 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 	
 	@Override
+	public Instruction fcmpg() {
+		return new FCMPG();
+	}
+
+	@Override
+	public Instruction fcmpl() {
+		return new FCMPL();
+	}
+	
+	@Override
 	public Instruction dload(int localVarIndex) {
 		return new DLOAD(localVarIndex);
 	}
@@ -348,6 +368,16 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction dsub() {
 		return new DSUB();
+	}
+	
+	@Override
+	public Instruction dcmpg() {
+		return new DCMPG();
+	}
+
+	@Override
+	public Instruction dcmpl() {
+		return new DCMPL();
 	}
 
 	@Override
