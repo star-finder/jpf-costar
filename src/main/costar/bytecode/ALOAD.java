@@ -38,7 +38,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 		
 		if (analysis == null)
-			return super.execute(ti);	
+			return super.execute(ti);
 		
 		StackFrame sf = ti.getModifiableTopFrame();
 		
