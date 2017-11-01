@@ -25,9 +25,11 @@ public class CoStarConstrainstTree {
 	private Config config;
 	
 	private MethodInfo methodInfo;
+	
+	private final int MAX_HEIGHT = 3;
 		
 	public CoStarConstrainstTree(MethodInfo mi) {
-		this.root = new CoStarNode(null, null, null, null, true);
+		this.root = new CoStarNode(null, null, 0, null, null, true);
 		this.current = root;
 		this.config = VM.getVM().getConfig();
 		this.methodInfo = mi;
@@ -48,6 +50,9 @@ public class CoStarConstrainstTree {
 			for (int i = 0; i < current.childrend.length; i++) {
 				if (!current.childrend[i].hasVisited) {
 					current.childrend[i].hasVisited = true;
+					
+					if (current.childrend[i].heigth > MAX_HEIGHT)
+						continue;
 					
 					List<Formula> fs = current.childrend[i].formulas;
 					logger.info("New constraint = " + fs.toString());
@@ -79,7 +84,7 @@ public class CoStarConstrainstTree {
 			current.childrend = new CoStarNode[length];
 			
 			for (int i = 0; i < length; i++) {
-				current.childrend[i] = new CoStarNode(current, null, constraints.get(i), inst, false);
+				current.childrend[i] = new CoStarNode(current, null, current.heigth + 1, constraints.get(i), inst, false);
 			}
 		}
 		
