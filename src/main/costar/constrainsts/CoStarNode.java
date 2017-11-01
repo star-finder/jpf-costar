@@ -23,6 +23,7 @@ public class CoStarNode {
 			List<Formula> formulas, Instruction inst, boolean hasVisited) {
 		this.parent = parent;
 		this.childrend = children;
+		this.heigth = height;
 		this.formulas = formulas;
 		this.inst = inst;
 		this.hasVisited = hasVisited;

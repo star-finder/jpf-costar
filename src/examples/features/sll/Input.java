@@ -3,19 +3,11 @@ package features.sll;
 public class Input {
 	
 	public void travel(Node root) {
-		if (root == null) {
-			System.out.println("root = null");
-			return;
-		}	
-		else if (root.next == null ){
-			System.out.println("root != null");
-			System.out.println("root.next == null");
-			return;
-		} else {
-			System.out.println("root != null");
-			System.out.println("root.next != null");
-			return;
+		while (root != null) {
+			root = root.next;
 		}
+		
+		return;
 	}
 	
 	public void foo(int i) {
@@ -32,9 +24,9 @@ public class Input {
 	public static void main(String[] args) {
 		Input in = new Input();
 //		Node root = new Node(0, new Node(1, null));
-//		in.travel(root);
+		in.travel(null);
 		
-		in.foo(1);
+//		in.foo(1);
 	}
 	
 }
