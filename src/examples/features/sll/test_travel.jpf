@@ -3,5 +3,5 @@
 concolic.method=travel
 costar.data=data features_sll_Node {int elem; features_sll_Node next}
 costar.predicate=pred sll(root) == root = null || root::features_sll_Node<elem,next> & next=null || root::features_sll_Node<elem,next> * next::features_sll_Node<elem1,next1> & next1=null
-costar.precondition=pre travel == sll(root)
+costar.precondition=pre travel == 1=1
 costar.max_height=4

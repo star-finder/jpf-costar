@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import costar.CoStarMethodExplorer;
-import costar.CoStarUtilities;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
 import gov.nasa.jpf.constraints.api.Expression;
@@ -21,6 +20,7 @@ import starlib.formula.Variable;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
 import starlib.formula.heap.PointToTerm;
+import starlib.jpf.PathFinderUtils;
 
 public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 	
@@ -62,7 +62,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		constraints.add(new ArrayList<Formula>()); // not null formulas
 		
 		String typeOfLocalVar = super.getLocalVariableType();
-		DataNode dn = DataNodeMap.find(CoStarUtilities.toS2SATType(typeOfLocalVar));
+		DataNode dn = DataNodeMap.find(PathFinderUtils.toS2SATType(typeOfLocalVar));
 		Variable[] fields = dn.getFields();
 			
 		for (Formula formula : formulas) {
@@ -73,7 +73,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
 				if (ht instanceof PointToTerm) {
-					constraints.get(1).add(CoStarUtilities.rename(var, fields, f));
+					constraints.get(1).add(f.rename(var, fields));
 				} else if (ht instanceof InductiveTerm) {
 					InductiveTerm it = (InductiveTerm) ht;
 					Formula[] fs = it.unfold();
@@ -85,7 +85,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						if (Utilities.isNull(cf, var.getName())) {
 							constraints.get(0).add(cf);
 						} else {
-							constraints.get(1).add(CoStarUtilities.rename(var, fields, cf));
+							constraints.get(1).add(cf.rename(var, fields));
 						}
 					}
 				}	

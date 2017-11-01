@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import costar.CoStarMethodExplorer;
-import costar.CoStarUtilities;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
 import gov.nasa.jpf.vm.ElementInfo;
@@ -22,6 +21,7 @@ import starlib.formula.Variable;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
 import starlib.formula.heap.PointToTerm;
+import starlib.jpf.PathFinderUtils;
 
 public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 	
@@ -59,6 +59,10 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		}
 		
 		Variable fiVar = (Variable) ei.getFieldAttr(fi);
+		if (fiVar == null) {
+			return super.execute(ti);
+		}
+		
 		int fiRef = ei.getReferenceField(fi);
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
@@ -71,7 +75,7 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		constraints.add(new ArrayList<Formula>()); // not null formulas
 		
 		String typeOfLocalVar = fi.getType();
-		DataNode dn = DataNodeMap.find(CoStarUtilities.toS2SATType(typeOfLocalVar));
+		DataNode dn = DataNodeMap.find(PathFinderUtils.toS2SATType(typeOfLocalVar));
 		Variable[] fields = dn.getFields();
 		
 		for (Formula formula : formulas) {
@@ -82,7 +86,7 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
 				if (ht instanceof PointToTerm) {
-					constraints.get(1).add(CoStarUtilities.rename(fiVar, fields, f));
+					constraints.get(1).add(f.rename(fiVar, fields));
 				} else if (ht instanceof InductiveTerm) {
 					InductiveTerm it = (InductiveTerm) ht;
 					Formula[] fs = it.unfold();
@@ -94,7 +98,7 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 						if (Utilities.isNull(cf, fiVar.getName())) {
 							constraints.get(0).add(cf);
 						} else {
-							constraints.get(1).add(CoStarUtilities.rename(fiVar, fields, cf));
+							constraints.get(1).add(cf.rename(fiVar, fields));
 						}
 					}
 				}	

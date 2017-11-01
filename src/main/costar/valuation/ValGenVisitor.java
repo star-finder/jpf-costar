@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 
-import costar.CoStarUtilities;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.ValuationEntry;
@@ -23,6 +22,7 @@ import starlib.formula.HeapFormula;
 import starlib.formula.PureFormula;
 import starlib.formula.Variable;
 import starlib.formula.heap.HeapTerm;
+import starlib.jpf.PathFinderUtils;
 import starlib.jpf.testsuites.InitVarsVisitor;
 
 public class ValGenVisitor extends InitVarsVisitor {
@@ -73,7 +73,7 @@ public class ValGenVisitor extends InitVarsVisitor {
 			initVars.add(var);
 			
 			Type type = BuiltinTypes.SINT32;
-			String typeStr = CoStarUtilities.toJavaType(var.getType());
+			String typeStr = PathFinderUtils.toJavaType(var.getType());
 			String name = var.getName();
 			
 			ClassInfo ci = ClassLoaderInfo.getCurrentResolvedClassInfo(typeStr);
