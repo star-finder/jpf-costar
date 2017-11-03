@@ -7,12 +7,6 @@ import java.util.Map;
 import costar.CoStarPerturbator;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
-import gov.nasa.jpf.constraints.api.ConstraintSolver;
-import gov.nasa.jpf.constraints.solvers.ConstraintSolverFactory;
-import gov.nasa.jpf.constraints.types.TypeContext;
-import gov.nasa.jpf.jdart.config.AnalysisConfig;
-import gov.nasa.jpf.jdart.config.ConcolicMethodConfig;
-import starlib.solver.Solver;
 
 public class CoStarConfig {
 

@@ -1,6 +1,5 @@
 package costar.valuation;
 
-import gov.nasa.jpf.jdart.objects.SymbolicObject;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Heap;

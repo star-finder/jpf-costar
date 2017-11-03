@@ -3,11 +3,7 @@ package costar;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-
 import costar.config.CoStarConfig;
-import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.MethodInfo;
@@ -16,9 +12,7 @@ import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.precondition.Precondition;
-import starlib.precondition.PreconditionLexer;
 import starlib.precondition.PreconditionMap;
-import starlib.precondition.PreconditionParser;
 
 public class CoStarExplorer {
 	

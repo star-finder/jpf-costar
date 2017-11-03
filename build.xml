@@ -32,17 +32,16 @@
   <!-- get the dependent project properties -->
   <property file="${jpf-core}/jpf.properties"/>
 
-  <!-- if there is none, default to a 'jpf-core' peer dir -->
-  <property name="jpf-jdart" value = "../jdart"/>
-
-  <!-- get the jdart path properties -->
-  <property file="${jpf-jdart}/jpf.properties"/>
-
-  <!-- if there is none, default to a 'jpf-core' peer dir -->
+  <!-- if there is none, default to a 'starlib' peer dir -->
   <property name="starlib" value = "../starlib"/>
 
-  <!-- get the jdart path properties -->
+  <!-- get the starlib path properties -->
   <property file="${starlib}/jpf.properties"/>
+  
+  <property name="jpf-star" value = "../jpf-star"/>
+
+  <!-- get the jpf-star path properties -->
+  <property file="${jpf-star}/jpf.properties"/>
 
   <!-- compiler settings -->
   <property name="src_level"     value="8"/>
@@ -65,8 +64,8 @@
     <!-- add projects we depend on -->
     <pathelement path="${jpf-core.native_classpath}"/>
 
-    <!-- add in what we need from the jdart -->
-    <pathelement path="${jpf-jdart.native_classpath}"/>
+    <!-- add in what we need from the jpf-star -->
+    <pathelement path="${jpf-star.native_classpath}"/>
 
     <!-- add in what we need from the starlib -->
     <pathelement path="${starlib.native_classpath}"/>
