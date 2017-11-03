@@ -7,6 +7,7 @@ import gov.nasa.jpf.JPFShell;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.util.LogManager;
 import starlib.precondition.Initializer;
+import starlib.solver.Solver;
 
 public class CoStar implements JPFShell {
 
@@ -57,6 +58,8 @@ public class CoStar implements JPFShell {
 		JPF jpf = new JPF(jpfConf);
 		jpf.run();
 
+		Solver.terminate();
+		
 		logger.info("CoStar.run() -- end");
 	}
 
