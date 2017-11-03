@@ -1,3 +1,5 @@
 #!/bin/bash
 
-find ./src -type f -name "*.jpf" -exec echo {} \;
+find src -type f -name "*.jpf" -exec bin/test.sh {} \;
+
+
