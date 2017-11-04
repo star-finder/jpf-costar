@@ -16,6 +16,8 @@ public class CoStar implements JPFShell {
 	private CoStarConfig cc;
 
 	private JPFLogger logger;
+	
+	private boolean verbose = false;
 
 	public static final String CONFIG_KEY_COSTAR_EXPLORER = "costar.costar_explorer_instance";
 
@@ -33,8 +35,10 @@ public class CoStar implements JPFShell {
 	public void run() {
 		logger.info("CoStar.run() -- begin");
 
-		logger.info(config);
-		logger.info(cc);
+		if(verbose) {
+			logger.info(config);
+			logger.info(cc);
+		}
 
 		// prepare config
 		Config jpfConf = cc.generateJPFConfig(config);
@@ -52,10 +56,13 @@ public class CoStar implements JPFShell {
 		
 		initialize(jpfConf);
 
-		logger.info(jpfConf);
-
+		if(verbose) {
+			logger.info(jpfConf);
+		}
+		
 		// run jpf ...
 		JPF jpf = new JPF(jpfConf);
+		jpf.getReporter().getPublishers().clear();
 		jpf.run();
 
 		Solver.terminate();

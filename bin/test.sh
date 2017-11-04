@@ -6,6 +6,8 @@ fname=$1
 bname=`basename $fname`
 if  [[ $bname == test_* ]] ;
 then
+    printf '\n\n======================================================\n'
+    printf 'Testing '$fname"\n\n"
     jpf $fname
 fi
 
