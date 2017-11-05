@@ -11,7 +11,6 @@ import gov.nasa.jpf.Config;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.FieldInfo;
-import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.MethodInfo;
 import starlib.formula.Formula;
 import starlib.formula.Variable;
@@ -23,6 +22,7 @@ import starlib.jpf.PathFinderUtils;
 import starlib.precondition.Precondition;
 import starlib.precondition.PreconditionLexer;
 import starlib.precondition.PreconditionParser;
+import starlib.solver.Model;
 
 public class ValuationGenerator {
 		
@@ -30,7 +30,7 @@ public class ValuationGenerator {
 	
 	private static MethodInfo mi;
 	
-	private static Config conf;
+	// private static Config conf;
 	
 	private static boolean first = true;
 	
@@ -38,7 +38,7 @@ public class ValuationGenerator {
 		if(first) {
 			ValuationGenerator.ci = ci;
 			ValuationGenerator.mi = mi;
-			ValuationGenerator.conf = conf;
+			// ValuationGenerator.conf = conf;
 			first = false;
 		}
 	}
@@ -61,7 +61,7 @@ public class ValuationGenerator {
 			pure = "";
 		}
 
-		model = standarizeModel(model);
+		model = Model.standardizeModel(model);
 		model = "pre temp == " + model;
 
 		ANTLRInputStream in = new ANTLRInputStream(model);
@@ -79,7 +79,7 @@ public class ValuationGenerator {
 		String objName = "obj";
 		String clsName = ci.getSimpleName();
 		
-		LocalVarInfo[] args = mi.getArgumentLocalVars();
+		// LocalVarInfo[] args = mi.getArgumentLocalVars();
 		FieldInfo[] insFields = ci.getInstanceFields();
 		FieldInfo[] staFields = ci.getDeclaredStaticFields();
 		
@@ -135,23 +135,6 @@ public class ValuationGenerator {
 		jpfGen.visit(f);
 		
 		return valuation;
-	}
-
-	private static String standarizeModel(String model) {
-		String ret = model;
-
-		ret = ret.substring(8, model.length());
-		ret = ret.replaceAll("[\\[\\]]", "");
-
-		if (ret.endsWith("@M")) {
-			ret = ret.replaceAll("@M,", " *");
-			ret = ret.replaceAll("@M", "");
-		} else {
-			ret = ret.replaceAll("@M,", " *");
-			ret = ret.replaceAll("@M", " &");
-		}
-
-		return ret.substring(1);
 	}
 
 }
