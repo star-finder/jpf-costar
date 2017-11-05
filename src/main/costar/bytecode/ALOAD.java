@@ -17,6 +17,7 @@ import starlib.data.DataNodeMap;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
 import starlib.formula.Variable;
+import starlib.formula.expression.VariableExpression;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
 import starlib.formula.heap.PointToTerm;
@@ -41,12 +42,14 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		if (sym_v == null)
 			return super.execute(ti);
 		
+		Variable var = null;
 		if (sym_v instanceof Expression<?>) {
-			Variable var = new Variable(((Expression<?>)sym_v).toString(0), "");
-			sf.setLocalAttr(index, var);
+			var = new Variable(((Expression<?>)sym_v).toString(0), "");
+			sf.setLocalAttr(index, new VariableExpression(var));
 		}
 		
-		Variable var = (Variable) sf.getLocalAttr(index);
+		if(var == null)
+			var = ((VariableExpression) sf.getLocalAttr(index)).getVar();
 		
 		// is pop here correct
 //		ConcolicUtil.Pair<Integer> v = ConcolicUtil.popInt(sf);
@@ -63,7 +66,9 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		String typeOfLocalVar = super.getLocalVariableType();
 		DataNode dn = DataNodeMap.find(PathFinderUtils.toS2SATType(typeOfLocalVar));
-		Variable[] fields = dn.getFields();
+		Variable[] fields = null;
+		if(dn != null)
+			fields = dn.getFields();
 			
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
