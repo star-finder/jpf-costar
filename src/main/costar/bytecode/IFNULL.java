@@ -10,7 +10,8 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
-import starlib.formula.Variable;
+import starlib.formula.expression.Comparator;
+import starlib.formula.expression.VariableExpression;
 
 public class IFNULL extends gov.nasa.jpf.jvm.bytecode.IFNULL {
 	
@@ -48,8 +49,8 @@ public class IFNULL extends gov.nasa.jpf.jvm.bytecode.IFNULL {
 				Formula f0 = formula.copy();
 				Formula f1 = formula.copy();
 				
-				f0.addEqNullTerm(new Variable(sym_v.toString(), ""));
-				f1.addNEqNullTerm(new Variable(sym_v.toString(), ""));
+				f0.addComparisonTerm(Comparator.EQ, new VariableExpression(sym_v.toString()), null);
+				f1.addComparisonTerm(Comparator.NE, new VariableExpression(sym_v.toString()), null);
 				
 				constraints.get(0).add(f0);
 				constraints.get(1).add(f1);

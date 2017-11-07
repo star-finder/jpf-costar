@@ -15,14 +15,15 @@
  */
 package costar.config;
 
-import gov.nasa.jpf.JPF;
-import gov.nasa.jpf.constraints.api.Valuation;
-import gov.nasa.jpf.util.JPFLogger;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
+
+import gov.nasa.jpf.JPF;
+import gov.nasa.jpf.constraints.api.Valuation;
+import gov.nasa.jpf.util.JPFLogger;
 
 /**
  *

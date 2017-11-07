@@ -15,13 +15,13 @@
  */
 package costar.constrainsts;
 
-import gov.nasa.jpf.constraints.api.Expression;
-import gov.nasa.jpf.constraints.api.Variable;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import gov.nasa.jpf.constraints.api.Expression;
+import gov.nasa.jpf.constraints.api.Variable;
 
 /**
  *

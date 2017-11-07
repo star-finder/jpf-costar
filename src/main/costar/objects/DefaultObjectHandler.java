@@ -19,8 +19,8 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
-import gov.nasa.jpf.vm.StaticElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
+import gov.nasa.jpf.vm.StaticElementInfo;
 
 /**
  * Default symbolic object handler. Makes all fields symbolic.

@@ -15,12 +15,12 @@
  */
 package costar.objects;
 
+import java.util.LinkedList;
+
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Heap;
-
-import java.util.LinkedList;
 
 /**
  * Allows to handle {@LinkedList}s symbolically (i.e., like arrays).

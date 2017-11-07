@@ -1,8 +1,6 @@
 package costar.bytecode;
 
 import costar.CoStarMethodExplorer;
-import gov.nasa.jpf.JPF;
-import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -12,8 +10,6 @@ import starlib.formula.expression.LiteralExpression;
 
 public class IFGE extends gov.nasa.jpf.jvm.bytecode.IFGE {
 	
-	private JPFLogger logger = JPF.getLogger("costar");
-
 	public IFGE(int index) {
 		super(index);
 	}

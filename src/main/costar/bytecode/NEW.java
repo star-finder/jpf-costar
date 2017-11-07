@@ -1,7 +1,6 @@
 package costar.bytecode;
 
 import costar.CoStarMethodExplorer;
-import gov.nasa.jpf.vm.ChoiceGenerator;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.Heap;
@@ -9,8 +8,6 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.LoadOnJPFRequired;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
-import star.StarChoiceGenerator;
-import starlib.formula.Formula;
 import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Expression;

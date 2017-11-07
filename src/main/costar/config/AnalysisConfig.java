@@ -15,10 +15,6 @@
  */
 package costar.config;
 
-import gov.nasa.jpf.Config;
-import gov.nasa.jpf.vm.ClassInfo;
-import gov.nasa.jpf.vm.MethodInfo;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,8 +23,12 @@ import java.util.regex.Pattern;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.util.JPFLogger;
+import gov.nasa.jpf.vm.ClassInfo;
+import gov.nasa.jpf.vm.MethodInfo;
 
 public class AnalysisConfig {
   

@@ -15,11 +15,11 @@
  */
 package costar.config;
 
-import gov.nasa.jpf.vm.Types;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import gov.nasa.jpf.vm.Types;
 
 public final class MethodSpec {
   

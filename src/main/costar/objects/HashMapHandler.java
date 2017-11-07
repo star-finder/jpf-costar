@@ -15,12 +15,12 @@
  */
 package costar.objects;
 
+import java.util.HashMap;
+
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Heap;
-
-import java.util.HashMap;
 
 /**
  * Allows to handle {@link HashMap}s symbolically. Element names
