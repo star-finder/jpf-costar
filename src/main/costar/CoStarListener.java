@@ -20,7 +20,8 @@ public class CoStarListener extends Perturbator {
 	public void searchFinished(Search search) {
 		ThreadInfo ti = search.getVM().getCurrentThread();
 	    CoStarMethodExplorer ca = CoStarMethodExplorer.getCurrentAnalysis(ti);
-	    TestGenerator.generateTestSuites(ca.getAllValuations());
+	    if(ca != null)
+	    	TestGenerator.generateTestSuites(ca.getAllValuations());
 	}
 
 }
