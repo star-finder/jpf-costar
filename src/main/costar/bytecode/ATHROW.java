@@ -29,6 +29,9 @@ public class ATHROW extends gov.nasa.jpf.jvm.bytecode.ATHROW {
 		
 		List<Formula> formulas = current.formulas;
 		
+		// FIXME
+		// Sang: I don't think we need to check sat here, since this is concolic
+		// can we assume that the exception is always thrown?
 		if (Solver.checkSat(formulas, conf)) {
 			VM vm = ti.getVM();
 			vm.getSearch().error(new NoErrorProperty("Throw Exception"), vm.getClonedPath(), vm.getThreadList());

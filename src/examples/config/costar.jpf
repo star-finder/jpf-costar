@@ -11,3 +11,5 @@ symbolic.dp=z3
 #
 log.info=costar
 log.finest=jdart
+
+test.path=src/output
