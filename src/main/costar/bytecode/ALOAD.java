@@ -17,7 +17,6 @@ import starlib.data.DataNodeMap;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
 import starlib.formula.Variable;
-import starlib.formula.expression.VariableExpression;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
 import starlib.formula.heap.PointToTerm;
@@ -44,12 +43,12 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		Variable var = null;
 		if (sym_v instanceof Expression<?>) {
-			var = new Variable(((Expression<?>)sym_v).toString(0), "");
-			sf.setLocalAttr(index, new VariableExpression(var));
+			var = new Variable(((Expression<?>)sym_v).toString(0));
+			sf.setLocalAttr(index, var);
 		}
 		
 		if(var == null)
-			var = ((VariableExpression) sf.getLocalAttr(index)).getVar();
+			var = (Variable) sf.getLocalAttr(index);
 		
 		// is pop here correct
 //		ConcolicUtil.Pair<Integer> v = ConcolicUtil.popInt(sf);
@@ -73,7 +72,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
 			
-			if (Utilities.isNull(f, var.getName())) {
+			if (f.isNull(var.toString())) {
 				constraints.get(0).add(f);
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
@@ -87,7 +86,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						Formula cf = f.copy();
 						cf.unfold(it, i);
 						
-						if (Utilities.isNull(cf, var.getName())) {
+						if (cf.isNull(var.toString())) {
 							constraints.get(0).add(cf);
 						} else {
 							constraints.get(1).add(cf.rename(var, fields));

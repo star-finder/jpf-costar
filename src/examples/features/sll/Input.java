@@ -26,7 +26,7 @@ public class Input {
 //		Node root = new Node(0, new Node(1, null));
 		in.travel(null);
 		
-		in.foo(1);
+//		in.foo(1);
 	}
 	
 }

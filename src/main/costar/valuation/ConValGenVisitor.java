@@ -8,7 +8,6 @@ import gov.nasa.jpf.constraints.types.Type;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
-import starlib.formula.expression.VariableExpression;
 import starlib.formula.heap.PointToTerm;
 import starlib.formula.pure.ComparisonTerm;
 import starlib.formula.pure.EqNullTerm;
@@ -49,22 +48,22 @@ public class ConValGenVisitor extends ValGenVisitor {
 		if (initVars.contains(var2) && !initVars.contains(var1)) {
 			initVars.add(var1);
 			
-			Type type = getType(var1.getType());
+			Type<?> type = getType(var1.getType());
 			String name = var1.getName();
 			Object value = valuation.getValue(var2.getName());
 			
-			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+			ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 			valuation.addEntry(e);
 		}
 		
 		if (initVars.contains(var1) && !initVars.contains(var2)) {
 			initVars.add(var2);
 			
-			Type type = getType(var2.getType());
+			Type<?> type = getType(var2.getType());
 			String name = var2.getName();
 			Object value = valuation.getValue(var1.getName());
 			
-			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+			ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 			valuation.addEntry(e);
 		}
 	}
@@ -83,15 +82,15 @@ public class ConValGenVisitor extends ValGenVisitor {
 		String name = null, typeStr = null, valueStr = null;
 		Object value = null;
 		
-		if (comp == Comparator.EQ && exp1 instanceof VariableExpression && 
+		if (comp == Comparator.EQ && exp1 instanceof Variable && 
 				!initVars.containsAll(vars1) && (vars2.isEmpty() || initVars.containsAll(vars2))) {
-			var = ((VariableExpression) exp1).getVar();
+			var = (Variable) exp1;
 			valueStr = exp2.toString();
 		}
 		
-		if (comp == Comparator.EQ && exp2 instanceof VariableExpression && 
+		if (comp == Comparator.EQ && exp2 instanceof Variable && 
 				!initVars.containsAll(vars2) && (vars1.isEmpty() || initVars.containsAll(vars1))) {
-			var = ((VariableExpression) exp1).getVar();
+			var = (Variable) exp1;
 			valueStr = exp2.toString();
 		}
 		
@@ -127,7 +126,7 @@ public class ConValGenVisitor extends ValGenVisitor {
 		}
 		
 		if (type != null && name != null && value != null) {
-			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+			ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 			valuation.addEntry(e);
 		}
 	}

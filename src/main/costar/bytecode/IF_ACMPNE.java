@@ -10,8 +10,8 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
+import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
-import starlib.formula.expression.VariableExpression;
 
 public class IF_ACMPNE extends gov.nasa.jpf.jvm.bytecode.IF_ACMPNE {
 	
@@ -51,12 +51,8 @@ public class IF_ACMPNE extends gov.nasa.jpf.jvm.bytecode.IF_ACMPNE {
 				Formula f0 = formula.copy();
 				Formula f1 = formula.copy();
 				
-				/*
-				f0.addEqTerm(new Variable(sym_v1.toString(), ""), new Variable(sym_v2.toString(), ""));
-				f1.addNEqTerm(new Variable(sym_v1.toString(), ""), new Variable(sym_v2.toString(), ""));
-				//*/
-				f0.addComparisonTerm(Comparator.EQ, new VariableExpression(sym_v1.toString()), new VariableExpression(sym_v2.toString()));
-				f1.addComparisonTerm(Comparator.NE, new VariableExpression(sym_v1.toString()), new VariableExpression(sym_v2.toString()));
+				f0.addComparisonTerm(Comparator.EQ, new Variable(sym_v1.toString()), new Variable(sym_v2.toString()));
+				f1.addComparisonTerm(Comparator.NE, new Variable(sym_v1.toString()), new Variable(sym_v2.toString()));
 				
 				constraints.get(0).add(f0);
 				constraints.get(1).add(f1);

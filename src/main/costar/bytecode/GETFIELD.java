@@ -81,7 +81,7 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
 			
-			if (Utilities.isNull(f, fiVar.getName())) {
+			if (f.isNull(fiVar.toString())) {
 				constraints.get(0).add(f);
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
@@ -95,7 +95,7 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 						Formula cf = f.copy();
 						cf.unfold(it, i);
 						
-						if (Utilities.isNull(cf, fiVar.getName())) {
+						if (cf.isNull(fiVar.toString())) {
 							constraints.get(0).add(cf);
 						} else {
 							constraints.get(1).add(cf.rename(fiVar, fields));

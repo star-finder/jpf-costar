@@ -5,7 +5,6 @@ import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Variable;
 import starlib.formula.expression.Expression;
-import starlib.formula.expression.VariableExpression;
 
 public class ILOAD extends gov.nasa.jpf.jvm.bytecode.ILOAD {
 	
@@ -20,7 +19,7 @@ public class ILOAD extends gov.nasa.jpf.jvm.bytecode.ILOAD {
 		
 		if (sym_v != null && sym_v instanceof gov.nasa.jpf.constraints.api.Expression<?>) {
 			String name = ((gov.nasa.jpf.constraints.api.Expression<?>) sym_v).toString(0);
-			Expression exp = new VariableExpression(new Variable(name, "int"));
+			Expression exp = new Variable(name, "int");
 			sf.setLocalAttr(index, exp);
 		}
 		
