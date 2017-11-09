@@ -96,7 +96,7 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
 			
-			if (f.isNull(fiVar.getName())) {
+			if (Utilities.isNull(f,fiVar)) {
 				constraints.get(0).add(f);
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
@@ -110,7 +110,7 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 						Formula cf = f.copy();
 						cf.unfold(it, i);
 						
-						if (cf.isNull(fiVar.toString())) {
+						if (Utilities.isNull(cf,fiVar)) {
 							constraints.get(0).add(cf);
 						} else {
 							constraints.get(1).add(cf.rename(fiVar, fields));

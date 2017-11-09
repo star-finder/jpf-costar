@@ -72,7 +72,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
 			
-			if (f.isNull(var.toString())) {
+			if (Utilities.isNull(f, var.getName())) {
 				constraints.get(0).add(f);
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
@@ -86,7 +86,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						Formula cf = f.copy();
 						cf.unfold(it, i);
 						
-						if (cf.isNull(var.toString())) {
+						if (Utilities.isNull(cf, var.getName())) {
 							constraints.get(0).add(cf);
 						} else {
 							constraints.get(1).add(cf.rename(var, fields));
