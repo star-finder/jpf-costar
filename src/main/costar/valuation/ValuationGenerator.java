@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.vm.ClassInfo;
@@ -18,9 +15,6 @@ import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 import starlib.jpf.PathFinderUtils;
-import starlib.precondition.Precondition;
-import starlib.precondition.PreconditionLexer;
-import starlib.precondition.PreconditionParser;
 import starlib.solver.Model;
 
 public class ValuationGenerator {
@@ -46,32 +40,9 @@ public class ValuationGenerator {
 		first = true;
 	}
 
-	public static Valuation toValuation(String model) {
-		model = model.replaceAll("FLOAT 0.", "0");
-		String[] tmp = model.split(";");
-
-		model = tmp[0];
-		String pure = tmp[1];
-
-		if (pure.contains("Sat")) {
-			pure = pure.substring(tmp[1].indexOf('[') + 1, tmp[1].length() - 1);
-			pure = pure.replaceAll("\\),", ");");
-		} else {
-			pure = "";
-		}
-
-		model = Model.standardizeModel(model);
-		model = "pre temp == " + model;
-
-		ANTLRInputStream in = new ANTLRInputStream(model);
-		PreconditionLexer lexer = new PreconditionLexer(in);
-		CommonTokenStream tokens = new CommonTokenStream(lexer);
-		PreconditionParser parser = new PreconditionParser(tokens);
-
-		Precondition[] ps = parser.pres().ps;
-		Formula f = ps[0].getFormula();
-		
-		return toValuation(f, pure);
+	public static Valuation toValuation(String model) {		
+		Model m = new Model(model);
+		return toValuation(m.getFormula(), m.getPure());
 	}
 	
 	private static Valuation toValuation(Formula f, String pure) {

@@ -1,16 +1,12 @@
 package costar;
 
 import gov.nasa.jpf.Config;
-import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.perturb.OperandPerturbator;
-import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ChoiceGenerator;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 
 public class CoStarPerturbator implements OperandPerturbator {
-
-	private JPFLogger logger = JPF.getLogger("costar");
 
 	private final CoStarExplorer explorer;
 
@@ -34,6 +30,8 @@ public class CoStarPerturbator implements OperandPerturbator {
 	public boolean perturb(ChoiceGenerator<?> cg, StackFrame sf) {
 		sf.getClassInfo();
 		
+		System.out.println("Sang ====================== perturb");
+
 		if (explorer.hasMoreChoices()) {
 			explorer.newPath(sf);
 			return true;

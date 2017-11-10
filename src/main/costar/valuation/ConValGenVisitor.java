@@ -1,6 +1,6 @@
 package costar.valuation;
 
-import java.util.List;
+import java.util.Set;
 
 import gov.nasa.jpf.constraints.api.ValuationEntry;
 import gov.nasa.jpf.constraints.types.BuiltinTypes;
@@ -8,10 +8,9 @@ import gov.nasa.jpf.constraints.types.Type;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
+import starlib.formula.expression.NullExpression;
 import starlib.formula.heap.PointToTerm;
 import starlib.formula.pure.ComparisonTerm;
-import starlib.formula.pure.EqNullTerm;
-import starlib.formula.pure.EqTerm;
 
 public class ConValGenVisitor extends ValGenVisitor {
 
@@ -23,50 +22,6 @@ public class ConValGenVisitor extends ValGenVisitor {
 	public void visit(PointToTerm term) {
 		genNewObjectValuation(term.getRoot());
 	}
-	
-	@Override
-	public void visit(EqNullTerm term) {
-		Variable var = term.getVar();
-		
-		if (!initVars.contains(var)) {
-			initVars.add(var);
-			
-			Type type = BuiltinTypes.SINT32;
-			String name = var.getName();
-			Object value = new Integer(0);
-			
-			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
-			valuation.addEntry(e);
-		}
-	}
-	
-	@Override
-	public void visit(EqTerm term) {
-		Variable var1 = term.getVar1();
-		Variable var2 = term.getVar2();
-		
-		if (initVars.contains(var2) && !initVars.contains(var1)) {
-			initVars.add(var1);
-			
-			Type<?> type = getType(var1.getType());
-			String name = var1.getName();
-			Object value = valuation.getValue(var2.getName());
-			
-			ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
-			valuation.addEntry(e);
-		}
-		
-		if (initVars.contains(var1) && !initVars.contains(var2)) {
-			initVars.add(var2);
-			
-			Type<?> type = getType(var2.getType());
-			String name = var2.getName();
-			Object value = valuation.getValue(var1.getName());
-			
-			ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
-			valuation.addEntry(e);
-		}
-	}
 
 	@Override
 	public void visit(ComparisonTerm term) {
@@ -74,8 +29,60 @@ public class ConValGenVisitor extends ValGenVisitor {
 		Expression exp1 = term.getExp1();
 		Expression exp2 = term.getExp2();
 		
-		List<Variable> vars1 = exp1.getVars();
-		List<Variable> vars2 = exp2.getVars();
+		boolean isVar1 = exp1 instanceof Variable;
+		boolean isVar2 = exp2 instanceof Variable;
+		
+		if (comp == Comparator.EQ) {
+			if (isVar1 && isVar2) {
+				// former EqTerm
+				Variable var1 = (Variable) exp1;
+				Variable var2 = (Variable) exp2;
+				boolean constains1 = initVars.contains(var1);
+				boolean constains2 = initVars.contains(var2);
+				
+				if (!constains1 && constains2) {
+					initVars.add(var1);
+					
+					Type<?> type = getType(var1.getType());
+					String name = var1.getName();
+					Object value = valuation.getValue(var2.getName());
+					
+					ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+					valuation.addEntry(e);
+				}
+				
+				if (constains1 && !constains2) {
+					initVars.add(var2);
+					
+					Type<?> type = getType(var2.getType());
+					String name = var2.getName();
+					Object value = valuation.getValue(var1.getName());
+					
+					ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+					valuation.addEntry(e);
+				}
+				return;
+			}
+			if (isVar1 && exp2 instanceof NullExpression) {
+				// former EqNullTerm
+				Variable var1 = (Variable) exp1;
+				if (!initVars.contains(var1)) {
+					initVars.add(var1);
+					
+					Type type = BuiltinTypes.SINT32;
+					String name = var1.getName();
+					Object value = new Integer(0);
+					
+					ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
+					valuation.addEntry(e);
+				}
+				return;
+			}
+		}
+		
+		// former ComparisonTerm
+		Set<Variable> vars1 = exp1.getVars();
+		Set<Variable> vars2 = exp2.getVars();
 		
 		Variable var = null;
 		Type type = null;

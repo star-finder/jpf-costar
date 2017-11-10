@@ -71,13 +71,19 @@ public class CoStarMethodExplorer {
 	}
 
 	public boolean hasMoreChoices() {
+		System.out.println("Sang ====================== 1");
+		
 		if (initValuation == null) {
 			return true;
 		}
 
+		System.out.println("Sang ====================== 2");
+		
 		if (nextValuation == null)
 			nextValuation = constraintsTree.findNext();
-
+		
+		System.out.println("Sang ====================== 3");
+		
 		return nextValuation != null;
 	}
 
@@ -91,8 +97,10 @@ public class CoStarMethodExplorer {
 
 	public void newPath(StackFrame sf) {
 		if (initValuation == null) {
+			System.out.println("Sang ====================== prepareFirstExecution");
 			prepareFirstExecution(sf);
 		} else {
+			System.out.println("Sang ====================== advanceValuation");
 			advanceValuation();
 			prepareReExecution(sf);
 		}
@@ -120,7 +128,7 @@ public class CoStarMethodExplorer {
 			nextValuation = constraintsTree.findNext();
 
 		if (nextValuation != null) {
-			for (Variable v : currValuation.getVariables()) {
+			for (Variable<?> v : currValuation.getVariables()) {
 				if (!nextValuation.containsValueFor(v)) {
 					nextValuation.addEntry(new ValuationEntry(v, nextValuation.getValue(v)));
 				}
