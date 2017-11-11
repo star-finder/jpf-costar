@@ -118,13 +118,12 @@ public class ValGenVisitor extends InitVarsVisitor {
 		// for (Variable var : knownTypeVars) {
 		for(Entry<String, String> entry : knownTypeVars.entrySet()) {
 			String name = entry.getKey(); // name is key, type is value
-			String type = entry.getValue();
-			Variable var = new Variable(name, type);
-			
 			if (name.startsWith("Anon_")) continue;
-			
+
+			String type = entry.getValue();
+			Variable var = new Variable(name, type);			
 			if (!initVars.contains(var)) {
-				Type builtinType = getType(entry.getValue());
+				Type builtinType = getType(type);
 				
 				ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(builtinType, name), builtinType.getDefaultValue());
 				valuation.addEntry(e);

@@ -71,19 +71,14 @@ public class CoStarMethodExplorer {
 	}
 
 	public boolean hasMoreChoices() {
-		System.out.println("Sang ====================== 1");
 		
 		if (initValuation == null) {
 			return true;
 		}
-
-		System.out.println("Sang ====================== 2");
 		
 		if (nextValuation == null)
 			nextValuation = constraintsTree.findNext();
-		
-		System.out.println("Sang ====================== 3");
-		
+				
 		return nextValuation != null;
 	}
 
@@ -97,10 +92,8 @@ public class CoStarMethodExplorer {
 
 	public void newPath(StackFrame sf) {
 		if (initValuation == null) {
-			System.out.println("Sang ====================== prepareFirstExecution");
 			prepareFirstExecution(sf);
 		} else {
-			System.out.println("Sang ====================== advanceValuation");
 			advanceValuation();
 			prepareReExecution(sf);
 		}

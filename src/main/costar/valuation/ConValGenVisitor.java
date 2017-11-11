@@ -69,7 +69,7 @@ public class ConValGenVisitor extends ValGenVisitor {
 				if (!initVars.contains(var1)) {
 					initVars.add(var1);
 					
-					Type type = BuiltinTypes.SINT32;
+					Type type = BuiltinTypes.SINT32; // Sang: why only SINT32 ???
 					String name = var1.getName();
 					Object value = new Integer(0);
 					

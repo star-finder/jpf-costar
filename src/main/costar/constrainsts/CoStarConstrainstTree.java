@@ -45,7 +45,6 @@ public class CoStarConstrainstTree {
 	}
 
 	public Valuation findNext() {
-		System.out.println("Sang ====================== findNext is called");
 		while (current != null) {
 			if (current.childrend == null) {
 				current = current.parent;
