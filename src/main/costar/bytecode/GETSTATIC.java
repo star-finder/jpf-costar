@@ -69,7 +69,7 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 			return super.execute(ti);
 		
 		if (sym_v instanceof Expression<?>) {
-			Variable var = new Variable(((Expression<?>)sym_v).toString(0), "");
+			Variable var = new Variable(((Expression<?>)sym_v).toString(0));
 			ei.setFieldAttr(fi, var);
 		}
 		

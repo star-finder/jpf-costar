@@ -45,7 +45,7 @@ public class NEW extends gov.nasa.jpf.jvm.bytecode.NEW {
 			return ti.createAndThrowException("java.lang.OutOfMemoryError", "trying to allocate new " + cname);
 		}
 
-		Variable newNode = Utilities.freshVar(new Variable("newNode", ""));
+		Variable newNode = Utilities.freshVar(new Variable("newNode"));
 
 		Expression sym_v = new Variable(newNode);
 
