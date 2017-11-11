@@ -44,9 +44,6 @@ public class CoStarMethodExplorer {
 	private Valuation currValuation;
 
 	private Valuation nextValuation;
-	
-	// store all the valuations for test case generation
-	private ArrayList<Valuation> allValuations;
 
 	private MethodInfo methodInfo;
 
@@ -63,11 +60,6 @@ public class CoStarMethodExplorer {
 
 		this.constraintsTree = new CoStarConstrainstTree(mi);
 		this.stackMap = new HashMap<String, Integer>();
-		this.allValuations = new ArrayList<Valuation>();
-	}
-	
-	public ArrayList<Valuation> getAllValuations() {
-		return allValuations;
 	}
 
 	public boolean hasMoreChoices() {
@@ -97,7 +89,6 @@ public class CoStarMethodExplorer {
 			advanceValuation();
 			prepareReExecution(sf);
 		}
-		allValuations.add(currValuation);
 	}
 
 	private void prepareFirstExecution(StackFrame sf) {
@@ -239,6 +230,10 @@ public class CoStarMethodExplorer {
 
 	public CoStarConstrainstTree getConstrainstTree() {
 		return constraintsTree;
+	}
+
+	public String getFullName() {
+		return this.methodInfo.getFullName();
 	}
 
 }

@@ -1,5 +1,6 @@
 package costar.constrainsts;
 
+import java.util.HashSet;
 import java.util.List;
 
 import costar.valuation.ValuationGenerator;
@@ -27,6 +28,8 @@ public class CoStarConstrainstTree {
 	private MethodInfo methodInfo;
 	
 	private int MAX_HEIGHT = 3;
+	
+	private HashSet<String> models;
 		
 	public CoStarConstrainstTree(MethodInfo mi) {
 		this.root = new CoStarNode(null, null, 0, null, null, true);
@@ -38,10 +41,16 @@ public class CoStarConstrainstTree {
 			this.MAX_HEIGHT = Integer.parseInt(this.config.getProperty("costar.max_height"));
 		
 		ValuationGenerator.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
+		
+		this.models = new HashSet<String>();
 	}
 	
 	public CoStarNode getCurrent() {
 		return current;
+	}
+	
+	public HashSet<String> getModels(){
+		return models;
 	}
 
 	public Valuation findNext() {
@@ -65,6 +74,7 @@ public class CoStarConstrainstTree {
 					
 					if (isSat) {
 						String model = Solver.getModel();
+						models.add(model);
 						Valuation val = ValuationGenerator.toValuation(model);
 						// build new valuation based on the model
 						logger.info("New model = " + model);
