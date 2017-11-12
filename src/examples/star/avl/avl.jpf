@@ -4,7 +4,7 @@ target=star.avl.Driver
 
 costar.data=data AvlNode {int element; AvlNode left; AvlNode right; int height}
 
-costar.predicate.file=${jpf-costar}/src/examples/star/avl/avl.pred  
+costar.predicate.file=${jpf-costar}/src/examples/star/avl/avl.pred
   
 star.test_path=${test.path}/avl
 

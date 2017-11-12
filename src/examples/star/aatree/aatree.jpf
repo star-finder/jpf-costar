@@ -4,7 +4,7 @@ target=star.aatree.Driver
 
 costar.data=data AANode {int element; AANode left; AANode right; int level}
 
-costar.predicate.file=${jpf-costar}/src/examples/star/aatree/aatree.pred  
+costar.predicate.file=${jpf-costar}/src/examples/star/aatree/aatree.pred
   
 star.test_path=${test.path}/aatree
 

@@ -1,0 +1,7 @@
+@include=../star.jpf
+
+star.test_path=${test.path}/basic
+
+costar.data=data NodeOld {NodeOld next}
+
+costar.predicate=pred sll(root) == root = null || root::NodeOld<next> * sll(next)
