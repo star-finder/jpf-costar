@@ -1,0 +1,7 @@
+@include=./aatree.jpf
+
+target.args=findMind
+
+concolic.method=findMind
+
+costar.precondition=pre findMin == aat(this_root, this_nullNode)

@@ -1,0 +1,7 @@
+@include=./aatree.jpf
+
+target.args=remove
+
+concolic.method=remove
+
+costar.precondition=pre remove == aat(this_root, this_nullNode)

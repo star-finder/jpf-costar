@@ -1,0 +1,7 @@
+@include=./aatree.jpf
+
+target.args=findMax
+
+concolic.method=findMax
+
+costar.precondition=pre findMax == aat(this_root, this_nullNode)

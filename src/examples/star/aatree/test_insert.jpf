@@ -1,0 +1,7 @@
+@include=./aatree.jpf
+
+target.args=insert
+
+concolic.method=insert
+
+costar.precondition=pre insert == aat(this_root, this_nullNode)

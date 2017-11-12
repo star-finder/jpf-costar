@@ -1,0 +1,7 @@
+@include=./aatree.jpf
+
+target.args=makeEmpty
+
+concolic.method=makeEmpty
+
+costar.precondition=pre makeEmpty == aat(this_root, this_nullNode)
