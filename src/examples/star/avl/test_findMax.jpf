@@ -1,0 +1,7 @@
+@include=./avl.jpf
+
+target.args=findMax
+
+concolic.method=findMax
+
+costar.precondition=pre findMax == avl(this_root)

@@ -1,0 +1,7 @@
+@include=./avl.jpf
+
+target.args=maxElement
+
+concolic.method=maxElement
+
+costar.precondition=pre maxElement == avl(this_root)

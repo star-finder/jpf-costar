@@ -1,0 +1,7 @@
+@include=./avl.jpf
+
+target.args=find
+
+concolic.method=find
+
+costar.precondition=pre find == avl(this_root)

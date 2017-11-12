@@ -1,0 +1,7 @@
+@include=./avl.jpf
+
+target.args=minElement
+
+concolic.method=minElement
+
+costar.precondition=pre minElement == avl(this_root)

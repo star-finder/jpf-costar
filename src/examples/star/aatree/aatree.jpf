@@ -10,4 +10,25 @@ star.test_path=${test.path}/aatree
 
 concolic.method.contains=aatree.AATree.contains(x:int)
 concolic.method.contains.config=all_fields_symbolic
+
+concolic.method.findMax=aatree.AATree.findMax()
+concolic.method.findMax.config=all_fields_symbolic
+
+concolic.method.findMin=aatree.AATree.findMin()
+concolic.method.findMin.config=all_fields_symbolic
+
+concolic.method.insert=aatree.AATree.insert(x:int)
+concolic.method.insert.config=all_fields_symbolic
+
+concolic.method.isEmpty=aatree.AATree.isEmpty()
+concolic.method.isEmpty.config=all_fields_symbolic
+
+concolic.method.makeEmpty=aatree.AATree.makeEmpty()
+concolic.method.makeEmpty.config=all_fields_symbolic
+
+concolic.method.remove=aatree.AATree.remove(x:int)
+concolic.method.remove.config=all_fields_symbolic
+
+concolic.method.wellFormed=aatree.AATree.wellFormed()
+concolic.method.wellFormed.config=all_fields_symbolic
   

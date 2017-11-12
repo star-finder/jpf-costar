@@ -1,0 +1,7 @@
+@include=./avl.jpf
+
+target.args=makeEmpty
+
+concolic.method=makeEmpty
+
+costar.precondition=pre makeEmpty == avl(this_root)

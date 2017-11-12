@@ -1,0 +1,7 @@
+@include=./avl.jpf
+
+target.args=printTree
+
+concolic.method=printTree
+
+costar.precondition=pre printTree == avl(this_root)

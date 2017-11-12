@@ -1,0 +1,7 @@
+@include=./avl.jpf
+
+target.args=findMin
+
+concolic.method=findMin
+
+costar.precondition=pre findMin == avl(this_root)
