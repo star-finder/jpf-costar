@@ -3,8 +3,7 @@
 # default costar tools
 #
 shell=costar.CoStar
-symbolic.dp=z3
-
+#
 ############################################################################### 
 #
 # logging and jpf output

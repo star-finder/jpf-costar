@@ -7,3 +7,6 @@ concolic.method.travel.config=all_fields_symbolic
 
 concolic.method.foo=features.sll.Input.foo(i:int)
 concolic.method.foo.config=all_fields_symbolic
+
+star.test_path=${test.path}/features/sll
+

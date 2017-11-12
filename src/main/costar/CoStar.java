@@ -1,9 +1,13 @@
 package costar;
 
+import java.io.File;
+import java.io.IOException;
+
 import costar.config.CoStarConfig;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.JPFShell;
+import gov.nasa.jpf.util.FileUtils;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.util.LogManager;
 import starlib.precondition.Initializer;
@@ -76,8 +80,17 @@ public class CoStar implements JPFShell {
 			Initializer.initDataNode(data);
 		
 		String pred = jpfConf.getProperty("costar.predicate");
-		if (pred != null)
+		if(pred == null) {
+			pred = jpfConf.getProperty("costar.predicate.file");
+			if(pred != null)
+			try {
+				Initializer.initPredicateFromFile(pred);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
 			Initializer.initPredicate(pred);
+		}
 		
 		String pre = jpfConf.getProperty("costar.precondition");
 		if (pre != null)

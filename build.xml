@@ -66,6 +66,7 @@
 
     <!-- add in what we need from the jpf-star -->
     <pathelement path="${jpf-star.native_classpath}"/>
+    <pathelement path="${jpf-star.classpath}"/>
 
     <!-- add in what we need from the starlib -->
     <pathelement path="${starlib.native_classpath}"/>

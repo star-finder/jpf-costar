@@ -22,11 +22,17 @@ public class Input {
 	}
 
 	public static void main(String[] args) {
-		Input in = new Input();
-//		Node root = new Node(0, new Node(1, null));
-		in.travel(null);
-		
-//		in.foo(1);
+		if (args.length > 0) {
+			Input in = new Input();
+			String str = args[0];
+			// method equals only works in JPF with string models.
+			if ("travel".equals(str)) {
+				in.travel(null);
+			}
+			if (args[0].equals("foo")) {
+				in.foo(1);
+			}
+		}
 	}
 	
 }

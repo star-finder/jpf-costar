@@ -1,4 +1,5 @@
 @include=./example.jpf
 
+target.args=foo
 concolic.method=foo
 costar.precondition=pre foo == i > 0-100

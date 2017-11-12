@@ -1,0 +1,10 @@
+############################################################################### 
+#
+# default for example from jpf-star
+#
+############################################################################### 
+
+@include=../config/costar.jpf
+
+classpath=${jpf-star}/build/examples;${jpf-costar}/build/examples
+sourcepath=${jpf-star}/src/examples;${jpf-costar}/src/examples
