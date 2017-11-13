@@ -14,6 +14,9 @@ concolic.method.findMax.config=all_fields_symbolic
 concolic.method.findMin=avl.AvlTree.findMin()
 concolic.method.findMin.config=all_fields_symbolic
 
+concolic.method.find=avl.AvlTree.find(x:int)
+concolic.method.find.config=all_fields_symbolic
+
 concolic.method.insert=avl.AvlTree.insert(x:int)
 concolic.method.insert.config=all_fields_symbolic
 

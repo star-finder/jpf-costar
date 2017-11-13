@@ -11,7 +11,7 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
-import star.testgeneration.TestGenerator;
+import starlib.jpf.testsuites.TestGenerator;
 
 public class CoStarListener extends Perturbator {
 	
