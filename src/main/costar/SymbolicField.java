@@ -51,6 +51,13 @@ public class SymbolicField<T> extends SymbolicVariable<T> {
   @Override
   public void readInitial(Valuation initVal, StackFrame sf) {
     Object value = elementInfo.getFieldValueObject(fieldInfo.getName());
+    
+    if (value == null) value = new Integer(0);
+    else if (value instanceof ElementInfo) {
+    	ElementInfo ei = (ElementInfo) value;
+    	value = new Integer(ei.getObjectRef());
+    }
+    
     initVal.setCastedValue(variable, value);
     elementInfo.defreeze();
     elementInfo.setFieldAttr(fieldInfo, variable);

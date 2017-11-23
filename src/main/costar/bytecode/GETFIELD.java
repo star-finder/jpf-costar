@@ -6,6 +6,7 @@ import java.util.List;
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
+import gov.nasa.jpf.constraints.api.Expression;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
@@ -58,9 +59,18 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			return super.execute(ti);
 		}
 		
-		Variable fiVar = (Variable) ei.getFieldAttr(fi);
-		if (fiVar == null) {
+		Object sym_v = ei.getFieldAttr(fi);
+		if (sym_v == null)
 			return super.execute(ti);
+		
+		Variable fiVar = null;
+		if (sym_v instanceof Expression<?>) {
+			fiVar = new Variable(((Expression<?>)sym_v).toString(0));
+			ei.setFieldAttr(fi, fiVar);
+		}
+		
+		if (fiVar == null) {
+			fiVar = (Variable) ei.getFieldAttr(fi);
 		}
 		
 		int fiRef = ei.getReferenceField(fi);

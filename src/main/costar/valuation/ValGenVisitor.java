@@ -47,7 +47,7 @@ public class ValGenVisitor extends InitVarsVisitor {
 		logger.info("Formula to valuation = " + formula);
 		HeapFormula hf = formula.getHeapFormula();
 		PureFormula pf = formula.getPureFormula();
-		
+				
 		ConValGenVisitor conVisitor = new ConValGenVisitor(this);
 		NoConValGenVisitor noConVisitor = new NoConValGenVisitor(this);
 		SetFieldValGenVisitor setFieldVisitor = new SetFieldValGenVisitor(this);
@@ -73,7 +73,7 @@ public class ValGenVisitor extends InitVarsVisitor {
 			initVars.add(var);
 			
 			Type type = BuiltinTypes.SINT32;
-			String typeStr = PathFinderUtils.toJavaType(var.getType());
+			String typeStr = var.getType();
 			String name = var.getName();
 			
 			ClassInfo ci = ClassLoaderInfo.getCurrentResolvedClassInfo(typeStr);

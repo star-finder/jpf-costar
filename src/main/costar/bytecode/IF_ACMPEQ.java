@@ -10,8 +10,8 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
-import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
+import starlib.formula.expression.Expression;
 
 public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 
@@ -32,11 +32,9 @@ public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 		
 		if (sym_v1 == null && sym_v2 == null) {
 			return super.execute(ti);
-		} else if (sym_v1.toString().contains("newNode_") || sym_v2.toString().contains("newNode_")) {
-			return super.execute(ti);
 		} else {
-			int objRef1 = sf.pop();
-			int objRef2 = sf.pop();
+			int v2 = sf.pop();
+			int v1 = sf.pop();
 			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
@@ -51,14 +49,17 @@ public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 				Formula f0 = formula.copy();
 				Formula f1 = formula.copy();
 				
-				f0.addComparisonTerm(Comparator.EQ, new Variable(sym_v1.toString()), new Variable(sym_v2.toString()));
-				f1.addComparisonTerm(Comparator.NE, new Variable(sym_v1.toString()), new Variable(sym_v2.toString()));
+				Expression exp1 = CMPInstrSymbHelper.makeExpression(sym_v1, v1);
+				Expression exp2 = CMPInstrSymbHelper.makeExpression(sym_v2, v2);
+				
+				f0.addComparisonTerm(Comparator.EQ, exp1, exp2);
+				f1.addComparisonTerm(Comparator.NE, exp1, exp2);
 
 				constraints.get(0).add(f0);
 				constraints.get(1).add(f1);
 			}
 			
-			if (objRef1 == objRef2) {
+			if (v1 == v2) {
 				analysis.decision(ti, this, 0, constraints);
 				return getTarget();
 			} else {

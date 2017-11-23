@@ -224,7 +224,7 @@ public class SymbolicObjectsContext {
     }
   }
 
-  public void addStackVar(SymbolicParam<?> sp) {
+  public void addStackVar(SymbolicVariable<?> sp) {
     symbolicVars.put(sp.getVariable().getName(), sp);
   }
   

@@ -10,9 +10,11 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
+import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
+import starlib.formula.expression.NullExpression;
 
 public class CMPInstrSymbHelper {
 	
@@ -219,6 +221,21 @@ public class CMPInstrSymbHelper {
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);
+	}
+	
+	/*
+	 * Make a variable in the predicate sym_v is the symbolic variable put in by
+	 * symbolic execution, sym_v = null means the variable is concrete. v is the
+	 * concrete value of the variable, v = 0 means the variable is null
+	 */
+	public static Expression makeExpression(Object sym_v, int v) {
+		if(sym_v != null) {
+			return new Variable(sym_v.toString());
+		} else if(v == 0) {
+			return NullExpression.getInstance();
+		} else {
+			return new LiteralExpression(v);
+		}
 	}
 
 }

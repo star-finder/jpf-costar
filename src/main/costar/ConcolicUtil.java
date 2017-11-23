@@ -513,6 +513,10 @@ public class ConcolicUtil {
       return BuiltinTypes.FLOAT;
     case Types.T_DOUBLE:
       return BuiltinTypes.DOUBLE;
+    case Types.T_ARRAY:
+      return BuiltinTypes.SINT32;
+    case Types.T_REFERENCE:
+      return BuiltinTypes.SINT32;
     default:
       throw new IllegalArgumentException("Type code " + typeCode + " is not supported");
     }
