@@ -6,12 +6,16 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.listener.Perturbator;
 import gov.nasa.jpf.search.Search;
 import gov.nasa.jpf.util.JPFLogger;
+import gov.nasa.jpf.vm.ChoiceGenerator;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
+import star.StarChoiceGenerator;
+import starlib.jpf.PathFinderUtils;
 import starlib.jpf.testsuites.TestGenerator;
+import starlib.solver.Solver;
 
 public class CoStarListener extends Perturbator {
 	
@@ -42,6 +46,26 @@ public class CoStarListener extends Perturbator {
 					}
 				}
 			}
+		}
+	}
+	
+	@Override
+	public void propertyViolated(Search search) {
+
+		VM vm = search.getVM();
+
+		ChoiceGenerator<?> cg = vm.getChoiceGenerator();
+		if (!(cg instanceof CoStarChoiceGenerator)) {
+			ChoiceGenerator<?> prev_cg = cg.getPreviousChoiceGenerator();
+			while (!((prev_cg == null) || (prev_cg instanceof CoStarChoiceGenerator))) {
+				prev_cg = prev_cg.getPreviousChoiceGenerator();
+			}
+			cg = prev_cg;
+		}
+		if ((cg instanceof CoStarChoiceGenerator)) {
+			String model = Solver.getModel();
+			TestGenerator.addModel(model);
+			PathFinderUtils.printErrorDetails(search);
 		}
 	}
 	
