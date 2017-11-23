@@ -490,6 +490,9 @@ public class ConcolicUtil {
     else if (BuiltinTypes.BOOL.equals(type)) {
       ei.setBooleanField(fi, (Boolean)value);
     }
+    else if (BuiltinTypes.REF.equals(type)) {
+        ei.setFieldAttr(fi, value);
+    }
     else {
       throw new RuntimeException("type " + type.getName() + " is not supported currently");
     }
@@ -516,7 +519,7 @@ public class ConcolicUtil {
     case Types.T_ARRAY:
       return BuiltinTypes.SINT32;
     case Types.T_REFERENCE:
-      return BuiltinTypes.SINT32;
+      return BuiltinTypes.REF;
     default:
       throw new IllegalArgumentException("Type code " + typeCode + " is not supported");
     }

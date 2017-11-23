@@ -107,7 +107,7 @@ public class ValGenVisitor extends InitVarsVisitor {
 			return BuiltinTypes.DOUBLE;
 		} else {
 			// reference type
-			return BuiltinTypes.SINT32;
+			return BuiltinTypes.REF;
 		}
 	}
 	
