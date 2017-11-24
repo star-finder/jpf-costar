@@ -72,7 +72,7 @@ public class ValGenVisitor extends InitVarsVisitor {
 		if (!initVars.contains(var)) {
 			initVars.add(var);
 			
-			Type type = BuiltinTypes.SINT32;
+			Type type = BuiltinTypes.REF;
 			String typeStr = var.getType();
 			String name = var.getName();
 			
