@@ -491,7 +491,7 @@ public class ConcolicUtil {
       ei.setBooleanField(fi, (Boolean)value);
     }
     else if (BuiltinTypes.REF.equals(type)) {
-        ei.setFieldAttr(fi, value);
+      ei.setReferenceField(fi, (Integer)value);
     }
     else {
       throw new RuntimeException("type " + type.getName() + " is not supported currently");
