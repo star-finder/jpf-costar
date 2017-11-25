@@ -69,6 +69,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		if(dn != null)
 			fields = dn.getFields();
 			
+		// big bug
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
 			
