@@ -64,7 +64,9 @@ public class CoStarListener extends Perturbator {
 		}
 		if ((cg instanceof CoStarChoiceGenerator)) {
 			String model = Solver.getModel();
-			TestGenerator.addModel(model);
+			ThreadInfo ti = search.getVM().getCurrentThread();
+		    CoStarMethodExplorer ca = CoStarMethodExplorer.getCurrentAnalysis(ti);
+		    ca.getConstrainstTree().addModel(model);
 			PathFinderUtils.printErrorDetails(search);
 		}
 	}

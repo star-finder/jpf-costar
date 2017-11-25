@@ -49,6 +49,10 @@ public class CoStarConstrainstTree {
 		return current;
 	}
 	
+	public boolean addModel(String model){
+		return models.add(model);
+	}
+	
 	public HashSet<String> getModels(){
 		return models;
 	}
