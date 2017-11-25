@@ -68,8 +68,8 @@ public class CoStarConstrainstTree {
 				if (!current.childrend[i].hasVisited) {
 					current.childrend[i].hasVisited = true;
 					
-//					if (current.childrend[i].heigth > MAX_HEIGHT)
-//						continue;
+					if (current.childrend[i].heigth > MAX_HEIGHT)
+						continue;
 					
 					List<Formula> fs = current.childrend[i].formulas;
 					logger.info("New constraint = " + fs.toString());
@@ -78,7 +78,7 @@ public class CoStarConstrainstTree {
 					
 					if (isSat) {
 						String model = Solver.getModel();
-						addModel(model);
+						models.add(model);
 						Valuation val = ValuationGenerator.toValuation(model);
 						// build new valuation based on the model
 						logger.info("New model = " + model);
