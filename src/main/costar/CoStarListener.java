@@ -49,27 +49,27 @@ public class CoStarListener extends Perturbator {
 		}
 	}
 	
-	@Override
-	public void propertyViolated(Search search) {
-
-		VM vm = search.getVM();
-
-		ChoiceGenerator<?> cg = vm.getChoiceGenerator();
-		if (!(cg instanceof CoStarChoiceGenerator)) {
-			ChoiceGenerator<?> prev_cg = cg.getPreviousChoiceGenerator();
-			while (!((prev_cg == null) || (prev_cg instanceof CoStarChoiceGenerator))) {
-				prev_cg = prev_cg.getPreviousChoiceGenerator();
-			}
-			cg = prev_cg;
-		}
-		if ((cg instanceof CoStarChoiceGenerator)) {
-			String model = Solver.getModel();
-			ThreadInfo ti = search.getVM().getCurrentThread();
-		    CoStarMethodExplorer ca = CoStarMethodExplorer.getCurrentAnalysis(ti);
-		    ca.getConstrainstTree().addModel(model);
-			PathFinderUtils.printErrorDetails(search);
-		}
-	}
+//	@Override
+//	public void propertyViolated(Search search) {
+//
+//		VM vm = search.getVM();
+//
+//		ChoiceGenerator<?> cg = vm.getChoiceGenerator();
+//		if (!(cg instanceof CoStarChoiceGenerator)) {
+//			ChoiceGenerator<?> prev_cg = cg.getPreviousChoiceGenerator();
+//			while (!((prev_cg == null) || (prev_cg instanceof CoStarChoiceGenerator))) {
+//				prev_cg = prev_cg.getPreviousChoiceGenerator();
+//			}
+//			cg = prev_cg;
+//		}
+//		if ((cg instanceof CoStarChoiceGenerator)) {
+//			String model = Solver.getModel();
+//			ThreadInfo ti = search.getVM().getCurrentThread();
+//		    CoStarMethodExplorer ca = CoStarMethodExplorer.getCurrentAnalysis(ti);
+//		    ca.getConstrainstTree().addModel(model);
+//			PathFinderUtils.printErrorDetails(search);
+//		}
+//	}
 	
 	@Override
 	public void searchFinished(Search search) {
