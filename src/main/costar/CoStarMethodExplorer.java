@@ -218,7 +218,7 @@ public class CoStarMethodExplorer {
 				if (ei != null)
 					symContext.processObject(ei, name, true);
 				stackMap.put(name, stackIdx);
-				Variable<?> var = Variable.create(BuiltinTypes.SINT32, name);
+				Variable<?> var = Variable.create(BuiltinTypes.REF, name);
 				SymbolicParam<?> sp = new SymbolicParam<>(var, stackIdx);
 				symContext.addStackVar(sp);
 			} else { // primitive type
