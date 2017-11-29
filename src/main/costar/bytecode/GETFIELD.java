@@ -1,11 +1,14 @@
 package costar.bytecode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
+import costar.model.ModelChecker;
+import costar.model.OverApproximator;
 import gov.nasa.jpf.constraints.api.Expression;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
@@ -81,22 +84,35 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		List<Formula> formulas = current.formulas;
 		
 		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-		constraints.add(new ArrayList<Formula>()); // null formulas
-		constraints.add(new ArrayList<Formula>()); // not null formulas
+//		constraints.add(new ArrayList<Formula>()); // null formulas
+//		constraints.add(new ArrayList<Formula>()); // not null formulas
 		
 		String typeOfLocalVar = fi.getType();
 		DataNode dn = DataNodeMap.find(PathFinderUtils.toS2SATType(typeOfLocalVar));
-		Variable[] fields = dn.getFields();
+		Variable[] fields = null;
+		if(dn != null)
+			fields = dn.getFields();
+		
+		HashMap<Formula, List<Formula>> overApproxFormulas = new HashMap<Formula, List<Formula>>();
+		OverApproximator oa = new OverApproximator();
 		
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
 			
 			if (Utilities.isNull(f,fiVar)) {
-				constraints.get(0).add(f);
+				oa.overApprox(overApproxFormulas, f);
+				
+//				constraints.get(0).add(f);
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
 				if (ht instanceof PointToTerm) {
-					constraints.get(1).add(f.rename(fiVar, fields));
+					PointToTerm pt = (PointToTerm) ht;
+					if (pt.getRoot().equals(fiVar))
+						f.rename(fiVar, fields);
+					
+					oa.overApprox(overApproxFormulas, f);
+					
+//					constraints.get(1).add(f.rename(fiVar, fields));
 				} else if (ht instanceof InductiveTerm) {
 					InductiveTerm it = (InductiveTerm) ht;
 					Formula[] fs = it.unfold();
@@ -106,33 +122,51 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 						cf.unfold(it, i);
 						
 						if (Utilities.isNull(cf,fiVar)) {
-							constraints.get(0).add(cf);
+							oa.overApprox(overApproxFormulas, f);
+							
+//							constraints.get(0).add(cf);
 						} else {
-							constraints.get(1).add(cf.rename(fiVar, fields));
+							PointToTerm pt = (PointToTerm) ht;
+							if (pt.getRoot().equals(fiVar))
+								f.rename(fiVar, fields);
+							
+							oa.overApprox(overApproxFormulas, f);
+							
+//							constraints.get(1).add(cf.rename(fiVar, fields));
 						}
 					}
 				}	
 			}
 		}
 		
-		if (!constraints.get(0).isEmpty() && !constraints.get(1).isEmpty()) {
-			if (fiRef == 0) {
-				analysis.decision(ti, this, 0, constraints);
-			} else {
-				ElementInfo fiInfo = VM.getVM().getHeap().getModifiable(fiRef);
-				
-				Formula f = constraints.get(1).get(0);
-				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
-				
-				Variable[] vars = ht.getVarsNoRoot();
-				for (int i = 0; i < vars.length; i++) {
-					FieldInfo ffi = fiInfo.getFieldInfo(i);
-					fiInfo.setFieldAttr(ffi, vars[i]);
-				}
-				
-				analysis.decision(ti, this, 1, constraints);
-			}
+		ModelChecker mc = new ModelChecker();
+		int index = mc.getChosenIndex(overApproxFormulas, analysis.getCurrValuation());
+		
+		for (Formula of : overApproxFormulas.keySet()) {
+			List<Formula> fs = overApproxFormulas.get(of);
+			constraints.add(new ArrayList<Formula>(fs));
 		}
+		
+		analysis.decision(ti, this, index, constraints);
+		
+//		if (!constraints.get(0).isEmpty() && !constraints.get(1).isEmpty()) {
+//			if (fiRef == 0) {
+//				analysis.decision(ti, this, 0, constraints);
+//			} else {
+//				ElementInfo fiInfo = VM.getVM().getHeap().getModifiable(fiRef);
+//				
+//				Formula f = constraints.get(1).get(0);
+//				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
+//				
+//				Variable[] vars = ht.getVarsNoRoot();
+//				for (int i = 0; i < vars.length; i++) {
+//					FieldInfo ffi = fiInfo.getFieldInfo(i);
+//					fiInfo.setFieldAttr(ffi, vars[i]);
+//				}
+//				
+//				analysis.decision(ti, this, 1, constraints);
+//			}
+//		}
 		
 		return super.execute(ti);
 	}

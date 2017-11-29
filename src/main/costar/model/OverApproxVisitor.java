@@ -1,4 +1,4 @@
-package costar.overapproximation;
+package costar.model;
 
 import java.util.HashSet;
 
@@ -18,11 +18,15 @@ import starlib.formula.heap.PointToTerm;
 import starlib.formula.pure.ComparisonTerm;
 import starlib.formula.pure.PureTerm;
 
-public class OverApproximationVisitor extends StarVisitor {
+public class OverApproxVisitor extends StarVisitor {
 	
 	private JPFLogger logger = JPF.getLogger("costar");
 	
 	private Formula result;
+	
+	public Formula getOverApproximationFormula() {
+		return result;
+	}
 	
 	@Override
 	public void visit(Formula formula) {
