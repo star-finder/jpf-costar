@@ -67,20 +67,27 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 					fname + " of uninitialized class: " + ci.getName());
 		}
 		
-		Object sym_v = ei.getFieldAttr(fi);
-		if (sym_v == null)
-			return super.execute(ti);
-		
-		if (sym_v instanceof Expression<?>) {
-			Variable var = new Variable(((Expression<?>)sym_v).toString(0));
-			ei.setFieldAttr(fi, var);
-		}
-		
 		if (!fi.isReference()) {
 			return super.execute(ti);
 		}
 		
-		Variable fiVar = (Variable) ei.getFieldAttr(fi);
+		Object sym_v = ei.getFieldAttr(fi);
+		if (sym_v == null)
+			return super.execute(ti);
+		
+		Variable fiVar = null;
+		if (sym_v instanceof Expression<?>) {
+			fiVar = new Variable(((Expression<?>)sym_v).toString(0));
+			ei.setFieldAttr(fi, fiVar);
+		}
+		
+		if (fiVar == null) {
+			fiVar = (Variable) ei.getFieldAttr(fi);
+		}
+		
+		if (fiVar.getName().contains("newNode"))
+			return super.execute(ti);
+		
 		int fiRef = ei.getReferenceField(fi);
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();

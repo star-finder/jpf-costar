@@ -76,6 +76,9 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			fiVar = (Variable) ei.getFieldAttr(fi);
 		}
 		
+		if (fiVar.getName().contains("newNode"))
+			return super.execute(ti);
+		
 		int fiRef = ei.getReferenceField(fi);
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
