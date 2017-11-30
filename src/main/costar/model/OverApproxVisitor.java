@@ -30,7 +30,7 @@ public class OverApproxVisitor extends StarVisitor {
 	
 	@Override
 	public void visit(Formula formula) {
-		logger.info("Formula to overapproximation = " + formula);
+//		logger.info("Formula to overapproximation = " + formula);
 		
 		result = new Formula();
 		

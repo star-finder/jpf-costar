@@ -149,6 +149,20 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		
 		analysis.decision(ti, this, index, constraints);
 		
+		Formula tmp = constraints.get(index).get(0);
+		if (!Utilities.isNull(tmp, fiVar.getName())) {
+			PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(tmp, fiVar.getName());
+			if (pt.getRoot().equals(fiVar)) {
+				ElementInfo eei = ti.getModifiableElementInfo(fiRef);
+				Variable[] vars = pt.getVarsNoRoot();
+				
+				for (int i = 0; i < vars.length; i++) {
+					FieldInfo ffi = eei.getFieldInfo(i);
+					eei.setFieldAttr(ffi, new Variable(vars[i].getName(), vars[i].getType()));
+				}
+			}	
+		}
+		
 //		if (!constraints.get(0).isEmpty() && !constraints.get(1).isEmpty()) {
 //			if (fiRef == 0) {
 //				analysis.decision(ti, this, 0, constraints);

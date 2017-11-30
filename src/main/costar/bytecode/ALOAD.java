@@ -129,6 +129,20 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		analysis.decision(ti, this, index, constraints);
 		
+		Formula tmp = constraints.get(index).get(0);
+		if (!Utilities.isNull(tmp, var.getName())) {
+			PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(tmp, var.getName());
+			if (pt.getRoot().equals(var)) {
+				ElementInfo ei = ti.getModifiableElementInfo(objRef);
+				Variable[] vars = pt.getVarsNoRoot();
+				
+				for (int i = 0; i < vars.length; i++) {
+					FieldInfo fi = ei.getFieldInfo(i);
+					ei.setFieldAttr(fi, new Variable(vars[i].getName(), vars[i].getType()));
+				}
+			}	
+		}
+		
 //		if (!constraints.get(0).isEmpty() && !constraints.get(1).isEmpty()) {
 //			if (objRef == 0) {
 //				analysis.decision(ti, this, 0, constraints);

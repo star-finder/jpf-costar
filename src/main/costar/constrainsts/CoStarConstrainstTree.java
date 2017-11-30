@@ -73,7 +73,7 @@ public class CoStarConstrainstTree {
 					
 					List<Formula> fs = current.childrend[i].formulas;
 					logger.info("New constraint = " + fs.toString());
-					logger.info("Height = " + current.childrend[i].heigth);
+//					logger.info("Height = " + current.childrend[i].heigth);
 					boolean isSat = Solver.checkSat(fs, config);
 					
 					if (isSat) {
