@@ -102,15 +102,15 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						cf.unfold(it, i);
 						
 						if (Utilities.isNull(cf, var.getName())) {
-							oa.overApprox(overApproxFormulas, f);
+							oa.overApprox(overApproxFormulas, cf);
 							
 //							constraints.get(0).add(cf);
 						} else {
-							PointToTerm pt = (PointToTerm) ht;
+							PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(cf, var.getName());
 							if (pt.getRoot().equals(var))
-								f.rename(var, fields);
+								cf.rename(var, fields);
 							
-							oa.overApprox(overApproxFormulas, f);
+							oa.overApprox(overApproxFormulas, cf);
 							
 //							constraints.get(1).add(cf.rename(var, fields));
 						}

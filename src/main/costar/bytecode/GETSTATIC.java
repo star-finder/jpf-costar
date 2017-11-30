@@ -127,15 +127,15 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 						cf.unfold(it, i);
 						
 						if (Utilities.isNull(cf,fiVar)) {
-							oa.overApprox(overApproxFormulas, f);
+							oa.overApprox(overApproxFormulas, cf);
 							
 //							constraints.get(0).add(cf);
 						} else {
-							PointToTerm pt = (PointToTerm) ht;
+							PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(cf, fiVar.getName());
 							if (pt.getRoot().equals(fiVar))
-								f.rename(fiVar, fields);
+								cf.rename(fiVar, fields);
 							
-							oa.overApprox(overApproxFormulas, f);
+							oa.overApprox(overApproxFormulas, cf);
 							
 //							constraints.get(1).add(cf.rename(fiVar, fields));
 						}
