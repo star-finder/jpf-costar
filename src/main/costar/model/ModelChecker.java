@@ -20,7 +20,7 @@ public class ModelChecker {
 		Formula valF = new Formula();
 		
 		for (Variable<?> v : currValuation.getVariables()) {
-			int value = (Integer) currValuation.getValue(v);
+			String value = currValuation.getValue(v).toString();
 			valF.addComparisonTerm(Comparator.EQ, new starlib.formula.Variable(v.getName()), new LiteralExpression(value));
 		}
 		
@@ -36,6 +36,8 @@ public class ModelChecker {
 			
 			boolean isSat = Solver.checkSat(tmp, VM.getVM().getConfig());
 			if (isSat) return i;
+			
+			i++;
 		}
 		
 		return -1;
