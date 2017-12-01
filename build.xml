@@ -186,6 +186,18 @@
     </javac>             
   </target>
 
+  <target name="build-output">
+    <mkdir dir="build/output"/>
+    <javac srcdir="src/output" destdir="build/output"
+      debug="${debug}" source="${src_level}" deprecation="${deprecation}"
+      includeantruntime="false">
+      <classpath>
+        <path refid="lib.path"/>
+        <pathelement location="build/main"/>
+        <pathelement location="build/examples"/>
+      </classpath>
+    </javac>
+  </target>
 
   <!-- ======================= MISC SECTION ================================ -->
 
