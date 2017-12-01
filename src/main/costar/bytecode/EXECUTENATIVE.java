@@ -38,7 +38,7 @@ public class EXECUTENATIVE extends gov.nasa.jpf.jvm.bytecode.EXECUTENATIVE {
 			// FIXME
 			// Sang: I don't think we need to check sat here, since this is concolic
 			// can we assume that the exception is always thrown?
-			if (Solver.checkSat(formulas, conf)) {
+			if (Solver.checkSat(formulas)) {
 				VM vm = ti.getVM();
 				vm.getSearch().error(new NoErrorProperty("Skip native method"), vm.getClonedPath(), vm.getThreadList());
 			}

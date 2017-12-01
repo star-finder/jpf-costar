@@ -34,7 +34,7 @@ public class ModelChecker {
 				tmp.addComparisonTerm(ct.getComparator(), ct.getExp1(), ct.getExp2());
 			}
 			
-			boolean isSat = Solver.checkSat(tmp, VM.getVM().getConfig());
+			boolean isSat = Solver.checkSat(tmp);
 			if (isSat) return i;
 			
 			i++;

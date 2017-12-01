@@ -6,16 +6,13 @@ import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.listener.Perturbator;
 import gov.nasa.jpf.search.Search;
 import gov.nasa.jpf.util.JPFLogger;
-import gov.nasa.jpf.vm.ChoiceGenerator;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
-import star.StarChoiceGenerator;
-import starlib.jpf.PathFinderUtils;
+import starlib.GlobalVariables;
 import starlib.jpf.testsuites.TestGenerator;
-import starlib.solver.Solver;
 
 public class CoStarListener extends Perturbator {
 	
@@ -25,6 +22,14 @@ public class CoStarListener extends Perturbator {
 
 	public CoStarListener(Config conf) {
 		super(conf);
+		String s = conf.getProperty("star.max_time");
+		if (s != null) {
+			GlobalVariables.MAX_TIME = Integer.parseInt(s);
+		}
+		s = conf.getProperty("star.max_depth");
+		if (s != null) {
+			GlobalVariables.MAX_DEPTH = Integer.parseInt(s);
+		}
 	}
 	
 	@Override
