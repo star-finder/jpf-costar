@@ -56,9 +56,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		if (var.getName().contains("newNode"))
 			return super.execute(ti);
 		
-		// is pop here correct
-//		ConcolicUtil.Pair<Integer> v = ConcolicUtil.popInt(sf);
-		int objRef = sf.peek();
+		int objRef = sf.getSlot(index);
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
