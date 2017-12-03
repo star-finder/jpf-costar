@@ -115,13 +115,13 @@ public class CoStarMethodExplorer {
 		if (nextValuation == null)
 			nextValuation = constraintsTree.findNext();
 
-		if (nextValuation != null) {
-			for (Variable<?> v : currValuation.getVariables()) {
-				if (!nextValuation.containsValueFor(v)) {
-					nextValuation.addEntry(new ValuationEntry(v, nextValuation.getValue(v)));
-				}
-			}
-		}
+//		if (nextValuation != null) {
+//			for (Variable<?> v : currValuation.getVariables()) {
+//				if (!nextValuation.containsValueFor(v)) {
+//					nextValuation.addEntry(new ValuationEntry(v, nextValuation.getValue(v)));
+//				}
+//			}
+//		}
 		
 		currValuation = nextValuation;
 		nextValuation = null;

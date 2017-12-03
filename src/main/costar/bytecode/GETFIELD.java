@@ -145,6 +145,11 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		ModelChecker mc = new ModelChecker();
 		int index = mc.getChosenIndex(overApproxFormulas, analysis.getCurrValuation());
 		
+		if (index == -1) {
+			ti.getVM().getSystemState().setIgnored(true);
+			return getNext(ti);
+		}
+		
 		for (Formula of : overApproxFormulas.keySet()) {
 			List<Formula> fs = overApproxFormulas.get(of);
 			constraints.add(new ArrayList<Formula>(fs));
