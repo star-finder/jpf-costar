@@ -111,7 +111,9 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		int index = -1;
 		
-		if (overApproxFormulas.size() <= 1)
+		if (overApproxFormulas.size() == 0) {
+			return super.execute(ti);
+		} else if (overApproxFormulas.size() == 1)
 			index = 0;
 		else {
 			ModelChecker mc = new ModelChecker();

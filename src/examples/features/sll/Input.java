@@ -43,6 +43,10 @@ class Node {
 	
 	Node next;
 	
+	public Node() {
+		this(0, null);
+	}
+	
 	public Node(int elem, Node next) {
 		this.elem = elem;
 		this.next = next;
