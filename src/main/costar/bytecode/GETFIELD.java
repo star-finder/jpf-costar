@@ -132,8 +132,14 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			}
 		}
 		
-		ModelChecker mc = new ModelChecker();
-		int index = mc.getChosenIndex(overApproxFormulas, analysis.getCurrValuation());
+		int index = -1;
+		
+		if (overApproxFormulas.size() <= 1)
+			index = 0;
+		else {
+			ModelChecker mc = new ModelChecker();
+			index = mc.getChosenIndex(overApproxFormulas, analysis.getCurrValuation());
+		}
 		
 		if (index == -1) {
 			ti.getVM().getSystemState().setIgnored(true);
@@ -145,7 +151,8 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			constraints.add(new ArrayList<Formula>(fs));
 		}
 		
-		analysis.decision(ti, this, index, constraints);
+		if (overApproxFormulas.size() > 1)
+			analysis.decision(ti, this, index, constraints);
 		
 		Formula tmp = constraints.get(index).get(0);
 		if (!Utilities.isNull(tmp, fiVar.getName())) {
