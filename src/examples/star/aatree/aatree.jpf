@@ -7,6 +7,7 @@ costar.data=data aatree_AATree__AANode {int element; aatree_AATree__AANode left;
 costar.predicate.file=${jpf-costar}/src/examples/star/aatree/aatree.pred
   
 star.test_path=${test.path}/aatree
+star.test_package=aatree
 
 concolic.method.contains=aatree.AATree.contains(x:int)
 concolic.method.contains.config=all_fields_symbolic

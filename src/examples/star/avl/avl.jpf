@@ -7,6 +7,7 @@ costar.data=data avl_AvlNode {int element; avl_AvlNode left; avl_AvlNode right; 
 costar.predicate.file=${jpf-costar}/src/examples/star/avl/avl.pred
   
 star.test_path=${test.path}/avl
+star.test_package=avl
 
 concolic.method.findMax=avl.AvlTree.findMax()
 concolic.method.findMax.config=all_fields_symbolic
