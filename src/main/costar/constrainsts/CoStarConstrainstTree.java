@@ -27,18 +27,13 @@ public class CoStarConstrainstTree {
 	
 	private MethodInfo methodInfo;
 	
-	private int MAX_HEIGHT = 3;
-	
 	private HashSet<String> models;
 		
 	public CoStarConstrainstTree(MethodInfo mi) {
-		this.root = new CoStarNode(null, null, 0, null, null, true);
+		this.root = new CoStarNode(null, null, null, null, true);
 		this.current = root;
 		this.config = VM.getVM().getConfig();
 		this.methodInfo = mi;
-		
-		if (this.config.getProperty("costar.max_height") != null)
-			this.MAX_HEIGHT = Integer.parseInt(this.config.getProperty("costar.max_height"));
 		
 		ValuationGenerator.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
 		
@@ -68,12 +63,8 @@ public class CoStarConstrainstTree {
 				if (!current.childrend[i].hasVisited) {
 					current.childrend[i].hasVisited = true;
 					
-//					if (current.childrend[i].heigth > MAX_HEIGHT)
-//						continue;
-					
 					List<Formula> fs = current.childrend[i].formulas;
 					logger.info("New constraint = " + fs.toString());
-//					logger.info("Height = " + current.childrend[i].heigth);
 					boolean isSat = Solver.checkSat(fs);
 					
 					if (isSat) {
@@ -103,7 +94,7 @@ public class CoStarConstrainstTree {
 			current.childrend = new CoStarNode[length];
 			
 			for (int i = 0; i < length; i++) {
-				current.childrend[i] = new CoStarNode(current, null, current.heigth + 1, constraints.get(i), inst, false);
+				current.childrend[i] = new CoStarNode(current, null, constraints.get(i), inst, false);
 			}
 		}
 		

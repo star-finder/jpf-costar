@@ -11,19 +11,16 @@ public class CoStarNode {
 	
 	public CoStarNode[] childrend;
 	
-	public int heigth;
-	
 	public List<Formula> formulas;
 	
 	public Instruction inst;
 	
 	public boolean hasVisited;
 	
-	public CoStarNode(CoStarNode parent, CoStarNode[] children, int height,
+	public CoStarNode(CoStarNode parent, CoStarNode[] children,
 			List<Formula> formulas, Instruction inst, boolean hasVisited) {
 		this.parent = parent;
 		this.childrend = children;
-		this.heigth = height;
 		this.formulas = formulas;
 		this.inst = inst;
 		this.hasVisited = hasVisited;

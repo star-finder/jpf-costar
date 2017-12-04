@@ -64,8 +64,6 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		List<Formula> formulas = current.formulas;
 		
 		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-//		constraints.add(new ArrayList<Formula>()); // null formulas
-//		constraints.add(new ArrayList<Formula>()); // not null formulas
 		
 		String typeOfLocalVar = super.getLocalVariableType();
 		DataNode dn = DataNodeMap.find(PathFinderUtils.toS2SATType(typeOfLocalVar));
@@ -76,14 +74,11 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		HashMap<Formula, List<Formula>> overApproxFormulas = new HashMap<Formula, List<Formula>>();
 		OverApproximator oa = new OverApproximator();
 		
-		// big bug
 		for (Formula formula : formulas) {
 			Formula f = formula.copy();
 			
 			if (Utilities.isNull(f, var.getName())) {
 				oa.overApprox(overApproxFormulas, f);
-								
-//				constraints.get(0).add(f);
 			} else {
 				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
 				if (ht instanceof PointToTerm) {
@@ -92,8 +87,6 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						f.rename(var, fields);
 					
 					oa.overApprox(overApproxFormulas, f);
-					
-//					constraints.get(1).add(f.rename(var, fields));
 				} else if (ht instanceof InductiveTerm) {
 					InductiveTerm it = (InductiveTerm) ht;
 					Formula[] fs = it.unfold();
@@ -104,16 +97,12 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						
 						if (Utilities.isNull(cf, var.getName())) {
 							oa.overApprox(overApproxFormulas, cf);
-							
-//							constraints.get(0).add(cf);
 						} else {
 							PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(cf, var.getName());
 							if (pt.getRoot().equals(var))
 								cf.rename(var, fields);
 							
 							oa.overApprox(overApproxFormulas, cf);
-							
-//							constraints.get(1).add(cf.rename(var, fields));
 						}
 					}
 				}	
@@ -148,25 +137,6 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 				}
 			}	
 		}
-		
-//		if (!constraints.get(0).isEmpty() && !constraints.get(1).isEmpty()) {
-//			if (objRef == 0) {
-//				analysis.decision(ti, this, 0, constraints);
-//			} else {
-//				ElementInfo ei = ti.getModifiableElementInfo(objRef);
-//				
-//				Formula f = constraints.get(1).get(0);
-//				HeapTerm ht = Utilities.findHeapTerm(f, var.getName());
-//				
-//				Variable[] vars = ht.getVarsNoRoot();
-//				for (int i = 0; i < vars.length; i++) {
-//					FieldInfo fi = ei.getFieldInfo(i);
-//					ei.setFieldAttr(fi, vars[i]);
-//				}
-//				
-//				analysis.decision(ti, this, 1, constraints);
-//			}
-//		}
 		
 		return super.execute(ti);
 	}
