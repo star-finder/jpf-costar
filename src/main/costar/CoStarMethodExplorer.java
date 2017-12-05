@@ -131,7 +131,7 @@ public class CoStarMethodExplorer {
 
 	private void prepareReExecution(StackFrame sf) {
 		constraintsTree.reset();
-		Utilities.reset();
+//		Utilities.reset();
 		
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
 			sv.apply(currValuation, sf);
