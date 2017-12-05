@@ -1,9 +1,9 @@
 pred rbt(root,size) == root=null & size=0 ||
-  root::rbt_TreeMap_Entry<key,value,left,right,parent,color> * rbtE(left,root,minE,key,sizeL,bhL) * rbtE(right,root,key,maxE,sizeR,bhR) & parent=null & color=1 & size=sizeL+sizeR+1 & bhL=bhR;
+  root::rbt_TreeMap__Entry<key,value,left,right,parent,color> * rbtE(left,root,minE,key,sizeL,bhL) * rbtE(right,root,key,maxE,sizeR,bhR) & parent=null & color=1 & size=sizeL+sizeR+1 & bhL=bhR;
 		
 pred rbtE(root,pa,minE,maxE,size,bh) == root=null & size=0 & bh=0 ||
-  root::rbt_TreeMap_Entry<key,value,left,right,parent,color> * rbtE(left,root,minE,key,sizeL,bhL) * rbtE(right,root,key,maxE,sizeR,bhR) & minE<key & key<maxE & parent=pa & color=1 & size=sizeL+sizeR+1 & bhL=bhR & bh=1+bhL ||
-  root::rbt_TreeMap_Entry<key,value,left,right,parent,color> * rbtB(left,root,minE,key,sizeL,bhL) * rbtB(right,root,key,maxE,sizeR,bhR) & minE<key & key<maxE & parent=pa & color=0 & size=sizeL+sizeR+1 & bhL=bhR & bh=bhL;
+  root::rbt_TreeMap__Entry<key,value,left,right,parent,color> * rbtE(left,root,minE,key,sizeL,bhL) * rbtE(right,root,key,maxE,sizeR,bhR) & minE<key & key<maxE & parent=pa & color=1 & size=sizeL+sizeR+1 & bhL=bhR & bh=1+bhL ||
+  root::rbt_TreeMap__Entry<key,value,left,right,parent,color> * rbtB(left,root,minE,key,sizeL,bhL) * rbtB(right,root,key,maxE,sizeR,bhR) & minE<key & key<maxE & parent=pa & color=0 & size=sizeL+sizeR+1 & bhL=bhR & bh=bhL;
 		
 pred rbtB(root,pa,minE,maxE,size,bh) == root=null & size=0 & bh=0 ||
-  root::rbt_TreeMap_Entry<key,value,left,right,parent,color> * rbtE(left,root,minE,key,sizeL,bhL) * rbtE(right,root,key,maxE,sizeR,bhR) & minE<key & key<maxE & parent=pa & color=1 & size=sizeL+sizeR+1 & bhL=bhR & bh=1+bhL
+  root::rbt_TreeMap__Entry<key,value,left,right,parent,color> * rbtE(left,root,minE,key,sizeL,bhL) * rbtE(right,root,key,maxE,sizeR,bhR) & minE<key & key<maxE & parent=pa & color=1 & size=sizeL+sizeR+1 & bhL=bhR & bh=1+bhL

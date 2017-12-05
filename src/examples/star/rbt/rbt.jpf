@@ -2,7 +2,7 @@
 
 target=star.rbt.Driver
 
-costar.data=data rbt_TreeMap_Entry {int key; java_lang_Object value; rbt_TreeMap_Entry left; rbt_TreeMap_Entry right; rbt_TreeMap_Entry parent; boolean color}
+costar.data=data java_lang_Object {}; data rbt_TreeMap__Entry {int key; java_lang_Object value; rbt_TreeMap__Entry left; rbt_TreeMap__Entry right; rbt_TreeMap__Entry parent; boolean color}
 
 costar.predicate.file=${jpf-costar}/src/examples/star/rbt/rbt.pred
   
