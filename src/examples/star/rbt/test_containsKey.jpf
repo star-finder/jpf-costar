@@ -1,0 +1,7 @@
+@include=./rbt.jpf
+
+target.args=containsKey
+
+concolic.method=containsKey
+
+costar.precondition=pre containsKey == rbt(this_root,this_size)

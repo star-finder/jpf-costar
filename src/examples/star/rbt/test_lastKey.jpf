@@ -1,0 +1,7 @@
+@include=./rbt.jpf
+
+target.args=lastKey
+
+concolic.method=lastKey
+
+costar.precondition=pre lastKey == rbt(this_root,this_size)

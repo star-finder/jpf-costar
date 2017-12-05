@@ -28,7 +28,7 @@ concolic.method.makeEmpty=bst.BinarySearchTree.makeEmpty()
 concolic.method.makeEmpty.config=all_fields_symbolic
 
 concolic.method.printTree=bst.BinarySearchTree.printTree()
-concolic.method.makeEmpty.config=all_fields_symbolic
+concolic.method.printTree.config=all_fields_symbolic
 
 concolic.method.remove=bst.BinarySearchTree.remove(x:int)
 concolic.method.remove.config=all_fields_symbolic

@@ -1,0 +1,7 @@
+@include=./rbt.jpf
+
+target.args=remove
+
+concolic.method=remove
+
+costar.precondition=pre remove == rbt(this_root,this_size)
