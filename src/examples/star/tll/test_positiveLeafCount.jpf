@@ -1,0 +1,7 @@
+@include=./tll.jpf
+
+target.args=positiveLeafCount
+
+concolic.method=positiveLeafCount
+
+costar.precondition=pre positiveLeafCount == tll(this_root,p,lr,ll)

@@ -1,0 +1,13 @@
+@include=../star.jpf
+
+target=star.tll.Driver
+
+costar.data=data tll_Node {int val; tll_Node parent; tll_Node left; tll_Node right; tll_Node next}
+
+costar.predicate.file=${jpf-costar}/src/examples/star/tll/tll.pred
+  
+star.test_path=${test.path}/tll
+star.test_package=tll
+
+concolic.method.positiveLeafCount=tll.Tll.positiveLeafCount()
+concolic.method.positiveLeafCount.config=all_fields_symbolic

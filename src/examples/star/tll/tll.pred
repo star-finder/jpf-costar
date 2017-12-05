@@ -1,0 +1,2 @@
+pred tll(curr,p,lr,ll) == curr::tll_Node<dv,p,dl,r,n> & curr=ll & r=null & n=lr ||
+  curr::tll_Node<dv,p,l,r,dn> * tll(l,curr,z,ll) * tll(r,curr,lr,z) & r!=null
