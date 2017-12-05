@@ -5,3 +5,4 @@ target.args=firstKey
 concolic.method=firstKey
 
 costar.precondition=pre firstKey == rbt(this_root,this_size)
+star.max_depth=2
