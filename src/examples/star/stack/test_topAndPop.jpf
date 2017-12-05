@@ -1,0 +1,7 @@
+@include=./stack.jpf
+
+target.args=topAndPop
+
+concolic.method=topAndPop
+
+costar.precondition=pre topAndPop == stack(this_topOfStack)

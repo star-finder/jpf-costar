@@ -1,0 +1,7 @@
+@include=./stack.jpf
+
+target.args=isFull
+
+concolic.method=isFull
+
+costar.precondition=pre isFull == stack(this_topOfStack)

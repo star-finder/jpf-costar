@@ -1,0 +1,1 @@
+pred stack(root) == root = null || root::stack_ListNode<element,next> * stack(next)

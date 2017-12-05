@@ -1,0 +1,7 @@
+@include=./stack.jpf
+
+target.args=contains
+
+concolic.method=contains
+
+costar.precondition=pre contains == stack(this_topOfStack)

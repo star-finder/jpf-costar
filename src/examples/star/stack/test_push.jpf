@@ -1,0 +1,7 @@
+@include=./stack.jpf
+
+target.args=push
+
+concolic.method=push
+
+costar.precondition=pre push == stack(this_topOfStack)
