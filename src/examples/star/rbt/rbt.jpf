@@ -2,7 +2,7 @@
 
 target=star.rbt.Driver
 
-costar.data=data rbt_TreeMap_Entry {int key; Object value; rbt_TreeMap_Entry left; rbt_TreeMap_Entry right; rbt_TreeMap_Entry parent; boolean color}
+costar.data=data rbt_TreeMap_Entry {int key; java_lang_Object value; rbt_TreeMap_Entry left; rbt_TreeMap_Entry right; rbt_TreeMap_Entry parent; boolean color}
 
 costar.predicate.file=${jpf-costar}/src/examples/star/rbt/rbt.pred
   
@@ -12,7 +12,7 @@ star.test_package=rbt
 concolic.method.containsKey=rbt.TreeMap.containsKey(key:int)
 concolic.method.containsKey.config=all_fields_symbolic
 
-concolic.method.containsValue=rbt.TreeMap.containsValue(value:Object)
+concolic.method.containsValue=rbt.TreeMap.containsValue(value:java.lang.Object)
 concolic.method.containsValue.config=all_fields_symbolic
 
 concolic.method.firstKey=rbt.TreeMap.firstKey()
@@ -24,7 +24,7 @@ concolic.method.get.config=all_fields_symbolic
 concolic.method.lastKey=rbt.TreeMap.lastKey()
 concolic.method.lastKey.config=all_fields_symbolic
 
-concolic.method.put=rbt.TreeMap.put(key:int,value:Object)
+concolic.method.put=rbt.TreeMap.put(key:int,value:java.lang.Object)
 concolic.method.put.config=all_fields_symbolic
 
 concolic.method.remove=rbt.TreeMap.remove(key:int)
