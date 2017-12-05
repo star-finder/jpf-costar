@@ -1,0 +1,11 @@
+pred dll1(header,size) == header::doublelinkedlist_DoubleLinkedList__Entry<ele,header,header> & size=0 ||
+  header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll1(next,header,header,prev,size);
+  
+pred nndll1(curr,prev,header,prevH,size) == curr::doublelinkedlist_DoubleLinkedList__Entry<ele,header,prev> & prevH=curr & size=1 ||
+  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll1(next,curr,header,prevH,size1) & size=size1+1;
+
+pred dll2(header,size) == header::doublelinkedlist_DoubleLinkedList__Entry<ele,header,header> & size=0 ||
+  header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,header,header,next,size);
+
+pred nndll2(curr,next,header,nextH,size) == curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,header> & nextH=curr & size=1 ||
+  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,curr,header,nextH,size1) & size=size1+1

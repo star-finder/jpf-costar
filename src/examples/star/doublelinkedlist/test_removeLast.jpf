@@ -1,0 +1,7 @@
+@include=./doublelinkedlist.jpf
+
+target.args=removeLast
+
+concolic.method=removeLast
+
+costar.precondition=pre removeLast == dll2(this_header,this_size)

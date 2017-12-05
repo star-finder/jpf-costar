@@ -1,0 +1,7 @@
+@include=./doublelinkedlist.jpf
+
+target.args=getFirst
+
+concolic.method=getFirst
+
+costar.precondition=pre getFirst == dll1(this_header,this_size)

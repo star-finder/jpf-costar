@@ -1,0 +1,7 @@
+@include=./doublelinkedlist.jpf
+
+target.args=indexOf
+
+concolic.method=indexOf
+
+costar.precondition=pre indexOf == dll1(this_header,this_size)

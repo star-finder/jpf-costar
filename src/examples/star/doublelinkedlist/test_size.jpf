@@ -1,0 +1,7 @@
+@include=./doublelinkedlist.jpf
+
+target.args=size
+
+concolic.method=size
+
+costar.precondition=pre size == dll1(this_header,this_size)

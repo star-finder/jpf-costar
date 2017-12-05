@@ -1,0 +1,7 @@
+@include=./doublelinkedlist.jpf
+
+target.args=toArray
+
+concolic.method=toArray
+
+costar.precondition=pre toArray == dll1(this_header,this_size)

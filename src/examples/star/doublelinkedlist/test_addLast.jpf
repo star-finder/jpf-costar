@@ -1,0 +1,7 @@
+@include=./doublelinkedlist.jpf
+
+target.args=addLast
+
+concolic.method=addLast
+
+costar.precondition=pre addLast == dll2(this_header,this_size)

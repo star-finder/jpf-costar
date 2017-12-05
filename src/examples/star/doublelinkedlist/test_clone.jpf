@@ -1,0 +1,7 @@
+@include=./doublelinkedlist.jpf
+
+target.args=clone
+
+concolic.method=clone
+
+costar.precondition=pre clone == dll1(this_header,this_size)
