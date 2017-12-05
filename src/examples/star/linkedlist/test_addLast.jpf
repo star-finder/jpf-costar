@@ -1,0 +1,7 @@
+@include=./linkedlist.jpf
+
+target.args=addLast
+
+concolic.method=addLast
+
+costar.precondition=pre addLast == this__header::linkedlist_MyListNode<element,next> * sll(next)

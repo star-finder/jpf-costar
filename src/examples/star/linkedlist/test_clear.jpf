@@ -1,0 +1,7 @@
+@include=./linkedlist.jpf
+
+target.args=clear
+
+concolic.method=clear
+
+costar.precondition=pre clear == this__header::linkedlist_MyListNode<element,next> * sll(next)

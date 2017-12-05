@@ -1,0 +1,7 @@
+@include=./linkedlist.jpf
+
+target.args=size
+
+concolic.method=size
+
+costar.precondition=pre size == this__header::linkedlist_MyListNode<element,next> * sll(next)

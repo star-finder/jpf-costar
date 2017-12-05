@@ -1,0 +1,7 @@
+@include=./linkedlist.jpf
+
+target.args=first
+
+concolic.method=first
+
+costar.precondition=pre first == this__header::linkedlist_MyListNode<element,next> * sll(next)

@@ -1,0 +1,1 @@
+pred sll(root) == root = null || root::linkedlist_MyListNode<element,next> * element::java_lang_Object<> * sll(next)

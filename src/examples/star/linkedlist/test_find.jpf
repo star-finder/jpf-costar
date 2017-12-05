@@ -1,0 +1,7 @@
+@include=./linkedlist.jpf
+
+target.args=find
+
+concolic.method=find
+
+costar.precondition=pre find == this__header::MyLislinkedlist_MyListNodetNode<element,next> * sll(next)
