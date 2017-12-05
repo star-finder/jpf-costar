@@ -1,0 +1,3 @@
+pred bst(root) == root = null || root::bst_BinaryNode<element,left,right> * bstE(left,minE,element) * bstE(right,element,maxE);
+
+pred bstE(root,minE,maxE) == root=null || root::bst_BinaryNode<element,left,right> * bstE(left,minE,element) * bstE(right,element,maxE) & minE<element & element<maxE

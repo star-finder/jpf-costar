@@ -36,9 +36,6 @@ public class Driver {
 		case "printTree":
 			tree.printTree();
 			break;
-		case "repOK":
-			tree.repOK();
-			break;
 		default:
 			// do nothing
 		}

@@ -1,0 +1,7 @@
+@include=./bst.jpf
+
+target.args=insert
+
+concolic.method=insert
+
+costar.precondition=pre insert == bst(this_root)

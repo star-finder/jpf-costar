@@ -1,0 +1,7 @@
+@include=./bst.jpf
+
+target.args=remove
+
+concolic.method=remove
+
+costar.precondition=pre remove == bst(this_root)

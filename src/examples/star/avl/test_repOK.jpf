@@ -1,5 +1,0 @@
-@include=./avl.jpf
-
-target.args=repOK
-
-concolic.method=repOK

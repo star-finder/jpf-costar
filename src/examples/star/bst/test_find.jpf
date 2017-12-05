@@ -1,0 +1,7 @@
+@include=./bst.jpf
+
+target.args=find
+
+concolic.method=find
+
+costar.precondition=pre find == bst(this_root)

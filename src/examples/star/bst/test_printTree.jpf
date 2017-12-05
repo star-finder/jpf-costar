@@ -1,0 +1,7 @@
+@include=./bst.jpf
+
+target.args=printTree
+
+concolic.method=printTree
+
+costar.precondition=pre printTree == bst(this_root)

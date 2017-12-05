@@ -1,5 +1,0 @@
-@include=./aatree.jpf
-
-target.args=wellFormed
-
-concolic.method=wellFormed

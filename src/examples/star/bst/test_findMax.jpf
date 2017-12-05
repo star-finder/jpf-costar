@@ -1,0 +1,7 @@
+@include=./bst.jpf
+
+target.args=findMax
+
+concolic.method=findMax
+
+costar.precondition=pre findMax == bst(this_root)

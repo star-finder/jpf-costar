@@ -35,6 +35,3 @@ concolic.method.minElement.config=all_fields_symbolic
 
 concolic.method.printTree=avl.AvlTree.printTree()
 concolic.method.printTree.config=all_fields_symbolic
-
-concolic.method.repOK=avl.AvlTree.repOK()
-concolic.method.repOK.config=all_fields_symbolic

@@ -1,0 +1,7 @@
+@include=./bst.jpf
+
+target.args=findMin
+
+concolic.method=findMin
+
+costar.precondition=pre findMin == bst(this_root)
