@@ -114,7 +114,7 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 				if (ht instanceof PointToTerm) {
 					PointToTerm pt = (PointToTerm) ht;
 					if (pt.getRoot().equals(fiVar))
-						f.rename(fiVar, fields);
+						f = f.rename(fiVar, fields);
 					
 					oa.overApprox(overApproxFormulas, f);
 				} else if (ht instanceof InductiveTerm) {
@@ -130,7 +130,7 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 						} else {
 							PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(cf, fiVar.getName());
 							if (pt.getRoot().equals(fiVar))
-								cf.rename(fiVar, fields);
+								cf = cf.rename(fiVar, fields);
 							
 							oa.overApprox(overApproxFormulas, cf);
 						}

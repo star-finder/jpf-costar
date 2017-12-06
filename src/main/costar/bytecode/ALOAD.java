@@ -84,7 +84,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 				if (ht instanceof PointToTerm) {
 					PointToTerm pt = (PointToTerm) ht;
 					if (pt.getRoot().equals(var))
-						f.rename(var, fields);
+						f = f.rename(var, fields);
 					
 					oa.overApprox(overApproxFormulas, f);
 				} else if (ht instanceof InductiveTerm) {
@@ -100,7 +100,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 						} else {
 							PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(cf, var.getName());
 							if (pt.getRoot().equals(var))
-								cf.rename(var, fields);
+								cf = cf.rename(var, fields);
 							
 							oa.overApprox(overApproxFormulas, cf);
 						}
