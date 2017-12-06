@@ -58,10 +58,6 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 					"referencing field '" + fname + "' in " + ei);
 		}
 
-		if (!fi.isReference()) {
-			return super.execute(ti);
-		}
-		
 		Object sym_v = ei.getFieldAttr(fi);
 		if (sym_v == null)
 			return super.execute(ti);
@@ -72,9 +68,11 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			ei.setFieldAttr(fi, fiVar);
 		}
 		
-		if (fiVar == null) {
+		if (fiVar == null)
 			fiVar = (Variable) ei.getFieldAttr(fi);
-		}
+		
+		if (!fi.isReference())
+			return super.execute(ti);
 		
 		if (fiVar.getName().contains("newNode"))
 			return super.execute(ti);

@@ -67,10 +67,6 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 					fname + " of uninitialized class: " + ci.getName());
 		}
 		
-		if (!fi.isReference()) {
-			return super.execute(ti);
-		}
-		
 		Object sym_v = ei.getFieldAttr(fi);
 		if (sym_v == null)
 			return super.execute(ti);
@@ -81,9 +77,11 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 			ei.setFieldAttr(fi, fiVar);
 		}
 		
-		if (fiVar == null) {
+		if (fiVar == null)
 			fiVar = (Variable) ei.getFieldAttr(fi);
-		}
+		
+		if (!fi.isReference())
+			return super.execute(ti);
 		
 		if (fiVar.getName().contains("newNode"))
 			return super.execute(ti);
