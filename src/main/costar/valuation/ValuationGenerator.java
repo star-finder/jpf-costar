@@ -81,28 +81,44 @@ public class ValuationGenerator {
 		
 		HashSet<Variable> initVars = new HashSet<Variable>();
 		
-//		for (FieldInfo field : insFields) {
-//			if (field.isFinal() || field.isPrivate() || field.isProtected()) {
-//				String name = "this_" + field.getName();
-//				String type = PathFinderUtils.toS2SATType(field.getType());
-//				
-//				initVars.add(new Variable(name, type));
-//			}
-//		}
-//		
-//		for (FieldInfo field : staFields) {
-//			if (field.isFinal() || field.isPrivate() || field.isProtected()) {
-//				String name = clsName + "_" + field.getName();
-//				String type = PathFinderUtils.toS2SATType(field.getType());
-//				
-//				initVars.add(new Variable(name, type));
-//			}
-//		}
+		for (FieldInfo field : insFields) {
+			if (field.isFinal() || field.isPrivate() || field.isProtected()) {
+				String name = "this_" + field.getName();
+				String type = PathFinderUtils.toS2SATType(field.getType());
+				
+				initVars.add(new Variable(name, type));
+			}
+		}
+		
+		for (FieldInfo field : staFields) {
+			if (field.isFinal() || field.isPrivate() || field.isProtected()) {
+				String name = clsName + "_" + field.getName();
+				String type = PathFinderUtils.toS2SATType(field.getType());
+				
+				initVars.add(new Variable(name, type));
+			}
+		}
+		
+		HashSet<Variable> formulaVars = new HashSet<Variable>();
+		
+		VarCollectVisitor varCollector = new VarCollectVisitor(formulaVars);
+		varCollector.visit(f);
+		
+//		System.out.println(initVars);
+		
+		java.util.Iterator<Variable> it = initVars.iterator();
+		
+		while (it.hasNext()) {
+			Variable var = it.next();
+			if (formulaVars.contains(var)) {
+				it.remove();
+			}
+		}
 		
 		Valuation valuation = new Valuation();
 		
-		System.out.println(knownTypeVars);
-		System.out.println(initVars);
+//		System.out.println(knownTypeVars);
+//		System.out.println(initVars);
 		
 		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation);
 		jpfGen.visit(f);
