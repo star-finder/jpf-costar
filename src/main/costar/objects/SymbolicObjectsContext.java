@@ -152,7 +152,7 @@ public class SymbolicObjectsContext {
 		for (int i = 0; i < numOfFields; i++) {
 			FieldInfo fi = ei.getFieldInfo(i);
 			
-			if (fi.getAttr() == null) {
+			if (ei.getFieldAttr(fi) == null) {
 				String name = eiName + "_" + fi.getName();
 				starlib.formula.Variable attr = new starlib.formula.Variable(name);
 			
@@ -168,7 +168,7 @@ public class SymbolicObjectsContext {
 				if (fi.isReference()) {
 					int fiRef = ei.getReferenceField(fi);
 					ElementInfo fei = heap.get(fiRef);
-					
+										
 					if (fei != null) processObject(fei, name);
 				}
 			}
