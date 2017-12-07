@@ -109,6 +109,7 @@ public class CoStarMethodExplorer {
 		}
 		
 		currValuation = initValuation;
+		System.out.println(currValuation);
 	}
 
 	public boolean advanceValuation() {
@@ -181,22 +182,22 @@ public class CoStarMethodExplorer {
 			stackIdx--;
 			int thisRef = sf.peek(stackIdx);
 			ElementInfo thisEi = heap.get(thisRef);
-			symContext.processObject(thisEi, "this", true);
+			symContext.processObject(thisEi, "this");
 			
-			int numOfFields = thisEi.getNumberOfFields();
-			for (int i = 0; i < numOfFields; i++) {
-				FieldInfo fi = thisEi.getFieldInfo(i);
-				String name = "this_" + fi.getName();
-				starlib.formula.Variable attr = new starlib.formula.Variable(name);
-				thisEi.setFieldAttr(fi, attr);
-				
-				byte tc = fi.getTypeCode();
-				Type<?> t = ConcolicUtil.forTypeCode(tc);
-				
-				Variable<?> var = Variable.create(t, name);
-				SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
-				symContext.addStackVar(symf);
-			}
+//			int numOfFields = thisEi.getNumberOfFields();
+//			for (int i = 0; i < numOfFields; i++) {
+//				FieldInfo fi = thisEi.getFieldInfo(i);
+//				String name = "this_" + fi.getName();
+//				starlib.formula.Variable attr = new starlib.formula.Variable(name);
+//				thisEi.setFieldAttr(fi, attr);
+//				
+//				byte tc = fi.getTypeCode();
+//				Type<?> t = ConcolicUtil.forTypeCode(tc);
+//				
+//				Variable<?> var = Variable.create(t, name);
+//				SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
+//				symContext.addSymbolicVar(symf);
+//			}
 		}
 
 		byte[] argTypes = methodInfo.getArgumentTypes();
@@ -219,16 +220,16 @@ public class CoStarMethodExplorer {
 				int ref = sf.peek(stackIdx);
 				ElementInfo ei = heap.get(ref);
 				if (ei != null)
-					symContext.processObject(ei, name, true);
+					symContext.processObject(ei, name);
 				stackMap.put(name, stackIdx);
 				Variable<?> var = Variable.create(BuiltinTypes.REF, name);
 				SymbolicParam<?> sp = new SymbolicParam<>(var, stackIdx);
-				symContext.addStackVar(sp);
+				symContext.addSymbolicVar(sp);
 			} else { // primitive type
 				Type<?> t = ConcolicUtil.forTypeCode(tc);
 				Variable<?> var = Variable.create(t, name);
 				SymbolicParam<?> sp = new SymbolicParam<>(var, stackIdx);
-				symContext.addStackVar(sp);
+				symContext.addSymbolicVar(sp);
 			}
 		}
 	}

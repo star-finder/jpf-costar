@@ -55,7 +55,7 @@ class DefaultObjectHandler implements SymbolicObjectHandler {
     else
       fis = ci.getDeclaredInstanceFields();
     for(FieldInfo fi : fis) {
-      ctx.processField(ei, fi, name + "." + fi.getName());
+//      ctx.processField(ei, fi, name + "." + fi.getName());
     }
   }
 

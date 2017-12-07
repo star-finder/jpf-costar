@@ -41,25 +41,25 @@ public class ConValGenVisitor extends ValGenVisitor {
 				boolean constains2 = initVars.contains(var2);
 				
 				if (!constains1 && constains2) {
-					initVars.add(var1);
-					
 					Type<?> type = getType(var1.getType());
 					String name = var1.getName();
 					Object value = valuation.getValue(var2.getName());
 					
 					ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 					valuation.addEntry(e);
+					
+					initVars.add(var1);
 				}
 				
 				if (constains1 && !constains2) {
-					initVars.add(var2);
-					
 					Type<?> type = getType(var2.getType());
 					String name = var2.getName();
 					Object value = valuation.getValue(var1.getName());
 					
 					ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 					valuation.addEntry(e);
+					
+					initVars.add(var2);
 				}
 				return;
 			}
@@ -67,14 +67,14 @@ public class ConValGenVisitor extends ValGenVisitor {
 				// former EqNullTerm
 				Variable var1 = (Variable) exp1;
 				if (!initVars.contains(var1)) {
-					initVars.add(var1);
-					
 					Type<?> type = BuiltinTypes.REF;
 					String name = var1.getName();
 					Object value = new Integer(0);
 					
 					ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 					valuation.addEntry(e);
+					
+					initVars.add(var1);
 				}
 				return;
 			}

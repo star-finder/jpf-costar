@@ -49,7 +49,7 @@ class ReferenceArrayHandler implements SymbolicObjectHandler {
       int elemRef = ei.getReferenceElement(i);
       ElementInfo elem = heap.get(elemRef);
       if(elem != null) {
-        ctx.processElement(ei, i, name + "[" + i + "]", false);
+//        ctx.processElement(ei, i, name + "[" + i + "]", false);
       }
     }
   }

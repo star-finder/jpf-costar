@@ -29,6 +29,7 @@ import costar.SymbolicParam;
 import costar.SymbolicVariable;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Variable;
+import gov.nasa.jpf.constraints.types.BuiltinTypes;
 import gov.nasa.jpf.constraints.types.Type;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.AnnotationInfo;
@@ -45,195 +46,237 @@ import gov.nasa.jpf.vm.VM;
  *
  */
 public class SymbolicObjectsContext {
-  
-  private static transient JPFLogger logger = JPF.getLogger("jdart");
-    
-  private static final Map<String,SymbolicVariable<?>> globalSymbolics = new HashMap<>();
-  
-  public static void analyzeStatic(VM vm, ClassInfo ci) {
-    SymbolicObjectsContext ctx = new SymbolicObjectsContext(vm.getHeap(), Predicates.alwaysFalse(), Predicates.alwaysFalse(), Predicates.alwaysFalse());
-    FieldInfo[] fis = ci.getDeclaredStaticFields();
-    ElementInfo sei = ci.getStaticElementInfo();
-    for(FieldInfo fi : fis) {
-      if(isSymbolicField(fi)) {
-        String fqn = ci.getName() + "." + fi.getName();
-        ctx.processField(sei, fi, fqn);
-      }
-    }
-    
-    globalSymbolics.putAll(ctx.symbolicVars);
-  }
-  
-  public static void analyzeNewInstance(ThreadInfo ti, ElementInfo ei) {
-    SymbolicObjectsContext ctx = new SymbolicObjectsContext(ti.getHeap(), Predicates.alwaysFalse(), Predicates.alwaysFalse(), Predicates.alwaysFalse());
-    ClassInfo ci = ei.getClassInfo();
-    FieldInfo[] fis = ci.getDeclaredInstanceFields();
-    for(FieldInfo fi : fis) {
-      if(isSymbolicField(fi)) {
-        String fqn = ci.getName() + "." + fi.getName();
-        ctx.processField(ei, fi, fqn);
-      }
-    }
-    globalSymbolics.putAll(ctx.symbolicVars);
-  }
-  
-  // "Special" handlers for container classes
-  private static final SymbolicObjectHandler[] SPECIAL_HANDLERS = {
-    new ArrayListHandler(),
-    new HashMapHandler(),
-    new VectorHandler(),
-    new LinkedListHandler()
-  };
-  
-  // Basic handlers
-  private static final SymbolicObjectHandler[] BASIC_HANDLERS = {
-    new PrimitiveArrayHandler(),
-    new ReferenceArrayHandler(),
-    new StringHandler(),
-    new DefaultObjectHandler()
-  };
-  
-  private final Heap heap;
-  private final Predicate<? super String> exclude;
-  private final Predicate<? super String> include;
-  private final Predicate<? super ClassInfo> excludeSpecial;
-  
-  private final Map<String,SymbolicVariable<?>> symbolicVars;
 
-  /**
-   * Constructor.
-   * @param heap the heap
-   * @param exclude object identifiers to explicitly exclude
-   * @param include object identifiers to explicitly include
-   * @param excludeSpecial classe
-   */
-  public SymbolicObjectsContext(Heap heap, Predicate<? super String> exclude, Predicate<? super String> include,
-      Predicate<? super ClassInfo> excludeSpecial) {
-    this.heap = heap;
-    this.exclude = exclude;
-    this.include = include;
-    this.excludeSpecial = excludeSpecial;
-    this.symbolicVars = new HashMap<>(/*globalSymbolics*/);
-  }
+	private static transient JPFLogger logger = JPF.getLogger("jdart");
 
-  public Heap getHeap() {
-    return heap;
-  }
-  
-  private SymbolicObjectHandler lookupHandler(ClassInfo ci) {
-    if(!excludeSpecial.apply(ci)) {
-      for(SymbolicObjectHandler shndlr : SPECIAL_HANDLERS) {
-        if(shndlr.initialize(ci))
-          return shndlr;
-      }
-    }
-    
-    for(SymbolicObjectHandler hndlr : BASIC_HANDLERS) {
-      if(hndlr.initialize(ci))
-        return hndlr;
-    }
-    
-    throw new IllegalStateException("Should not happen");
-  }
-  
-  public void processObject(ElementInfo ei, String name) {
-    processObject(ei, name, false);
-  }
-  
-  public void processObject(ElementInfo ei, String name, boolean forceSymbolic) {
-    if(!forceSymbolic && !makeSymbolic(name)) {
-      logger.finest("Not making " + name + " symbolic");
-      return;
-    }
-    logger.finest("Making " + name + " symbolic");
-    SymbolicObject attr = ei.getObjectAttr(SymbolicObject.class);
-    if(attr != null)
-      return;
-    attr = new SymbolicObject(name);
-    ei.defreeze();
-    ei.setObjectAttr(attr);
-    doProcessObject(ei, name);
-    //ei.freeze();
-  }
-  
-  public void processArrayElement(Variable<?> var, ElementInfo arrayElem, int slotId) {
-    logger.finest("processing array element " + var.getName());
-    SymbolicArrayElem<?> symVar = new SymbolicArrayElem<>(var, arrayElem, slotId);
-    symbolicVars.put(symVar.getVariable().getName(), symVar);
-  }
-  
-  private SymbolicObjectHandler getSymbolicObjectHandler(ClassInfo ci) {
-    SymbolicObjectHandler hndlr = ci.getAttr(SymbolicObjectHandler.class);
-    if(hndlr == null) {
-      hndlr = lookupHandler(ci);
-      ci.setAttr(hndlr);
-    }
-    return hndlr;
-  }
-  
-  private void doProcessObject(ElementInfo ei, String name) {
-    ClassInfo ci = ei.getClassInfo();
-    SymbolicObjectHandler hndlr = getSymbolicObjectHandler(ci);
-    hndlr.annotateObject(ei, name, this);
-  }
-  
-  public void processField(ElementInfo ei, FieldInfo fi, String name) {
-    logger.finest("processing field " + name);
-    boolean force = isSymbolicField(fi);
-    if(fi.isReference()) {
-      int ref = ei.getReferenceField(fi);
-      ElementInfo elem = heap.get(ref);
-      if(elem == null)
-        return;
-      processObject(elem, name, force);
-    }
-    else {
-      processPrimitiveField(ei, fi, name, force);
-    }
-  }
-  
-  private void processPrimitiveField(ElementInfo ei, FieldInfo fi, String name, boolean forceSymbolic) {
-    boolean makeSymbolic = makeSymbolic(name);
-    logger.finest("processing primitive field " + name + 
-            ", force: " + forceSymbolic + ", makeSymbolic: " + makeSymbolic);
-    if(!forceSymbolic && !makeSymbolic)
-      return;
-    if(fi.isStatic() && fi.isFinal()) // static final are most likely constants..
-      return;
-    Type<?> type = ConcolicUtil.forTypeCode(fi.getTypeCode());
-    Variable<?> var = Variable.create(type, name);
-    SymbolicField<?> symVar = new SymbolicField<>(var, ei, fi);
-    logger.finest("creating variable: " + symVar);
-    symbolicVars.put(name, symVar);
-    ei.setFieldAttr(fi, var);
-  }
-  
-  private boolean makeSymbolic(String name) {
-    if(exclude.apply(name))
-      return false;
-    return include.apply(name);
-  }
+	private static final Map<String, SymbolicVariable<?>> globalSymbolics = new HashMap<>();
 
-  public void processElement(ElementInfo ei, int i, String name, boolean forceSymbolic) {
-    if(ei.isReferenceArray()) {
-      int ref = ei.getReferenceElement(i);
-      ElementInfo elem = heap.get(ref);
-      if(elem == null)
-        return;
-      processObject(elem, name, forceSymbolic);
-    }
-  }
+	// public static void analyzeStatic(VM vm, ClassInfo ci) {
+	// SymbolicObjectsContext ctx = new SymbolicObjectsContext(vm.getHeap(),
+	// Predicates.alwaysFalse(), Predicates.alwaysFalse(),
+	// Predicates.alwaysFalse());
+	// FieldInfo[] fis = ci.getDeclaredStaticFields();
+	// ElementInfo sei = ci.getStaticElementInfo();
+	// for(FieldInfo fi : fis) {
+	// if(isSymbolicField(fi)) {
+	// String fqn = ci.getName() + "." + fi.getName();
+	// ctx.processField(sei, fi, fqn);
+	// }
+	// }
+	//
+	// globalSymbolics.putAll(ctx.symbolicVars);
+	// }
 
-  public void addStackVar(SymbolicVariable<?> sp) {
-    symbolicVars.put(sp.getVariable().getName(), sp);
-  }
-  
-  public Collection<SymbolicVariable<?>> getSymbolicVars() {
-    return symbolicVars.values();
-  }
-  
-  public static boolean isSymbolicField(FieldInfo fi) {
-    AnnotationInfo ai = fi.getAnnotation("gov.nasa.jpf.jdart.Symbolic");
-    return (ai != null && ai.valueAsString().equalsIgnoreCase("true"));
-  }
+	// public static void analyzeNewInstance(ThreadInfo ti, ElementInfo ei) {
+	// SymbolicObjectsContext ctx = new SymbolicObjectsContext(ti.getHeap(),
+	// Predicates.alwaysFalse(), Predicates.alwaysFalse(),
+	// Predicates.alwaysFalse());
+	// ClassInfo ci = ei.getClassInfo();
+	// FieldInfo[] fis = ci.getDeclaredInstanceFields();
+	// for(FieldInfo fi : fis) {
+	// if(isSymbolicField(fi)) {
+	// String fqn = ci.getName() + "." + fi.getName();
+	// ctx.processField(ei, fi, fqn);
+	// }
+	// }
+	// globalSymbolics.putAll(ctx.symbolicVars);
+	// }
+
+	// "Special" handlers for container classes
+	// private static final SymbolicObjectHandler[] SPECIAL_HANDLERS = {
+	// new ArrayListHandler(),
+	// new HashMapHandler(),
+	// new VectorHandler(),
+	// new LinkedListHandler()
+	// };
+
+	// Basic handlers
+	// private static final SymbolicObjectHandler[] BASIC_HANDLERS = {
+	// new PrimitiveArrayHandler(),
+	// new ReferenceArrayHandler(),
+	// new StringHandler(),
+	// new DefaultObjectHandler()
+	// };
+
+	private final Heap heap;
+	// private final Predicate<? super String> exclude;
+	// private final Predicate<? super String> include;
+	// private final Predicate<? super ClassInfo> excludeSpecial;
+
+	private final Map<String, SymbolicVariable<?>> symbolicVars;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param heap
+	 *            the heap
+	 * @param exclude
+	 *            object identifiers to explicitly exclude
+	 * @param include
+	 *            object identifiers to explicitly include
+	 * @param excludeSpecial
+	 *            classe
+	 */
+	public SymbolicObjectsContext(Heap heap, Predicate<? super String> exclude, Predicate<? super String> include,
+			Predicate<? super ClassInfo> excludeSpecial) {
+		this.heap = heap;
+		// this.exclude = exclude;
+		// this.include = include;
+		// this.excludeSpecial = excludeSpecial;
+		this.symbolicVars = new HashMap<>(/* globalSymbolics */);
+	}
+
+	public Heap getHeap() {
+		return heap;
+	}
+
+	// private SymbolicObjectHandler lookupHandler(ClassInfo ci) {
+	// if(!excludeSpecial.apply(ci)) {
+	// for(SymbolicObjectHandler shndlr : SPECIAL_HANDLERS) {
+	// if(shndlr.initialize(ci))
+	// return shndlr;
+	// }
+	// }
+	//
+	// for(SymbolicObjectHandler hndlr : BASIC_HANDLERS) {
+	// if(hndlr.initialize(ci))
+	// return hndlr;
+	// }
+	//
+	// throw new IllegalStateException("Should not happen");
+	// }
+
+	public void processObject(ElementInfo ei, String eiName) {
+		int numOfFields = ei.getNumberOfFields();
+		
+		for (int i = 0; i < numOfFields; i++) {
+			FieldInfo fi = ei.getFieldInfo(i);
+			
+			if (fi.getAttr() == null) {
+				String name = eiName + "_" + fi.getName();
+				starlib.formula.Variable attr = new starlib.formula.Variable(name);
+			
+				ei.setFieldAttr(fi, attr);
+
+				byte tc = fi.getTypeCode();
+				Type<?> t = ConcolicUtil.forTypeCode(tc);
+	
+				Variable<?> var = Variable.create(t, name);
+				SymbolicField<?> symf = new SymbolicField<>(var, ei, fi);
+				addSymbolicVar(symf);
+				
+				if (fi.isReference()) {
+					int fiRef = ei.getReferenceField(fi);
+					ElementInfo fei = heap.get(fiRef);
+					
+					if (fei != null) processObject(fei, name);
+				}
+			}
+		}
+		
+		// processObject(ei, name, false);
+	}
+
+	// public void processObject(ElementInfo ei, String name, boolean
+	// forceSymbolic) {
+	// if(!forceSymbolic && !makeSymbolic(name)) {
+	// logger.finest("Not making " + name + " symbolic");
+	// return;
+	// }
+	// logger.finest("Making " + name + " symbolic");
+	// SymbolicObject attr = ei.getObjectAttr(SymbolicObject.class);
+	// if(attr != null)
+	// return;
+	// attr = new SymbolicObject(name);
+	// ei.defreeze();
+	// ei.setObjectAttr(attr);
+	// doProcessObject(ei, name);
+	// //ei.freeze();
+	// }
+
+	// public void processArrayElement(Variable<?> var, ElementInfo arrayElem,
+	// int slotId) {
+	// logger.finest("processing array element " + var.getName());
+	// SymbolicArrayElem<?> symVar = new SymbolicArrayElem<>(var, arrayElem,
+	// slotId);
+	// symbolicVars.put(symVar.getVariable().getName(), symVar);
+	// }
+
+	// private SymbolicObjectHandler getSymbolicObjectHandler(ClassInfo ci) {
+	// SymbolicObjectHandler hndlr = ci.getAttr(SymbolicObjectHandler.class);
+	// if(hndlr == null) {
+	// hndlr = lookupHandler(ci);
+	// ci.setAttr(hndlr);
+	// }
+	// return hndlr;
+	// }
+
+	// private void doProcessObject(ElementInfo ei, String name) {
+	// ClassInfo ci = ei.getClassInfo();
+	// SymbolicObjectHandler hndlr = getSymbolicObjectHandler(ci);
+	// hndlr.annotateObject(ei, name, this);
+	// }
+
+	// public void processField(ElementInfo ei, FieldInfo fi, String name) {
+	// logger.finest("processing field " + name);
+	// boolean force = isSymbolicField(fi);
+	// if(fi.isReference()) {
+	// int ref = ei.getReferenceField(fi);
+	// ElementInfo elem = heap.get(ref);
+	// if(elem == null)
+	// return;
+	// processObject(elem, name, force);
+	// }
+	// else {
+	// processPrimitiveField(ei, fi, name, force);
+	// }
+	// }
+
+	// private void processPrimitiveField(ElementInfo ei, FieldInfo fi, String
+	// name, boolean forceSymbolic) {
+	// boolean makeSymbolic = makeSymbolic(name);
+	// logger.finest("processing primitive field " + name +
+	// ", force: " + forceSymbolic + ", makeSymbolic: " + makeSymbolic);
+	// if(!forceSymbolic && !makeSymbolic)
+	// return;
+	// if(fi.isStatic() && fi.isFinal()) // static final are most likely
+	// constants..
+	// return;
+	// Type<?> type = ConcolicUtil.forTypeCode(fi.getTypeCode());
+	// Variable<?> var = Variable.create(type, name);
+	// SymbolicField<?> symVar = new SymbolicField<>(var, ei, fi);
+	// logger.finest("creating variable: " + symVar);
+	// symbolicVars.put(name, symVar);
+	// ei.setFieldAttr(fi, var);
+	// }
+
+	// private boolean makeSymbolic(String name) {
+	// if(exclude.apply(name))
+	// return false;
+	// return include.apply(name);
+	// }
+
+	// public void processElement(ElementInfo ei, int i, String name, boolean
+	// forceSymbolic) {
+	// if(ei.isReferenceArray()) {
+	// int ref = ei.getReferenceElement(i);
+	// ElementInfo elem = heap.get(ref);
+	// if(elem == null)
+	// return;
+	// processObject(elem, name, forceSymbolic);
+	// }
+	// }
+
+	public void addSymbolicVar(SymbolicVariable<?> sp) {
+		symbolicVars.put(sp.getVariable().getName(), sp);
+	}
+
+	public Collection<SymbolicVariable<?>> getSymbolicVars() {
+		return symbolicVars.values();
+	}
+
+	// public static boolean isSymbolicField(FieldInfo fi) {
+	// AnnotationInfo ai = fi.getAnnotation("gov.nasa.jpf.jdart.Symbolic");
+	// return (ai != null && ai.valueAsString().equalsIgnoreCase("true"));
+	// }
 }

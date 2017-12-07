@@ -56,7 +56,7 @@ class PrimitiveArrayHandler implements SymbolicObjectHandler {
     for(int i = 0; i < size; i++) {
       Variable<?> var = Variable.create(type, name + "[" + i + "]");
       ei.setElementAttr(i, var);
-      ctx.processArrayElement(var, ei, i);
+//      ctx.processArrayElement(var, ei, i);
     }
     //ei.freeze();
   }

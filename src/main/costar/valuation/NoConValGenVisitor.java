@@ -43,45 +43,43 @@ public class NoConValGenVisitor extends ValGenVisitor {
 			Variable var2 = (Variable) exp2;
 			
 			// TODO: re-factor
-			// Start copying from ConValGenVisitor
 			boolean constains1 = initVars.contains(var1);
 			boolean constains2 = initVars.contains(var2);
 			
 			if (!constains1 && constains2) {
-				initVars.add(var1);
-				
 				Type<?> type = getType(var1.getType());
 				String name = var1.getName();
 				Object value = valuation.getValue(var2.getName());
 				
 				ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 				valuation.addEntry(e);
+				
+				initVars.add(var1);
 			}
 			
 			if (constains1 && !constains2) {
-				initVars.add(var2);
-				
 				Type<?> type = getType(var2.getType());
 				String name = var2.getName();
 				Object value = valuation.getValue(var1.getName());
 				
 				ValuationEntry<?> e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 				valuation.addEntry(e);
+				
+				initVars.add(var2);
 			}
-			// End copying from ConTestGenVisitor
-			
 			
 			if (!constains1 && !constains2) {
-				initVars.add(var1);
-				initVars.add(var2);
 				genNewObjectValuation(var1);
 				
-				Type type = BuiltinTypes.SINT32;
+				Type type = BuiltinTypes.REF;
 				String name = var2.getName();
 				Object value = valuation.getValue(var1.getName());
 				
 				ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 				valuation.addEntry(e);
+				
+				initVars.add(var1);
+				initVars.add(var2);
 			}
 		}
 	}
