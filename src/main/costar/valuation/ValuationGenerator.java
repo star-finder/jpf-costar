@@ -101,6 +101,9 @@ public class ValuationGenerator {
 		
 		Valuation valuation = new Valuation();
 		
+		System.out.println(knownTypeVars);
+		System.out.println(initVars);
+		
 		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation);
 		jpfGen.visit(f);
 		
