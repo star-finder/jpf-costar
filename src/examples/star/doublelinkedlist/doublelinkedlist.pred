@@ -1,11 +1,11 @@
-pred dll1(header,size) == header::doublelinkedlist_DoubleLinkedList__Entry<ele,header,header> & size=0 ||
-  header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll1(next,header,header,prev,size);
+pred dll1(header,size) == header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> & next=header & prev=header & size=0 ||
+  header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll1(next,prevE,nextE,prev,size) & prevE = header & nextE = header;
   
-pred nndll1(curr,prev,header,prevH,size) == curr::doublelinkedlist_DoubleLinkedList__Entry<ele,header,prev> & prevH=curr & size=1 ||
-  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll1(next,curr,header,prevH,size1) & size=size1+1;
+pred nndll1(curr,prev,nextE,prevH,size) == curr::doublelinkedlist_DoubleLinkedList__Entry<ele,nextE,prev> & prevH=curr & size=1 ||
+  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll1(next,curr,nextE,prevH,size1) & size=size1+1;
 
-pred dll2(header,size) == header::doublelinkedlist_DoubleLinkedList__Entry<ele,header,header> & size=0 ||
-  header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,header,header,next,size);
+pred dll2(header,size) == header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> & next=header & prev=header & size=0 ||
+  header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,nextE,prevE,next,size) & prevE = header & nextE = header;
 
-pred nndll2(curr,next,header,nextH,size) == curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,header> & nextH=curr & size=1 ||
-  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,curr,header,nextH,size1) & size=size1+1
+pred nndll2(curr,next,prevE,nextH,size) == curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prevE> & nextH=curr & size=1 ||
+  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,curr,prevE,nextH,size1) & size=size1+1

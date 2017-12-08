@@ -109,7 +109,6 @@ public class CoStarMethodExplorer {
 		}
 		
 		currValuation = initValuation;
-		System.out.println(currValuation);
 	}
 
 	public boolean advanceValuation() {
@@ -152,13 +151,13 @@ public class CoStarMethodExplorer {
 		initializeSymbolicParams(ti, sf);
 
 		List<Variable<?>> vlist = new ArrayList<>();
-		logger.info("Symbolic variables:");
-		logger.info("===================");
-		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
-			logger.info(sv.getVariable().getName());
-			vlist.add(sv.getVariable());
-		}
-		logger.info();
+//		logger.info("Symbolic variables:");
+//		logger.info("===================");
+//		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
+//			logger.info(sv.getVariable().getName());
+//			vlist.add(sv.getVariable());
+//		}
+//		logger.info();
 	}
 
 	private void initializeSymbolicStatic(ThreadInfo ti) {

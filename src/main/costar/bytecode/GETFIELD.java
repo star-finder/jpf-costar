@@ -68,11 +68,11 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			ei.setFieldAttr(fi, fiVar);
 		}
 		
-		if (fiVar == null)
-			fiVar = (Variable) ei.getFieldAttr(fi);
-		
 		if (!fi.isReference())
 			return super.execute(ti);
+		
+		if (fiVar == null)
+			fiVar = (Variable) ei.getFieldAttr(fi);
 		
 		if (fiVar.getName().contains("newNode"))
 			return super.execute(ti);

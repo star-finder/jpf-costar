@@ -103,9 +103,7 @@ public class ValuationGenerator {
 		
 		VarCollectVisitor varCollector = new VarCollectVisitor(formulaVars);
 		varCollector.visit(f);
-		
-//		System.out.println(initVars);
-		
+				
 		java.util.Iterator<Variable> it = initVars.iterator();
 		
 		while (it.hasNext()) {
@@ -116,9 +114,6 @@ public class ValuationGenerator {
 		}
 		
 		Valuation valuation = new Valuation();
-		
-//		System.out.println(knownTypeVars);
-//		System.out.println(initVars);
 		
 		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation);
 		jpfGen.visit(f);

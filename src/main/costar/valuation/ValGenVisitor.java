@@ -44,7 +44,7 @@ public class ValGenVisitor extends InitVarsVisitor {
 	
 	@Override
 	public void visit(Formula formula) {
-		logger.info("Formula to valuation = " + formula);
+//		logger.info("Formula to valuation = " + formula);
 		HeapFormula hf = formula.getHeapFormula();
 		PureFormula pf = formula.getPureFormula();
 				

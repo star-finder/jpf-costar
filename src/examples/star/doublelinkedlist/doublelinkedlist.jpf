@@ -42,7 +42,7 @@ concolic.method.get.config=all_fields_symbolic
 concolic.method.indexOf=doublelinkedlist.DoubleLinkedList.indexOf(o:java.lang.Object)
 concolic.method.indexOf.config=all_fields_symbolic
 
-concolic.method.inList=doublelinkedlist.DoubleLinkedList.inList(e:doublelinkedlist.DoubleLinkedList.Entry)
+concolic.method.inList=doublelinkedlist.DoubleLinkedList.inList(e:doublelinkedlist.DoubleLinkedList$Entry)
 concolic.method.inList.config=all_fields_symbolic
 
 concolic.method.lastIndexOf=doublelinkedlist.DoubleLinkedList.lastIndexOf(o:java.lang.Object)
