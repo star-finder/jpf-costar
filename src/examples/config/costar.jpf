@@ -9,6 +9,5 @@ shell=costar.CoStar
 # logging and jpf output
 #
 log.info=costar
-log.finest=jdart
 
 test.path=src/output
