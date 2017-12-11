@@ -1,0 +1,5 @@
+@Test
+public void test_get0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	list.get(0);
+}

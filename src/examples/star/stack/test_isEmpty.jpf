@@ -5,3 +5,4 @@ target.args=isEmpty
 concolic.method=isEmpty
 
 costar.precondition=pre isEmpty == stack(this_topOfStack)
+star.test_init=${jpf-costar}/src/init/star/stack/test_isEmpty.txt

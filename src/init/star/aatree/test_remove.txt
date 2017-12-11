@@ -1,0 +1,5 @@
+@Test
+public void test_remove0() throws Exception {
+	AATree tree = new AATree();
+	tree.remove(0);
+}

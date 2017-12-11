@@ -1,0 +1,5 @@
+@Test
+public void test_find0() throws Exception {
+	AvlTree tree = new AvlTree();
+	tree.find(0);
+}

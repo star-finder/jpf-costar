@@ -1,0 +1,5 @@
+@Test
+public void test_toArray0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	list.toArray();
+}

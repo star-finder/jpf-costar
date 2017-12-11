@@ -1,0 +1,5 @@
+@Test
+public void test_removeLast0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	list.removeLast();
+}

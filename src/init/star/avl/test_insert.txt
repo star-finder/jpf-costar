@@ -1,0 +1,5 @@
+@Test
+public void test_insert0() throws Exception {
+	AvlTree tree = new AvlTree();
+	tree.insert(0);
+}

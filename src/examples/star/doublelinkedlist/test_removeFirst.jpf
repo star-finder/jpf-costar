@@ -5,3 +5,4 @@ target.args=removeFirst
 concolic.method=removeFirst
 
 costar.precondition=pre removeFirst == dll1(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_removeFirst.txt

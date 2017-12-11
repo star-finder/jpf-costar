@@ -1,0 +1,5 @@
+@Test
+public void test_contains0() throws Exception {
+	AATree tree = new AATree();
+	tree.contains(0);
+}

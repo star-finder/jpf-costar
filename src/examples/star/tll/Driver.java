@@ -15,7 +15,7 @@ public class Driver {
 		tll.root.parent = null;
 		tll.root.left = null;
 		tll.root.right = null;
-		tll.root.next = new Node();
+		tll.root.next = null;
 		
 		switch (args[0]) {
 		case "positiveLeafCount":

@@ -5,3 +5,4 @@ target.args=contains
 concolic.method=contains
 
 costar.precondition=pre contains == aat(this_root, this_nullNode)
+star.test_init=${jpf-costar}/src/init/star/aatree/test_contains.txt

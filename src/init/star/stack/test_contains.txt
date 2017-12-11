@@ -1,0 +1,5 @@
+@Test
+public void test_contains0() throws Exception {
+	StackLi stack = new StackLi();
+	stack.contains(null);
+}

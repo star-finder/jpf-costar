@@ -5,3 +5,4 @@ target.args=pop
 concolic.method=pop
 
 costar.precondition=pre pop == stack(this_topOfStack)
+star.test_init=${jpf-costar}/src/init/star/stack/test_pop.txt

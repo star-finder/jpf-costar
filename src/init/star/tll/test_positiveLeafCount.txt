@@ -1,0 +1,11 @@
+@Test
+public void test_positiveLeafCount0() throws Exception {
+	Tll tll = new Tll();
+	tll.root = new Node();
+	tll.root.val = 0;
+	tll.root.parent = null;
+	tll.root.left = null;
+	tll.root.right = null;
+	tll.root.next = null;
+	tll.positiveLeafCount();
+}

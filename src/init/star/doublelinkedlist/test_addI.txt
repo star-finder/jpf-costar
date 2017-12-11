@@ -1,0 +1,5 @@
+@Test
+public void test_addI0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	list.addI(0,null);
+}

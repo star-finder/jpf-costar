@@ -1,0 +1,5 @@
+@Test
+public void test_findMin0() throws Exception {
+	BinarySearchTree tree = new BinarySearchTree();
+	tree.findMin();
+}

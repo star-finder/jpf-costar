@@ -1,0 +1,5 @@
+@Test
+public void test_remove0() throws Exception {
+	BinarySearchTree tree = new BinarySearchTree();
+	tree.remove(0);
+}

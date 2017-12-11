@@ -1,0 +1,5 @@
+@Test
+public void test_topAndPop0() throws Exception {
+	StackLi stack = new StackLi();
+	stack.topAndPop();
+}

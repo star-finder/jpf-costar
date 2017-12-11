@@ -5,3 +5,4 @@ target.args=push
 concolic.method=push
 
 costar.precondition=pre push == stack(this_topOfStack)
+star.test_init=${jpf-costar}/src/init/star/stack/test_push.txt

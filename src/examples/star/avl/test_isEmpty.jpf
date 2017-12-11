@@ -5,3 +5,4 @@ target.args=isEmpty
 concolic.method=isEmpty
 
 costar.precondition=pre isEmpty == avl(this_root)
+star.test_init=${jpf-costar}/src/init/star/avl/test_isEmpty.txt

@@ -5,3 +5,4 @@ target.args=inList
 concolic.method=inList
 
 costar.precondition=pre inList == dll1(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_inList.txt

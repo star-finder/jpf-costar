@@ -1,0 +1,5 @@
+@Test
+public void test_set0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	list.set(0,null);
+}

@@ -5,3 +5,4 @@ target.args=find
 concolic.method=find
 
 costar.precondition=pre find == this__header::MyLislinkedlist_MyListNodetNode<element,next> * sll(next)
+star.test_init=${jpf-costar}/src/init/star/linkedlist/test_find.txt

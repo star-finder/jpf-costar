@@ -1,0 +1,5 @@
+@Test
+public void test_insert0() throws Exception {
+	BinarySearchTree tree = new BinarySearchTree();
+	tree.insert(0);
+}

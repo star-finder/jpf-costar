@@ -5,3 +5,4 @@ target.args=insert
 concolic.method=insert
 
 costar.precondition=pre insert == avl(this_root)
+star.test_init=${jpf-costar}/src/init/star/avl/test_insert.txt

@@ -5,3 +5,4 @@ target.args=top
 concolic.method=top
 
 costar.precondition=pre top == stack(this_topOfStack)
+star.test_init=${jpf-costar}/src/init/star/stack/test_top.txt

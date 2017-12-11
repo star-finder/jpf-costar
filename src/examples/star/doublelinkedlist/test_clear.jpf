@@ -5,3 +5,4 @@ target.args=clear
 concolic.method=clear
 
 costar.precondition=pre clear == dll1(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_clear.txt

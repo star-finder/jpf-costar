@@ -5,3 +5,4 @@ target.args=containsKey
 concolic.method=containsKey
 
 costar.precondition=pre containsKey == rbt(this_root,this_size)
+star.test_init=${jpf-costar}/src/init/star/rbt/test_containsKey.txt

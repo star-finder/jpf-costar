@@ -5,3 +5,4 @@ target.args=getFirst
 concolic.method=getFirst
 
 costar.precondition=pre getFirst == dll1(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_getFirst.txt

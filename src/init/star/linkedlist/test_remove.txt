@@ -1,0 +1,5 @@
+@Test
+public void test_remove0() throws Exception {
+	MyLinkedList list = new MyLinkedList();
+	list.remove(null);
+}

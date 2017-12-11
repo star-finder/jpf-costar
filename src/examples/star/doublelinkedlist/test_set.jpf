@@ -5,3 +5,4 @@ target.args=set
 concolic.method=set
 
 costar.precondition=pre set == dll1(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_set.txt

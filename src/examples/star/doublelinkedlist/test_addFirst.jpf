@@ -5,3 +5,4 @@ target.args=addFirst
 concolic.method=addFirst
 
 costar.precondition=pre addFirst == dll1(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_addFirst.txt

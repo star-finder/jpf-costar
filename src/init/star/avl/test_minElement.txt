@@ -1,0 +1,5 @@
+@Test
+public void test_minElement0() throws Exception {
+	AvlTree tree = new AvlTree();
+	tree.minElement(0);
+}

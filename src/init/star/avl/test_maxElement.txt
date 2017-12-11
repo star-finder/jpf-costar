@@ -1,0 +1,5 @@
+@Test
+public void test_maxElement0() throws Exception {
+	AvlTree tree = new AvlTree();
+	tree.maxElement(0);
+}

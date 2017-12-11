@@ -1,0 +1,5 @@
+@Test
+public void test_indexOf0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	list.indexOf(null);
+}

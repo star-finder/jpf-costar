@@ -1,0 +1,5 @@
+@Test
+public void test_isFull0() throws Exception {
+	StackLi stack = new StackLi();
+	stack.isFull();
+}

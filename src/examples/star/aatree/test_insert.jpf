@@ -5,3 +5,4 @@ target.args=insert
 concolic.method=insert
 
 costar.precondition=pre insert == aat(this_root, this_nullNode)
+star.test_init=${jpf-costar}/src/init/star/aatree/test_insert.txt

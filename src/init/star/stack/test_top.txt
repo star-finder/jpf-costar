@@ -1,0 +1,5 @@
+@Test
+public void test_top0() throws Exception {
+	StackLi stack = new StackLi();
+	stack.top();
+}

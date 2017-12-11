@@ -5,3 +5,4 @@ target.args=removeLast
 concolic.method=removeLast
 
 costar.precondition=pre removeLast == dll2(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_removeLast.txt

@@ -5,3 +5,4 @@ target.args=toArray
 concolic.method=toArray
 
 costar.precondition=pre toArray == dll1(this_header,this_size)
+star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_toArray.txt

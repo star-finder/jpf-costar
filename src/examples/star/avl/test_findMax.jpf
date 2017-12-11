@@ -5,3 +5,4 @@ target.args=findMax
 concolic.method=findMax
 
 costar.precondition=pre findMax == avl(this_root)
+star.test_init=${jpf-costar}/src/init/star/avl/test_findMax.txt

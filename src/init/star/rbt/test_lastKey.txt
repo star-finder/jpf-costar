@@ -1,0 +1,5 @@
+@Test
+public void test_lastKey0() throws Exception {
+	TreeMap tree = new TreeMap();
+	tree.lastKey();
+}

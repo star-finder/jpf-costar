@@ -5,3 +5,4 @@ target.args=findPrevious
 concolic.method=findPrevious
 
 costar.precondition=pre findPrevious == this__header::linkedlist_MyListNode<element,next> * sll(next)
+star.test_init=${jpf-costar}/src/init/star/linkedlist/test_findPrevious.txt

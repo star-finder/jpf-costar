@@ -5,3 +5,4 @@ target.args=get
 concolic.method=get
 
 costar.precondition=pre get == rbt(this_root,this_size)
+star.test_init=${jpf-costar}/src/init/star/rbt/test_get.txt

@@ -1,0 +1,5 @@
+@Test
+public void test_removeI0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	list.removeI(0);
+}

@@ -5,3 +5,4 @@ target.args=minElement
 concolic.method=minElement
 
 costar.precondition=pre minElement == avl(this_root)
+star.test_init=${jpf-costar}/src/init/star/avl/test_minElement.txt
