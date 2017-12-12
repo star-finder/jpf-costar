@@ -7,7 +7,7 @@ import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 
-public class IF_ICMPLT extends gov.nasa.jpf.jvm.bytecode.IF_ICMPEQ {
+public class IF_ICMPLT extends gov.nasa.jpf.jvm.bytecode.IF_ICMPLT {
 	
 	public IF_ICMPLT(int index) {
 		super(index);
@@ -30,7 +30,7 @@ public class IF_ICMPLT extends gov.nasa.jpf.jvm.bytecode.IF_ICMPEQ {
 		}
 		
 		Instruction nxtInstr = IFInstrSymbHelper.
-				getNextInstructionAndSetPCChoice(ti, this, exp1, exp2, Comparator.EQ, Comparator.NE);
+				getNextInstructionAndSetPCChoice(ti, this, exp1, exp2, Comparator.LT, Comparator.GE);
 		
 		if (nxtInstr == getTarget())
 			conditionValue = true;
