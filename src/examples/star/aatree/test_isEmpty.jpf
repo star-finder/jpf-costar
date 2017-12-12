@@ -6,3 +6,4 @@ concolic.method=isEmpty
 
 costar.precondition=pre isEmpty == aat(this_root, this_nullNode)
 star.test_init=${jpf-costar}/src/init/star/aatree/test_isEmpty.txt
+star.max_depth=1

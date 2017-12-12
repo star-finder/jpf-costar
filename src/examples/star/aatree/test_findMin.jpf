@@ -6,3 +6,4 @@ concolic.method=findMin
 
 costar.precondition=pre findMin == aat(this_root, this_nullNode)
 star.test_init=${jpf-costar}/src/init/star/aatree/test_findMin.txt
+star.max_depth=2
