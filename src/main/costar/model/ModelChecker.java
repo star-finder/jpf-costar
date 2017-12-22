@@ -16,6 +16,21 @@ import starlib.solver.Solver;
 
 public class ModelChecker {
 	
+	public int getChosenIndex(List<Formula> constraints, Valuation currValuation, Formula valuationFormula) {
+		// the seed test case
+		if (valuationFormula == null) {
+			return 0;
+		} else {
+			for (int i = 0; i < constraints.size(); i++) {
+				Formula f = constraints.get(i);
+				boolean isEntail = Solver.checkEntail(valuationFormula, f);
+				if (isEntail) return i;
+			}
+		}
+		
+		return -1;
+	}
+	
 	public int getChosenIndex(HashMap<Formula, List<Formula>> overApproxFormulas, Valuation currValuation) {
 		Formula valF = new Formula();
 		

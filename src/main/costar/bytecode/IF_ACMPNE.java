@@ -39,25 +39,21 @@ public class IF_ACMPNE extends gov.nasa.jpf.jvm.bytecode.IF_ACMPNE {
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
 			
-			List<Formula> formulas = current.formulas;
+			Formula formula = current.formula;
 			
-			List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-			constraints.add(new ArrayList<Formula>()); // eq formulas
-			constraints.add(new ArrayList<Formula>()); // not eq formulas
+			List<Formula> constraints = new ArrayList<Formula>();
 			
-			for (Formula formula : formulas) {
-				Formula f0 = formula.copy();
-				Formula f1 = formula.copy();
+			Formula f0 = formula.copy();
+			Formula f1 = formula.copy();
 				
-				Expression exp1 = CMPInstrSymbHelper.makeExpression(sym_v1, v1);
-				Expression exp2 = CMPInstrSymbHelper.makeExpression(sym_v2, v2);
+			Expression exp1 = CMPInstrSymbHelper.makeExpression(sym_v1, v1);
+			Expression exp2 = CMPInstrSymbHelper.makeExpression(sym_v2, v2);
 				
-				f0.addComparisonTerm(Comparator.EQ, exp1, exp2);
-				f1.addComparisonTerm(Comparator.NE, exp1, exp2);
+			f0.addComparisonTerm(Comparator.EQ, exp1, exp2);
+			f1.addComparisonTerm(Comparator.NE, exp1, exp2);
 				
-				constraints.get(0).add(f0);
-				constraints.get(1).add(f1);
-			}
+			constraints.add(f0);
+			constraints.add(f1);
 			
 			if (v1 != v2) {
 				analysis.decision(ti, this, 1, constraints);

@@ -13,14 +13,12 @@ import costar.constrainsts.CoStarConstrainstTree;
 import costar.objects.SymbolicObjectsContext;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
-import gov.nasa.jpf.constraints.api.ValuationEntry;
 import gov.nasa.jpf.constraints.api.Variable;
 import gov.nasa.jpf.constraints.types.BuiltinTypes;
 import gov.nasa.jpf.constraints.types.Type;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
-import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Heap;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
@@ -28,7 +26,6 @@ import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
 import starlib.formula.Formula;
-import starlib.formula.Utilities;
 
 public class CoStarMethodExplorer {
 
@@ -82,7 +79,11 @@ public class CoStarMethodExplorer {
 		return currValuation;
 	}
 	
-	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<List<Formula>> constraints) {
+	public Formula getValuationFormula() {
+		return constraintsTree.getValuationFormula();
+	}
+	
+	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<Formula> constraints) {
 		constraintsTree.decision(ti, inst, chosenIdx, constraints);
 	}
 

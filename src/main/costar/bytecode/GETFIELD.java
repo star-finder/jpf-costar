@@ -82,9 +82,9 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		List<Formula> formulas = current.formulas;
+		Formula formula = current.formula;
 		
-		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
+		List<Formula> constraints = new ArrayList<Formula>();
 		
 		String typeOfLocalVar = fi.getType();
 		DataNode dn = DataNodeMap.find(PathFinderUtils.toS2SATType(typeOfLocalVar));
@@ -92,69 +92,49 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		if(dn != null)
 			fields = dn.getFields();
 		
-		HashMap<Formula, List<Formula>> overApproxFormulas = new HashMap<Formula, List<Formula>>();
-		OverApproximator oa = new OverApproximator();
+		Formula f = formula.copy();
+		HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
 		
-		for (Formula formula : formulas) {
-			Formula f = formula.copy();
+		if (ht != null && ht instanceof InductiveTerm) {
+			InductiveTerm it = (InductiveTerm) ht;
+			Formula[] fs = it.unfold();
 			
-			if (Utilities.isNull(f,fiVar)) {
-				oa.overApprox(overApproxFormulas, f);
-			} else {
-				HeapTerm ht = Utilities.findHeapTerm(f, fiVar.getName());
-				if (ht instanceof PointToTerm) {
-					PointToTerm pt = (PointToTerm) ht;
+			for (int i = 0; i < fs.length; i++) {
+				Formula cf = f.copy();
+				cf.unfold(it, i);
+				
+				if (Utilities.isNull(cf,fiVar)) {
+					constraints.add(cf);
+				} else {
+					PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(cf, fiVar.getName());
 					if (pt.getRoot().equals(fiVar))
-						f = f.rename(fiVar, fields);
+						cf = cf.rename(fiVar, fields);
 					
-					oa.overApprox(overApproxFormulas, f);
-				} else if (ht instanceof InductiveTerm) {
-					InductiveTerm it = (InductiveTerm) ht;
-					Formula[] fs = it.unfold();
-					
-					for (int i = 0; i < fs.length; i++) {
-						Formula cf = f.copy();
-						cf.unfold(it, i);
-						
-						if (Utilities.isNull(cf,fiVar)) {
-							oa.overApprox(overApproxFormulas, cf);
-						} else {
-							PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(cf, fiVar.getName());
-							if (pt.getRoot().equals(fiVar))
-								cf = cf.rename(fiVar, fields);
-							
-							oa.overApprox(overApproxFormulas, cf);
-						}
-					}
-				}	
+					constraints.add(cf);
+				}
 			}
+		} else {
+			constraints.add(f);
 		}
 		
 		int index = -1;
 		
-		if (overApproxFormulas.size() == 0) {
-			return super.execute(ti);
-		} else if (overApproxFormulas.size() == 1)
-			index = 0;
-		else {
+		if (constraints.size() > 1) {
 			ModelChecker mc = new ModelChecker();
-			index = mc.getChosenIndex(overApproxFormulas, analysis.getCurrValuation());
+			index = mc.getChosenIndex(constraints, analysis.getCurrValuation(), analysis.getValuationFormula());
+			
+			if (index == -1) {
+				ti.getVM().getSystemState().setIgnored(true);
+				return getNext(ti);
+			}
+		} else {
+			index = 0;
 		}
 		
-		if (index == -1) {
-			ti.getVM().getSystemState().setIgnored(true);
-			return getNext(ti);
-		}
-		
-		for (Formula of : overApproxFormulas.keySet()) {
-			List<Formula> fs = overApproxFormulas.get(of);
-			constraints.add(new ArrayList<Formula>(fs));
-		}
-		
-		if (overApproxFormulas.size() > 1)
+		if (constraints.size() > 1)
 			analysis.decision(ti, this, index, constraints);
 		
-		Formula tmp = constraints.get(index).get(0);
+		Formula tmp = constraints.get(index);
 		if (!Utilities.isNull(tmp, fiVar.getName())) {
 			PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(tmp, fiVar.getName());
 			if (pt.getRoot().equals(fiVar)) {

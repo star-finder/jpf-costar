@@ -25,11 +25,9 @@ public class IFInstrSymbHelper {
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		List<Formula> formulas = current.formulas;
+		Formula formula = current.formula;
 		
-		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-		constraints.add(new ArrayList<Formula>()); // true formulas
-		constraints.add(new ArrayList<Formula>()); // false formulas
+		List<Formula> constraints = new ArrayList<Formula>();
 		
 		int v1 = 0, v2 = 0;
 		
@@ -43,26 +41,24 @@ public class IFInstrSymbHelper {
 		
 		boolean isTrue = trueComparator.evaluate(v1, v2);
 		
-		for (Formula formula : formulas) {
-			Formula f0 = formula.copy();
-			Formula f1 = formula.copy();
+		Formula f0 = formula.copy();
+		Formula f1 = formula.copy();
 			
-			if (sym_v1 != null) {
-				if (sym_v2 != null) {
-					f0.addComparisonTerm(trueComparator, sym_v1, sym_v2);
-					f1.addComparisonTerm(falseComparator, sym_v1, sym_v2);
-				} else {
-					f0.addComparisonTerm(trueComparator, sym_v1, new LiteralExpression(v2));
-					f1.addComparisonTerm(falseComparator, sym_v1, new LiteralExpression(v2));
-				}
+		if (sym_v1 != null) {
+			if (sym_v2 != null) {
+				f0.addComparisonTerm(trueComparator, sym_v1, sym_v2);
+				f1.addComparisonTerm(falseComparator, sym_v1, sym_v2);
 			} else {
-				f0.addComparisonTerm(trueComparator, new LiteralExpression(v1), sym_v2);
-				f1.addComparisonTerm(falseComparator, new LiteralExpression(v1), sym_v2);
+				f0.addComparisonTerm(trueComparator, sym_v1, new LiteralExpression(v2));
+				f1.addComparisonTerm(falseComparator, sym_v1, new LiteralExpression(v2));
 			}
-			
-			constraints.get(0).add(f0);
-			constraints.get(1).add(f1);
+		} else {
+			f0.addComparisonTerm(trueComparator, new LiteralExpression(v1), sym_v2);
+			f1.addComparisonTerm(falseComparator, new LiteralExpression(v1), sym_v2);
 		}
+		
+		constraints.add(f0);
+		constraints.add(f1);
 		
 		if (isTrue) {
 			analysis.decision(ti, instr, 0, constraints);

@@ -33,12 +33,12 @@ public class EXECUTENATIVE extends gov.nasa.jpf.jvm.bytecode.EXECUTENATIVE {
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
 			
-			List<Formula> formulas = current.formulas;
+			Formula formula = current.formula;
 			
 			// FIXME
 			// Sang: I don't think we need to check sat here, since this is concolic
 			// can we assume that the exception is always thrown?
-			if (Solver.checkSat(formulas)) {
+			if (Solver.checkSat(formula)) {
 				VM vm = ti.getVM();
 				vm.getSearch().error(new NoErrorProperty("Skip native method"), vm.getClonedPath(), vm.getThreadList());
 			}

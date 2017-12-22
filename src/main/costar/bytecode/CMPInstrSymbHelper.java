@@ -27,12 +27,9 @@ public class CMPInstrSymbHelper {
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		List<Formula> formulas = current.formulas;
+		Formula formula = current.formula;
 		
-		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-		constraints.add(new ArrayList<Formula>()); // < 0 formulas
-		constraints.add(new ArrayList<Formula>()); // = 0 formulas
-		constraints.add(new ArrayList<Formula>()); // > 0 formulas
+		List<Formula> constraints = new ArrayList<Formula>();
 		
 		int conditionValue = 0;
 		
@@ -43,31 +40,29 @@ public class CMPInstrSymbHelper {
 		else if (v1 == v2) conditionValue = 0;
 		else conditionValue = 1;
 		
-		for (Formula formula : formulas) {
-			Formula f0 = formula.copy();
-			Formula f1 = formula.copy();
-			Formula f2 = formula.copy();
-			
-			if (sym_v1 != null) {
-				if (sym_v2 != null) {
-					f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
-					f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
-					f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
-				} else {
-					f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
-					f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
-					f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
-				}
+		Formula f0 = formula.copy();
+		Formula f1 = formula.copy();
+		Formula f2 = formula.copy();
+		
+		if (sym_v1 != null) {
+			if (sym_v2 != null) {
+				f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			} else {
-				f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
-				f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
-				f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
+				f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
+				f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
+				f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
 			}
-			
-			constraints.get(0).add(f0);
-			constraints.get(1).add(f1);
-			constraints.get(2).add(f2);
+		} else {
+			f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
+			f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
+			f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
 		}
+		
+		constraints.add(f0);
+		constraints.add(f1);
+		constraints.add(f2);
 		
 		if (conditionValue == -1) {
 			analysis.decision(ti, instr, 0, constraints);
@@ -90,12 +85,9 @@ public class CMPInstrSymbHelper {
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		List<Formula> formulas = current.formulas;
+		Formula formula = current.formula;
 		
-		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-		constraints.add(new ArrayList<Formula>()); // < 0 formulas
-		constraints.add(new ArrayList<Formula>()); // = 0 formulas
-		constraints.add(new ArrayList<Formula>()); // > 0 formulas
+		List<Formula> constraints = new ArrayList<Formula>();
 		
 		int conditionValue = 0;
 		
@@ -114,31 +106,29 @@ public class CMPInstrSymbHelper {
 			else conditionValue = 1;
 		}
 		
-		for (Formula formula : formulas) {
-			Formula f0 = formula.copy();
-			Formula f1 = formula.copy();
-			Formula f2 = formula.copy();
-			
-			if (sym_v1 != null) {
-				if (sym_v2 != null) {
-					f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
-					f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
-					f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
-				} else {
-					f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
-					f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
-					f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
-				}
+		Formula f0 = formula.copy();
+		Formula f1 = formula.copy();
+		Formula f2 = formula.copy();
+		
+		if (sym_v1 != null) {
+			if (sym_v2 != null) {
+				f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			} else {
-				f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
-				f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
-				f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
+				f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
+				f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
+				f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
 			}
-			
-			constraints.get(0).add(f0);
-			constraints.get(1).add(f1);
-			constraints.get(2).add(f2);
+		} else {
+			f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
+			f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
+			f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
 		}
+		
+		constraints.add(f0);
+		constraints.add(f1);
+		constraints.add(f2);
 		
 		if (conditionValue == -1) {
 			analysis.decision(ti, instr, 0, constraints);
@@ -161,12 +151,9 @@ public class CMPInstrSymbHelper {
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		List<Formula> formulas = current.formulas;
+		Formula formula = current.formula;
 		
-		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-		constraints.add(new ArrayList<Formula>()); // < 0 formulas
-		constraints.add(new ArrayList<Formula>()); // = 0 formulas
-		constraints.add(new ArrayList<Formula>()); // > 0 formulas
+		List<Formula> constraints = new ArrayList<Formula>();
 		
 		int conditionValue = 0;
 		
@@ -185,31 +172,29 @@ public class CMPInstrSymbHelper {
 			else conditionValue = 1;
 		}
 		
-		for (Formula formula : formulas) {
-			Formula f0 = formula.copy();
-			Formula f1 = formula.copy();
-			Formula f2 = formula.copy();
-			
-			if (sym_v1 != null) {
-				if (sym_v2 != null) {
-					f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
-					f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
-					f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
-				} else {
-					f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
-					f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
-					f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
-				}
+		Formula f0 = formula.copy();
+		Formula f1 = formula.copy();
+		Formula f2 = formula.copy();
+		
+		if (sym_v1 != null) {
+			if (sym_v2 != null) {
+				f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			} else {
-				f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
-				f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
-				f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
+				f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
+				f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
+				f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
 			}
-			
-			constraints.get(0).add(f0);
-			constraints.get(1).add(f1);
-			constraints.get(2).add(f2);
+		} else {
+			f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
+			f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
+			f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
 		}
+		
+		constraints.add(f0);
+		constraints.add(f1);
+		constraints.add(f2);
 		
 		if (conditionValue == -1) {
 			analysis.decision(ti, instr, 0, constraints);

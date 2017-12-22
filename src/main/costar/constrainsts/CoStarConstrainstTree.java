@@ -22,6 +22,8 @@ public class CoStarConstrainstTree {
 	private CoStarNode root;
 	
 	private CoStarNode current;
+	
+	private Formula valFormula;
 		
 	private Config config;
 	
@@ -63,16 +65,19 @@ public class CoStarConstrainstTree {
 				if (!current.childrend[i].hasVisited) {
 					current.childrend[i].hasVisited = true;
 					
-					List<Formula> fs = current.childrend[i].formulas;
+					Formula f = current.childrend[i].formula;
 //					logger.info("New constraint = " + fs.toString());
-					boolean isSat = Solver.checkSat(fs);
+					boolean isSat = Solver.checkSat(f);
 					
 					if (isSat) {
+						valFormula = f;
+						
 						String model = Solver.getModel();
 						addModel(model);
 						Valuation val = ValuationGenerator.toValuation(model);
 						// build new valuation based on the model
 //						logger.info("New model = " + model);
+//						logger.info("New constraint = " + fs.toString());
 //						logger.info("New valuation = " + val);
 						
 						return val;
@@ -88,7 +93,7 @@ public class CoStarConstrainstTree {
 		return null;
 	}
 	
-	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<List<Formula>> constraints) {
+	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<Formula> constraints) {		
 		if (current.childrend == null) {
 			int length = constraints.size();
 			current.childrend = new CoStarNode[length];
@@ -104,6 +109,10 @@ public class CoStarConstrainstTree {
 	
 	public void reset() {
 		current = root;
+	}
+	
+	public Formula getValuationFormula() {
+		return valFormula;
 	}
 
 }

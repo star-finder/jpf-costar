@@ -40,22 +40,18 @@ public class IFNULL extends gov.nasa.jpf.jvm.bytecode.IFNULL {
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
 			
-			List<Formula> formulas = current.formulas;
+			Formula formula = current.formula;
 			
-			List<List<Formula>> constraints = new ArrayList<List<Formula>>();
-			constraints.add(new ArrayList<Formula>()); // null formulas
-			constraints.add(new ArrayList<Formula>()); // not null formulas
+			List<Formula> constraints = new ArrayList<Formula>();
 			
-			for (Formula formula : formulas) {
-				Formula f0 = formula.copy();
-				Formula f1 = formula.copy();
+			Formula f0 = formula.copy();
+			Formula f1 = formula.copy();
 				
-				f0.addComparisonTerm(Comparator.EQ, new Variable(sym_v.toString()), NullExpression.getInstance());
-				f1.addComparisonTerm(Comparator.NE, new Variable(sym_v.toString()), NullExpression.getInstance());
+			f0.addComparisonTerm(Comparator.EQ, new Variable(sym_v.toString()), NullExpression.getInstance());
+			f1.addComparisonTerm(Comparator.NE, new Variable(sym_v.toString()), NullExpression.getInstance());
 				
-				constraints.get(0).add(f0);
-				constraints.get(1).add(f1);
-			}
+			constraints.add(f0);
+			constraints.add(f1);
 			
 			if (objRef == 0) {
 				analysis.decision(ti, this, 0, constraints);
