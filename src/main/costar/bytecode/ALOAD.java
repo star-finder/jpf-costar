@@ -116,7 +116,7 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		Formula tmp = constraints.get(index);
 		if (!Utilities.isNull(tmp, var.getName())) {
 			PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(tmp, var.getName());
-			if (pt.getRoot().equals(var)) {
+			if (pt != null && pt.getRoot().equals(var)) {
 				ElementInfo ei = ti.getModifiableElementInfo(objRef);
 				Variable[] vars = pt.getVarsNoRoot();
 				

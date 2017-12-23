@@ -146,7 +146,7 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 		Formula tmp = constraints.get(index);
 		if (!Utilities.isNull(tmp, fiVar.getName())) {
 			PointToTerm pt = (PointToTerm) Utilities.findHeapTerm(tmp, fiVar.getName());
-			if (pt.getRoot().equals(fiVar)) {
+			if (pt != null && pt.getRoot().equals(fiVar)) {
 				ElementInfo eei = ti.getModifiableElementInfo(fiRef);
 				Variable[] vars = pt.getVarsNoRoot();
 				
