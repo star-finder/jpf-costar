@@ -33,18 +33,15 @@ public class CoStarExplorer {
 		String key = id.substring(id.lastIndexOf('.') + 1, id.indexOf('('));
 		analysis = new CoStarMethodExplorer(cc, key, mi);
 		
-		List<Formula> fs = new ArrayList<Formula>();
+		Formula f = new Formula();
 		Precondition pre = PreconditionMap.find(mi.getName());
 		
 		if (pre != null) {
 			logger.info("Precondition = " + pre);	
-			Formula f = pre.getFormula();
-			fs.add(f);
-		} else {
-			fs.add(new Formula());
+			f = pre.getFormula();
 		}
 		
-		analysis.getConstrainstTree().getCurrent().formulas = fs;
+		analysis.getConstrainstTree().getCurrent().formula = f;
 
 		ThreadInfo ti = VM.getVM().getCurrentThread();
 		analysis.initializeMethod(ti, sf);

@@ -37,27 +37,22 @@ public class LOOKUPSWITCH extends gov.nasa.jpf.jvm.bytecode.LOOKUPSWITCH
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
+		List<Formula> constraints = new ArrayList<Formula>();
+		
+		Formula formula = current.formula;
+		
 		for (int i = 0; i <= matches.length; i++) {
-			constraints.add(new ArrayList<Formula>());
-		}
-		
-		List<Formula> formulas = current.formulas;
-		
-		for (Formula formula : formulas) {
-			for (int i = 0; i <= matches.length; i++) {
-				Formula f = formula.copy();
+			Formula f = formula.copy();
 				
-				if (i == matches.length) {
-					for (int j = 0; j < matches.length; j++) {
-						f.addComparisonTerm(Comparator.NE, exp, new LiteralExpression(matches[j]));
-					}
-				} else {
-					f.addComparisonTerm(Comparator.EQ, exp, new LiteralExpression(matches[i]));
+			if (i == matches.length) {
+				for (int j = 0; j < matches.length; j++) {
+					f.addComparisonTerm(Comparator.NE, exp, new LiteralExpression(matches[j]));
 				}
-				
-				constraints.get(i).add(f);
+			} else {
+				f.addComparisonTerm(Comparator.EQ, exp, new LiteralExpression(matches[i]));
 			}
+				
+			constraints.add(f);
 		}
 		
 		int v = sf.pop();

@@ -39,31 +39,26 @@ public class TABLESWITCH extends gov.nasa.jpf.jvm.bytecode.TABLESWITCH
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
-		List<List<Formula>> constraints = new ArrayList<List<Formula>>();
+		List<Formula> constraints = new ArrayList<Formula>();
+		
+		Formula formula = current.formula;
+		
 		for (int i = 0; i <= targets.length; i++) {
-			constraints.add(new ArrayList<Formula>());
-		}
-		
-		List<Formula> formulas = current.formulas;
-		
-		for (Formula formula : formulas) {
-			for (int i = 0; i <= targets.length; i++) {
-				Formula f = formula.copy();
-				
-				if (i == targets.length) {
-					for (int j = 0; j < targets.length; j++) {
-						f.addComparisonTerm(Comparator.NE,
-								new BinaryExpression(Operator.MINUS, exp, new LiteralExpression(getMin())),
-								new LiteralExpression(i));
-					}
-				} else {
-					f.addComparisonTerm(Comparator.EQ,
+			Formula f = formula.copy();
+			
+			if (i == targets.length) {
+				for (int j = 0; j < targets.length; j++) {
+					f.addComparisonTerm(Comparator.NE,
 							new BinaryExpression(Operator.MINUS, exp, new LiteralExpression(getMin())),
 							new LiteralExpression(i));
 				}
-				
-				constraints.get(i).add(f);
+			} else {
+				f.addComparisonTerm(Comparator.EQ,
+						new BinaryExpression(Operator.MINUS, exp, new LiteralExpression(getMin())),
+						new LiteralExpression(i));
 			}
+			
+			constraints.add(f);
 		}
 		
 		int v = sf.pop();
