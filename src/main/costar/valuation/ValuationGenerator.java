@@ -27,6 +27,8 @@ public class ValuationGenerator {
 	
 	private static boolean first = true;
 	
+	private static Formula valFormula;
+	
 	public static void setClassAndMethodInfo(ClassInfo ci, MethodInfo mi, Config conf) {
 		if(first) {
 			ValuationGenerator.ci = ci;
@@ -79,6 +81,8 @@ public class ValuationGenerator {
 			}
 		}
 		
+		valFormula = f.copy();
+		
 		HashSet<Variable> initVars = new HashSet<Variable>();
 		
 		for (FieldInfo field : insFields) {
@@ -115,10 +119,14 @@ public class ValuationGenerator {
 		
 		Valuation valuation = new Valuation();
 		
-		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation);
+		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation, valFormula);
 		jpfGen.visit(f);
 		
 		return valuation;
+	}
+
+	public static Formula getValuationFormula() {
+		return valFormula;
 	}
 
 }

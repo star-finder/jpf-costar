@@ -70,14 +70,13 @@ public class CoStarConstrainstTree {
 					boolean isSat = Solver.checkSat(f);
 					
 					if (isSat) {
-						valFormula = f;
-						
 						String model = Solver.getModel();
 						addModel(model);
 						Valuation val = ValuationGenerator.toValuation(model);
+						valFormula = ValuationGenerator.getValuationFormula();
 						// build new valuation based on the model
 //						logger.info("New model = " + model);
-//						logger.info("New constraint = " + fs.toString());
+//						logger.info("New constraint = " + f.toString());
 //						logger.info("New valuation = " + val);
 						
 						return val;
