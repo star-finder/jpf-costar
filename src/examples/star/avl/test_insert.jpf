@@ -6,5 +6,10 @@ concolic.method=insert
 
 costar.precondition=pre insert == avl(this_root)
 star.test_init=${jpf-costar}/src/init/star/avl/test_insert.txt
+<<<<<<< HEAD
 star.max_depth=7
 star.max_time=5
+=======
+star.max_depth=9
+star.max_time=10
+>>>>>>> parent of 0786211... avl insert does not get 100% coverage
