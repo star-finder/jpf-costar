@@ -53,6 +53,8 @@ public class CoStarMethodExplorer {
 	private Object[] initParams;
 
 	private Map<String, Integer> stackMap;
+	
+	private Map<starlib.formula.Variable, starlib.formula.Variable> arrayMap;
 
 	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi) {
 		this.methodInfo = mi;
@@ -61,6 +63,7 @@ public class CoStarMethodExplorer {
 
 		this.constraintsTree = new CoStarConstrainstTree(mi);
 		this.stackMap = new HashMap<String, Integer>();
+		this.arrayMap = new HashMap<starlib.formula.Variable, starlib.formula.Variable>();
 	}
 
 	public boolean hasMoreChoices() {
@@ -131,6 +134,7 @@ public class CoStarMethodExplorer {
 
 	private void prepareReExecution(StackFrame sf) {
 		constraintsTree.reset();
+		arrayMap = new HashMap<starlib.formula.Variable, starlib.formula.Variable>();
 //		Utilities.reset();
 		
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
@@ -253,6 +257,10 @@ public class CoStarMethodExplorer {
 
 	public String getFullName() {
 		return this.methodInfo.getFullName();
+	}
+	
+	public Map<starlib.formula.Variable, starlib.formula.Variable> getArrayMap() {
+		return arrayMap;
 	}
 
 }

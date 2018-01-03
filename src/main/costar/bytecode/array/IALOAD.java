@@ -2,6 +2,7 @@ package costar.bytecode.array;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
@@ -23,6 +24,10 @@ public class IALOAD extends gov.nasa.jpf.jvm.bytecode.IALOAD {
 	@Override
 	public Instruction execute(ThreadInfo ti) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
+		if (analysis == null)
+			return super.execute(ti);
+		
+		Map<Variable, Variable> arrayMap = analysis.getArrayMap();
 
 		StackFrame sf = ti.getModifiableTopFrame();
 		arrayRef = sf.peek(1); // ..., arrayRef, idx
@@ -45,6 +50,9 @@ public class IALOAD extends gov.nasa.jpf.jvm.bytecode.IALOAD {
 		} else if (indexAttr == null) {
 			indexAttr = new LiteralExpression(index);
 		}
+		
+		if (arrayMap.containsKey(arrayAttr))
+			arrayAttr = arrayMap.get(arrayAttr);
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
