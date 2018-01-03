@@ -1,0 +1,9 @@
+@include=../../config/costar.jpf
+
+target=features.array.SimpleArray
+
+concolic.method.foo=features.array.SimpleArray.foo(arr:[I,i:int)
+concolic.method.foo.config=all_fields_symbolic
+
+star.test_path=${test.path}/features/array
+star.test_package=features.array

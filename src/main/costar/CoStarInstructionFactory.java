@@ -33,6 +33,7 @@ import costar.bytecode.LLOAD;
 import costar.bytecode.LOOKUPSWITCH;
 import costar.bytecode.NEW;
 import costar.bytecode.TABLESWITCH;
+import costar.bytecode.array.IALOAD;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.NativeMethodInfo;
@@ -90,12 +91,12 @@ import star.bytecode.LUSHR;
 import star.bytecode.LXOR;
 
 public class CoStarInstructionFactory extends InstructionFactory {
-	
+
 	@Override
 	public Instruction aload(int localVarIndex) {
 		return new ALOAD(localVarIndex);
 	}
-	
+
 	@Override
 	public Instruction ifnonnull(int targetPc) {
 		return new IFNONNULL(targetPc);
@@ -105,7 +106,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction ifnull(int targetPc) {
 		return new IFNULL(targetPc);
 	}
-	
+
 	@Override
 	public Instruction if_acmpeq(int targetPc) {
 		return new IF_ACMPEQ(targetPc);
@@ -115,7 +116,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction if_acmpne(int targetPc) {
 		return new IF_ACMPNE(targetPc);
 	}
-	
+
 	@Override
 	public Instruction if_icmpeq(int targetPc) {
 		return new IF_ICMPEQ(targetPc);
@@ -145,7 +146,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction if_icmple(int targetPc) {
 		return new IF_ICMPLE(targetPc);
 	}
-	
+
 	@Override
 	public Instruction ifeq(int targetPc) {
 		return new IFEQ(targetPc);
@@ -175,17 +176,17 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction ifle(int targetPc) {
 		return new IFLE(targetPc);
 	}
-	
+
 	@Override
 	public Instruction iload(int localVarIndex) {
 		return new ILOAD(localVarIndex);
 	}
-	
+
 	@Override
 	public Instruction iadd() {
 		return new IADD();
 	}
-	
+
 	@Override
 	public Instruction iand() {
 		return new IAND();
@@ -245,7 +246,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction ixor() {
 		return new IXOR();
 	}
-	
+
 	@Override
 	public Instruction lload(int localVarIndex) {
 		return new LLOAD(localVarIndex);
@@ -310,12 +311,12 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction lxor() {
 		return new LXOR();
 	}
-	
+
 	@Override
 	public Instruction lcmp() {
 		return new LCMP();
 	}
-	
+
 	@Override
 	public Instruction fload(int localVarIndex) {
 		return new FLOAD(localVarIndex);
@@ -350,7 +351,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction fsub() {
 		return new FSUB();
 	}
-	
+
 	@Override
 	public Instruction fcmpg() {
 		return new FCMPG();
@@ -360,7 +361,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction fcmpl() {
 		return new FCMPL();
 	}
-	
+
 	@Override
 	public Instruction dload(int localVarIndex) {
 		return new DLOAD(localVarIndex);
@@ -395,7 +396,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction dsub() {
 		return new DSUB();
 	}
-	
+
 	@Override
 	public Instruction dcmpg() {
 		return new DCMPG();
@@ -480,7 +481,12 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction d2l() {
 		return new D2L();
 	}
-	
+
+	@Override
+	public Instruction iaload() {
+		return new IALOAD();
+	}
+
 	@Override
 	public Instruction getfield(String fieldName, String clsName, String fieldDescriptor) {
 		return new GETFIELD(fieldName, clsName, fieldDescriptor);
@@ -490,7 +496,7 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction getstatic(String fieldName, String clsName, String fieldDescriptor) {
 		return new GETSTATIC(fieldName, clsName, fieldDescriptor);
 	}
-	
+
 	@Override
 	public Instruction lookupswitch(int defaultTargetPc, int nEntries) {
 		return new LOOKUPSWITCH(defaultTargetPc, nEntries);
@@ -500,17 +506,17 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction tableswitch(int defaultTargetPc, int low, int high) {
 		return new TABLESWITCH(defaultTargetPc, low, high);
 	}
-	
+
 	@Override
 	public Instruction athrow() {
 		return new ATHROW();
 	}
-	
+
 	@Override
 	public Instruction new_(String clsName) {
 		return new NEW(clsName);
 	}
-	
+
 	@Override
 	public Instruction executenative(NativeMethodInfo mi) {
 		return new EXECUTENATIVE(mi);
