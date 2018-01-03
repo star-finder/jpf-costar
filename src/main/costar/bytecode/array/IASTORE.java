@@ -12,27 +12,26 @@ import gov.nasa.jpf.vm.MJIEnv;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
-import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 
-public class IALOAD extends gov.nasa.jpf.jvm.bytecode.IALOAD {
-
+public class IASTORE extends gov.nasa.jpf.jvm.bytecode.IASTORE {
+	
 	@Override
 	public Instruction execute(ThreadInfo ti) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 
 		StackFrame sf = ti.getModifiableTopFrame();
-		arrayRef = sf.peek(1); // ..., arrayRef, idx
+		arrayRef = sf.peek(2); // ..., arrayRef, idx
 		
 		if (arrayRef == MJIEnv.NULL) {
 			return ti.createAndThrowException("java.lang.NullPointerException");
 		}
 
 		ElementInfo arrayInfo = ti.getElementInfo(arrayRef);
-				
+		
 		Variable arrayAttr = (Variable) peekArrayAttr(ti);
 		Expression indexAttr = (Expression) peekIndexAttr(ti);
 		
@@ -56,11 +55,7 @@ public class IALOAD extends gov.nasa.jpf.jvm.bytecode.IALOAD {
 		constraints.add(new ArrayList<Formula>());
 		constraints.add(new ArrayList<Formula>());
 	
-		index = sf.pop();
-		arrayRef = sf.pop();
-		
-		Variable freshVar1 = Utilities.freshVar(arrayAttr); // freshVar1 = index expression
-		Variable freshVar2 = Utilities.freshVar(arrayAttr); // freshVar2 = array[freshVar1]
+		index = sf.peek(1);
 		
 		for (int i = 0; i < 3; i++) {
 			for (Formula formula : formulas) {
@@ -73,8 +68,6 @@ public class IALOAD extends gov.nasa.jpf.jvm.bytecode.IALOAD {
 				} else {
 					f.addComparisonTerm(Comparator.GE, indexAttr, new LiteralExpression(0));
 					f.addComparisonTerm(Comparator.LT, indexAttr, new LiteralExpression(arrayAttr.getName() + "_len"));
-					f.addComparisonTerm(Comparator.EQ, freshVar1, indexAttr);
-					f.addComparisonTerm(Comparator.EQ, freshVar2, new Variable(arrayAttr + "[" + freshVar1 + "]"));
 				}
 				
 				constraints.get(i).add(f);
@@ -89,10 +82,7 @@ public class IALOAD extends gov.nasa.jpf.jvm.bytecode.IALOAD {
 			ti.getVM().getSystemState().setIgnored(true);
 		} else {
 			analysis.decision(ti, this, 2, constraints);
-			
-			int value = arrayInfo.getIntElement(index);
-			sf.push(value);
-			sf.setOperandAttr(freshVar2);
+			return super.execute(ti);
 		}
 		
 		return getNext(ti);

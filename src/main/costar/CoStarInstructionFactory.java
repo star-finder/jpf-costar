@@ -34,6 +34,7 @@ import costar.bytecode.LOOKUPSWITCH;
 import costar.bytecode.NEW;
 import costar.bytecode.TABLESWITCH;
 import costar.bytecode.array.IALOAD;
+import costar.bytecode.array.IASTORE;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.NativeMethodInfo;
@@ -485,6 +486,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction iaload() {
 		return new IALOAD();
+	}
+	
+	@Override
+	public Instruction iastore() {
+		return new IASTORE();
 	}
 
 	@Override
