@@ -20,13 +20,8 @@ import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.formula.HeapFormula;
 import starlib.formula.PureFormula;
-import starlib.formula.Utilities;
 import starlib.formula.Variable;
-import starlib.formula.expression.Comparator;
-import starlib.formula.expression.LiteralExpression;
-import starlib.formula.expression.NullExpression;
 import starlib.formula.heap.HeapTerm;
-import starlib.jpf.PathFinderUtils;
 import starlib.jpf.testsuites.InitVarsVisitor;
 
 public class ValGenVisitor extends InitVarsVisitor {
@@ -34,21 +29,17 @@ public class ValGenVisitor extends InitVarsVisitor {
 	private JPFLogger logger = JPF.getLogger("costar");
 	
 	protected Valuation valuation;
-	
-	protected Formula valFormula;
-	
+		
 	public ValGenVisitor(HashMap<String,String> knownTypeVars, HashSet<Variable> initVars,
 			String objName, String clsName, FieldInfo[] insFields, FieldInfo[] staFields,
-			Valuation valuation, Formula valFormula) {
+			Valuation valuation) {
 		super(knownTypeVars, initVars, objName, clsName, insFields, staFields);
 		this.valuation = valuation;
-		this.valFormula = valFormula;
 	}
 	
 	public ValGenVisitor(ValGenVisitor that) {
 		super(that);
 		this.valuation = that.valuation;
-		this.valFormula = that.valFormula;
 	}
 	
 	@Override
@@ -94,9 +85,6 @@ public class ValGenVisitor extends InitVarsVisitor {
 			
 			ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(type, name), value);
 			valuation.addEntry(e);
-			
-			HeapTerm ht = Utilities.findHeapTerm(valFormula, var.getName());
-			if (ht == null) valFormula.addPointToTerm(var, PathFinderUtils.toS2SATType(typeStr));
 		}
 	}
 	
@@ -127,7 +115,6 @@ public class ValGenVisitor extends InitVarsVisitor {
 		if (knownTypeVars.size() == initVars.size())
 			return;
 		
-		// for (Variable var : knownTypeVars) {
 		for(Entry<String, String> entry : knownTypeVars.entrySet()) {
 			String name = entry.getKey(); // name is key, type is value
 			if (name.startsWith("Anon_")) continue;
@@ -139,12 +126,6 @@ public class ValGenVisitor extends InitVarsVisitor {
 				
 				ValuationEntry e = new ValuationEntry(new gov.nasa.jpf.constraints.api.Variable(builtinType, name), builtinType.getDefaultValue());
 				valuation.addEntry(e);
-				
-				if (builtinType == BuiltinTypes.REF) {
-					valFormula.addComparisonTerm(Comparator.EQ, var, NullExpression.getInstance());
-				} else {
-					valFormula.addComparisonTerm(Comparator.EQ, var, new LiteralExpression(e.getValue().toString()));
-				}
 			}
 		}
 	}

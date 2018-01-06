@@ -34,12 +34,12 @@ public class CoStarExplorer {
 		analysis = new CoStarMethodExplorer(cc, key, mi);
 		
 		Formula f = new Formula();
-		Precondition pre = PreconditionMap.find(mi.getName());
-		
-		if (pre != null) {
-			logger.info("Precondition = " + pre);	
-			f = pre.getFormula();
-		}
+//		Precondition pre = PreconditionMap.find(mi.getName());
+//		
+//		if (pre != null) {
+//			logger.info("Precondition = " + pre);	
+//			f = pre.getFormula();
+//		}
 		
 		analysis.getConstrainstTree().getCurrent().formula = f;
 

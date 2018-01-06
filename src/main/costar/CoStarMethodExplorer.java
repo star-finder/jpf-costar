@@ -79,10 +79,6 @@ public class CoStarMethodExplorer {
 		return currValuation;
 	}
 	
-	public Formula getValuationFormula() {
-		return constraintsTree.getValuationFormula();
-	}
-	
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<Formula> constraints) {
 		constraintsTree.decision(ti, inst, chosenIdx, constraints);
 	}

@@ -23,17 +23,12 @@ public class ValuationGenerator {
 	
 	private static MethodInfo mi;
 	
-	// private static Config conf;
-	
 	private static boolean first = true;
-	
-	private static Formula valFormula;
-	
+		
 	public static void setClassAndMethodInfo(ClassInfo ci, MethodInfo mi, Config conf) {
 		if(first) {
 			ValuationGenerator.ci = ci;
 			ValuationGenerator.mi = mi;
-			// ValuationGenerator.conf = conf;
 			first = false;
 		}
 	}
@@ -51,7 +46,6 @@ public class ValuationGenerator {
 		String objName = "obj";
 		String clsName = ci.getSimpleName();
 		
-		// LocalVarInfo[] args = mi.getArgumentLocalVars();
 		FieldInfo[] insFields = ci.getInstanceFields();
 		FieldInfo[] staFields = ci.getDeclaredStaticFields();
 		
@@ -80,9 +74,7 @@ public class ValuationGenerator {
 				}
 			}
 		}
-		
-		valFormula = f.copy();
-		
+				
 		HashSet<Variable> initVars = new HashSet<Variable>();
 		
 		for (FieldInfo field : insFields) {
@@ -119,14 +111,10 @@ public class ValuationGenerator {
 		
 		Valuation valuation = new Valuation();
 		
-		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation, valFormula);
+		ValGenVisitor jpfGen = new ValGenVisitor(knownTypeVars, initVars, objName, clsName, insFields, staFields, valuation);
 		jpfGen.visit(f);
 		
 		return valuation;
-	}
-
-	public static Formula getValuationFormula() {
-		return valFormula;
 	}
 
 }

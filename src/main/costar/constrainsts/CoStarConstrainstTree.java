@@ -13,6 +13,8 @@ import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
+import starlib.precondition.Precondition;
+import starlib.precondition.PreconditionMap;
 import starlib.solver.Solver;
 
 public class CoStarConstrainstTree {
@@ -22,9 +24,7 @@ public class CoStarConstrainstTree {
 	private CoStarNode root;
 	
 	private CoStarNode current;
-	
-	private Formula valFormula;
-		
+			
 	private Config config;
 	
 	private MethodInfo methodInfo;
@@ -66,14 +66,24 @@ public class CoStarConstrainstTree {
 					current.childrend[i].hasVisited = true;
 					
 					Formula f = current.childrend[i].formula;
-//					logger.info("New constraint = " + fs.toString());
-					boolean isSat = Solver.checkSat(f);
+					logger.info("New constraint = " + f.toString());
+					
+					Precondition pre = PreconditionMap.find(methodInfo.getName());
+					Formula preF = new Formula();
+					
+					if (pre != null) {
+						preF = pre.getFormula();
+						logger.info("Precondition = " + preF);
+					}
+					
+					boolean isSat = Solver.checkSat(Solver.preprocess(preF, f));
+					
+					logger.info(isSat);
 					
 					if (isSat) {
 						String model = Solver.getModel();
 						addModel(model);
 						Valuation val = ValuationGenerator.toValuation(model);
-						valFormula = ValuationGenerator.getValuationFormula();
 						// build new valuation based on the model
 //						logger.info("New model = " + model);
 //						logger.info("New constraint = " + f.toString());
@@ -93,7 +103,7 @@ public class CoStarConstrainstTree {
 	}
 	
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<Formula> constraints) {		
-		System.out.println(constraints);
+//		System.out.println(constraints);
 		
 		if (current.childrend == null) {
 			int length = constraints.size();
@@ -110,10 +120,6 @@ public class CoStarConstrainstTree {
 	
 	public void reset() {
 		current = root;
-	}
-	
-	public Formula getValuationFormula() {
-		return valFormula;
 	}
 
 }
