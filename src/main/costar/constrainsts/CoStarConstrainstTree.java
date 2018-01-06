@@ -93,6 +93,8 @@ public class CoStarConstrainstTree {
 	}
 	
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<Formula> constraints) {		
+		System.out.println(constraints);
+		
 		if (current.childrend == null) {
 			int length = constraints.size();
 			current.childrend = new CoStarNode[length];
