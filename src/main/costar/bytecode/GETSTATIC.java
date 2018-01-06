@@ -7,7 +7,9 @@ import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.LoadOnJPFRequired;
+import gov.nasa.jpf.vm.MJIEnv;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Variable;
 
 public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 
@@ -46,6 +48,19 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 		if (ei == null) {
 			throw new JPFException("attempt to access field: " +
 					fname + " of uninitialized class: " + ci.getName());
+		}
+		
+		Variable var = (Variable) ei.getFieldAttr(fi);
+		
+		if (fi.isReference()) {
+			int fiRef = ei.getReferenceField(fi);
+			if (fiRef != MJIEnv.NULL && var != null) {
+				ElementInfo eei = ti.getModifiableElementInfo(fiRef);
+				for (int i = 0; i < eei.getNumberOfFields(); i++) {
+					FieldInfo ffi = eei.getFieldInfo(i);
+					eei.setFieldAttr(ffi, new Variable(var + "." + ffi.getName()));
+				}
+			}
 		}
 		
 		return super.execute(ti);

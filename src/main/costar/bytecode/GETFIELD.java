@@ -7,6 +7,7 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MJIEnv;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Variable;
 
 public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 	
@@ -37,6 +38,19 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		if (fi == null) {
 			return ti.createAndThrowException("java.lang.NoSuchFieldError",
 					"referencing field '" + fname + "' in " + ei);
+		}
+		
+		Variable var = (Variable) ei.getFieldAttr(fi);
+		
+		if (fi.isReference()) {
+			int fiRef = ei.getReferenceField(fi);
+			if (fiRef != MJIEnv.NULL && var != null) {
+				ElementInfo eei = ti.getModifiableElementInfo(fiRef);
+				for (int i = 0; i < eei.getNumberOfFields(); i++) {
+					FieldInfo ffi = eei.getFieldInfo(i);
+					eei.setFieldAttr(ffi, new Variable(var + "." + ffi.getName()));
+				}
+			}
 		}
 
 		return super.execute(ti);
