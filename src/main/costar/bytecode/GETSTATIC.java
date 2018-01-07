@@ -2,6 +2,7 @@ package costar.bytecode;
 
 import costar.CoStarMethodExplorer;
 import gov.nasa.jpf.JPFException;
+import gov.nasa.jpf.constraints.api.Expression;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
@@ -50,7 +51,18 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 					fname + " of uninitialized class: " + ci.getName());
 		}
 		
-		Variable var = (Variable) ei.getFieldAttr(fi);
+		Object sym_v = ei.getFieldAttr(fi);
+		if (sym_v == null)
+			return super.execute(ti);
+		
+		Variable var = null;
+		if (sym_v instanceof Expression<?>) {
+			var = new Variable(((Expression<?>)sym_v).toString(0));
+			ei.setFieldAttr(fi, var);
+		}
+		
+		if (var == null)
+			var = (Variable) ei.getFieldAttr(fi);
 		
 		if (fi.isReference()) {
 			int fiRef = ei.getReferenceField(fi);

@@ -1,6 +1,7 @@
 package costar.bytecode;
 
 import costar.CoStarMethodExplorer;
+import gov.nasa.jpf.constraints.api.Expression;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
@@ -39,8 +40,19 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			return ti.createAndThrowException("java.lang.NoSuchFieldError",
 					"referencing field '" + fname + "' in " + ei);
 		}
+				
+		Object sym_v = ei.getFieldAttr(fi);
+		if (sym_v == null)
+			return super.execute(ti);
 		
-		Variable var = (Variable) ei.getFieldAttr(fi);
+		Variable var = null;
+		if (sym_v instanceof Expression<?>) {
+			var = new Variable(((Expression<?>)sym_v).toString(0));
+			ei.setFieldAttr(fi, var);
+		}
+		
+		if (var == null)
+			var = (Variable) ei.getFieldAttr(fi);
 		
 		if (fi.isReference()) {
 			int fiRef = ei.getReferenceField(fi);
