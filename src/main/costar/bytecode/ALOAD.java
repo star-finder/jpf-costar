@@ -29,21 +29,25 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		if (sym_v == null)
 			return super.execute(ti);
 		
-		Variable var = null;
+		starlib.formula.expression.Expression var = null;
 		if (sym_v instanceof Expression<?>) {
 			var = new Variable(((Expression<?>)sym_v).toString(0));
 			sf.setLocalAttr(index, var);
 		}
 		
 		if (var == null)
-			var = (Variable) sf.getLocalAttr(index);
+			var = (starlib.formula.expression.Expression) sf.getLocalAttr(index);
+		
+		if (var.toString().contains("newNode_"))
+			return super.execute(ti);
 		
 		int objRef = sf.getSlot(index);
 		if (objRef != MJIEnv.NULL && var != null) {
 			ElementInfo ei = ti.getModifiableElementInfo(objRef);
 			for (int i = 0; i < ei.getNumberOfFields(); i++) {
 				FieldInfo fi = ei.getFieldInfo(i);
-				ei.setFieldAttr(fi, new Variable(var + "." + fi.getName()));
+				if (ei.getFieldAttr(fi) == null)
+					ei.setFieldAttr(fi, new Variable(var + "." + fi.getName()));
 			}
 		}
 		

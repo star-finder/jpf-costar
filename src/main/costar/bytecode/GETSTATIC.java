@@ -55,14 +55,17 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 		if (sym_v == null)
 			return super.execute(ti);
 		
-		Variable var = null;
+		starlib.formula.expression.Expression var = null;
 		if (sym_v instanceof Expression<?>) {
 			var = new Variable(((Expression<?>)sym_v).toString(0));
 			ei.setFieldAttr(fi, var);
 		}
 		
 		if (var == null)
-			var = (Variable) ei.getFieldAttr(fi);
+			var = (starlib.formula.expression.Expression) ei.getFieldAttr(fi);
+		
+		if (var.toString().contains("newNode_"))
+			return super.execute(ti);
 		
 		if (fi.isReference()) {
 			int fiRef = ei.getReferenceField(fi);
@@ -70,7 +73,8 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 				ElementInfo eei = ti.getModifiableElementInfo(fiRef);
 				for (int i = 0; i < eei.getNumberOfFields(); i++) {
 					FieldInfo ffi = eei.getFieldInfo(i);
-					eei.setFieldAttr(ffi, new Variable(var + "." + ffi.getName()));
+					if (eei.getFieldAttr(ffi) == null)
+						eei.setFieldAttr(ffi, new Variable(var + "." + ffi.getName()));
 				}
 			}
 		}
