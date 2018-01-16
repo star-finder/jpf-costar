@@ -3,20 +3,26 @@ package costar.bytecode;
 import java.util.Map;
 
 import costar.CoStarMethodExplorer;
+import costar.constrainsts.CoStarConstrainstTree;
+import costar.constrainsts.CoStarNode;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MJIEnv;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Formula;
+import starlib.formula.Utilities;
 import starlib.formula.Variable;
+import starlib.formula.expression.Comparator;
+import starlib.formula.expression.Expression;
 
-public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
-	
-	public GETFIELD(String fieldName, String classType, String fieldDescriptor) {
-		super(fieldName, classType, fieldDescriptor);
+public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
+
+	public PUTFIELD(String fieldName, String clsDescriptor, String fieldDescriptor) {
+		super(fieldName, clsDescriptor, fieldDescriptor);
 	}
-	
+
 	@Override
 	public Instruction execute(ThreadInfo ti) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
@@ -41,36 +47,17 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			return ti.createAndThrowException("java.lang.NoSuchFieldError",
 					"referencing field '" + fname + "' in " + ei);
 		}
-				
-//		Object sym_v = ei.getFieldAttr(fi);
-//		if (sym_v == null)
-//			return super.execute(ti);
-//		
-//		starlib.formula.expression.Expression var = null;
-//		if (sym_v instanceof Expression<?>) {
-//			var = new Variable(((Expression<?>)sym_v).toString(0));
-//			ei.setFieldAttr(fi, var);
-//		}
-//		
-//		if (var == null)
-//			var = (starlib.formula.expression.Expression) ei.getFieldAttr(fi);
-//		
-//		if (var.toString().contains("newNode_"))
-//			return super.execute(ti);
-//		
-//		if (fi.isReference()) {
-//			int fiRef = ei.getReferenceField(fi);
-//			if (fiRef != MJIEnv.NULL && var != null) {
-//				ElementInfo eei = ti.getModifiableElementInfo(fiRef);
-//				for (int i = 0; i < eei.getNumberOfFields(); i++) {
-//					FieldInfo ffi = eei.getFieldInfo(i);
-//					if (eei.getFieldAttr(ffi) == null)
-//						eei.setFieldAttr(ffi, new Variable(var + "." + ffi.getName()));
-//				}
-//			}
-//		}
 		
-		Variable objVar = (Variable) sf.getOperandAttr();
+		Variable objVar = null;
+		Expression exp = null;
+		
+		if (fi.isLongField() || fi.isDoubleField()) {
+			exp = (Expression) sf.getOperandAttr(1);
+			objVar = (Variable) sf.getOperandAttr(2);
+		} else {
+			exp = (Expression) sf.getOperandAttr(0);
+			objVar = (Variable) sf.getOperandAttr(1);
+		}
 		
 		Instruction nextIns = super.execute(ti);
 		
@@ -81,16 +68,19 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		
 		String name = objName + "." + fname;
 		
-		Map<String,String> nameMap = analysis.getNameMap();
-		if (nameMap.containsKey(name)) {
-			name = nameMap.get(name);
-		} else {
-			nameMap.put(name, name);
-		}
+		Variable var = new Variable(objVar.getName() + "." + fname);
+		Variable newVar = Utilities.freshVar(var);
 		
-		sf.setOperandAttr(new Variable(name));
+		Map<String, String> nameMap = analysis.getNameMap();
+		nameMap.put(name, newVar.getName());
+		
+		CoStarConstrainstTree tree = analysis.getConstrainstTree();
+		CoStarNode current = tree.getCurrent();
+
+		Formula formula = current.formula;
+		formula.addComparisonTerm(Comparator.EQ, newVar, exp);
 
 		return nextIns;
 	}
-	
+
 }

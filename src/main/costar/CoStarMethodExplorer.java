@@ -26,6 +26,7 @@ import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
 import starlib.formula.Formula;
+import starlib.formula.Utilities;
 
 public class CoStarMethodExplorer {
 
@@ -48,8 +49,8 @@ public class CoStarMethodExplorer {
 	private ConcolicMethodConfig methodConfig;
 
 	private Object[] initParams;
-
-	private Map<String, Integer> stackMap;
+	
+	private Map<String,String> nameMap;
 
 	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi) {
 		this.methodInfo = mi;
@@ -57,7 +58,7 @@ public class CoStarMethodExplorer {
 		this.anaConf = methodConfig.getAnalysisConfig();
 
 		this.constraintsTree = new CoStarConstrainstTree(mi);
-		this.stackMap = new HashMap<String, Integer>();
+		this.nameMap = new HashMap<String,String>();
 	}
 
 	public boolean hasMoreChoices() {
@@ -97,11 +98,8 @@ public class CoStarMethodExplorer {
 		constraintsTree.reset();
 
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
-			if (sv.getVariable().getType() != null)
+			if (sv.getVariable().getType() != null) {
 				sv.readInitial(initValuation, sf);
-			else {
-				int stackPos = stackMap.get(sv.getVariable().getName());
-				sf.setOperandAttr(stackPos, sv.getVariable());
 			}
 		}
 		
@@ -128,7 +126,8 @@ public class CoStarMethodExplorer {
 
 	private void prepareReExecution(StackFrame sf) {
 		constraintsTree.reset();
-//		Utilities.reset();
+		Utilities.reset();
+		nameMap = new HashMap<String,String>();
 		
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
 			sv.apply(currValuation, sf);
@@ -215,9 +214,8 @@ public class CoStarMethodExplorer {
 			if (tc == Types.T_REFERENCE || tc == Types.T_ARRAY) {
 				int ref = sf.peek(stackIdx);
 				ElementInfo ei = heap.get(ref);
-				if (ei != null)
-					symContext.processObject(ei, name);
-				stackMap.put(name, stackIdx);
+//				if (ei != null)
+//					symContext.processObject(ei, name);
 				Variable<?> var = Variable.create(BuiltinTypes.REF, name);
 				SymbolicParam<?> sp = new SymbolicParam<>(var, stackIdx);
 				symContext.addSymbolicVar(sp);
@@ -250,6 +248,10 @@ public class CoStarMethodExplorer {
 
 	public String getFullName() {
 		return this.methodInfo.getFullName();
+	}
+	
+	public Map<String,String> getNameMap() {
+		return nameMap;
 	}
 
 }

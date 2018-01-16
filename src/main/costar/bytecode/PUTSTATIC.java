@@ -3,6 +3,8 @@ package costar.bytecode;
 import java.util.Map;
 
 import costar.CoStarMethodExplorer;
+import costar.constrainsts.CoStarConstrainstTree;
+import costar.constrainsts.CoStarNode;
 import gov.nasa.jpf.JPFException;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
@@ -11,11 +13,15 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.LoadOnJPFRequired;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Formula;
+import starlib.formula.Utilities;
 import starlib.formula.Variable;
+import starlib.formula.expression.Comparator;
+import starlib.formula.expression.Expression;
 
-public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
+public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
 
-	public GETSTATIC(String fieldName, String clsDescriptor, String fieldDescriptor) {
+	public PUTSTATIC(String fieldName, String clsDescriptor, String fieldDescriptor) {
 		super(fieldName, clsDescriptor, fieldDescriptor);
 	}
 	
@@ -54,48 +60,31 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 					fname + " of uninitialized class: " + ci.getName());
 		}
 		
-//		Object sym_v = ei.getFieldAttr(fi);
-//		if (sym_v == null)
-//			return super.execute(ti);
-//		
-//		starlib.formula.expression.Expression var = null;
-//		if (sym_v instanceof Expression<?>) {
-//			var = new Variable(((Expression<?>)sym_v).toString(0));
-//			ei.setFieldAttr(fi, var);
-//		}
-//		
-//		if (var == null)
-//			var = (starlib.formula.expression.Expression) ei.getFieldAttr(fi);
-//		
-//		if (var.toString().contains("newNode_"))
-//			return super.execute(ti);
-//		
-//		if (fi.isReference()) {
-//			int fiRef = ei.getReferenceField(fi);
-//			if (fiRef != MJIEnv.NULL && var != null) {
-//				ElementInfo eei = ti.getModifiableElementInfo(fiRef);
-//				for (int i = 0; i < eei.getNumberOfFields(); i++) {
-//					FieldInfo ffi = eei.getFieldInfo(i);
-//					if (eei.getFieldAttr(ffi) == null)
-//						eei.setFieldAttr(ffi, new Variable(var + "." + ffi.getName()));
-//				}
-//			}
-//		}
+		Expression exp = null;
+		
+		if (fi.isLongField() || fi.isDoubleField()) {
+			exp = (Expression) sf.getOperandAttr(1);
+		} else {
+			exp = (Expression) sf.getOperandAttr(0);
+		}
 		
 		Instruction nextIns = super.execute(ti);
 		
 		String name = className + "." + fname;
 		
-		Map<String,String> nameMap = analysis.getNameMap();
-		if (nameMap.containsKey(name)) {
-			name = nameMap.get(name);
-		} else {
-			nameMap.put(name, name);
-		}
-			
-		sf.setOperandAttr(new Variable(name));
+		Variable var = new Variable(className + "." + fname);
+		Variable newVar = Utilities.freshVar(var);
 		
-		return super.execute(ti);
+		Map<String, String> nameMap = analysis.getNameMap();
+		nameMap.put(name, newVar.getName());
+		
+		CoStarConstrainstTree tree = analysis.getConstrainstTree();
+		CoStarNode current = tree.getCurrent();
+
+		Formula formula = current.formula;
+		formula.addComparisonTerm(Comparator.EQ, newVar, exp);
+
+		return nextIns;
 	}
 
 }
