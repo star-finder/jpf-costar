@@ -2,6 +2,15 @@ package features.sll;
 
 public class Input {
 	
+	public void bar(int n, Node x, Node y) {
+		x.elem = x.elem + n;
+		if (x.elem == y.elem) {
+			return;
+		} else {
+			return;
+		}
+	}
+	
 	public void travel(Node root) {
 		while (root != null) {
 			root = root.next;
@@ -31,6 +40,11 @@ public class Input {
 			}
 			if (args[0].equals("foo")) {
 				in.foo(1);
+			}
+			if ("bar".equals(str)) {
+				Node x = new Node(2, null);
+				Node y = x;
+				in.bar(1, x, y);
 			}
 		}
 	}

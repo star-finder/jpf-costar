@@ -8,5 +8,8 @@ concolic.method.travel.config=all_fields_symbolic
 concolic.method.foo=features.sll.Input.foo(i:int)
 concolic.method.foo.config=all_fields_symbolic
 
+concolic.method.bar=features.sll.Input.bar(n:int,x:Lfeatures/sll/Node;,y:Lfeatures/sll/Node;)
+concolic.method.bar.config=all_fields_symbolic
+
 star.test_path=${test.path}/features/sll
 star.test_package=features.sll

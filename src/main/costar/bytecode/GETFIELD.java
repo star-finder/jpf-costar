@@ -51,10 +51,8 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 			ei.setFieldAttr(fi, var);
 		}
 		
-		if (var == null) {
-			System.out.println(ei.getFieldAttr(fi));
+		if (var == null)
 			var = (starlib.formula.expression.Expression) ei.getFieldAttr(fi);
-		}
 		
 		if (var.toString().contains("newNode_"))
 			return super.execute(ti);
