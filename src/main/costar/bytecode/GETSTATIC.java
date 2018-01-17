@@ -95,7 +95,7 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 			
 		sf.setOperandAttr(new Variable(name));
 		
-		return super.execute(ti);
+		return nextIns;
 	}
 
 }

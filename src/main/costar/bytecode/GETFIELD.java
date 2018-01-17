@@ -74,21 +74,26 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		
 		Instruction nextIns = super.execute(ti);
 		
-		String objName = objVar.getName();
-		if (objName.contains("_")) {
-			objName = objName.substring(0, objName.indexOf('_'));
+		if (objVar != null) {
+			String objName = objVar.getName();
+			if (objName.contains("_")) {
+				objName = objName.substring(0, objName.indexOf('_'));
+			}
+			
+			String name = objName.equals("this") ? objName + "_" + fname : objName + "." + fname;
+			
+			Map<String,String> nameMap = analysis.getNameMap();
+			if (nameMap.containsKey(name)) {
+				name = nameMap.get(name);
+			} else {
+				nameMap.put(name, name);
+			}
+			
+			if (objName.equals("this"))
+				sf.setOperandAttr(new Variable(name));
+			else
+				sf.setOperandAttr(new Variable(objVar.getName() + "." + fname));
 		}
-		
-		String name = objName + "." + fname;
-		
-		Map<String,String> nameMap = analysis.getNameMap();
-		if (nameMap.containsKey(name)) {
-			name = nameMap.get(name);
-		} else {
-			nameMap.put(name, name);
-		}
-		
-		sf.setOperandAttr(new Variable(name));
 
 		return nextIns;
 	}

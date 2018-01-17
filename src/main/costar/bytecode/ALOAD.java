@@ -53,16 +53,19 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		Instruction nextIns = super.execute(ti);
 		
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
-		String name = lvi.getName();
 		
-		Map<String,String> nameMap = analysis.getNameMap();
-		if (nameMap.containsKey(name)) {
-			name = nameMap.get(name);
-		} else {
-			nameMap.put(name, name);
+		if (lvi != null) {
+			String name = lvi.getName();
+			
+			Map<String,String> nameMap = analysis.getNameMap();
+			if (nameMap.containsKey(name)) {
+				name = nameMap.get(name);
+			} else {
+				nameMap.put(name, name);
+			}
+			
+			sf.setOperandAttr(new Variable(name));
 		}
-		
-		sf.setOperandAttr(new Variable(name));
 		
 		return nextIns;
 	}

@@ -16,6 +16,7 @@ import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
+import starlib.formula.expression.NullExpression;
 
 public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 
@@ -59,26 +60,31 @@ public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 			objVar = (Variable) sf.getOperandAttr(1);
 		}
 		
+		if (exp == null)
+			exp = NullExpression.getInstance();
+		
 		Instruction nextIns = super.execute(ti);
 		
-		String objName = objVar.getName();
-		if (objName.contains("_")) {
-			objName = objName.substring(0, objName.indexOf('_'));
+		if (objVar != null && exp != null) {
+			String objName = objVar.getName();
+			if (objName.contains("_")) {
+				objName = objName.substring(0, objName.indexOf('_'));
+			}
+			
+			String name = objName + "." + fname;
+			
+			Variable var = new Variable(objVar.getName() + "." + fname);
+			Variable newVar = Utilities.freshVar(var);
+			
+			Map<String, String> nameMap = analysis.getNameMap();
+			nameMap.put(name, newVar.getName());
+			
+			CoStarConstrainstTree tree = analysis.getConstrainstTree();
+			CoStarNode current = tree.getCurrent();
+	
+			Formula formula = current.formula;
+			formula.addComparisonTerm(Comparator.EQ, newVar, exp);
 		}
-		
-		String name = objName + "." + fname;
-		
-		Variable var = new Variable(objVar.getName() + "." + fname);
-		Variable newVar = Utilities.freshVar(var);
-		
-		Map<String, String> nameMap = analysis.getNameMap();
-		nameMap.put(name, newVar.getName());
-		
-		CoStarConstrainstTree tree = analysis.getConstrainstTree();
-		CoStarNode current = tree.getCurrent();
-
-		Formula formula = current.formula;
-		formula.addComparisonTerm(Comparator.EQ, newVar, exp);
 
 		return nextIns;
 	}

@@ -14,6 +14,7 @@ import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
+import starlib.formula.expression.NullExpression;
 
 public class ASTORE extends gov.nasa.jpf.jvm.bytecode.ASTORE {
 
@@ -30,23 +31,28 @@ public class ASTORE extends gov.nasa.jpf.jvm.bytecode.ASTORE {
 
 		StackFrame sf = ti.getModifiableTopFrame();
 		Expression exp = (Expression) sf.getOperandAttr();
+		if (exp == null)
+			exp = NullExpression.getInstance();
 
 		Instruction nextIns = super.execute(ti);
 
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
-		String name = lvi.getName();
-
-		Variable var = new Variable(name);
-		Variable newVar = Utilities.freshVar(var);
-
-		Map<String, String> nameMap = analysis.getNameMap();
-		nameMap.put(name, newVar.getName());
-
-		CoStarConstrainstTree tree = analysis.getConstrainstTree();
-		CoStarNode current = tree.getCurrent();
-
-		Formula formula = current.formula;
-		formula.addComparisonTerm(Comparator.EQ, newVar, exp);
+		
+		if (lvi != null) {
+			String name = lvi.getName();
+	
+			Variable var = new Variable(name);
+			Variable newVar = Utilities.freshVar(var);
+	
+			Map<String, String> nameMap = analysis.getNameMap();
+			nameMap.put(name, newVar.getName());
+	
+			CoStarConstrainstTree tree = analysis.getConstrainstTree();
+			CoStarNode current = tree.getCurrent();
+	
+			Formula formula = current.formula;
+			formula.addComparisonTerm(Comparator.EQ, newVar, exp);
+		}
 
 		return nextIns;
 	}
