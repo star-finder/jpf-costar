@@ -10,6 +10,9 @@
 <mapEntry key="DYLD_LIBRARY_PATH" value="/Users/HongLongPham/Workspace/JPF_HOME/z3/build"/>
 <mapEntry key="PATH" value="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"/>
 </mapAttribute>
+<listAttribute key="org.eclipse.eclemma.core.SCOPE_IDS">
+<listEntry value="=jpf-star/src\/examples"/>
+</listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="gov.nasa.jpf.tool.RunJPF"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="${resource_loc}"/>

@@ -76,11 +76,13 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 		
 		if (objVar != null) {
 			String objName = objVar.getName();
-			if (objName.contains("_")) {
-				objName = objName.substring(0, objName.indexOf('_'));
-			}
+			String name = null;
 			
-			String name = objName.equals("this") ? objName + "_" + fname : objName + "." + fname;
+			if (objName.equals("this")) {
+				name = objName + "_" + fname;
+			} else {
+				name = objName + "." + fname;
+			}
 			
 			Map<String,String> nameMap = analysis.getNameMap();
 			if (nameMap.containsKey(name)) {
@@ -89,11 +91,38 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 				nameMap.put(name, name);
 			}
 			
-			if (objName.equals("this"))
-				sf.setOperandAttr(new Variable(name));
-			else
-				sf.setOperandAttr(new Variable(objVar.getName() + "." + fname));
+			sf.setOperandAttr(new Variable(name));
 		}
+		
+//		if (objVar != null) {
+//			String objName = objVar.getName();
+//			String tmp = "";
+//			
+//			if (objName.contains("this_")) {
+//				objName = objName.substring(5, objName.length());
+//				tmp = "this_";
+//			}
+//			
+//			if (objName.contains("_")) {
+//				objName = objName.substring(0, objName.lastIndexOf('_'));
+//			}
+//			
+//			objName = tmp + objName;
+//			
+//			String name = objName.equals("this") ? objName + "_" + fname : objName + "." + fname;
+//			
+//			Map<String,String> nameMap = analysis.getNameMap();
+//			if (nameMap.containsKey(name)) {
+//				name = nameMap.get(name);
+//			} else {
+//				nameMap.put(name, name);
+//			}
+//			
+//			if (objName.equals("this"))
+//				sf.setOperandAttr(new Variable(name));
+//			else
+//				sf.setOperandAttr(new Variable(objVar.getName() + "." + fname));
+//		}
 
 		return nextIns;
 	}

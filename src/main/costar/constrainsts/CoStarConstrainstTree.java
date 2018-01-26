@@ -15,6 +15,7 @@ import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.precondition.Precondition;
 import starlib.precondition.PreconditionMap;
+import starlib.solver.Preprocessor;
 import starlib.solver.Solver;
 
 public class CoStarConstrainstTree {
@@ -66,19 +67,25 @@ public class CoStarConstrainstTree {
 					current.childrend[i].hasVisited = true;
 					
 					Formula f = current.childrend[i].formula;
-//					logger.info("New constraint = " + f.toString());
+					logger.info("New constraint = " + f.toString());
+					
+					if (f.toS2SATString().contains("right.level > ")) {
+						int ii = 0;
+						ii++;
+					}
 					
 					Precondition pre = PreconditionMap.find(methodInfo.getName());
 					Formula preF = new Formula();
 					
 					if (pre != null) {
 						preF = pre.getFormula();
-//						logger.info("Precondition = " + preF);
+						logger.info("Precondition = " + preF);
 					}
 					
-					boolean isSat = Solver.checkSat(Solver.preprocess(preF, f));
 					
-//					logger.info(isSat);
+					boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
+					
+					logger.info(isSat);
 					
 					if (isSat) {
 						String model = Solver.getModel();

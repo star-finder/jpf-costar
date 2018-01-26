@@ -99,10 +99,10 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new ALOAD(localVarIndex);
 	}
 
-	@Override
-	public Instruction astore(int localVarIndex) {
-		return new ASTORE(localVarIndex);
-	}
+//	@Override
+//	public Instruction astore(int localVarIndex) {
+//		return new ASTORE(localVarIndex);
+//	}
 
 	@Override
 	public Instruction ifnonnull(int targetPc) {

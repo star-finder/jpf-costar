@@ -19,6 +19,7 @@ import gov.nasa.jpf.constraints.types.Type;
 import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
+import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Heap;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
@@ -177,22 +178,22 @@ public class CoStarMethodExplorer {
 			stackIdx--;
 			int thisRef = sf.peek(stackIdx);
 			ElementInfo thisEi = heap.get(thisRef);
-			symContext.processObject(thisEi, "this");
+//			symContext.processObject(thisEi, "this");
 			
-//			int numOfFields = thisEi.getNumberOfFields();
-//			for (int i = 0; i < numOfFields; i++) {
-//				FieldInfo fi = thisEi.getFieldInfo(i);
-//				String name = "this_" + fi.getName();
-//				starlib.formula.Variable attr = new starlib.formula.Variable(name);
-//				thisEi.setFieldAttr(fi, attr);
-//				
-//				byte tc = fi.getTypeCode();
-//				Type<?> t = ConcolicUtil.forTypeCode(tc);
-//				
-//				Variable<?> var = Variable.create(t, name);
-//				SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
-//				symContext.addSymbolicVar(symf);
-//			}
+			int numOfFields = thisEi.getNumberOfFields();
+			for (int i = 0; i < numOfFields; i++) {
+				FieldInfo fi = thisEi.getFieldInfo(i);
+				String name = "this_" + fi.getName();
+				starlib.formula.Variable attr = new starlib.formula.Variable(name);
+				thisEi.setFieldAttr(fi, attr);
+				
+				byte tc = fi.getTypeCode();
+				Type<?> t = ConcolicUtil.forTypeCode(tc);
+				
+				Variable<?> var = Variable.create(t, name);
+				SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
+				symContext.addSymbolicVar(symf);
+			}
 		}
 
 		byte[] argTypes = methodInfo.getArgumentTypes();

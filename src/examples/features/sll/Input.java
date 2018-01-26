@@ -2,8 +2,45 @@ package features.sll;
 
 public class Input {
 	
-	public void bar(int n, Node x, Node y) {
+	public Node x;
+	
+	public Node y;
+	
+	public void bar1(int n) {
 		x.elem = x.elem + n;
+		if (x.elem == y.elem) {
+			x.elem = x.elem + n;
+			if (x.elem == y.elem)
+				return;
+			else
+				return;
+		} else {
+			return;
+		}
+	}
+	
+	public void bar2(int n, Node x, Node y) {
+		x.elem = x.elem + n;
+		if (x.elem == y.elem) {
+			return;
+		} else {
+			return;
+		}
+	}
+	
+	public void bar3(int n, Node x, Node y) {
+		x.next = y;
+		x.elem = x.elem + x.next.elem + n;
+		if (x.elem == y.elem) {
+			return;
+		} else {
+			return;
+		}
+	}
+	
+	public void bar4(int n) {
+		x.next = y;
+		x.elem = x.elem + x.next.elem + n;
 		if (x.elem == y.elem) {
 			return;
 		} else {
@@ -41,10 +78,25 @@ public class Input {
 			if (args[0].equals("foo")) {
 				in.foo(1);
 			}
-			if ("bar".equals(str)) {
+			if ("bar1".equals(str)) {
+				in.x = new Node(2, null);
+				in.y = in.x;
+				in.bar1(1);
+			}
+			if ("bar2".equals(str)) {
 				Node x = new Node(2, null);
 				Node y = x;
-				in.bar(1, x, y);
+				in.bar2(1, x, y);
+			}
+			if ("bar3".equals(str)) {
+				Node x = new Node(2, null);
+				Node y = x;
+				in.bar3(1, x, y);
+			}
+			if ("bar4".equals(str)) {
+				in.x = new Node(2, null);
+				in.y = in.x;
+				in.bar4(1);
 			}
 		}
 	}

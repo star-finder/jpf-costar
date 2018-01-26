@@ -33,7 +33,7 @@ public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 		
 		StackFrame sf = ti.getModifiableTopFrame();
 		
-		int objRef = sf.peek(); // don't pop yet, we might re-enter
+		int objRef = sf.peek(size); // don't pop yet, we might re-enter
 		lastThis = objRef;
 
 		// --- check for obvious exceptions
@@ -65,19 +65,21 @@ public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 		
 		Instruction nextIns = super.execute(ti);
 		
-		if (objVar != null && exp != null) {
-			String objName = objVar.getName();
-			if (objName.contains("_")) {
-				objName = objName.substring(0, objName.indexOf('_'));
+		if (objVar != null) {
+			String objName= objVar.getName();
+			String name = null;
+			
+			if (objName.equals("this")) {
+				name = objName + "_" + fname;
+			} else {
+				name = objName + "." + fname;
 			}
 			
-			String name = objName + "." + fname;
-			
-			Variable var = new Variable(objVar.getName() + "." + fname);
+			Variable var = new Variable(name);
 			Variable newVar = Utilities.freshVar(var);
 			
 			Map<String, String> nameMap = analysis.getNameMap();
-			nameMap.put(name, newVar.getName());
+			nameMap.put(var.getName(), newVar.getName());
 			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
@@ -85,6 +87,41 @@ public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 			Formula formula = current.formula;
 			formula.addComparisonTerm(Comparator.EQ, newVar, exp);
 		}
+		
+//		if (objVar != null && exp != null) {
+//			String objName = objVar.getName();
+//			String tmp = "";
+//			
+//			if (objName.contains("this_")) {
+//				objName = objName.substring(5, objName.length());
+//				tmp = "this_";
+//			}
+//			
+//			if (objName.contains("_")) {
+//				objName = objName.substring(0, objName.lastIndexOf('_'));
+//			}
+//			
+//			objName = tmp + objName;
+//			
+//			String name = objName.equals("this") ? objName + "_" + fname : objName + "." + fname;
+//			
+//			Variable var = null;
+//			if (objName.equals("this"))
+//				var = new Variable(name);
+//			else
+//				var = new Variable(objVar.getName() + "." + fname);
+//					
+//			Variable newVar = Utilities.freshVar(var);
+//			
+//			Map<String, String> nameMap = analysis.getNameMap();
+//			nameMap.put(var.getName(), newVar.getName());
+//			
+//			CoStarConstrainstTree tree = analysis.getConstrainstTree();
+//			CoStarNode current = tree.getCurrent();
+//	
+//			Formula formula = current.formula;
+//			formula.addComparisonTerm(Comparator.EQ, newVar, exp);
+//		}
 
 		return nextIns;
 	}
