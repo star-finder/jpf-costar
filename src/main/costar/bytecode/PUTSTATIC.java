@@ -18,6 +18,7 @@ import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
+import starlib.formula.expression.LiteralExpression;
 import starlib.formula.expression.NullExpression;
 
 public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
@@ -69,8 +70,14 @@ public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
 			exp = (Expression) sf.getOperandAttr(0);
 		}
 		
-		if (exp == null)
-			exp = NullExpression.getInstance();
+		if (exp == null) {
+			if (isReferenceField) {
+				exp = NullExpression.getInstance();
+			} else {
+				int value = sf.peek(size - 1);
+				exp = new LiteralExpression(value + "");
+			}
+		}
 		
 		Instruction nextIns = super.execute(ti);
 		

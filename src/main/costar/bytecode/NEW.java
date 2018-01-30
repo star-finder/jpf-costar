@@ -1,6 +1,8 @@
 package costar.bytecode;
 
 import costar.CoStarMethodExplorer;
+import costar.constrainsts.CoStarConstrainstTree;
+import costar.constrainsts.CoStarNode;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.Heap;
@@ -8,9 +10,11 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.LoadOnJPFRequired;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Formula;
 import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Expression;
+import starlib.jpf.PathFinderUtils;
 
 public class NEW extends gov.nasa.jpf.jvm.bytecode.NEW {
 
@@ -51,6 +55,12 @@ public class NEW extends gov.nasa.jpf.jvm.bytecode.NEW {
 
 		ElementInfo ei = heap.newObject(ci, ti);
 		ei.setObjectAttr(sym_v);
+		
+		CoStarConstrainstTree tree = analysis.getConstrainstTree();
+		CoStarNode current = tree.getCurrent();
+				
+		Formula formula = current.formula;
+		formula.addPointToTerm((Variable) sym_v, PathFinderUtils.toS2SATType(cname));
 
 		int objRef = ei.getObjectRef();
 		newObjRef = objRef;

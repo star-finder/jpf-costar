@@ -1,1 +1,1 @@
-pred bar(x,y) == x::features_sll_Node<eleXY,nextXY> & x=y || x::features_sll_Node<eleX,nextX> * y::features_sll_Node<eleY,nextY>
+pred bar(x,y) == x::features_sll_Node<eleXY,nextXY> & x=y & nextXY=null || x::features_sll_Node<eleX,nextX> * y::features_sll_Node<eleY,nextY> & nextX=null & nextY=null
