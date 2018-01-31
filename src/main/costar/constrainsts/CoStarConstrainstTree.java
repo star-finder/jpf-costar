@@ -79,7 +79,7 @@ public class CoStarConstrainstTree {
 					
 					boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
 					
-					if (isSat) logger.info(isSat);
+					logger.info(isSat);
 					
 					if (isSat) {
 						String model = Solver.getModel();

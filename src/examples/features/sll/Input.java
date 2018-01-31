@@ -20,8 +20,7 @@ public class Input {
 	}
 	
 	public void bar2(int n, Node x, Node y) {
-		x.elem = x.elem + n;
-		if (x.elem == y.elem) {
+		if (++x.elem == y.elem) {
 			return;
 		} else {
 			return;
