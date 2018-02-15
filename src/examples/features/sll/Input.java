@@ -6,30 +6,17 @@ public class Input {
 	
 	public Node y;
 	
+	public void bar0(int n) {
+		x.elem = 1;
+		if (x.elem < 0) {
+			return;
+		} else {
+			return;
+		}
+	}
+	
 	public void bar1(int n) {
-		x.elem = x.elem + n;
-		if (x.elem == y.elem) {
-			x.elem = x.elem + n;
-			if (x.elem == y.elem)
-				return;
-			else
-				return;
-		} else {
-			return;
-		}
-	}
-	
-	public void bar2(int n, Node x, Node y) {
-		if (++x.elem == y.elem) {
-			return;
-		} else {
-			return;
-		}
-	}
-	
-	public void bar3(int n, Node x, Node y) {
-		x.next = y;
-		x.elem = x.elem + x.next.elem + n;
+		x.elem = x.elem + y.elem + n;
 		if (x.elem == y.elem) {
 			return;
 		} else {
@@ -37,15 +24,43 @@ public class Input {
 		}
 	}
 	
-	public void bar4(int n) {
-		x.next = y;
-		x.elem = x.elem + x.next.elem + n;
-		if (x.elem == y.elem) {
+	public void bar2(int n) {
+		x = new Node(0, null);
+		if (x.elem < y.elem) {
 			return;
 		} else {
 			return;
 		}
 	}
+	
+//	public void bar2(int n, Node x, Node y) {
+//		Node z = x;
+//		if (z.elem == y.elem) {
+//			return;
+//		} else {
+//			return;
+//		}
+//	}
+//	
+//	public void bar3(int n, Node x, Node y) {
+//		x.next = y;
+//		x.elem = x.elem + x.next.elem + n;
+//		if (x.elem == y.elem) {
+//			return;
+//		} else {
+//			return;
+//		}
+//	}
+//	
+//	public void bar4(int n) {
+//		x.next = y;
+//		x.elem = x.elem + x.next.elem + n;
+//		if (x.elem == y.elem) {
+//			return;
+//		} else {
+//			return;
+//		}
+//	}
 	
 	public void travel(Node root) {
 		while (root != null) {
@@ -77,26 +92,31 @@ public class Input {
 			if (args[0].equals("foo")) {
 				in.foo(1);
 			}
+			if ("bar0".equals(str)) {
+				in.x = new Node(2, null);
+				in.y = in.x;
+				in.bar0(1);
+			}
 			if ("bar1".equals(str)) {
 				in.x = new Node(2, null);
 				in.y = in.x;
 				in.bar1(1);
 			}
 			if ("bar2".equals(str)) {
-				Node x = new Node(2, null);
-				Node y = x;
-				in.bar2(1, x, y);
-			}
-			if ("bar3".equals(str)) {
-				Node x = new Node(2, null);
-				Node y = x;
-				in.bar3(1, x, y);
-			}
-			if ("bar4".equals(str)) {
 				in.x = new Node(2, null);
 				in.y = in.x;
-				in.bar4(1);
+				in.bar2(1);
 			}
+//			if ("bar3".equals(str)) {
+//				Node x = new Node(2, null);
+//				Node y = x;
+//				in.bar3(1, x, y);
+//			}
+//			if ("bar4".equals(str)) {
+//				in.x = new Node(2, null);
+//				in.y = in.x;
+//				in.bar4(1);
+//			}
 		}
 	}
 	

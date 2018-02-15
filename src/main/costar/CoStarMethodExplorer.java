@@ -51,7 +51,7 @@ public class CoStarMethodExplorer {
 
 	private Object[] initParams;
 	
-	private Map<String,String> nameMap;
+//	private Map<String,String> nameMap;
 
 	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi) {
 		this.methodInfo = mi;
@@ -59,7 +59,7 @@ public class CoStarMethodExplorer {
 		this.anaConf = methodConfig.getAnalysisConfig();
 
 		this.constraintsTree = new CoStarConstrainstTree(mi);
-		this.nameMap = new HashMap<String,String>();
+//		this.nameMap = new HashMap<String,String>();
 	}
 
 	public boolean hasMoreChoices() {
@@ -128,7 +128,7 @@ public class CoStarMethodExplorer {
 	private void prepareReExecution(StackFrame sf) {
 		constraintsTree.reset();
 		Utilities.reset();
-		nameMap = new HashMap<String,String>();
+//		nameMap = new HashMap<String,String>();
 		
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
 			sv.apply(currValuation, sf);
@@ -251,8 +251,8 @@ public class CoStarMethodExplorer {
 		return this.methodInfo.getFullName();
 	}
 	
-	public Map<String,String> getNameMap() {
-		return nameMap;
-	}
+//	public Map<String,String> getNameMap() {
+//		return nameMap;
+//	}
 
 }

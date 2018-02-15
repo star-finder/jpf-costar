@@ -8,10 +8,13 @@ concolic.method.travel.config=all_fields_symbolic
 concolic.method.foo=features.sll.Input.foo(i:int)
 concolic.method.foo.config=all_fields_symbolic
 
+concolic.method.bar0=features.sll.Input.bar0(n:int)
+concolic.method.bar0.config=all_fields_symbolic
+
 concolic.method.bar1=features.sll.Input.bar1(n:int)
 concolic.method.bar1.config=all_fields_symbolic
 
-concolic.method.bar2=features.sll.Input.bar2(n:int,x:Lfeatures/sll/Node;,y:Lfeatures/sll/Node;)
+concolic.method.bar2=features.sll.Input.bar2(n:int)
 concolic.method.bar2.config=all_fields_symbolic
 
 concolic.method.bar3=features.sll.Input.bar3(n:int,x:Lfeatures/sll/Node;,y:Lfeatures/sll/Node;)

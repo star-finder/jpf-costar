@@ -1,7 +1,10 @@
 package costar.constrainsts;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.SimpleFormatter;
 
 import costar.valuation.ValuationGenerator;
 import gov.nasa.jpf.Config;
@@ -41,6 +44,21 @@ public class CoStarConstrainstTree {
 		ValuationGenerator.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
 		
 		this.models = new HashSet<String>();
+		
+		
+		try {
+			FileHandler fh = new FileHandler("/Users/HongLongPham/Workspace/JPF_HOME/jpf-costar/log.txt");
+			logger.addHandler(fh);
+			logger.setUseParentHandlers(false);
+	        SimpleFormatter formatter = new SimpleFormatter();  
+	        fh.setFormatter(formatter);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public CoStarNode getCurrent() {

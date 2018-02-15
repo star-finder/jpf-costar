@@ -86,12 +86,12 @@ public class GETSTATIC extends gov.nasa.jpf.jvm.bytecode.GETSTATIC {
 		
 		String name = className + "." + fname;
 		
-		Map<String,String> nameMap = analysis.getNameMap();
-		if (nameMap.containsKey(name)) {
-			name = nameMap.get(name);
-		} else {
-			nameMap.put(name, name);
-		}
+//		Map<String,String> nameMap = analysis.getNameMap();
+//		if (nameMap.containsKey(name)) {
+//			name = nameMap.get(name);
+//		} else {
+//			nameMap.put(name, name);
+//		}
 			
 		sf.setOperandAttr(new Variable(name));
 		

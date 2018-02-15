@@ -84,12 +84,12 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 				name = objName + "." + fname;
 			}
 			
-			Map<String,String> nameMap = analysis.getNameMap();
-			if (nameMap.containsKey(name)) {
-				name = nameMap.get(name);
-			} else {
-				nameMap.put(name, name);
-			}
+//			Map<String,String> nameMap = analysis.getNameMap();
+//			if (nameMap.containsKey(name)) {
+//				name = nameMap.get(name);
+//			} else {
+//				nameMap.put(name, name);
+//			}
 			
 			sf.setOperandAttr(new Variable(name));
 		}

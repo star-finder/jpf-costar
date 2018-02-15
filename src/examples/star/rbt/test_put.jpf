@@ -6,3 +6,5 @@ concolic.method=put
 
 costar.precondition=pre put == rbt(this_root,this_size)
 star.test_init=${jpf-costar}/src/init/star/rbt/test_put.txt
+star.max_depth=3
+star.max_time=10
