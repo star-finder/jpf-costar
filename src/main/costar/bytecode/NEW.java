@@ -60,7 +60,7 @@ public class NEW extends gov.nasa.jpf.jvm.bytecode.NEW {
 		CoStarNode current = tree.getCurrent();
 				
 		Formula formula = current.formula;
-		formula.addPointToTerm((Variable) sym_v, PathFinderUtils.toS2SATType(cname));
+		formula.addPointToTermConcrete((Variable) sym_v, PathFinderUtils.toS2SATType(cname));
 
 		int objRef = ei.getObjectRef();
 		newObjRef = objRef;
