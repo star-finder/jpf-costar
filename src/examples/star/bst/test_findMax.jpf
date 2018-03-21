@@ -6,3 +6,4 @@ concolic.method=findMax
 
 costar.precondition=pre findMax == bst(this_root)
 star.test_init=${jpf-costar}/src/init/star/bst/test_findMax.txt
+star.max_depth=1

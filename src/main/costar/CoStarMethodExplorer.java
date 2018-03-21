@@ -1,9 +1,7 @@
 package costar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import costar.config.AnalysisConfig;
 import costar.config.CoStarConfig;
@@ -20,12 +18,14 @@ import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
+import gov.nasa.jpf.vm.Fields;
 import gov.nasa.jpf.vm.Heap;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
+import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
 
@@ -63,6 +63,16 @@ public class CoStarMethodExplorer {
 	}
 
 	public boolean hasMoreChoices() {
+		ClassInfo ciTop = VM.getVM().getCurrentThread().getTopFrame().getClassInfo();
+	    ClassInfo ci = ciTop.resolveReferencedClass("avl.AvlTree");
+	    FieldInfo fi = ci.getStaticField("$bitMap");
+	    
+	    ElementInfo ei = ci.getClassObject();
+	    Fields fs = ei.getFields();
+	    
+	    System.out.println(ei);
+		System.out.println(fi.getValueObject(fs));
+		
 		if (initValuation == null) {
 			return true;
 		}

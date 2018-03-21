@@ -12,5 +12,12 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/starlib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jpf-star"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/asm-6.0.jar"/>
+	<classpathentry kind="lib" path="lib/asm-analysis-6.0.jar"/>
+	<classpathentry kind="lib" path="lib/asm-commons-6.0.jar"/>
+	<classpathentry kind="lib" path="lib/asm-tree-6.0.jar"/>
+	<classpathentry kind="lib" path="lib/asm-util-6.0.jar"/>
+	<classpathentry kind="lib" path="lib/asm-xml-6.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.jacoco.core-0.8.0.jar"/>
 	<classpathentry kind="output" path="build/output"/>
 </classpath>

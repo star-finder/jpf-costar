@@ -6,3 +6,5 @@ concolic.method=remove
 
 costar.precondition=pre remove == rbt(this_root,this_size)
 star.test_init=${jpf-costar}/src/init/star/rbt/test_remove.txt
+star.max_depth=9
+star.max_time=10

@@ -32,7 +32,7 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 		
 		if(sym_v == null) {
 			return super.execute(ti);
-		} else if (sym_v.toString().contains("newNode_")) {
+		} else if (sym_v.toString().contains("newNode_") || sym_v.toString().contains("$bitMap")) {
 			return super.execute(ti);
 		} else {
 			int objRef = sf.pop();

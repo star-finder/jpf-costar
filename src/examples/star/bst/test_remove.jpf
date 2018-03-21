@@ -6,3 +6,4 @@ concolic.method=remove
 
 costar.precondition=pre remove == bst(this_root)
 star.test_init=${jpf-costar}/src/init/star/bst/test_remove.txt
+star.max_depth=2

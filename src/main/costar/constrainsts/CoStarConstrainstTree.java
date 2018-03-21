@@ -86,7 +86,7 @@ public class CoStarConstrainstTree {
 					current.childrend[i].hasVisited = true;
 					
 					Formula f = current.childrend[i].formula;
-//					logger.info("New constraint = " + f.toString());
+					logger.info("New constraint = " + f.toString());
 					
 					Precondition pre = PreconditionMap.find(methodInfo.getName());
 					Formula preF = new Formula();
@@ -94,6 +94,14 @@ public class CoStarConstrainstTree {
 					if (pre != null) {
 						preF = pre.getFormula();
 //						logger.info("Precondition = " + preF);
+					}
+					
+//					String s = "newNode_1->rbt_TreeMap__Entry(key_2,value_3,left_4,right_5,parent_6,color_7) & this_root != null & key >= this_root.key & key != this_root.key & this_root.right != null & key >= this_root.right.key & key != this_root.right.key & this_root.right.right = null & this_modCount := (this_modCount + 1) & this_size := (this_size + 1) & newNode_1.left := null & newNode_1.right := null & newNode_1.color := 1 & newNode_1.key := key & newNode_1.value := value & newNode_1.parent := this_root.right & this_root.right.right := newNode_1 & this_root.right.right.color := 0 & this_root.right.right != null & this_root.right.right != this_root & this_root.right.right.parent.color = 0 & this_root.right.right != null & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right.parent != this_root.right.right.parent.parent.left & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right.parent.parent.left = null & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right != this_root.right.right.parent.left & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.color := 1 & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right.parent.parent.color := 0 & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent.right := this_root.right.right.parent.parent.right.left & this_root.right.right.parent.parent.right.left != null";
+//					String s = "this_root != null & key >= this_root.key & key != this_root.key & this_root.right != null & key < this_root.right.key & this_root.right.left != null & key < this_root.right.left.key & this_root.right.left.left != null & key < this_root.right.left.left.key & this_root.right.left.left.left = null";
+					String s = "this_root != null & key >= this_root.key & key != this_root.key & this_root.right != null & key < this_root.right.key & this_root.right.left != null & key < this_root.right.left.key & this_root.right.left.left != null & key < this_root.right.left.left.key & this_root.right.left.left.left = null";
+					if (f.toString().contains(s)) {
+						int ii = 0;
+						ii++;
 					}
 					
 					Utilities.reset();

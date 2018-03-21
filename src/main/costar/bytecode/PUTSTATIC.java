@@ -31,7 +31,7 @@ public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
 	public Instruction execute(ThreadInfo ti) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 		
-		if (analysis == null)
+		if (analysis == null || fname.contains("$bitMap"))
 			return super.execute(ti);
 		
 		StackFrame sf = ti.getModifiableTopFrame();
