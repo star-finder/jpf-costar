@@ -1,8 +1,8 @@
 package costar;
 
 import costar.bytecode.ALOAD;
-import costar.bytecode.ASTORE;
 import costar.bytecode.ATHROW;
+import costar.bytecode.BASTORE;
 import costar.bytecode.DCMPG;
 import costar.bytecode.DCMPL;
 import costar.bytecode.DLOAD;
@@ -99,10 +99,10 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new ALOAD(localVarIndex);
 	}
 
-//	@Override
-//	public Instruction astore(int localVarIndex) {
-//		return new ASTORE(localVarIndex);
-//	}
+	// @Override
+	// public Instruction astore(int localVarIndex) {
+	// return new ASTORE(localVarIndex);
+	// }
 
 	@Override
 	public Instruction ifnonnull(int targetPc) {
@@ -522,6 +522,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction athrow() {
 		return new ATHROW();
+	}
+
+	@Override
+	public Instruction bastore() {
+		return new BASTORE();
 	}
 
 	@Override

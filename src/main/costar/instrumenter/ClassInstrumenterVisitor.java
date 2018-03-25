@@ -1,6 +1,5 @@
 package costar.instrumenter;
 
-import org.jacoco.core.internal.instr.InstrSupport;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
@@ -14,10 +13,6 @@ public class ClassInstrumenterVisitor extends ClassVisitor {
 	private String fieldName = "$bitMap";
 	
 	private String fieldDesc = "[Z";
-	
-	private String getterMethodName = "$getBitMap";
-	
-	private String getterMethodDesc = "()[Z";
 	
 	private String initMethodName = "$initBitMap";
 	
@@ -70,7 +65,6 @@ public class ClassInstrumenterVisitor extends ClassVisitor {
 	public void visitEnd() {
 		createBitMapField();
 		createBitMapInitMethod();
-		createBitMapGetterMethod();
 		cv.visitEnd();
 	}
 
@@ -101,20 +95,7 @@ public class ClassInstrumenterVisitor extends ClassVisitor {
 		mv.visitLabel(label);
 		mv.visitInsn(Opcodes.RETURN);
 		
-		mv.visitMaxs(1, 0);
-		
-		mv.visitEnd();
-	}
-	
-	private void createBitMapGetterMethod() {
-		final MethodVisitor mv = cv.visitMethod(Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC, getterMethodName,
-				getterMethodDesc, null, null);
-		mv.visitCode();
-		
-		mv.visitFieldInsn(Opcodes.GETSTATIC, className, fieldName, fieldDesc);
-		mv.visitInsn(Opcodes.ARETURN);
-		
-		mv.visitMaxs(1, 0);
+		mv.visitMaxs(1, 1);
 		
 		mv.visitEnd();
 	}

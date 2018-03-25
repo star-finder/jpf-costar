@@ -109,11 +109,7 @@ public class CoStar implements JPFShell {
 	}
 	
 	public static void instrument(Config conf) {
-		final IExecutionDataAccessorGenerator runtime = new URLStreamHandlerRuntime();
-		final Instrumenter instr = new Instrumenter(runtime);
 		final String source = "/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/AvlTree.class";
-		final String name = "AvlTree.class";
-		
 		final String dest = "/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/tmp";
 		
 		try {
@@ -121,8 +117,6 @@ public class CoStar implements JPFShell {
 			
 			InputStream original = new FileInputStream(source);
 			
-//			byte[] instrumented = instr.instrument(original, name);
-//			original.close();
 			ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 			ClassReader cr = new ClassReader(InputStreams.readFully(original));		
 			ClassVisitor cv = new ClassInstrumenterVisitor(cw, cr.getClassName());
@@ -131,7 +125,10 @@ public class CoStar implements JPFShell {
 			byte[] instrumented = cw.toByteArray();
 			
 			Files.write(Paths.get(source), instrumented);
-			System.out.println("Count = " + ((ClassInstrumenterVisitor) cv).getCount());
+			int count = ((ClassInstrumenterVisitor) cv).getCount();
+			System.out.println("Count = " + count);
+			
+			conf.put("costar.bitmap_size", count + "");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

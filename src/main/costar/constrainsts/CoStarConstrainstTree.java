@@ -35,7 +35,7 @@ public class CoStarConstrainstTree {
 	private MethodInfo methodInfo;
 	
 	private HashSet<String> models;
-		
+			
 	public CoStarConstrainstTree(MethodInfo mi) {
 		this.root = new CoStarNode(null, null, null, null, true);
 		this.current = root;
@@ -45,7 +45,6 @@ public class CoStarConstrainstTree {
 		ValuationGenerator.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
 		
 		this.models = new HashSet<String>();
-		
 		
 		try {
 			FileHandler fh = new FileHandler("/Users/HongLongPham/Workspace/JPF_HOME/jpf-costar/log.txt");

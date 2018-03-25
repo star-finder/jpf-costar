@@ -9,9 +9,12 @@ import gov.nasa.jpf.vm.StackFrame;
 public class CoStarPerturbator implements OperandPerturbator {
 
 	private final CoStarExplorer explorer;
+	
+	private Config config;
 
 	public CoStarPerturbator(Config config) {
 		this.explorer = CoStar.getCoStarExplorer(config);
+		this.config = config;
 	}
 
 	@Override
@@ -21,7 +24,8 @@ public class CoStarPerturbator implements OperandPerturbator {
 
 	@Override
 	public ChoiceGenerator<?> createChoiceGenerator(String id, StackFrame sf, Object refObject) {
-		explorer.newAnalysis(id, sf, (MethodInfo) refObject);
+		int size = Integer.parseInt(config.get("costar.bitmap_size").toString());
+		explorer.newAnalysis(id, sf, (MethodInfo) refObject, size);
 
 		return new CoStarChoiceGenerator(id, explorer);
 	}

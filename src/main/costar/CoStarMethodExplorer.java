@@ -1,6 +1,7 @@
 package costar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import costar.config.AnalysisConfig;
@@ -51,29 +52,22 @@ public class CoStarMethodExplorer {
 
 	private Object[] initParams;
 	
+	private boolean[] $bitMap;
+	
 //	private Map<String,String> nameMap;
 
-	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi) {
+	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi, int size) {
 		this.methodInfo = mi;
 		this.methodConfig = cc.getMethodConfig(id);
 		this.anaConf = methodConfig.getAnalysisConfig();
 
 		this.constraintsTree = new CoStarConstrainstTree(mi);
+		this.$bitMap = new boolean[size];
 //		this.nameMap = new HashMap<String,String>();
 	}
 
-	public boolean hasMoreChoices() {
-		ClassInfo ciTop = VM.getVM().getCurrentThread().getTopFrame().getClassInfo();
-	    ClassInfo ci = ciTop.resolveReferencedClass("avl.AvlTree");
-	    FieldInfo fi = ci.getStaticField("$bitMap");
-	    
-	    ElementInfo ei = ci.getClassObject();
-	    Fields fs = ei.getFields();
-	    
-	    System.out.println(ei);
-		System.out.println(fi.getValueObject(fs));
-		
-		if (initValuation == null) {
+	public boolean hasMoreChoices() {		
+	    if (initValuation == null) {
 			return true;
 		}
 		
@@ -259,6 +253,10 @@ public class CoStarMethodExplorer {
 
 	public String getFullName() {
 		return this.methodInfo.getFullName();
+	}
+	
+	public void setBitMap(int idx) {
+		$bitMap[idx] = true;
 	}
 	
 //	public Map<String,String> getNameMap() {

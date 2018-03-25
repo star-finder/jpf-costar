@@ -29,9 +29,9 @@ public class CoStarExplorer {
 		return analysis.hasMoreChoices();
 	}
 
-	public void newAnalysis(String id, StackFrame sf, MethodInfo mi) {
+	public void newAnalysis(String id, StackFrame sf, MethodInfo mi, int size) {
 		String key = id.substring(id.lastIndexOf('.') + 1, id.indexOf('('));
-		analysis = new CoStarMethodExplorer(cc, key, mi);
+		analysis = new CoStarMethodExplorer(cc, key, mi, size);
 		
 		Formula f = new Formula();
 //		Precondition pre = PreconditionMap.find(mi.getName());
