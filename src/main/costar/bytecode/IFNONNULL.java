@@ -39,9 +39,6 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 		} else {
 			int objRef = sf.pop();
 			
-			tryFork1();
-			tryFork2(ti);
-			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
 			
@@ -59,42 +56,20 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 			constraints.add(f1);
 			
 			if (objRef != 0) {
+				if (!IFInstrSymbHelper.isExecuted(ti, getNext(ti))) {
+					tree.addToStack(f0);
+				}
+				
 				analysis.decision(ti, this, 1, constraints);
 				return getTarget();
 			} else {
+				if (!IFInstrSymbHelper.isExecuted(ti, getTarget())) {
+					tree.addToStack(f1);
+				}
+				
 				analysis.decision(ti, this, 0, constraints);
 				return getNext(ti);
 			}
-		}
-	}
-	
-	private void tryFork1() {
-		System.out.println("then branch");
-		
-		Instruction ins = getTarget();
-		Instruction index = ins.getNext();
-		
-		if (index instanceof BIPUSH) {
-			BIPUSH bp = (BIPUSH) index;
-			System.out.println("index = " + bp.getValue());
-		} else if (index instanceof SIPUSH) {
-			SIPUSH sp = (SIPUSH) index;
-			System.out.println("index = " + sp.getValue());
-		}
-	}
-	
-	private void tryFork2(ThreadInfo ti) {
-		System.out.println("else branch");
-		
-		Instruction ins = getNext(ti);
-		Instruction index = ins.getNext();
-		
-		if (index instanceof BIPUSH) {
-			BIPUSH bp = (BIPUSH) index;
-			System.out.println("index = " + bp.getValue());
-		} else if (index instanceof SIPUSH) {
-			SIPUSH sp = (SIPUSH) index;
-			System.out.println("index = " + sp.getValue());
 		}
 	}
 

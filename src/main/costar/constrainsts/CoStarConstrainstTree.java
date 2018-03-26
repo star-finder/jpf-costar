@@ -3,6 +3,7 @@ package costar.constrainsts;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Stack;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
@@ -35,9 +36,13 @@ public class CoStarConstrainstTree {
 	private MethodInfo methodInfo;
 	
 	private HashSet<String> models;
+	
+	private Stack<Formula> stack;
 			
 	public CoStarConstrainstTree(MethodInfo mi) {
 		this.root = new CoStarNode(null, null, null, null, true);
+		this.stack = new Stack<Formula>();
+		
 		this.current = root;
 		this.config = VM.getVM().getConfig();
 		this.methodInfo = mi;
@@ -74,6 +79,19 @@ public class CoStarConstrainstTree {
 	}
 
 	public Valuation findNext() {
+//		return findNextFromTree();
+		return findNextFromStack();
+	}
+	
+	public Valuation findNextFromTree() {
+		Precondition pre = PreconditionMap.find(methodInfo.getName());
+		Formula preF = new Formula();
+		
+		if (pre != null) {
+			preF = pre.getFormula();
+//			logger.info("Precondition = " + preF);
+		}
+		
 		while (current != null) {
 			if (current.childrend == null) {
 				current = current.parent;
@@ -87,22 +105,6 @@ public class CoStarConstrainstTree {
 					Formula f = current.childrend[i].formula;
 					logger.info("New constraint = " + f.toString());
 					
-					Precondition pre = PreconditionMap.find(methodInfo.getName());
-					Formula preF = new Formula();
-					
-					if (pre != null) {
-						preF = pre.getFormula();
-//						logger.info("Precondition = " + preF);
-					}
-					
-//					String s = "newNode_1->rbt_TreeMap__Entry(key_2,value_3,left_4,right_5,parent_6,color_7) & this_root != null & key >= this_root.key & key != this_root.key & this_root.right != null & key >= this_root.right.key & key != this_root.right.key & this_root.right.right = null & this_modCount := (this_modCount + 1) & this_size := (this_size + 1) & newNode_1.left := null & newNode_1.right := null & newNode_1.color := 1 & newNode_1.key := key & newNode_1.value := value & newNode_1.parent := this_root.right & this_root.right.right := newNode_1 & this_root.right.right.color := 0 & this_root.right.right != null & this_root.right.right != this_root & this_root.right.right.parent.color = 0 & this_root.right.right != null & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right.parent != this_root.right.right.parent.parent.left & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right.parent.parent.left = null & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right != this_root.right.right.parent.left & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.color := 1 & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right.parent.parent.color := 0 & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent != null & this_root.right.right != null & this_root.right.right.parent != null & this_root.right.right.parent.parent.right := this_root.right.right.parent.parent.right.left & this_root.right.right.parent.parent.right.left != null";
-//					String s = "this_root != null & key >= this_root.key & key != this_root.key & this_root.right != null & key < this_root.right.key & this_root.right.left != null & key < this_root.right.left.key & this_root.right.left.left != null & key < this_root.right.left.left.key & this_root.right.left.left.left = null";
-					String s = "this_root != null & key >= this_root.key & key != this_root.key & this_root.right != null & key < this_root.right.key & this_root.right.left != null & key < this_root.right.left.key & this_root.right.left.left != null & key < this_root.right.left.left.key & this_root.right.left.left.left = null";
-					if (f.toString().contains(s)) {
-						int ii = 0;
-						ii++;
-					}
-					
 					Utilities.reset();
 					boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
 					
@@ -112,6 +114,7 @@ public class CoStarConstrainstTree {
 						String model = Solver.getModel();
 						addModel(model);
 						Valuation val = ValuationGenerator.toValuation(model);
+						
 						// build new valuation based on the model
 //						logger.info("New model = " + model);
 //						logger.info("New constraint = " + f.toString());
@@ -149,6 +152,47 @@ public class CoStarConstrainstTree {
 	public void reset() {
 		current = root;
 		current.formula = new Formula();
+	}
+	
+	public void addToStack(Formula f) {
+		stack.push(f);
+	}
+	
+	public Valuation findNextFromStack() {
+		Precondition pre = PreconditionMap.find(methodInfo.getName());
+		Formula preF = new Formula();
+		
+		if (pre != null) {
+			preF = pre.getFormula();
+			logger.info("Precondition = " + preF);
+		}
+		
+		while (!stack.isEmpty()) {
+			Formula f = stack.pop();
+			logger.info("New constraint = " + f.toString());
+			
+			Utilities.reset();
+			boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
+			
+			logger.info(isSat);
+			
+			if (isSat) {
+				String model = Solver.getModel();
+				addModel(model);
+				Valuation val = ValuationGenerator.toValuation(model);
+				
+				// build new valuation based on the model
+//				logger.info("New model = " + model);
+//				logger.info("New constraint = " + f.toString());
+//				logger.info("New valuation = " + val);
+				
+				return val;
+			} else {
+				continue;
+			}
+		}
+		
+		return null;
 	}
 
 }

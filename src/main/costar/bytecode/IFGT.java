@@ -1,9 +1,11 @@
 package costar.bytecode;
 
 import costar.CoStarMethodExplorer;
+import costar.constrainsts.CoStarConstrainstTree;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Formula;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
@@ -12,6 +14,20 @@ public class IFGT extends gov.nasa.jpf.jvm.bytecode.IFGT {
 
 	public IFGT(int index) {
 		super(index);
+	}
+	
+	public void addToStack(ThreadInfo ti, CoStarConstrainstTree tree,
+			int conditionValue, Formula f0, Formula f1, Formula f2) {
+		if (conditionValue > 0) {
+			if (!IFInstrSymbHelper.isExecuted(ti, getNext(ti))) {
+				tree.addToStack(f0);
+				tree.addToStack(f1);
+			}
+		} else {
+			if (!IFInstrSymbHelper.isExecuted(ti, getTarget())) {
+				tree.addToStack(f2);
+			}
+		}
 	}
 
 	@Override

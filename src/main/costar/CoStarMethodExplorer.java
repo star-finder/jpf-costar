@@ -52,7 +52,7 @@ public class CoStarMethodExplorer {
 
 	private Object[] initParams;
 	
-	private boolean[] $bitMap;
+	private boolean[] bitMap;
 	
 //	private Map<String,String> nameMap;
 
@@ -62,7 +62,7 @@ public class CoStarMethodExplorer {
 		this.anaConf = methodConfig.getAnalysisConfig();
 
 		this.constraintsTree = new CoStarConstrainstTree(mi);
-		this.$bitMap = new boolean[size];
+		this.bitMap = new boolean[size];
 //		this.nameMap = new HashMap<String,String>();
 	}
 
@@ -255,8 +255,12 @@ public class CoStarMethodExplorer {
 		return this.methodInfo.getFullName();
 	}
 	
-	public void setBitMap(int idx) {
-		$bitMap[idx] = true;
+	public boolean[] getBitMap() {
+		return bitMap;
+	}
+	
+	public void setBitMap(int index) {
+		bitMap[index] = true;
 	}
 	
 //	public Map<String,String> getNameMap() {

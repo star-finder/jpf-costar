@@ -54,9 +54,17 @@ public class IFNULL extends gov.nasa.jpf.jvm.bytecode.IFNULL {
 			constraints.add(f1);
 			
 			if (objRef == 0) {
+				if (!IFInstrSymbHelper.isExecuted(ti, getNext(ti))) {
+					tree.addToStack(f1);
+				}
+				
 				analysis.decision(ti, this, 0, constraints);
 				return getTarget();
 			} else {
+				if (!IFInstrSymbHelper.isExecuted(ti, getTarget())) {
+					tree.addToStack(f0);
+				}
+				
 				analysis.decision(ti, this, 1, constraints);
 				return getNext(ti);
 			}

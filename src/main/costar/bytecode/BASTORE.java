@@ -13,12 +13,12 @@ public class BASTORE extends gov.nasa.jpf.jvm.bytecode.BASTORE {
 		if (analysis == null)
 			return super.execute(ti);
 		
-	    int idx = peekIndex(ti);
+	    int index = peekIndex(ti);
 
 	    arrayOperandAttr = peekArrayAttr(ti);
 	    
-	    if (arrayOperandAttr != null && arrayOperandAttr.toString().contains("$bitMap")) {
-	    	analysis.setBitMap(idx);
+	    if (arrayOperandAttr != null && arrayOperandAttr.toString().contains("bitMap")) {
+	    	analysis.setBitMap(index);
 	    }
 	    
 	    return super.execute(ti);

@@ -18,6 +18,31 @@ import starlib.formula.expression.NullExpression;
 
 public class CMPInstrSymbHelper {
 	
+	private static void addToStack(ThreadInfo ti, Instruction instr, CoStarConstrainstTree tree,
+			int conditionValue, Formula f0, Formula f1, Formula f2) {
+		Instruction condInstr = instr.getNext(ti);
+		
+		if (condInstr instanceof IFEQ) {
+			IFEQ ifeqInstr = (IFEQ) condInstr;
+			ifeqInstr.addToStack(ti, tree, conditionValue, f0, f1, f2);
+		} else if (condInstr instanceof IFNE) {
+			IFNE ifneInstr = (IFNE) condInstr;
+			ifneInstr.addToStack(ti, tree, conditionValue, f0, f1, f2);
+		} else if (condInstr instanceof IFGT) {
+			IFGT ifgtInstr = (IFGT) condInstr;
+			ifgtInstr.addToStack(ti, tree, conditionValue, f0, f1, f2);
+		} else if (condInstr instanceof IFGE) {
+			IFGE ifgeInstr = (IFGE) condInstr;
+			ifgeInstr.addToStack(ti, tree, conditionValue, f0, f1, f2);
+		} else if (condInstr instanceof IFLT) {
+			IFLT ifltInstr = (IFLT) condInstr;
+			ifltInstr.addToStack(ti, tree, conditionValue, f0, f1, f2);
+		} else if (condInstr instanceof IFLE) {
+			IFLE ifleInstr = (IFLE) condInstr;
+			ifleInstr.addToStack(ti, tree, conditionValue, f0, f1, f2);
+		}
+	}
+	
 	public static Instruction getNextInstructionAndSetPCChoiceLong(ThreadInfo ti,
 			Instruction instr, Expression sym_v1, Expression sym_v2,
 			Comparator fstComparator, Comparator sndComparator, Comparator trdComparator) {
@@ -71,6 +96,8 @@ public class CMPInstrSymbHelper {
 		} else {
 			analysis.decision(ti, instr, 2, constraints);
 		}
+		
+		addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);
@@ -138,6 +165,8 @@ public class CMPInstrSymbHelper {
 			analysis.decision(ti, instr, 2, constraints);
 		}
 		
+		addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
+		
 		sf.push(conditionValue);
 		return instr.getNext(ti);
 	}
@@ -203,6 +232,8 @@ public class CMPInstrSymbHelper {
 		} else {
 			analysis.decision(ti, instr, 2, constraints);
 		}
+				
+		addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);

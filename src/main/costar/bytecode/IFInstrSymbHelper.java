@@ -6,7 +6,9 @@ import java.util.List;
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
+import gov.nasa.jpf.jvm.bytecode.BIPUSH;
 import gov.nasa.jpf.jvm.bytecode.IfInstruction;
+import gov.nasa.jpf.jvm.bytecode.SIPUSH;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -16,6 +18,24 @@ import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 
 public class IFInstrSymbHelper {
+	
+	public static boolean isExecuted(ThreadInfo ti, Instruction instr) {
+		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
+		boolean[] bitMap = analysis.getBitMap();
+		
+		int index = -1;
+		Instruction nextInstr = instr.getNext();
+		
+		if (nextInstr instanceof BIPUSH) {
+			BIPUSH bp = (BIPUSH) nextInstr;
+			index = bp.getValue();
+		} else if (nextInstr instanceof SIPUSH) {
+			SIPUSH sp = (SIPUSH) nextInstr;
+			index = sp.getValue();
+		}
+		
+		return bitMap[index];
+	}
 	
 	public static Instruction getNextInstructionAndSetPCChoice(ThreadInfo ti, IfInstruction instr,
 			Expression sym_v1, Expression sym_v2, Comparator trueComparator, Comparator falseComparator) {
@@ -61,9 +81,17 @@ public class IFInstrSymbHelper {
 		constraints.add(f1);
 		
 		if (isTrue) {
+			if (!isExecuted(ti, instr.getNext(ti))) {
+				tree.addToStack(f1);
+			}
+			
 			analysis.decision(ti, instr, 0, constraints);
 			return instr.getTarget();
 		} else {
+			if (!isExecuted(ti, instr.getTarget())) {
+				tree.addToStack(f0);
+			}
+			
 			analysis.decision(ti, instr, 1, constraints);
 			return instr.getNext(ti);
 		}
