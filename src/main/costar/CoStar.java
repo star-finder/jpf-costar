@@ -62,7 +62,8 @@ public class CoStar implements JPFShell {
 		// prepare config
 		Config jpfConf = cc.generateJPFConfig(config);
 		
-		instrument(jpfConf);
+		boolean isInstrument = Boolean.parseBoolean(jpfConf.getProperty("costar.instrument", "false"));
+		if (isInstrument) instrument(jpfConf);
 		
 		// Configure JPF
 		jpfConf.remove("shell");
@@ -88,20 +89,21 @@ public class CoStar implements JPFShell {
 
 		Solver.terminate();
 		
-		revert();
+		if (isInstrument) revert(jpfConf);
 		logger.info("CoStar.run() -- end");
 		
 		long endTime = System.currentTimeMillis();
 		logger.info("Time = " + ((endTime - startTime) / 1000));
 	}
 
-	public static void revert() {
-		final String source = "/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/tmp/AvlTree.class";
-		final String dest = "/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl";
-		
+	public static void revert(Config conf) {
+		final String source = conf.getProperty("costar.dest");
+		final String dest = conf.getProperty("costar.source");
+		final String clazz = conf.getProperty("costar.class");
+				
 		try {
-			(new File(dest + "/AvlTree.class")).delete();
-			FileUtils.copyFile(new File(source), new File(dest));
+			(new File(dest + clazz)).delete();
+			FileUtils.copyFile(new File(source + clazz), new File(dest));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -109,13 +111,14 @@ public class CoStar implements JPFShell {
 	}
 	
 	public static void instrument(Config conf) {
-		final String source = "/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/AvlTree.class";
-		final String dest = "/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/tmp";
+		final String source = conf.getProperty("costar.source");
+		final String dest = conf.getProperty("costar.dest");
+		final String clazz = conf.getProperty("costar.class");
 		
 		try {
-			FileUtils.copyFile(new File(source), new File(dest));
+			FileUtils.copyFile(new File(source + clazz), new File(dest));
 			
-			InputStream original = new FileInputStream(source);
+			InputStream original = new FileInputStream(source + clazz);
 			
 			ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 			ClassReader cr = new ClassReader(InputStreams.readFully(original));		
@@ -124,11 +127,11 @@ public class CoStar implements JPFShell {
 			cr.accept(cv, 0);
 			byte[] instrumented = cw.toByteArray();
 			
-			Files.write(Paths.get(source), instrumented);
+			Files.write(Paths.get(source + clazz), instrumented);
 			int count = ((ClassInstrumenterVisitor) cv).getCount();
 			System.out.println("Count = " + count);
 			
-			conf.put("costar.bitmap_size", count + "");
+			conf.setProperty("costar.bitmap_size", count + "");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

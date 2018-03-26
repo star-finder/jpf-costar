@@ -6,6 +6,7 @@ import java.util.List;
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -48,6 +49,9 @@ public class CMPInstrSymbHelper {
 			Comparator fstComparator, Comparator sndComparator, Comparator trdComparator) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 		StackFrame sf = ti.getModifiableTopFrame();
+		
+		Config config = ti.getVM().getConfig();
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
@@ -97,7 +101,7 @@ public class CMPInstrSymbHelper {
 			analysis.decision(ti, instr, 2, constraints);
 		}
 		
-		addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
+		if (isInstrument) addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);
@@ -108,6 +112,9 @@ public class CMPInstrSymbHelper {
 			Comparator fstComparator, Comparator sndComparator, Comparator trdComparator) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 		StackFrame sf = ti.getModifiableTopFrame();
+		
+		Config config = ti.getVM().getConfig();
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
@@ -165,7 +172,7 @@ public class CMPInstrSymbHelper {
 			analysis.decision(ti, instr, 2, constraints);
 		}
 		
-		addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
+		if (isInstrument) addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);
@@ -176,6 +183,9 @@ public class CMPInstrSymbHelper {
 			Comparator fstComparator, Comparator sndComparator, Comparator trdComparator) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 		StackFrame sf = ti.getModifiableTopFrame();
+		
+		Config config = ti.getVM().getConfig();
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
@@ -233,7 +243,7 @@ public class CMPInstrSymbHelper {
 			analysis.decision(ti, instr, 2, constraints);
 		}
 				
-		addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
+		if (isInstrument) addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);

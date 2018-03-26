@@ -7,4 +7,4 @@ concolic.method=remove
 costar.precondition=pre remove == aat(this_root, this_nullNode)
 star.test_init=${jpf-costar}/src/init/star/aatree/test_remove.txt
 star.max_depth=3
-star.max_time=20
+star.max_time=1

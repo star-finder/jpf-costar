@@ -79,8 +79,12 @@ public class CoStarConstrainstTree {
 	}
 
 	public Valuation findNext() {
-//		return findNextFromTree();
-		return findNextFromStack();
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
+		
+		if (isInstrument)
+			return findNextFromStack();
+		else
+			return findNextFromTree();		
 	}
 	
 	public Valuation findNextFromTree() {

@@ -5,5 +5,10 @@ target.args=findMin
 concolic.method=findMin
 
 costar.precondition=pre findMin == aat(this_root, this_nullNode)
+costar.instrument=false
+costar.source=/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/aatree/
+costar.dest=/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/aatree/tmp/
+costar.class=AATree.class
+
 star.test_init=${jpf-costar}/src/init/star/aatree/test_findMin.txt
 star.max_depth=1

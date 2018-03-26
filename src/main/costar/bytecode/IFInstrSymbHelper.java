@@ -6,6 +6,7 @@ import java.util.List;
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.jvm.bytecode.BIPUSH;
 import gov.nasa.jpf.jvm.bytecode.IfInstruction;
 import gov.nasa.jpf.jvm.bytecode.SIPUSH;
@@ -41,6 +42,9 @@ public class IFInstrSymbHelper {
 			Expression sym_v1, Expression sym_v2, Comparator trueComparator, Comparator falseComparator) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 		StackFrame sf = ti.getModifiableTopFrame();
+		
+		Config config = ti.getVM().getConfig();
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
@@ -81,14 +85,14 @@ public class IFInstrSymbHelper {
 		constraints.add(f1);
 		
 		if (isTrue) {
-			if (!isExecuted(ti, instr.getNext(ti))) {
+			if (isInstrument && !isExecuted(ti, instr.getNext(ti))) {
 				tree.addToStack(f1);
 			}
 			
 			analysis.decision(ti, instr, 0, constraints);
 			return instr.getTarget();
 		} else {
-			if (!isExecuted(ti, instr.getTarget())) {
+			if (isInstrument && !isExecuted(ti, instr.getTarget())) {
 				tree.addToStack(f0);
 			}
 			

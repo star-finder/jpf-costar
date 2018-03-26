@@ -48,10 +48,10 @@ public class MethodInstrumenterVisitor extends MethodVisitor {
 		}
 	}
 
-	@Override
-	public void visitMaxs(int maxStack, int maxLocals) {
-		mv.visitMaxs(maxStack + 1, maxLocals);
-	}
+//	@Override
+//	public void visitMaxs(int maxStack, int maxLocals) {
+//		mv.visitMaxs(maxStack + 1, maxLocals);
+//	}
 
 	private void insertProbe(int id) {
 		mv.visitFieldInsn(Opcodes.GETSTATIC, cv.getClassName(), cv.getFieldName(), cv.getFieldDesc());

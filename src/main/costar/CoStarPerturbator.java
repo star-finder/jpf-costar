@@ -24,7 +24,10 @@ public class CoStarPerturbator implements OperandPerturbator {
 
 	@Override
 	public ChoiceGenerator<?> createChoiceGenerator(String id, StackFrame sf, Object refObject) {
-		int size = Integer.parseInt(config.get("costar.bitmap_size").toString());
+		int size = 0;
+		
+		if (config.get("costar.bitmap_size") != null)
+			size = Integer.parseInt(config.get("costar.bitmap_size").toString());
 		explorer.newAnalysis(id, sf, (MethodInfo) refObject, size);
 
 		return new CoStarChoiceGenerator(id, explorer);

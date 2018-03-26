@@ -6,8 +6,7 @@ import java.util.List;
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
-import gov.nasa.jpf.jvm.bytecode.BIPUSH;
-import gov.nasa.jpf.jvm.bytecode.SIPUSH;
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -28,6 +27,9 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 		
 		if (analysis == null)
 			return super.execute(ti);
+		
+		Config config = ti.getVM().getConfig();
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
 		
 		StackFrame sf = ti.getModifiableTopFrame();
 		Object sym_v = sf.getOperandAttr();
@@ -56,14 +58,14 @@ public class IFNONNULL extends gov.nasa.jpf.jvm.bytecode.IFNONNULL {
 			constraints.add(f1);
 			
 			if (objRef != 0) {
-				if (!IFInstrSymbHelper.isExecuted(ti, getNext(ti))) {
+				if (isInstrument && !IFInstrSymbHelper.isExecuted(ti, getNext(ti))) {
 					tree.addToStack(f0);
 				}
 				
 				analysis.decision(ti, this, 1, constraints);
 				return getTarget();
 			} else {
-				if (!IFInstrSymbHelper.isExecuted(ti, getTarget())) {
+				if (isInstrument && !IFInstrSymbHelper.isExecuted(ti, getTarget())) {
 					tree.addToStack(f1);
 				}
 				
