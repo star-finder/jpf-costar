@@ -56,9 +56,17 @@ public class IF_ACMPNE extends gov.nasa.jpf.jvm.bytecode.IF_ACMPNE {
 			constraints.add(f1);
 			
 			if (v1 != v2) {
+				if (!IFInstrSymbHelper.isExecuted(ti, getNext(ti))) {
+					tree.addToStack(f0);
+				}
+				
 				analysis.decision(ti, this, 1, constraints);
 				return getTarget();
 			} else {
+				if (!IFInstrSymbHelper.isExecuted(ti, getTarget())) {
+					tree.addToStack(f1);
+				}
+				
 				analysis.decision(ti, this, 0, constraints);
 				return getNext(ti);
 			}
