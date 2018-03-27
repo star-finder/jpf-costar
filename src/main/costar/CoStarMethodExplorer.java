@@ -61,7 +61,7 @@ public class CoStarMethodExplorer {
 		this.methodConfig = cc.getMethodConfig(id);
 		this.anaConf = methodConfig.getAnalysisConfig();
 
-		this.constraintsTree = new CoStarConstrainstTree(mi);
+		this.constraintsTree = new CoStarConstrainstTree(this, mi);
 		this.bitMap = new boolean[size];
 //		this.nameMap = new HashMap<String,String>();
 	}

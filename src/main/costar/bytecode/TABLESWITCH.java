@@ -16,6 +16,7 @@ import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 import starlib.formula.expression.Operator;
 
+//how to handle instrumentation
 public class TABLESWITCH extends gov.nasa.jpf.jvm.bytecode.TABLESWITCH
 		implements gov.nasa.jpf.vm.bytecode.TableSwitchInstruction {
 

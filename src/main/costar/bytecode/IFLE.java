@@ -19,13 +19,15 @@ public class IFLE extends gov.nasa.jpf.jvm.bytecode.IFLE {
 	public void addToStack(ThreadInfo ti, CoStarConstrainstTree tree,
 			int conditionValue, Formula f0, Formula f1, Formula f2) {
 		if (conditionValue <= 0) {
-			if (!IFInstrSymbHelper.isExecuted(ti, getNext(ti))) {
-				tree.addToStack(f2);
+			int index = IFInstrSymbHelper.isNotExecuted(ti, getNext(ti));
+			if (index >= 0) {
+				tree.addToStack(f2, index);
 			}
 		} else {
-			if (!IFInstrSymbHelper.isExecuted(ti, getTarget())) {
-				tree.addToStack(f0);
-				tree.addToStack(f1);
+			int index = IFInstrSymbHelper.isNotExecuted(ti, getTarget());
+			if (index >= 0) {
+				tree.addToStack(f0, index);
+				tree.addToStack(f1, index);
 			}
 		}
 	}

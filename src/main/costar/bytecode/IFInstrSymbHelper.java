@@ -20,7 +20,7 @@ import starlib.formula.expression.LiteralExpression;
 
 public class IFInstrSymbHelper {
 	
-	public static boolean isExecuted(ThreadInfo ti, Instruction instr) {
+	public static int isNotExecuted(ThreadInfo ti, Instruction instr) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
 		boolean[] bitMap = analysis.getBitMap();
 		
@@ -35,7 +35,8 @@ public class IFInstrSymbHelper {
 			index = sp.getValue();
 		}
 		
-		return bitMap[index];
+		if (!bitMap[index]) return index;
+		else return -1;
 	}
 	
 	public static Instruction getNextInstructionAndSetPCChoice(ThreadInfo ti, IfInstruction instr,
@@ -85,15 +86,17 @@ public class IFInstrSymbHelper {
 		constraints.add(f1);
 		
 		if (isTrue) {
-			if (isInstrument && !isExecuted(ti, instr.getNext(ti))) {
-				tree.addToStack(f1);
+			if (isInstrument) {
+				int index = isNotExecuted(ti, instr.getNext(ti));
+				if (index >= 0) tree.addToStack(f1, index);
 			}
 			
 			analysis.decision(ti, instr, 0, constraints);
 			return instr.getTarget();
 		} else {
-			if (isInstrument && !isExecuted(ti, instr.getTarget())) {
-				tree.addToStack(f0);
+			if (isInstrument) {
+				int index = isNotExecuted(ti, instr.getTarget());
+				if (index >= 0) tree.addToStack(f0, index);
 			}
 			
 			analysis.decision(ti, instr, 1, constraints);

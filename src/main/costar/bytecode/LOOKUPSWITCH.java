@@ -14,6 +14,7 @@ import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 
+// how to handle instrumentation
 public class LOOKUPSWITCH extends gov.nasa.jpf.jvm.bytecode.LOOKUPSWITCH
 		implements gov.nasa.jpf.vm.bytecode.LookupSwitchInstruction {
 

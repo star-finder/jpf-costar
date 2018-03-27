@@ -7,6 +7,7 @@ import java.util.Stack;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
+import costar.CoStarMethodExplorer;
 import costar.valuation.ValuationGenerator;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
@@ -33,18 +34,25 @@ public class CoStarConstrainstTree {
 			
 	private Config config;
 	
+	private CoStarMethodExplorer explorer;
+	
 	private MethodInfo methodInfo;
 	
 	private HashSet<String> models;
 	
-	private Stack<Formula> stack;
+	private Stack<Formula> formulaStack;
+	
+	private Stack<Integer> indexStack;
 			
-	public CoStarConstrainstTree(MethodInfo mi) {
+	public CoStarConstrainstTree(CoStarMethodExplorer explorer, MethodInfo mi) {
 		this.root = new CoStarNode(null, null, null, null, true);
-		this.stack = new Stack<Formula>();
+		this.formulaStack = new Stack<Formula>();
+		this.indexStack = new Stack<Integer>();
 		
 		this.current = root;
 		this.config = VM.getVM().getConfig();
+		
+		this.explorer = explorer;
 		this.methodInfo = mi;
 		
 		ValuationGenerator.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
@@ -158,8 +166,9 @@ public class CoStarConstrainstTree {
 		current.formula = new Formula();
 	}
 	
-	public void addToStack(Formula f) {
-		stack.push(f);
+	public void addToStack(Formula f, int index) {
+		formulaStack.push(f);
+		indexStack.push(index);
 	}
 	
 	public Valuation findNextFromStack() {
@@ -171,9 +180,12 @@ public class CoStarConstrainstTree {
 			logger.info("Precondition = " + preF);
 		}
 		
-		while (!stack.isEmpty()) {
-			Formula f = stack.pop();
+		while (!formulaStack.isEmpty()) {
+			Formula f = formulaStack.pop();
+			int index = indexStack.pop();
+			
 			logger.info("New constraint = " + f.toString());
+			if (explorer.getBitMap()[index]) continue;
 			
 			Utilities.reset();
 			boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
