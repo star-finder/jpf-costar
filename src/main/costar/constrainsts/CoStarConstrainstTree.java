@@ -3,6 +3,7 @@ package costar.constrainsts;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
@@ -43,13 +44,23 @@ public class CoStarConstrainstTree {
 	private Stack<Formula> formulaStack;
 	
 	private Stack<Integer> indexStack;
+	
+	private StringBuilder currentSequence;
+	
+	private Stack<String> sequenceStack;
+	
+	private Set<String> executedSequences;
 			
 	public CoStarConstrainstTree(CoStarMethodExplorer explorer, MethodInfo mi) {
 		this.root = new CoStarNode(null, null, null, null, true);
 		this.formulaStack = new Stack<Formula>();
 		this.indexStack = new Stack<Integer>();
 		
+		this.sequenceStack = new Stack<String>();
+		this.executedSequences = new HashSet<String>();
+		
 		this.current = root;
+		this.currentSequence = new StringBuilder("");
 		this.config = VM.getVM().getConfig();
 		
 		this.explorer = explorer;
@@ -76,6 +87,10 @@ public class CoStarConstrainstTree {
 	
 	public CoStarNode getCurrent() {
 		return current;
+	}
+	
+	public StringBuilder getCurrentSequence() {
+		return currentSequence;
 	}
 	
 	public boolean addModel(String model){
@@ -164,11 +179,19 @@ public class CoStarConstrainstTree {
 	public void reset() {
 		current = root;
 		current.formula = new Formula();
+		
+		executedSequences.add(new String(currentSequence));
+		currentSequence = new StringBuilder("");
 	}
 	
 	public void addToStack(Formula f, int index) {
 		formulaStack.push(f);
 		indexStack.push(index);
+		sequenceStack.push(new String(currentSequence) + index);
+	}
+	
+	public void addIndex(int index) {
+		currentSequence.append(index);
 	}
 	
 	public Valuation findNextFromStack() {
@@ -177,15 +200,17 @@ public class CoStarConstrainstTree {
 		
 		if (pre != null) {
 			preF = pre.getFormula();
-			logger.info("Precondition = " + preF);
+//			logger.info("Precondition = " + preF);
 		}
 		
 		while (!formulaStack.isEmpty()) {
 			Formula f = formulaStack.pop();
 			int index = indexStack.pop();
+			String sequence = sequenceStack.pop();
 			
 			logger.info("New constraint = " + f.toString());
-			if (explorer.getBitMap()[index]) continue;
+//			if (explorer.getBitMap()[index]) continue;
+			if (executedSequences.contains(sequence)) continue;
 			
 			Utilities.reset();
 			boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));

@@ -19,13 +19,13 @@ public class IFGT extends gov.nasa.jpf.jvm.bytecode.IFGT {
 	public void addToStack(ThreadInfo ti, CoStarConstrainstTree tree,
 			int conditionValue, Formula f0, Formula f1, Formula f2) {
 		if (conditionValue > 0) {
-			int index = IFInstrSymbHelper.isNotExecuted(ti, getNext(ti));
+			int index = IFInstrSymbHelper.getIndex(ti, getNext(ti));
 			if (index >= 0) {
 				tree.addToStack(f0, index);
 				tree.addToStack(f1, index);
 			}
 		} else {
-			int index = IFInstrSymbHelper.isNotExecuted(ti, getTarget());
+			int index = IFInstrSymbHelper.getIndex(ti, getTarget());
 			if (index >= 0) {
 				tree.addToStack(f2, index);
 			}

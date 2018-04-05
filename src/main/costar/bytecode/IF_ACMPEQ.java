@@ -61,7 +61,7 @@ public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 			
 			if (v1 == v2) {
 				if (isInstrument) {
-					int index = IFInstrSymbHelper.isNotExecuted(ti, getNext(ti));
+					int index = IFInstrSymbHelper.getIndex(ti, getNext(ti));
 					if (index >= 0) tree.addToStack(f1, index);
 				}
 				
@@ -69,7 +69,7 @@ public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 				return getTarget();
 			} else {
 				if (isInstrument) {
-					int index = IFInstrSymbHelper.isNotExecuted(ti, getTarget());
+					int index = IFInstrSymbHelper.getIndex(ti, getTarget());
 					if (index >= 0) tree.addToStack(f0, index);
 				}
 				

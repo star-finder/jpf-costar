@@ -261,6 +261,7 @@ public class CoStarMethodExplorer {
 	
 	public void setBitMap(int index) {
 		bitMap[index] = true;
+		constraintsTree.addIndex(index);
 	}
 	
 //	public Map<String,String> getNameMap() {
