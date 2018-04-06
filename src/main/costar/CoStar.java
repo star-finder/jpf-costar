@@ -7,16 +7,13 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.jacoco.core.instr.Instrumenter;
 import org.jacoco.core.internal.InputStreams;
-import org.jacoco.core.runtime.IExecutionDataAccessorGenerator;
-import org.jacoco.core.runtime.URLStreamHandlerRuntime;
 import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.tree.ClassNode;
 
 import costar.config.CoStarConfig;
-import costar.instrumenter.ClassInstrumenterVisitor;
+import costar.instrumenter.ClassInstrumenter;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.JPFShell;
@@ -33,7 +30,7 @@ public class CoStar implements JPFShell {
 	private CoStarConfig cc;
 
 	private JPFLogger logger;
-	
+
 	private boolean verbose = false;
 
 	public static final String CONFIG_KEY_COSTAR_EXPLORER = "costar.costar_explorer_instance";
@@ -51,20 +48,21 @@ public class CoStar implements JPFShell {
 
 	public void run() {
 		long startTime = System.currentTimeMillis();
-		
+
 		logger.info("CoStar.run() -- begin");
 
-		if(verbose) {
+		if (verbose) {
 			logger.info(config);
 			logger.info(cc);
 		}
 
 		// prepare config
 		Config jpfConf = cc.generateJPFConfig(config);
-		
+
 		boolean isInstrument = Boolean.parseBoolean(jpfConf.getProperty("costar.instrument", "false"));
-		if (isInstrument) instrument(jpfConf);
-		
+		if (isInstrument)
+			instrument(jpfConf);
+
 		// Configure JPF
 		jpfConf.remove("shell");
 		jpfConf.setProperty("jvm.insn_factory.class", CoStarInstructionFactory.class.getName());
@@ -75,23 +73,24 @@ public class CoStar implements JPFShell {
 		jpfConf.setProperty("listener", listener);
 		jpfConf.setProperty("perturb.class", CoStarPerturbator.class.getName());
 		jpfConf.setProperty(CONFIG_KEY_COSTAR_EXPLORER, CoStarExplorer.class.getName());
-		
+
 		initialize(jpfConf);
 
-		if(verbose) {
+		if (verbose) {
 			logger.info(jpfConf);
 		}
-		
+
 		// run jpf ...
 		JPF jpf = new JPF(jpfConf);
 		jpf.getReporter().getPublishers().clear();
 		jpf.run();
 
 		Solver.terminate();
-		
-		if (isInstrument) revert(jpfConf);
+
+		if (isInstrument)
+			revert(jpfConf);
 		logger.info("CoStar.run() -- end");
-		
+
 		long endTime = System.currentTimeMillis();
 		logger.info("Time = " + ((endTime - startTime) / 1000));
 	}
@@ -100,7 +99,7 @@ public class CoStar implements JPFShell {
 		final String source = conf.getProperty("costar.dest");
 		final String dest = conf.getProperty("costar.source");
 		final String clazz = conf.getProperty("costar.class");
-				
+
 		try {
 			(new File(dest + clazz)).delete();
 			FileUtils.copyFile(new File(source + clazz), new File(dest));
@@ -109,64 +108,69 @@ public class CoStar implements JPFShell {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void instrument(Config conf) {
 		final String source = conf.getProperty("costar.source");
 		final String dest = conf.getProperty("costar.dest");
 		final String clazz = conf.getProperty("costar.class");
-		
+
 		try {
 			FileUtils.copyFile(new File(source + clazz), new File(dest));
+
+			InputStream stream = new FileInputStream(source + clazz);
+			byte[] original = InputStreams.readFully(stream);
+
+			ClassNode cn = new ClassNode();
+			ClassReader cr = new ClassReader(original);
+			cr.accept(cn, 0);
 			
-			InputStream original = new FileInputStream(source + clazz);
+			ClassInstrumenter ci = new ClassInstrumenter();
+			ci.transform(cn, cr.getClassName());
 			
 			ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
-			ClassReader cr = new ClassReader(InputStreams.readFully(original));		
-			ClassVisitor cv = new ClassInstrumenterVisitor(cw, cr.getClassName());
-			
-			cr.accept(cv, 0);
-			byte[] instrumented = cw.toByteArray();
-			
+		    cn.accept(cw);
+		    byte[] instrumented = cw.toByteArray();
+
 			Files.write(Paths.get(source + clazz), instrumented);
-			int count = ((ClassInstrumenterVisitor) cv).getCount();
+			int count = ((ClassInstrumenter) ci).getCount();
 			System.out.println("Count = " + count);
-			
+
 			conf.setProperty("costar.bitmap_size", count + "");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void initialize(Config jpfConf) {
 		String data = jpfConf.getProperty("costar.data");
 		if (data != null)
 			Initializer.initDataNode(data);
-		
+
 		String pred = jpfConf.getProperty("costar.predicate");
-		if(pred == null) {
+		if (pred == null) {
 			pred = jpfConf.getProperty("costar.predicate.file");
-			if(pred != null)
-			try {
-				Initializer.initPredicateFromFile(pred);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			if (pred != null)
+				try {
+					Initializer.initPredicateFromFile(pred);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		} else {
 			Initializer.initPredicate(pred);
 		}
-		
+
 		String pre = jpfConf.getProperty("costar.precondition");
 		if (pre != null)
 			Initializer.initPrecondition(pre);
 	}
-	
+
 	public static CoStarExplorer getCoStarExplorer(Config config) {
 		CoStarExplorer explorer = config.getEssentialInstance(CONFIG_KEY_COSTAR_EXPLORER, CoStarExplorer.class);
 		if (!explorer.isConfigured()) {
 			explorer.configure(new CoStarConfig(config));
 		}
-		
+
 		return explorer;
 	}
 

@@ -179,22 +179,32 @@ public class CoStarConstrainstTree {
 	public void reset() {
 		current = root;
 		current.formula = new Formula();
-		
-		executedSequences.add(new String(currentSequence));
 		currentSequence = new StringBuilder("");
 	}
 	
 	public void addToStack(Formula f, int index) {
 		formulaStack.push(f);
 		indexStack.push(index);
-		sequenceStack.push(new String(currentSequence) + index);
+		sequenceStack.push(new String(currentSequence) + ";" + index);
 	}
 	
 	public void addIndex(int index) {
-		currentSequence.append(index);
+		currentSequence.append(";" + index);
+	}
+	
+	public boolean shouldExecute(String sequence) {
+//		if (executedSequences.contains(sequence)) return false;
+		
+		for (String executedSequence : executedSequences) {
+			if (executedSequence.startsWith(sequence)) return false;
+		}
+		
+		return true;
 	}
 	
 	public Valuation findNextFromStack() {
+		executedSequences.add(new String(currentSequence));
+		
 		Precondition pre = PreconditionMap.find(methodInfo.getName());
 		Formula preF = new Formula();
 		
@@ -210,7 +220,9 @@ public class CoStarConstrainstTree {
 			
 			logger.info("New constraint = " + f.toString());
 //			if (explorer.getBitMap()[index]) continue;
-			if (executedSequences.contains(sequence)) continue;
+			System.out.println(executedSequences.toString());
+			
+			if (!shouldExecute(sequence)) continue;
 			
 			Utilities.reset();
 			boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
