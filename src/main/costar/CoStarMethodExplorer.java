@@ -9,6 +9,7 @@ import costar.config.ConcolicMethodConfig;
 import costar.config.ParamConfig;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.objects.SymbolicObjectsContext;
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.constraints.api.Valuation;
 import gov.nasa.jpf.constraints.api.Variable;
@@ -24,6 +25,7 @@ import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
+import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
 import starlib.formula.heap.HeapTerm;
@@ -93,6 +95,10 @@ public class CoStarMethodExplorer {
 	}
 	
 	public void prepareInitModels() {
+		Config conf = VM.getVM().getConfig();
+		boolean isInstrument = Boolean.parseBoolean(conf.getProperty("costar.instrument", "false"));
+		if (!isInstrument) return;
+		
 		Precondition pre = PreconditionMap.find(methodInfo.getName());
 		Formula preF = new Formula();
 		

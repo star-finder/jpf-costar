@@ -115,14 +115,17 @@ public class CoStarConstrainstTree {
 	}
 
 	public Valuation findNext() {
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
+		
 		if (!initModels.isEmpty()) {
+			if (isInstrument)
+				executedSequences.add(new String(currentSequence));
+			
 			String model = initModels.poll();
 			addModel(model);
 			Valuation val = ValuationGenerator.toValuation(model);
 			return val;
 		}
-		
-		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
 		
 		if (isInstrument)
 			return findNextFromStack();
@@ -239,7 +242,6 @@ public class CoStarConstrainstTree {
 			String sequence = sequenceStack.pop();
 			
 			logger.info("New constraint = " + f.toString());
-//			if (explorer.getBitMap()[index]) continue;
 			
 			if (!shouldExecute(sequence)) continue;
 			
