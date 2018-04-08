@@ -2,7 +2,9 @@ package costar.constrainsts;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 import java.util.logging.FileHandler;
@@ -39,6 +41,8 @@ public class CoStarConstrainstTree {
 	
 	private MethodInfo methodInfo;
 	
+	private Queue<String> initModels;
+	
 	private HashSet<String> models;
 	
 	private Stack<Formula> formulaStack;
@@ -68,6 +72,7 @@ public class CoStarConstrainstTree {
 		
 		ValuationGenerator.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
 		
+		this.initModels = new LinkedList<String>();
 		this.models = new HashSet<String>();
 		
 		try {
@@ -93,6 +98,14 @@ public class CoStarConstrainstTree {
 		return currentSequence;
 	}
 	
+	public boolean addInitModel(String model) {
+		return initModels.add(model);
+	}
+	
+	public Queue<String> getInitModels() {
+		return initModels;
+	}
+	
 	public boolean addModel(String model){
 		return models.add(model);
 	}
@@ -102,6 +115,13 @@ public class CoStarConstrainstTree {
 	}
 
 	public Valuation findNext() {
+		if (!initModels.isEmpty()) {
+			String model = initModels.poll();
+			addModel(model);
+			Valuation val = ValuationGenerator.toValuation(model);
+			return val;
+		}
+		
 		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
 		
 		if (isInstrument)
@@ -220,7 +240,6 @@ public class CoStarConstrainstTree {
 			
 			logger.info("New constraint = " + f.toString());
 //			if (explorer.getBitMap()[index]) continue;
-			System.out.println(executedSequences.toString());
 			
 			if (!shouldExecute(sequence)) continue;
 			

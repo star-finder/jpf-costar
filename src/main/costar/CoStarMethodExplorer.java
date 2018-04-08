@@ -1,7 +1,6 @@
 package costar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import costar.config.AnalysisConfig;
@@ -19,16 +18,20 @@ import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
-import gov.nasa.jpf.vm.Fields;
 import gov.nasa.jpf.vm.Heap;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
-import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
+import starlib.formula.heap.HeapTerm;
+import starlib.formula.heap.InductiveTerm;
+import starlib.precondition.Precondition;
+import starlib.precondition.PreconditionMap;
+import starlib.solver.Model;
+import starlib.solver.Solver;
 
 public class CoStarMethodExplorer {
 
@@ -88,23 +91,63 @@ public class CoStarMethodExplorer {
 	public void decision(ThreadInfo ti, Instruction inst, int chosenIdx, List<Formula> constraints) {
 		constraintsTree.decision(ti, inst, chosenIdx, constraints);
 	}
+	
+	public void prepareInitModels() {
+		Precondition pre = PreconditionMap.find(methodInfo.getName());
+		Formula preF = new Formula();
+		
+		if (pre != null) {
+			preF = pre.getFormula().copy();
+		}
+		
+		System.out.println(preF);
+		HeapTerm ht = Utilities.findHeapTerm(preF, "this_root");
+		
+		if (ht != null && ht instanceof InductiveTerm) {
+			InductiveTerm it = (InductiveTerm) ht;
+			
+			Formula[] fs = it.unfold();
+			for (int i = 0; i < fs.length; i++) {
+				Formula preFCopy = preF.copy();
+				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, "this_root");
+				
+				preFCopy.unfold(itCopy, i);
+				System.out.println(preFCopy);
+				
+				Solver.checkSat(preFCopy);
+				String model = Solver.getModel();
+				
+				constraintsTree.addInitModel(model);
+			}
+		}
+	}
 
 	public void newPath(StackFrame sf) {
 		if (initValuation == null) {
+			prepareInitModels();
 			prepareFirstExecution(sf);
 		} else {
 			advanceValuation();
 			prepareReExecution(sf);
 		}
 	}
-
+	
 	private void prepareFirstExecution(StackFrame sf) {
 		initValuation = new Valuation();
 		constraintsTree.reset();
-
-		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
-			if (sv.getVariable().getType() != null) {
-				sv.readInitial(initValuation, sf);
+		Utilities.reset();
+		
+		if (constraintsTree.getInitModels().isEmpty()) {
+			for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
+				if (sv.getVariable().getType() != null) {
+					sv.readInitial(initValuation, sf);
+				}
+			}
+		} else {
+			initValuation = constraintsTree.findNext();
+			
+			for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
+				sv.apply(initValuation, sf);
 			}
 		}
 		

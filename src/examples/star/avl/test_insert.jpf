@@ -5,5 +5,10 @@ target.args=insert
 concolic.method=insert
 
 costar.precondition=pre insert == avl(this_root)
+costar.instrument=false
+costar.source=/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/
+costar.dest=/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/tmp/
+costar.class=AvlTree.class
+
 star.test_init=${jpf-costar}/src/init/star/avl/test_insert.txt
 star.max_depth=2
