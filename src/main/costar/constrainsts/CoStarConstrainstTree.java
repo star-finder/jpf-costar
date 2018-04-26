@@ -54,6 +54,8 @@ public class CoStarConstrainstTree {
 	private Stack<String> sequenceStack;
 	
 	private Set<String> executedSequences;
+	
+	private Set<String> invalidSequences;
 			
 	public CoStarConstrainstTree(CoStarMethodExplorer explorer, MethodInfo mi) {
 		this.root = new CoStarNode(null, null, null, null, true);
@@ -62,6 +64,7 @@ public class CoStarConstrainstTree {
 		
 		this.sequenceStack = new Stack<String>();
 		this.executedSequences = new HashSet<String>();
+		this.invalidSequences = new HashSet<String>();
 		
 		this.current = root;
 		this.currentSequence = new StringBuilder("");
@@ -222,6 +225,10 @@ public class CoStarConstrainstTree {
 			if (executedSequence.startsWith(sequence)) return false;
 		}
 		
+		for (String invalidSequence : invalidSequences) {
+			if (sequence.startsWith(invalidSequence)) return false;
+		}
+		
 		return true;
 	}
 	
@@ -262,6 +269,7 @@ public class CoStarConstrainstTree {
 				
 				return val;
 			} else {
+				invalidSequences.add(sequence);
 				continue;
 			}
 		}
