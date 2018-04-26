@@ -6,8 +6,8 @@ concolic.method=findMin
 
 costar.precondition=pre findMin == avl(this_root)
 costar.instrument=true
-costar.source=/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/
-costar.dest=/Users/HongLongPham/Workspace/JPF_HOME/jpf-star/build/examples/avl/tmp/
+costar.source=${jpf-star}/build/examples/avl/
+costar.dest=${jpf-star}/build/examples/avl/tmp/
 costar.class=AvlTree.class
 
 star.test_init=${jpf-costar}/src/init/star/avl/test_findMin.txt

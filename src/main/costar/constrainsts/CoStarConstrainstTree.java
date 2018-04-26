@@ -79,7 +79,7 @@ public class CoStarConstrainstTree {
 		this.models = new HashSet<String>();
 		
 		try {
-			FileHandler fh = new FileHandler("/Users/HongLongPham/Workspace/JPF_HOME/jpf-costar/log.txt");
+			FileHandler fh = new FileHandler("log.txt");
 			logger.addHandler(fh);
 			logger.setUseParentHandlers(false);
 	        SimpleFormatter formatter = new SimpleFormatter();  
