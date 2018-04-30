@@ -5,4 +5,10 @@ target.args=isEmpty
 concolic.method=isEmpty
 
 costar.precondition=pre isEmpty == bst(this_root)
-star.test_init=${jpf-costar}/src/init/star/bst/test_isEmpty.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/bst/
+costar.dest=${jpf-star}/build/examples/bst/tmp/
+costar.class=BinarySearchTree.class
+
+#star.test_init=${jpf-costar}/src/init/star/bst/test_isEmpty.txt
+star.max_depth=1

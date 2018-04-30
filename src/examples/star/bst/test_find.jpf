@@ -5,4 +5,10 @@ target.args=find
 concolic.method=find
 
 costar.precondition=pre find == bst(this_root)
-star.test_init=${jpf-costar}/src/init/star/bst/test_find.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/bst/
+costar.dest=${jpf-star}/build/examples/bst/tmp/
+costar.class=BinarySearchTree.class
+
+#star.test_init=${jpf-costar}/src/init/star/bst/test_find.txt
+star.max_depth=1
