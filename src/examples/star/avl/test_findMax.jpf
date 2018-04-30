@@ -5,7 +5,7 @@ target.args=findMax
 concolic.method=findMax
 
 costar.precondition=pre findMax == avl(this_root)
-costar.instrument=false
+costar.instrument=true
 costar.source=${jpf-star}/build/examples/avl/
 costar.dest=${jpf-star}/build/examples/avl/tmp/
 costar.class=AvlTree.class

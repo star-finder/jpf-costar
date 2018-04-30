@@ -5,5 +5,10 @@ target.args=find
 concolic.method=find
 
 costar.precondition=pre find == avl(this_root)
-star.test_init=${jpf-costar}/src/init/star/avl/test_find.txt
-stat.max_depth=1
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/avl/
+costar.dest=${jpf-star}/build/examples/avl/tmp/
+costar.class=AvlTree.class
+
+#star.test_init=${jpf-costar}/src/init/star/avl/test_find.txt
+star.max_depth=1

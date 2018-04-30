@@ -5,5 +5,10 @@ target.args=makeEmpty
 concolic.method=makeEmpty
 
 costar.precondition=pre makeEmpty == aat(this_root, this_nullNode)
-star.test_init=${jpf-costar}/src/init/star/aatree/test_makeEmpty.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/aatree/
+costar.dest=${jpf-star}/build/examples/aatree/tmp/
+costar.class=AAtree.class
+
+#star.test_init=${jpf-costar}/src/init/star/aatree/test_makeEmpty.txt
 star.max_depth=1

@@ -5,4 +5,10 @@ target.args=printTree
 concolic.method=printTree
 
 costar.precondition=pre printTree == avl(this_root)
-star.test_init=${jpf-costar}/src/init/star/avl/test_printTree.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/avl/
+costar.dest=${jpf-star}/build/examples/avl/tmp/
+costar.class=AvlTree.class
+
+#star.test_init=${jpf-costar}/src/init/star/avl/test_printTree.txt
+star.max_depth=1

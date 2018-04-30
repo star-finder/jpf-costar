@@ -5,4 +5,10 @@ target.args=maxElement
 concolic.method=maxElement
 
 costar.precondition=pre maxElement == avl(this_root)
-star.test_init=${jpf-costar}/src/init/star/avl/test_maxElement.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/avl/
+costar.dest=${jpf-star}/build/examples/avl/tmp/
+costar.class=AvlTree.class
+
+#star.test_init=${jpf-costar}/src/init/star/avl/test_maxElement.txt
+star.max_depth=1

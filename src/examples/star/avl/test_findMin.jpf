@@ -10,5 +10,5 @@ costar.source=${jpf-star}/build/examples/avl/
 costar.dest=${jpf-star}/build/examples/avl/tmp/
 costar.class=AvlTree.class
 
-star.test_init=${jpf-costar}/src/init/star/avl/test_findMin.txt
+#star.test_init=${jpf-costar}/src/init/star/avl/test_findMin.txt
 star.max_depth=1

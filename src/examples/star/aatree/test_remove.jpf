@@ -5,6 +5,11 @@ target.args=remove
 concolic.method=remove
 
 costar.precondition=pre remove == aat(this_root, this_nullNode)
-star.test_init=${jpf-costar}/src/init/star/aatree/test_remove.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/aatree/
+costar.dest=${jpf-star}/build/examples/aatree/tmp/
+costar.class=AAtree.class
+
+#star.test_init=${jpf-costar}/src/init/star/aatree/test_remove.txt
 star.max_depth=3
-star.max_time=1
+#star.max_time=10
