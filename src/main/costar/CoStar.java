@@ -114,6 +114,8 @@ public class CoStar implements JPFShell {
 		final String source = conf.getProperty("costar.source");
 		final String dest = conf.getProperty("costar.dest");
 		final String clazz = conf.getProperty("costar.class");
+		
+		new File(dest).mkdirs();
 
 		try {
 			FileUtils.copyFile(new File(source + clazz), new File(dest));
