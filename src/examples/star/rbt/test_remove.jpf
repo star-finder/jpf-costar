@@ -5,6 +5,11 @@ target.args=remove
 concolic.method=remove
 
 costar.precondition=pre remove == rbt(this_root,this_size)
-star.test_init=${jpf-costar}/src/init/star/rbt/test_remove.txt
-star.max_depth=9
-star.max_time=10
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/rbt/
+costar.dest=${jpf-star}/build/examples/rbt/tmp/
+costar.class=TreeMap.class
+
+#star.test_init=${jpf-costar}/src/init/star/rbt/test_remove.txt
+star.max_depth=1
+#star.max_time=10

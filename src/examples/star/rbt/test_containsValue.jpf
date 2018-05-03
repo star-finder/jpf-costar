@@ -5,5 +5,10 @@ target.args=containsValue
 concolic.method=containsValue
 
 costar.precondition=pre containsValue == rbt(this_root,this_size)
-star.test_init=${jpf-costar}/src/init/star/rbt/test_containsValue.txt
-star.max_depth=2
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/rbt/
+costar.dest=${jpf-star}/build/examples/rbt/tmp/
+costar.class=TreeMap.class
+
+#star.test_init=${jpf-costar}/src/init/star/rbt/test_containsValue.txt
+star.max_depth=1

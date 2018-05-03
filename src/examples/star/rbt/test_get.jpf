@@ -5,4 +5,10 @@ target.args=get
 concolic.method=get
 
 costar.precondition=pre get == rbt(this_root,this_size)
-star.test_init=${jpf-costar}/src/init/star/rbt/test_get.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/rbt/
+costar.dest=${jpf-star}/build/examples/rbt/tmp/
+costar.class=TreeMap.class
+
+#star.test_init=${jpf-costar}/src/init/star/rbt/test_get.txt
+star.max_depth=1

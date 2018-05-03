@@ -5,4 +5,10 @@ target.args=positiveLeafCount
 concolic.method=positiveLeafCount
 
 costar.precondition=pre positiveLeafCount == tll(this_root,p,lr,ll)
-star.test_init=${jpf-costar}/src/init/star/tll/test_positiveLeafCount.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/tll/
+costar.dest=${jpf-star}/build/examples/tll/tmp/
+costar.class=Tll.class
+
+#star.test_init=${jpf-costar}/src/init/star/tll/test_positiveLeafCount.txt
+star.max_depth=1
