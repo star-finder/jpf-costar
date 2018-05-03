@@ -5,4 +5,11 @@ target.args=isEmpty
 concolic.method=isEmpty
 
 costar.precondition=pre isEmpty == this__header::linkedlist_MyListNode<element,next> * sll(next)
-star.test_init=${jpf-costar}/src/init/star/linkedlist/test_isEmpty.txt
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/linkedlist/
+costar.dest=${jpf-star}/build/examples/linkedlist/tmp/
+costar.class=MyLinkedList.class
+costar.root=next
+
+#star.test_init=${jpf-costar}/src/init/star/linkedlist/test_isEmpty.txt
+star.max_depth=1
