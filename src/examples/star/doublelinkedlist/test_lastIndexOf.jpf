@@ -5,4 +5,11 @@ target.args=lastIndexOf
 concolic.method=lastIndexOf
 
 costar.precondition=pre lastIndexOf == dll2(this_header,this_size)
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/doublelinkedlist/
+costar.dest=${jpf-star}/build/examples/doublelinkedlist/tmp/
+costar.class=DoubleLinkedList.class
+costar.root=this_header
+
 star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_lastIndexOf.txt
+star.max_depth=1

@@ -106,8 +106,11 @@ public class CoStarMethodExplorer {
 			preF = pre.getFormula().copy();
 		}
 		
+		String root = conf.getProperty("costar.root", "this_root");
+		
 		System.out.println(preF);
-		HeapTerm ht = Utilities.findHeapTerm(preF, "this_root");
+		System.out.println(root);
+		HeapTerm ht = Utilities.findHeapTerm(preF, root);
 		
 		if (ht != null && ht instanceof InductiveTerm) {
 			InductiveTerm it = (InductiveTerm) ht;
@@ -115,7 +118,7 @@ public class CoStarMethodExplorer {
 			Formula[] fs = it.unfold();
 			for (int i = 0; i < fs.length; i++) {
 				Formula preFCopy = preF.copy();
-				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, "this_root");
+				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, root);
 				
 				preFCopy.unfold(itCopy, i);
 				System.out.println(preFCopy);
