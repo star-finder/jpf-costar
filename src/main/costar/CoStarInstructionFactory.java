@@ -28,6 +28,7 @@ import costar.bytecode.IF_ICMPGT;
 import costar.bytecode.IF_ICMPLE;
 import costar.bytecode.IF_ICMPLT;
 import costar.bytecode.IF_ICMPNE;
+import costar.bytecode.IINC;
 import costar.bytecode.ILOAD;
 import costar.bytecode.INVOKEVIRTUAL;
 import costar.bytecode.IRETURN;
@@ -69,7 +70,6 @@ import star.bytecode.I2S;
 import star.bytecode.IADD;
 import star.bytecode.IAND;
 import star.bytecode.IDIV;
-import star.bytecode.IINC;
 import star.bytecode.IMUL;
 import star.bytecode.INEG;
 import star.bytecode.IOR;
@@ -188,11 +188,6 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 
 	@Override
-	public Instruction iload(int localVarIndex) {
-		return new ILOAD(localVarIndex);
-	}
-
-	@Override
 	public Instruction iadd() {
 		return new IADD();
 	}
@@ -212,6 +207,31 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new IINC(localVarIndex, incConstant);
 	}
 
+	@Override
+	public Instruction iload(int localVarIndex) {
+		return new ILOAD(localVarIndex);
+	}
+
+	@Override
+	public Instruction iload_0() {
+		return new ILOAD(0);
+	}
+
+	@Override
+	public Instruction iload_1() {
+		return new ILOAD(1);
+	}
+
+	@Override
+	public Instruction iload_2() {
+		return new ILOAD(2);
+	}
+
+	@Override
+	public Instruction iload_3() {
+		return new ILOAD(3);
+	}
+	
 	@Override
 	public Instruction imul() {
 		return new IMUL();

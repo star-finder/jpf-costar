@@ -158,7 +158,7 @@ public class CoStarConstrainstTree {
 					Formula f = current.childrend[i].formula;
 					logger.info("New constraint = " + f.toString());
 					
-					Utilities.reset();
+//					Utilities.reset();
 					boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
 					
 					logger.info(isSat);
@@ -169,7 +169,7 @@ public class CoStarConstrainstTree {
 						Valuation val = ValuationGenerator.toValuation(model);
 						
 						// build new valuation based on the model
-//						logger.info("New model = " + model);
+						logger.info("New model = " + model);
 //						logger.info("New constraint = " + f.toString());
 //						logger.info("New valuation = " + val);
 						
@@ -252,7 +252,7 @@ public class CoStarConstrainstTree {
 			
 			if (!shouldExecute(sequence)) continue;
 			
-			Utilities.reset();
+//			Utilities.reset();
 			boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
 			
 			logger.info(isSat);
