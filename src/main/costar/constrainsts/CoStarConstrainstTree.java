@@ -21,10 +21,8 @@ import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
-import starlib.formula.Utilities;
 import starlib.precondition.Precondition;
 import starlib.precondition.PreconditionMap;
-import starlib.solver.Preprocessor;
 import starlib.solver.Solver;
 
 public class CoStarConstrainstTree {
