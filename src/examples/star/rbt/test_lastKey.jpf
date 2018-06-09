@@ -10,5 +10,5 @@ costar.source=${jpf-star}/build/examples/rbt/
 costar.dest=${jpf-star}/build/examples/rbt/tmp/
 costar.class=TreeMap.class
 
-star.test_init=${jpf-costar}/src/init/star/rbt/test_lastKey.txt
+#star.test_init=${jpf-costar}/src/init/star/rbt/test_lastKey.txt
 star.max_depth=1

@@ -9,16 +9,16 @@ costar.predicate.file=${jpf-costar}/src/examples/star/linkedlist/linkedlist.pred
 star.test_path=${test.path}/linkedlist
 star.test_package=linkedlist
 
-concolic.method.addLast=linkedlist.MyLinkedList.addLast(o:java.lang.Object)
+concolic.method.addLast=linkedlist.MyLinkedList.addLast(x:java.lang.Object)
 concolic.method.addLast.config=all_fields_symbolic
 
 concolic.method.clear=linkedlist.MyLinkedList.clear()
 concolic.method.clear.config=all_fields_symbolic
 
-concolic.method.findPrevious=linkedlist.MyLinkedList.findPrevious(o:java.lang.Object)
+concolic.method.findPrevious=linkedlist.MyLinkedList.findPrevious(x:java.lang.Object)
 concolic.method.findPrevious.config=all_fields_symbolic
 
-concolic.method.find=linkedlist.MyLinkedList.find(o:java.lang.Object)
+concolic.method.find=linkedlist.MyLinkedList.find(x:java.lang.Object)
 concolic.method.find.config=all_fields_symbolic
 
 concolic.method.first=linkedlist.MyLinkedList.first()
@@ -27,7 +27,7 @@ concolic.method.first.config=all_fields_symbolic
 concolic.method.isEmpty=linkedlist.MyLinkedList.isEmpty()
 concolic.method.isEmpty.config=all_fields_symbolic
 
-concolic.method.remove=linkedlist.MyLinkedList.remove(o:java.lang.Object)
+concolic.method.remove=linkedlist.MyLinkedList.remove(x:java.lang.Object)
 concolic.method.remove.config=all_fields_symbolic
 
 concolic.method.size=linkedlist.MyLinkedList.size()

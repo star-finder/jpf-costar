@@ -11,5 +11,5 @@ costar.dest=${jpf-star}/build/examples/doublelinkedlist/tmp/
 costar.class=DoubleLinkedList.class
 costar.root=this_header
 
-star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_lastIndexOf.txt
-star.max_depth=1
+#star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_lastIndexOf.txt
+star.max_depth=2
