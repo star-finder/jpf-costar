@@ -11,6 +11,8 @@ public class CoStarPerturbator implements OperandPerturbator {
 	private final CoStarExplorer explorer;
 	
 	private Config config;
+	
+	private boolean isFirst = false;
 
 	public CoStarPerturbator(Config config) {
 		this.explorer = CoStar.getCoStarExplorer(config);
@@ -24,13 +26,19 @@ public class CoStarPerturbator implements OperandPerturbator {
 
 	@Override
 	public ChoiceGenerator<?> createChoiceGenerator(String id, StackFrame sf, Object refObject) {
-		int size = 0;
-		
-		if (config.get("costar.bitmap_size") != null)
-			size = Integer.parseInt(config.get("costar.bitmap_size").toString());
-		explorer.newAnalysis(id, sf, (MethodInfo) refObject, size);
-
-		return new CoStarChoiceGenerator(id, explorer);
+		if (!isFirst) {
+			int size = 0;
+			
+			if (config.get("costar.bitmap_size") != null)
+				size = Integer.parseInt(config.get("costar.bitmap_size").toString());
+			explorer.newAnalysis(id, sf, (MethodInfo) refObject, size);
+			
+			isFirst = true;
+	
+			return new CoStarChoiceGenerator(id, explorer);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
