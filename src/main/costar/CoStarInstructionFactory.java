@@ -154,25 +154,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new DLOAD(localVarIndex);
 	}
 	
-	@Override
-	public Instruction dload_0() {
-		return new DLOAD(0);
-	}
-
-	@Override
-	public Instruction dload_1() {
-		return new DLOAD(1);
-	}
-
-	@Override
-	public Instruction dload_2() {
-		return new DLOAD(2);
-	}
-
-	@Override
-	public Instruction dload_3() {
-		return new DLOAD(3);
-	}
+//	@Override
+//	public Instruction dload_0() {
+//		return new DLOAD(0);
+//	}
+//
+//	@Override
+//	public Instruction dload_1() {
+//		return new DLOAD(1);
+//	}
+//
+//	@Override
+//	public Instruction dload_2() {
+//		return new DLOAD(2);
+//	}
+//
+//	@Override
+//	public Instruction dload_3() {
+//		return new DLOAD(3);
+//	}
 
 	@Override
 	public Instruction dmul() {
@@ -199,25 +199,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new DSTORE(localVarIndex);
 	}
 
-	@Override
-	public Instruction dstore_0() {
-		return new DSTORE(0);
-	}
-
-	@Override
-	public Instruction dstore_1() {
-		return new DSTORE(1);
-	}
-
-	@Override
-	public Instruction dstore_2() {
-		return new DSTORE(2);
-	}
-
-	@Override
-	public Instruction dstore_3() {
-		return new DSTORE(3);
-	}
+//	@Override
+//	public Instruction dstore_0() {
+//		return new DSTORE(0);
+//	}
+//
+//	@Override
+//	public Instruction dstore_1() {
+//		return new DSTORE(1);
+//	}
+//
+//	@Override
+//	public Instruction dstore_2() {
+//		return new DSTORE(2);
+//	}
+//
+//	@Override
+//	public Instruction dstore_3() {
+//		return new DSTORE(3);
+//	}
 
 	@Override
 	public Instruction dsub() {
@@ -254,25 +254,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new FLOAD(localVarIndex);
 	}
 
-	@Override
-	public Instruction fload_0() {
-		return new FLOAD(0);
-	}
-
-	@Override
-	public Instruction fload_1() {
-		return new FLOAD(1);
-	}
-
-	@Override
-	public Instruction fload_2() {
-		return new FLOAD(2);
-	}
-
-	@Override
-	public Instruction fload_3() {
-		return new FLOAD(3);
-	}
+//	@Override
+//	public Instruction fload_0() {
+//		return new FLOAD(0);
+//	}
+//
+//	@Override
+//	public Instruction fload_1() {
+//		return new FLOAD(1);
+//	}
+//
+//	@Override
+//	public Instruction fload_2() {
+//		return new FLOAD(2);
+//	}
+//
+//	@Override
+//	public Instruction fload_3() {
+//		return new FLOAD(3);
+//	}
 	
 	@Override
 	public Instruction fmul() {
@@ -299,25 +299,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new FSTORE(localVarIndex);
 	}
 	
-	@Override
-	public Instruction fstore_0() {
-		return new FSTORE(0);
-	}
-
-	@Override
-	public Instruction fstore_1() {
-		return new FSTORE(1);
-	}
-
-	@Override
-	public Instruction fstore_2() {
-		return new FSTORE(2);
-	}
-
-	@Override
-	public Instruction fstore_3() {
-		return new FSTORE(3);
-	}
+//	@Override
+//	public Instruction fstore_0() {
+//		return new FSTORE(0);
+//	}
+//
+//	@Override
+//	public Instruction fstore_1() {
+//		return new FSTORE(1);
+//	}
+//
+//	@Override
+//	public Instruction fstore_2() {
+//		return new FSTORE(2);
+//	}
+//
+//	@Override
+//	public Instruction fstore_3() {
+//		return new FSTORE(3);
+//	}
 	
 	@Override
 	public Instruction fsub() {
@@ -469,25 +469,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new ILOAD(localVarIndex);
 	}
 
-	@Override
-	public Instruction iload_0() {
-		return new ILOAD(0);
-	}
-
-	@Override
-	public Instruction iload_1() {
-		return new ILOAD(1);
-	}
-
-	@Override
-	public Instruction iload_2() {
-		return new ILOAD(2);
-	}
-
-	@Override
-	public Instruction iload_3() {
-		return new ILOAD(3);
-	}
+//	@Override
+//	public Instruction iload_0() {
+//		return new ILOAD(0);
+//	}
+//
+//	@Override
+//	public Instruction iload_1() {
+//		return new ILOAD(1);
+//	}
+//
+//	@Override
+//	public Instruction iload_2() {
+//		return new ILOAD(2);
+//	}
+//
+//	@Override
+//	public Instruction iload_3() {
+//		return new ILOAD(3);
+//	}
 	
 	@Override
 	public Instruction imul() {
@@ -534,25 +534,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new ISTORE(localVarIndex);
 	}
 
-	@Override
-	public Instruction istore_0() {
-		return new ISTORE(0);
-	}
-
-	@Override
-	public Instruction istore_1() {
-		return new ISTORE(1);
-	}
-
-	@Override
-	public Instruction istore_2() {
-		return new ISTORE(2);
-	}
-
-	@Override
-	public Instruction istore_3() {
-		return new ISTORE(3);
-	}
+//	@Override
+//	public Instruction istore_0() {
+//		return new ISTORE(0);
+//	}
+//
+//	@Override
+//	public Instruction istore_1() {
+//		return new ISTORE(1);
+//	}
+//
+//	@Override
+//	public Instruction istore_2() {
+//		return new ISTORE(2);
+//	}
+//
+//	@Override
+//	public Instruction istore_3() {
+//		return new ISTORE(3);
+//	}
 
 	@Override
 	public Instruction isub() {
@@ -609,25 +609,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new LLOAD(localVarIndex);
 	}
 	
-	@Override
-	public Instruction lload_0() {
-		return new LLOAD(0);
-	}
-
-	@Override
-	public Instruction lload_1() {
-		return new LLOAD(1);
-	}
-
-	@Override
-	public Instruction lload_2() {
-		return new LLOAD(2);
-	}
-
-	@Override
-	public Instruction lload_3() {
-		return new LLOAD(3);
-	}
+//	@Override
+//	public Instruction lload_0() {
+//		return new LLOAD(0);
+//	}
+//
+//	@Override
+//	public Instruction lload_1() {
+//		return new LLOAD(1);
+//	}
+//
+//	@Override
+//	public Instruction lload_2() {
+//		return new LLOAD(2);
+//	}
+//
+//	@Override
+//	public Instruction lload_3() {
+//		return new LLOAD(3);
+//	}
 
 	@Override
 	public Instruction lmul() {
@@ -669,25 +669,25 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new LSTORE(localVarIndex);
 	}
 	
-	@Override
-	public Instruction lstore_0() {
-		return new LSTORE(0);
-	}
-
-	@Override
-	public Instruction lstore_1() {
-		return new LSTORE(1);
-	}
-
-	@Override
-	public Instruction lstore_2() {
-		return new LSTORE(2);
-	}
-
-	@Override
-	public Instruction lstore_3() {
-		return new LSTORE(3);
-	}
+//	@Override
+//	public Instruction lstore_0() {
+//		return new LSTORE(0);
+//	}
+//
+//	@Override
+//	public Instruction lstore_1() {
+//		return new LSTORE(1);
+//	}
+//
+//	@Override
+//	public Instruction lstore_2() {
+//		return new LSTORE(2);
+//	}
+//
+//	@Override
+//	public Instruction lstore_3() {
+//		return new LSTORE(3);
+//	}
 	
 	@Override
 	public Instruction lsub() {
