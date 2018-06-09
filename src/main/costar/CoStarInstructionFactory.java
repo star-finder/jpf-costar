@@ -6,10 +6,12 @@ import costar.bytecode.BASTORE;
 import costar.bytecode.DCMPG;
 import costar.bytecode.DCMPL;
 import costar.bytecode.DLOAD;
+import costar.bytecode.DSTORE;
 import costar.bytecode.EXECUTENATIVE;
 import costar.bytecode.FCMPG;
 import costar.bytecode.FCMPL;
 import costar.bytecode.FLOAD;
+import costar.bytecode.FSTORE;
 import costar.bytecode.GETFIELD;
 import costar.bytecode.GETSTATIC;
 import costar.bytecode.IFEQ;
@@ -36,6 +38,7 @@ import costar.bytecode.ISTORE;
 import costar.bytecode.LCMP;
 import costar.bytecode.LLOAD;
 import costar.bytecode.LOOKUPSWITCH;
+import costar.bytecode.LSTORE;
 import costar.bytecode.NEW;
 import costar.bytecode.PUTFIELD;
 import costar.bytecode.PUTSTATIC;
@@ -108,20 +111,265 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	// }
 
 	@Override
-	public Instruction ifnonnull(int targetPc) {
-		return new IFNONNULL(targetPc);
+	public Instruction d2f() {
+		return new D2F();
 	}
 
 	@Override
-	public Instruction ifnull(int targetPc) {
-		return new IFNULL(targetPc);
+	public Instruction d2i() {
+		return new D2I();
+	}
+
+	@Override
+	public Instruction d2l() {
+		return new D2L();
+	}
+	
+	@Override
+	public Instruction dadd() {
+		return new DADD();
+	}
+	
+	@Override
+	public Instruction dcmpg() {
+		return new DCMPG();
+	}
+
+	@Override
+	public Instruction dcmpl() {
+		return new DCMPL();
+	}
+
+	@Override
+	public Instruction ddiv() {
+		return new DDIV();
+	}
+	
+	@Override
+	public Instruction dload(int localVarIndex) {
+		return new DLOAD(localVarIndex);
+	}
+	
+	@Override
+	public Instruction dload_0() {
+		return new DLOAD(0);
+	}
+
+	@Override
+	public Instruction dload_1() {
+		return new DLOAD(1);
+	}
+
+	@Override
+	public Instruction dload_2() {
+		return new DLOAD(2);
+	}
+
+	@Override
+	public Instruction dload_3() {
+		return new DLOAD(3);
+	}
+
+	@Override
+	public Instruction dmul() {
+		return new DMUL();
+	}
+
+	@Override
+	public Instruction dneg() {
+		return new DNEG();
+	}
+
+	@Override
+	public Instruction drem() {
+		return new DREM();
+	}
+	
+	@Override
+	public Instruction dstore(int localVarIndex) {
+		return new DSTORE(localVarIndex);
+	}
+
+	@Override
+	public Instruction dstore_0() {
+		return new DSTORE(0);
+	}
+
+	@Override
+	public Instruction dstore_1() {
+		return new DSTORE(1);
+	}
+
+	@Override
+	public Instruction dstore_2() {
+		return new DSTORE(2);
+	}
+
+	@Override
+	public Instruction dstore_3() {
+		return new DSTORE(3);
+	}
+
+	@Override
+	public Instruction dsub() {
+		return new DSUB();
+	}
+	
+	@Override
+	public Instruction f2d() {
+		return new F2D();
+	}
+
+	@Override
+	public Instruction f2i() {
+		return new F2I();
+	}
+
+	@Override
+	public Instruction f2l() {
+		return new F2L();
+	}
+
+	@Override
+	public Instruction fadd() {
+		return new FADD();
+	}
+
+	@Override
+	public Instruction fdiv() {
+		return new FDIV();
+	}
+	
+	@Override
+	public Instruction fload(int localVarIndex) {
+		return new FLOAD(localVarIndex);
+	}
+
+	@Override
+	public Instruction fload_0() {
+		return new FLOAD(0);
+	}
+
+	@Override
+	public Instruction fload_1() {
+		return new FLOAD(1);
+	}
+
+	@Override
+	public Instruction fload_2() {
+		return new FLOAD(2);
+	}
+
+	@Override
+	public Instruction fload_3() {
+		return new FLOAD(3);
+	}
+	
+	@Override
+	public Instruction fmul() {
+		return new FMUL();
+	}
+
+	@Override
+	public Instruction fneg() {
+		return new FNEG();
+	}
+
+	@Override
+	public Instruction frem() {
+		return new FREM();
+	}
+
+	@Override
+	public Instruction fstore(int localVarIndex) {
+		return new FSTORE(localVarIndex);
+	}
+	
+	@Override
+	public Instruction fstore_0() {
+		return new FSTORE(0);
+	}
+
+	@Override
+	public Instruction fstore_1() {
+		return new FSTORE(1);
+	}
+
+	@Override
+	public Instruction fstore_2() {
+		return new FSTORE(2);
+	}
+
+	@Override
+	public Instruction fstore_3() {
+		return new FSTORE(3);
+	}
+	
+	@Override
+	public Instruction fsub() {
+		return new FSUB();
+	}
+
+	@Override
+	public Instruction fcmpg() {
+		return new FCMPG();
+	}
+
+	@Override
+	public Instruction fcmpl() {
+		return new FCMPL();
+	}
+	
+	@Override
+	public Instruction i2b() {
+		return new I2B();
+	}
+
+	@Override
+	public Instruction i2c() {
+		return new I2C();
+	}
+
+	@Override
+	public Instruction i2d() {
+		return new I2D();
+	}
+
+	@Override
+	public Instruction i2f() {
+		return new I2F();
+	}
+
+	@Override
+	public Instruction i2l() {
+		return new I2L();
+	}
+
+	@Override
+	public Instruction i2s() {
+		return new I2S();
+	}
+
+	@Override
+	public Instruction iadd() {
+		return new IADD();
+	}
+
+	@Override
+	public Instruction iand() {
+		return new IAND();
 	}
 
 	@Override
 	public Instruction if_acmpeq(int targetPc) {
 		return new IF_ACMPEQ(targetPc);
 	}
-
+	
+	@Override
+	public Instruction idiv() {
+		return new IDIV();
+	}
+	
 	@Override
 	public Instruction if_acmpne(int targetPc) {
 		return new IF_ACMPNE(targetPc);
@@ -186,27 +434,22 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction ifle(int targetPc) {
 		return new IFLE(targetPc);
 	}
-
+	
 	@Override
-	public Instruction iadd() {
-		return new IADD();
+	public Instruction ifnonnull(int targetPc) {
+		return new IFNONNULL(targetPc);
 	}
 
 	@Override
-	public Instruction iand() {
-		return new IAND();
-	}
-
-	@Override
-	public Instruction idiv() {
-		return new IDIV();
+	public Instruction ifnull(int targetPc) {
+		return new IFNULL(targetPc);
 	}
 
 	@Override
 	public Instruction iinc(int localVarIndex, int incConstant) {
 		return new IINC(localVarIndex, incConstant);
 	}
-
+	
 	@Override
 	public Instruction iload(int localVarIndex) {
 		return new ILOAD(localVarIndex);
@@ -313,8 +556,18 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 
 	@Override
-	public Instruction lload(int localVarIndex) {
-		return new LLOAD(localVarIndex);
+	public Instruction l2d() {
+		return new L2D();
+	}
+
+	@Override
+	public Instruction l2f() {
+		return new L2F();
+	}
+
+	@Override
+	public Instruction l2i() {
+		return new L2I();
 	}
 
 	@Override
@@ -326,10 +579,40 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction land() {
 		return new LAND();
 	}
+	
+	@Override
+	public Instruction lcmp() {
+		return new LCMP();
+	}
 
 	@Override
 	public Instruction ldiv() {
 		return new LDIV();
+	}
+	
+	@Override
+	public Instruction lload(int localVarIndex) {
+		return new LLOAD(localVarIndex);
+	}
+	
+	@Override
+	public Instruction lload_0() {
+		return new LLOAD(0);
+	}
+
+	@Override
+	public Instruction lload_1() {
+		return new LLOAD(1);
+	}
+
+	@Override
+	public Instruction lload_2() {
+		return new LLOAD(2);
+	}
+
+	@Override
+	public Instruction lload_3() {
+		return new LLOAD(3);
 	}
 
 	@Override
@@ -363,6 +646,31 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 
 	@Override
+	public Instruction lstore(int localVarIndex) {
+		return new LSTORE(localVarIndex);
+	}
+	
+	@Override
+	public Instruction lstore_0() {
+		return new LSTORE(0);
+	}
+
+	@Override
+	public Instruction lstore_1() {
+		return new LSTORE(1);
+	}
+
+	@Override
+	public Instruction lstore_2() {
+		return new LSTORE(2);
+	}
+
+	@Override
+	public Instruction lstore_3() {
+		return new LSTORE(3);
+	}
+	
+	@Override
 	public Instruction lsub() {
 		return new LSUB();
 	}
@@ -375,176 +683,6 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction lxor() {
 		return new LXOR();
-	}
-
-	@Override
-	public Instruction lcmp() {
-		return new LCMP();
-	}
-
-	@Override
-	public Instruction fload(int localVarIndex) {
-		return new FLOAD(localVarIndex);
-	}
-
-	@Override
-	public Instruction fadd() {
-		return new FADD();
-	}
-
-	@Override
-	public Instruction fdiv() {
-		return new FDIV();
-	}
-
-	@Override
-	public Instruction fmul() {
-		return new FMUL();
-	}
-
-	@Override
-	public Instruction fneg() {
-		return new FNEG();
-	}
-
-	@Override
-	public Instruction frem() {
-		return new FREM();
-	}
-
-	@Override
-	public Instruction fsub() {
-		return new FSUB();
-	}
-
-	@Override
-	public Instruction fcmpg() {
-		return new FCMPG();
-	}
-
-	@Override
-	public Instruction fcmpl() {
-		return new FCMPL();
-	}
-
-	@Override
-	public Instruction dload(int localVarIndex) {
-		return new DLOAD(localVarIndex);
-	}
-
-	@Override
-	public Instruction dadd() {
-		return new DADD();
-	}
-
-	@Override
-	public Instruction ddiv() {
-		return new DDIV();
-	}
-
-	@Override
-	public Instruction dmul() {
-		return new DMUL();
-	}
-
-	@Override
-	public Instruction dneg() {
-		return new DNEG();
-	}
-
-	@Override
-	public Instruction drem() {
-		return new DREM();
-	}
-
-	@Override
-	public Instruction dsub() {
-		return new DSUB();
-	}
-
-	@Override
-	public Instruction dcmpg() {
-		return new DCMPG();
-	}
-
-	@Override
-	public Instruction dcmpl() {
-		return new DCMPL();
-	}
-
-	@Override
-	public Instruction i2b() {
-		return new I2B();
-	}
-
-	@Override
-	public Instruction i2c() {
-		return new I2C();
-	}
-
-	@Override
-	public Instruction i2d() {
-		return new I2D();
-	}
-
-	@Override
-	public Instruction i2f() {
-		return new I2F();
-	}
-
-	@Override
-	public Instruction i2l() {
-		return new I2L();
-	}
-
-	@Override
-	public Instruction i2s() {
-		return new I2S();
-	}
-
-	@Override
-	public Instruction l2d() {
-		return new L2D();
-	}
-
-	@Override
-	public Instruction l2f() {
-		return new L2F();
-	}
-
-	@Override
-	public Instruction l2i() {
-		return new L2I();
-	}
-
-	@Override
-	public Instruction f2d() {
-		return new F2D();
-	}
-
-	@Override
-	public Instruction f2i() {
-		return new F2I();
-	}
-
-	@Override
-	public Instruction f2l() {
-		return new F2L();
-	}
-
-	@Override
-	public Instruction d2f() {
-		return new D2F();
-	}
-
-	@Override
-	public Instruction d2i() {
-		return new D2I();
-	}
-
-	@Override
-	public Instruction d2l() {
-		return new D2L();
 	}
 
 	@Override

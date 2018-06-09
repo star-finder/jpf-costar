@@ -29,7 +29,7 @@ public class ILOAD extends gov.nasa.jpf.jvm.bytecode.ILOAD {
 		Map<Integer,Integer> map = analysis.getNameMap().peek();
 		String name = lvi.getName() + "_" + map.get(index);
 		
-		Expression exp = new Variable(name, "int");
+		Expression exp = new Variable(name);
 		sf.setLocalAttr(index, exp);
 		
 		return super.execute(ti);
