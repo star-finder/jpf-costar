@@ -6,11 +6,13 @@ import costar.bytecode.BASTORE;
 import costar.bytecode.DCMPG;
 import costar.bytecode.DCMPL;
 import costar.bytecode.DLOAD;
+import costar.bytecode.DRETURN;
 import costar.bytecode.DSTORE;
 import costar.bytecode.EXECUTENATIVE;
 import costar.bytecode.FCMPG;
 import costar.bytecode.FCMPL;
 import costar.bytecode.FLOAD;
+import costar.bytecode.FRETURN;
 import costar.bytecode.FSTORE;
 import costar.bytecode.GETFIELD;
 import costar.bytecode.GETSTATIC;
@@ -38,10 +40,12 @@ import costar.bytecode.ISTORE;
 import costar.bytecode.LCMP;
 import costar.bytecode.LLOAD;
 import costar.bytecode.LOOKUPSWITCH;
+import costar.bytecode.LRETURN;
 import costar.bytecode.LSTORE;
 import costar.bytecode.NEW;
 import costar.bytecode.PUTFIELD;
 import costar.bytecode.PUTSTATIC;
+import costar.bytecode.RETURN;
 import costar.bytecode.TABLESWITCH;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.vm.Instruction;
@@ -186,6 +190,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 	
 	@Override
+	public Instruction dreturn() {
+		return new DRETURN();
+	}
+	
+	@Override
 	public Instruction dstore(int localVarIndex) {
 		return new DSTORE(localVarIndex);
 	}
@@ -278,6 +287,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction frem() {
 		return new FREM();
+	}
+	
+	@Override
+	public Instruction freturn() {
+		return new FRETURN();
 	}
 
 	@Override
@@ -634,6 +648,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction lrem() {
 		return new LREM();
 	}
+	
+	@Override
+	public Instruction lreturn() {
+		return new LRETURN();
+	}
 
 	@Override
 	public Instruction lshl() {
@@ -710,6 +729,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new LOOKUPSWITCH(defaultTargetPc, nEntries);
 	}
 
+	@Override
+	public Instruction return_() {
+		return new RETURN();
+	}
+	
 	@Override
 	public Instruction tableswitch(int defaultTargetPc, int low, int high) {
 		return new TABLESWITCH(defaultTargetPc, low, high);
