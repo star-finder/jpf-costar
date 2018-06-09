@@ -96,9 +96,9 @@ public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
 			Formula formula = current.formula;
 			
 			if (isReferenceField)
-				formula.addComparisonTerm(Comparator.AF, var, exp);
+				formula.addComparisonTerm(Comparator.ARF, var, exp);
 			else
-				formula.addComparisonTerm(Comparator.AS, var, exp);
+				formula.addComparisonTerm(Comparator.ARV, var, exp);
 		}
 
 		return nextIns;

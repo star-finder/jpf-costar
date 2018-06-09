@@ -29,6 +29,9 @@ import costar.bytecode.IF_ICMPLE;
 import costar.bytecode.IF_ICMPLT;
 import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.ILOAD;
+import costar.bytecode.INVOKEVIRTUAL;
+import costar.bytecode.IRETURN;
+import costar.bytecode.ISTORE;
 import costar.bytecode.LCMP;
 import costar.bytecode.LLOAD;
 import costar.bytecode.LOOKUPSWITCH;
@@ -220,6 +223,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 
 	@Override
+	public Instruction invokevirtual(String clsName, String methodName, String methodSignature) {
+		return new INVOKEVIRTUAL(clsName, methodName, methodSignature);
+	}
+
+	@Override
 	public Instruction ior() {
 		return new IOR();
 	}
@@ -230,6 +238,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	}
 
 	@Override
+	public Instruction ireturn() {
+		return new IRETURN();
+	}
+	
+	@Override
 	public Instruction ishl() {
 		return new ISHL();
 	}
@@ -237,6 +250,31 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction ishr() {
 		return new ISHR();
+	}
+	
+	@Override
+	public Instruction istore(int localVarIndex) {
+		return new ISTORE(localVarIndex);
+	}
+
+	@Override
+	public Instruction istore_0() {
+		return new ISTORE(0);
+	}
+
+	@Override
+	public Instruction istore_1() {
+		return new ISTORE(1);
+	}
+
+	@Override
+	public Instruction istore_2() {
+		return new ISTORE(2);
+	}
+
+	@Override
+	public Instruction istore_3() {
+		return new ISTORE(3);
 	}
 
 	@Override

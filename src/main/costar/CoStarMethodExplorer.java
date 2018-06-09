@@ -1,7 +1,8 @@
 package costar;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
 import costar.config.AnalysisConfig;
 import costar.config.CoStarConfig;
@@ -21,6 +22,7 @@ import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Heap;
 import gov.nasa.jpf.vm.Instruction;
+import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -28,11 +30,11 @@ import gov.nasa.jpf.vm.Types;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
+import starlib.formula.expression.Comparator;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
 import starlib.precondition.Precondition;
 import starlib.precondition.PreconditionMap;
-import starlib.solver.Model;
 import starlib.solver.Solver;
 
 public class CoStarMethodExplorer {
@@ -59,7 +61,7 @@ public class CoStarMethodExplorer {
 	
 	private boolean[] bitMap;
 	
-//	private Map<String,String> nameMap;
+	private Stack<Map<Integer,Integer>> indexMap;
 
 	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi, int size) {
 		this.methodInfo = mi;
@@ -68,7 +70,7 @@ public class CoStarMethodExplorer {
 
 		this.constraintsTree = new CoStarConstrainstTree(this, mi);
 		this.bitMap = new boolean[size];
-//		this.nameMap = new HashMap<String,String>();
+		this.indexMap = new Stack<Map<Integer,Integer>>();
 	}
 
 	public boolean hasMoreChoices() {		
@@ -141,10 +143,16 @@ public class CoStarMethodExplorer {
 		}
 	}
 	
-	private void prepareFirstExecution(StackFrame sf) {
-		initValuation = new Valuation();
+	private void reset() {
 		constraintsTree.reset();
 		Utilities.reset();
+		indexMap.clear();
+	}
+	
+	private void prepareFirstExecution(StackFrame sf) {
+		reset();
+		
+		initValuation = new Valuation();
 		
 		if (constraintsTree.getInitModels().isEmpty()) {
 			for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
@@ -182,9 +190,7 @@ public class CoStarMethodExplorer {
 	}
 
 	private void prepareReExecution(StackFrame sf) {
-		constraintsTree.reset();
-		Utilities.reset();
-//		nameMap = new HashMap<String,String>();
+		reset();
 		
 		for (SymbolicVariable<?> sv : symContext.getSymbolicVars())
 			sv.apply(currValuation, sf);
@@ -203,7 +209,7 @@ public class CoStarMethodExplorer {
 		initializeSymbolicStatic(ti);
 		initializeSymbolicParams(ti, sf);
 
-		List<Variable<?>> vlist = new ArrayList<>();
+//		List<Variable<?>> vlist = new ArrayList<>();
 //		logger.info("Symbolic variables:");
 //		logger.info("===================");
 //		for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
@@ -316,8 +322,8 @@ public class CoStarMethodExplorer {
 		constraintsTree.addIndex(index);
 	}
 	
-//	public Map<String,String> getNameMap() {
-//		return nameMap;
-//	}
+	public Stack<Map<Integer,Integer>> getNameMap() {
+		return indexMap;
+	}
 
 }
