@@ -10,6 +10,7 @@ import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
+import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
@@ -41,8 +42,15 @@ public class FSTORE extends gov.nasa.jpf.jvm.bytecode.FSTORE {
 		Expression exp = sym_v != null ? (Expression) sym_v : new LiteralExpression(v);
 		
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
-		Map<Integer,Integer> map = analysis.getNameMap().peek();
-		String name = lvi.getName() + "_" + map.get(index);
+		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
+		
+		String name = "";
+		if (map.containsKey(lvi)) {
+			name = map.get(lvi);
+		} else {
+			name = lvi.getName() + "_" + Utilities.freshIndex();
+			map.put(lvi, name);
+		}	
 		
 		Variable var = new Variable(name);
 				

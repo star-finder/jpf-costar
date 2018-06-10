@@ -30,7 +30,6 @@ import gov.nasa.jpf.vm.Types;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
 import starlib.formula.Utilities;
-import starlib.formula.expression.Comparator;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
 import starlib.precondition.Precondition;
@@ -61,7 +60,7 @@ public class CoStarMethodExplorer {
 	
 	private boolean[] bitMap;
 	
-	private Stack<Map<Integer,Integer>> indexMap;
+	private Stack<Map<LocalVarInfo, String>> indexMap;
 
 	public CoStarMethodExplorer(CoStarConfig cc, String id, MethodInfo mi, int size) {
 		this.methodInfo = mi;
@@ -70,7 +69,7 @@ public class CoStarMethodExplorer {
 
 		this.constraintsTree = new CoStarConstrainstTree(this, mi);
 		this.bitMap = new boolean[size];
-		this.indexMap = new Stack<Map<Integer,Integer>>();
+		this.indexMap = new Stack<Map<LocalVarInfo, String>>();
 	}
 
 	public boolean hasMoreChoices() {		
@@ -275,8 +274,8 @@ public class CoStarMethodExplorer {
 				continue; // null name indicates non-symbolic param
 
 			if (tc == Types.T_REFERENCE || tc == Types.T_ARRAY) {
-				int ref = sf.peek(stackIdx);
-				ElementInfo ei = heap.get(ref);
+//				int ref = sf.peek(stackIdx);
+//				ElementInfo ei = heap.get(ref);
 //				if (ei != null)
 //					symContext.processObject(ei, name);
 				Variable<?> var = Variable.create(BuiltinTypes.REF, name);
@@ -322,7 +321,7 @@ public class CoStarMethodExplorer {
 		constraintsTree.addIndex(index);
 	}
 	
-	public Stack<Map<Integer,Integer>> getNameMap() {
+	public Stack<Map<LocalVarInfo, String>> getNameMap() {
 		return indexMap;
 	}
 

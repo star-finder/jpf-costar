@@ -31,9 +31,6 @@ public class IINC extends gov.nasa.jpf.jvm.bytecode.IINC {
 			return super.execute(ti);
 		
 		StackFrame sf = ti.getModifiableTopFrame();
-		Object sym_v = sf.getOperandAttr();
-		
-		int v = sf.peek();
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
@@ -41,8 +38,15 @@ public class IINC extends gov.nasa.jpf.jvm.bytecode.IINC {
 		Formula formula = current.formula;
 		
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
-		Map<Integer,Integer> map = analysis.getNameMap().peek();
-		String name = lvi.getName() + "_" + map.get(index);
+		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
+		
+		String name = "";
+		if (map.containsKey(lvi)) {
+			name = map.get(lvi);
+		} else {
+			name = lvi.getName() + "_" + map.get(index);
+			map.put(lvi, name);
+		}
 		
 		Expression exp = new BinaryExpression(Operator.PLUS, new Variable(name), new LiteralExpression(increment));
 		formula.addComparisonTerm(Comparator.APV, new Variable(name), exp);

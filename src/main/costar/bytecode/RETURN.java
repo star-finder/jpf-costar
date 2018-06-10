@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import costar.CoStarMethodExplorer;
 import gov.nasa.jpf.vm.Instruction;
+import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.ThreadInfo;
 
 public class RETURN extends gov.nasa.jpf.jvm.bytecode.RETURN {
@@ -16,7 +17,7 @@ public class RETURN extends gov.nasa.jpf.jvm.bytecode.RETURN {
 		if (analysis == null)
 			return super.execute(ti);
 		
-		Stack<Map<Integer,Integer>> indexMap = analysis.getNameMap();
+		Stack<Map<LocalVarInfo, String>> indexMap = analysis.getNameMap();
 		if (!indexMap.isEmpty()) indexMap.pop(); // indexMap will be empty at the last return in main method
 		
 		return super.execute(ti);

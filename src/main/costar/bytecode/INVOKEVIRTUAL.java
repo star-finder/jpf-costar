@@ -43,12 +43,8 @@ public class INVOKEVIRTUAL extends VirtualInvocation {
 		
 		StackFrame sf = ti.getTopFrame();
 		
-		Map<Integer,Integer> newMap = new HashMap<Integer,Integer>();
-		for (int i = 1; i < sf.getLocalVariableCount(); i++) {
-			newMap.put(i, Utilities.freshIndex());
-		}
-		
-		Stack<Map<Integer,Integer>> indexMap = analysis.getNameMap();
+		Map<LocalVarInfo,String> newMap = new HashMap<LocalVarInfo,String>();
+		Stack<Map<LocalVarInfo,String>> indexMap = analysis.getNameMap();
 		indexMap.push(newMap);
 		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
@@ -76,7 +72,10 @@ public class INVOKEVIRTUAL extends VirtualInvocation {
 				exp = new LiteralExpression(vals[i] + "");
 			}
 			
-			Variable var = new Variable(lvis[i].getName() + "_" + newMap.get(i));
+			String name = lvis[i].getName() + "_" + Utilities.freshIndex();
+			newMap.put(lvis[i], name);
+			
+			Variable var = new Variable(name);
 			formula.addComparisonTerm(Comparator.EQ, var, exp);
 		}
 		

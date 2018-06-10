@@ -10,6 +10,7 @@ import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
+import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
@@ -41,13 +42,19 @@ public class ISTORE extends gov.nasa.jpf.jvm.bytecode.ISTORE {
 		Expression exp = sym_v != null ? (Expression) sym_v : new LiteralExpression(v);
 		
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
-		Map<Integer,Integer> map = analysis.getNameMap().peek();
-		String name = lvi.getName() + "_" + map.get(index);
+		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
+		
+		String name = "";
+		if (map.containsKey(lvi)) {
+			name = map.get(lvi);
+		} else {
+			name = lvi.getName() + "_" + Utilities.freshIndex();
+			map.put(lvi, name);
+		}
 		
 		Variable var = new Variable(name);
 				
 		formula.addComparisonTerm(Comparator.ARV, var, exp);
-		System.out.println(formula);
 		
 		return super.execute(ti);
 	}
