@@ -44,9 +44,9 @@ public class IINC extends gov.nasa.jpf.jvm.bytecode.IINC {
 		Map<Integer,Integer> map = analysis.getNameMap().peek();
 		String name = lvi.getName() + "_" + map.get(index);
 		
-		Expression exp = new BinaryExpression(Operator.PLUS, new Variable(name, "int"), new LiteralExpression(increment));
-		formula.addComparisonTerm(Comparator.APV, new Variable(name, "int"), exp);
-		
+		Expression exp = new BinaryExpression(Operator.PLUS, new Variable(name), new LiteralExpression(increment));
+		formula.addComparisonTerm(Comparator.APV, new Variable(name), exp);
+				
 		return super.execute(ti);
 	}
 

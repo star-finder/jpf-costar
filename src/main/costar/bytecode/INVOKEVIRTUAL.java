@@ -36,6 +36,9 @@ public class INVOKEVIRTUAL extends VirtualInvocation {
 		if (analysis == null)
 			return super.execute(ti);
 		
+		Object[] syms = getArgumentAttrs(ti);
+		Object[] vals = getArgumentValues(ti);
+		
 		Instruction nextIns = super.execute(ti);
 		
 		StackFrame sf = ti.getTopFrame();
@@ -54,12 +57,10 @@ public class INVOKEVIRTUAL extends VirtualInvocation {
 		Formula formula = current.formula;
 		
 		MethodInfo mi = sf.getMethodInfo();
-		Object[] syms = sf.getArgumentAttrs(mi);
-		Object[] vals = sf.getArgumentValues(ti);
+		
 		LocalVarInfo[] lvis = mi.getLocalVars();
 		
-		sf.getMethodInfo().getArgumentTypeNames();
-		
+		// index 0 is "this"
 		for (int i = 1; i < sf.getMethodInfo().getArgumentsSize(); i++) {
 			Expression exp = null;
 			Object sym_v = syms[i];

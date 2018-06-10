@@ -17,7 +17,7 @@ public class RETURN extends gov.nasa.jpf.jvm.bytecode.RETURN {
 			return super.execute(ti);
 		
 		Stack<Map<Integer,Integer>> indexMap = analysis.getNameMap();
-		indexMap.pop();
+		if (!indexMap.isEmpty()) indexMap.pop(); // indexMap will be empty at the last return in main method
 		
 		return super.execute(ti);
 	}
