@@ -14,6 +14,7 @@ import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
+import starlib.formula.expression.LiteralExpression;
 import starlib.formula.expression.NullExpression;
 
 public class ASTORE extends gov.nasa.jpf.jvm.bytecode.ASTORE {
@@ -22,39 +23,41 @@ public class ASTORE extends gov.nasa.jpf.jvm.bytecode.ASTORE {
 		super(index);
 	}
 
-//	@Override
-//	public Instruction execute(ThreadInfo ti) {
-//		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
-//
-//		if (analysis == null)
-//			return super.execute(ti);
-//
-//		StackFrame sf = ti.getModifiableTopFrame();
-//		Expression exp = (Expression) sf.getOperandAttr();
-//		if (exp == null)
-//			exp = NullExpression.getInstance();
-//
-//		Instruction nextIns = super.execute(ti);
-//
-//		LocalVarInfo lvi = sf.getLocalVarInfo(index);
-//		
-//		if (lvi != null) {
-//			String name = lvi.getName();
-//	
-//			Variable var = new Variable(name);
-//			Variable newVar = Utilities.freshVar(var);
-//	
-//			Map<String, String> nameMap = analysis.getNameMap();
-//			nameMap.put(name, newVar.getName());
-//	
-//			CoStarConstrainstTree tree = analysis.getConstrainstTree();
-//			CoStarNode current = tree.getCurrent();
-//	
-//			Formula formula = current.formula;
-//			formula.addComparisonTerm(Comparator.EQ, newVar, exp);
-//		}
-//
-//		return nextIns;
-//	}
+	@Override
+	public Instruction execute(ThreadInfo ti) {
+		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
+		
+		if (analysis == null)
+			return super.execute(ti);
+		
+		StackFrame sf = ti.getModifiableTopFrame();
+		Object sym_v = sf.getOperandAttr();
+		
+		int v = sf.peek();
+		
+		CoStarConstrainstTree tree = analysis.getConstrainstTree();
+		CoStarNode current = tree.getCurrent();
+		
+		Formula formula = current.formula;
+		
+		Expression exp = sym_v != null ? (Expression) sym_v : new LiteralExpression(v);
+		
+		LocalVarInfo lvi = sf.getLocalVarInfo(index);
+		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
+		
+		String name = "";
+		if (map.containsKey(lvi)) {
+			name = map.get(lvi);
+		} else {
+			name = lvi.getName() + "_" + Utilities.freshIndex();
+			map.put(lvi, name);
+		}
+		
+		Variable var = new Variable(name);
+				
+		formula.addComparisonTerm(Comparator.ARV, var, exp);
+		
+		return super.execute(ti);
+	}
 
 }

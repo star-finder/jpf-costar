@@ -1,14 +1,15 @@
 package costar.bytecode;
 
+import java.util.Map;
+
 import costar.CoStarMethodExplorer;
-import gov.nasa.jpf.constraints.api.Expression;
-import gov.nasa.jpf.vm.ClassInfo;
-import gov.nasa.jpf.vm.ElementInfo;
-import gov.nasa.jpf.vm.FieldInfo;
 import gov.nasa.jpf.vm.Instruction;
+import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
+import starlib.formula.Utilities;
 import starlib.formula.Variable;
+import starlib.formula.expression.Expression;
 
 public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 	
@@ -25,65 +26,24 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		StackFrame sf = ti.getModifiableTopFrame();
 		
-		starlib.formula.expression.Expression var = null;
+		LocalVarInfo lvi = sf.getLocalVarInfo(index);
+		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
-		Object sym_v = sf.getLocalAttr(index);
-		if (sym_v == null && index == 0) {
-			var = new Variable("this");
-			sf.setLocalAttr(index, var);
-		} else if (sym_v instanceof Expression<?>) {
-			var = new Variable(((Expression<?>)sym_v).toString(0));
-			sf.setLocalAttr(index, var);
+		String name = "";
+		if (map.containsKey(lvi)) {
+			name = map.get(lvi);
+		} else {
+			if (lvi.getName().equals("this"))
+				name = lvi.getName();
+			else
+				name = lvi.getName() + "_" + Utilities.freshIndex();
+			map.put(lvi, name);
 		}
 		
+		Expression exp = new Variable(name);
+		sf.setLocalAttr(index, exp);
+		
 		return super.execute(ti);
-		
-//		if (var == null)
-//			var = (starlib.formula.expression.Expression) sf.getLocalAttr(index);
-//		
-//		if (var.toString().contains("newNode_"))
-//			return super.execute(ti);
-		
-//		int objRef = sf.getSlot(index);
-//		if (objRef != MJIEnv.NULL && var != null) {
-//			ElementInfo ei = ti.getModifiableElementInfo(objRef);
-//			for (int i = 0; i < ei.getNumberOfFields(); i++) {
-//				FieldInfo fi = ei.getFieldInfo(i);
-//				if (ei.getFieldAttr(fi) == null)
-//					ei.setFieldAttr(fi, new Variable(var + "." + fi.getName()));
-//			}
-//		}
-		
-//		Instruction nextIns = super.execute(ti);
-		
-//		LocalVarInfo lvi = sf.getLocalVarInfo(index);
-//		Expression exp = (Expression) sf.getLocalAttr(index);
-//		
-//		if (lvi != null) {
-//			String name = lvi.getName();
-//			
-//			Map<String,String> nameMap = analysis.getNameMap();
-//			if (nameMap.containsKey(name)) {
-//				name = nameMap.get(name);
-//			} else {
-//				nameMap.put(name, name);
-//			}
-//			
-//			Variable var = new Variable(name);
-//			sf.setOperandAttr(var);
-//			
-//			if (exp != null && !exp.equals(var)) {
-//				CoStarConstrainstTree tree = analysis.getConstrainstTree();
-//				CoStarNode current = tree.getCurrent();
-//		
-//				Formula formula = current.formula;
-//				formula.addComparisonTerm(Comparator.EQ, var, exp);	
-//			}
-//			
-//			sf.setLocalAttr(index, null);
-//		}
-		
-//		return nextIns;
 	}
 
 }

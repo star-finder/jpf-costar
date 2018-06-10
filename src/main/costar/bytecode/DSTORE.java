@@ -54,8 +54,7 @@ public class DSTORE extends gov.nasa.jpf.jvm.bytecode.DSTORE {
 		
 		Variable var = new Variable(name);
 				
-		formula.addComparisonTerm(Comparator.ARV, var, exp);
-		System.out.println(formula);
+		formula.addComparisonTerm(Comparator.APV, var, exp);
 		
 		return super.execute(ti);
 	}
