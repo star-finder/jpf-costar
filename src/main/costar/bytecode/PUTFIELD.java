@@ -96,7 +96,7 @@ public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 			if (isReferenceField)
 				formula.addComparisonTerm(Comparator.ARF, var, exp);
 			else
-				formula.addComparisonTerm(Comparator.ARV, var, exp);
+				formula.addComparisonTerm(Comparator.AP, var, exp);
 		}
 		
 //		if (objVar != null && exp != null) {

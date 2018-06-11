@@ -49,7 +49,7 @@ public class IINC extends gov.nasa.jpf.jvm.bytecode.IINC {
 		}
 		
 		Expression exp = new BinaryExpression(Operator.PLUS, new Variable(name), new LiteralExpression(increment));
-		formula.addComparisonTerm(Comparator.APV, new Variable(name), exp);
+		formula.addComparisonTerm(Comparator.AP, new Variable(name), exp);
 				
 		return super.execute(ti);
 	}

@@ -63,41 +63,31 @@ public class Preprocessor {
 		return null;
 	}
 	
-	private static void updateNameMapWithRename(Set<String> alias, Map<String,String> nameMap,
-			String rootName, String field, String newName) {
-		if (alias == null) return;
-		
-		for (String name : alias) {
-			String oldName = name + "." + field;
-			nameMap.put(oldName, newName);			
-		}
-	}
-	
-	private static void updateAliasMapWithRename(Map<String,Set<String>> aliasMap, String oldName, String newName) {
-		// update keys
-		Map<String,Set<String>> tmp = new HashMap<String,Set<String>>();
-		Iterator<String> keysIt = aliasMap.keySet().iterator();
-			
-		while (keysIt.hasNext()) {
-			String key = keysIt.next();
-			if (key.equals(oldName)) {
-				Set<String> values = aliasMap.get(key);
-				tmp.put(newName, values);
-				keysIt.remove();
-			}
-		}
-		
-		aliasMap.putAll(tmp);
-		
-		// update values
-		for (String key : aliasMap.keySet()) {
-			Set<String> values = aliasMap.get(key);
-			if (values.contains(oldName)) {
-				values.remove(oldName);
-				values.add(newName);
-			}
-		}
-	}
+//	private static void updateAliasMapWithRename(Map<String,Set<String>> aliasMap, String oldName, String newName) {
+//		// update keys
+//		Map<String,Set<String>> tmp = new HashMap<String,Set<String>>();
+//		Iterator<String> keysIt = aliasMap.keySet().iterator();
+//			
+//		while (keysIt.hasNext()) {
+//			String key = keysIt.next();
+//			if (key.equals(oldName)) {
+//				Set<String> values = aliasMap.get(key);
+//				tmp.put(newName, values);
+//				keysIt.remove();
+//			}
+//		}
+//		
+//		aliasMap.putAll(tmp);
+//		
+//		// update values
+//		for (String key : aliasMap.keySet()) {
+//			Set<String> values = aliasMap.get(key);
+//			if (values.contains(oldName)) {
+//				values.remove(oldName);
+//				values.add(newName);
+//			}
+//		}
+//	}
 	
 	private static void updateNameMapWithAssign(Map<String,String> nameMap, String oldLhsName,
 			String newLhsName, String rhsName) {
@@ -153,16 +143,16 @@ public class Preprocessor {
 		}
 	}
 	
-	private static void removeOldNameMap(String name, Map<String,String> nameMap) {
-		Iterator<String> it = nameMap.keySet().iterator();
-		while (it.hasNext()) {
-			String key = it.next();
-			
-			if (name.equals(key)) {
-				it.remove();
-			}
-		}
-	}
+//	private static void removeOldNameMap(String name, Map<String,String> nameMap) {
+//		Iterator<String> it = nameMap.keySet().iterator();
+//		while (it.hasNext()) {
+//			String key = it.next();
+//			
+//			if (name.equals(key)) {
+//				it.remove();
+//			}
+//		}
+//	}
 	
 	private static void updateNoNullSet(Set<String> noNullSet, String oldName, String newName) {
 		Iterator<String> it = noNullSet.iterator();
@@ -248,13 +238,15 @@ public class Preprocessor {
 							newName = getName((PointToTerm) ht, rootName, field);
 							if (newName == null) return fs;
 							
-							removeOldNameMap(oldName, nameMap);
-							nameMap.put(oldName, newName);
+//							removeOldNameMap(oldName, nameMap);
+//							nameMap.put(oldName, newName);
+							
+							updateNameMap(nameMap, oldName, newName);
 						}
 						
 						// update alias here
-						updateAliasMapWithRename(f.getAliasMap(), oldName, newName);
-						updateNameMapWithRename(f.getAlias(rootName), nameMap, rootName, field, newName);
+//						updateAliasMapWithRename(f.getAliasMap(), oldName, newName);
+						updateNameMapForAlias(nameMap, f.getAlias(rootName), field, newName);
 						
 						updateNoNullSet(noNullSet, oldName, newName);
 						
@@ -303,7 +295,7 @@ public class Preprocessor {
 			
 			// in case the term is assignment to a prim var
 			// we need to update the name for the lhs
-			if (cp == Comparator.APV) {
+			if (cp == Comparator.AP) {
 				// get old name
 				Variable lhs = (Variable) ct.getExp1();
 				String oldLhsName = lhs.toString();
@@ -316,7 +308,27 @@ public class Preprocessor {
 				lhs.setName(newLhsName);
 								
 				// update nameMap because the name of lhs is changed
-				updateNameMapWithAssignPrim(nameMap, oldLhsName, newLhsName);
+				updateNameMap(nameMap, oldLhsName, newLhsName);
+			}
+			// with assigment to ref var we have to update name and alias
+			else if (cp == Comparator.ARV) {
+				// get old name
+				Variable lhs = (Variable) ct.getExp1();
+				String oldLhsName = lhs.toString();
+				
+				// get new name
+				Variable tmp = new Variable(oldLhsName);
+				String newLhsName = Utilities.freshVar(tmp).getName();
+				
+				// update
+				lhs.setName(newLhsName);
+				
+				String rhsName = ((Variable) ct.getExp2()).getName();
+								
+				// update nameMap because the name of lhs is changed
+				updateNameMap(nameMap, oldLhsName, newLhsName);
+				// update alias because now lhs is alias with rhs
+				updateAliasMapWithAssignRefVar(f.getAliasMap(), oldLhsName, newLhsName, rhsName);
 			}
 			
 			
@@ -383,18 +395,18 @@ public class Preprocessor {
 		fs.add(f);
 		return fs;
 	}
-
+	
 	// nameMap contains information in form of original name -> new name
-	private static void updateNameMapWithAssignPrim(Map<String, String> nameMap,
+	private static void updateNameMap(Map<String, String> nameMap,
 			String oldName, String newName) {
 		Map<String, String> newMap = new HashMap<String, String>();
-		
+
 		Iterator<String> it = nameMap.keySet().iterator();
-		
+
 		while (it.hasNext()) {
 			String key = it.next();
 			String value = nameMap.get(key);
-			
+
 			// in case original name -> some name already
 			// we have to remove the old map and prepare the new map
 			if (value.equals(oldName)) {
@@ -402,11 +414,48 @@ public class Preprocessor {
 				it.remove();
 			}
 		}
-		
+
 		// in case we do NOT have original name -> some name
 		if (newMap.isEmpty()) newMap.put(oldName, newName);
-		
+
 		nameMap.putAll(newMap);
+	}
+	
+	private static void updateNameMapForAlias(Map<String,String> nameMap,
+			Set<String> alias, String field, String newName) {
+		if (alias == null) return;
+		
+		for (String name : alias) {
+			String oldName = name + "." + field;
+			nameMap.put(oldName, newName);			
+		}
+	}
+	
+	// aliasMap contains alias information
+	private static void updateAliasMapWithAssignRefVar(Map<String,Set<String>> aliasMap,
+			String oldLhsName, String newLhsName, String rhsName) {
+		// remove old lhs from its own alias
+		Set<String> oldLhsAlias = aliasMap.get(oldLhsName);
+		
+		if (oldLhsAlias != null) {
+			oldLhsAlias.remove(oldLhsName);
+			if (oldLhsAlias.size() <= 1) aliasMap.remove(oldLhsAlias);
+		}
+		
+		// get alias for rhs
+		Set<String> rhsAlias = aliasMap.get(rhsName);
+		
+		// if null means rhs does not have any alias
+		if (rhsAlias == null) {
+			Set<String> set = new HashSet<String>();
+			set.add(newLhsName); set.add(rhsName);
+			
+			aliasMap.put(newLhsName, set);
+			aliasMap.put(rhsName, set);
+		} else {
+			rhsAlias.add(newLhsName);
+			aliasMap.put(newLhsName, rhsAlias);
+		}
 	}
 
 }

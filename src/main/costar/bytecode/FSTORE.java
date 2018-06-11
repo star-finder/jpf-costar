@@ -54,7 +54,7 @@ public class FSTORE extends gov.nasa.jpf.jvm.bytecode.FSTORE {
 		
 		Variable var = new Variable(name);
 				
-		formula.addComparisonTerm(Comparator.APV, var, exp);
+		formula.addComparisonTerm(Comparator.AP, var, exp);
 		
 		return super.execute(ti);
 	}
