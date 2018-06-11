@@ -180,10 +180,14 @@ public class Preprocessor {
 	}
 	
 	public static List<Formula> preprocess(Formula pre, Formula pc, Formula f) {
-		List<Formula> fs = new ArrayList<Formula>();		
+		// list of returned formulas after resolving 
+		List<Formula> fs = new ArrayList<Formula>();
+		// map the original variable name to new name in the process
 		Map<String,String> nameMap = new HashMap<String,String>();
+		// contains not null vars, help to quick check unsat
 		Set<String> noNullSet = new HashSet<String>();
 		
+		// add initial not null vars from heap formula
 		HeapFormula hf = f.getHeapFormula();
 		
 		for (HeapTerm ht : hf.getHeapTerms()) {
@@ -193,25 +197,35 @@ public class Preprocessor {
 			}
 		}
 		
+		// begin resolve pure formula
 		PureFormula pf = f.getPureFormula();
 		
-		for (PureTerm pt : pf.getPureTerms()) {
+		// resolve pure term one by one
+		for (PureTerm pt : pf.getPureTerms()) {			
+			// all pure term should be ComparisonTerm
 			ComparisonTerm ct = (ComparisonTerm) pt;
 			Comparator cp = ct.getComparator();
 			
+			// collect list of variables in current term
+			// note that because of term like i := i + 1
+			// set of variables does not work
 			List<Variable> vars = new ArrayList<Variable>();
 			CollectVarsVisitor visitor = new CollectVarsVisitor(vars);
 			visitor.visit(ct);
 			
+			// resolve variable one by one
 			for (int indexVar = 0; indexVar < vars.size(); indexVar++) {
 				Variable var = vars.get(indexVar);
 				
+				// split name in case variables here is a field access, e.g., x.next
 				String varName = var.getName();
 				String[] varNameSplit = varName.split("\\.");
 								
+				// if nameMap contains a name, that name is changed to a new name
 				String rootName = varNameSplit[0];
 				if (nameMap.containsKey(rootName)) rootName = nameMap.get(rootName);
 				
+				// for normal variable name, not field access
 				if (varNameSplit.length <= 1) var.setName(rootName);
 				
 				for (int i = 1; i < varNameSplit.length; i++) {
@@ -285,17 +299,28 @@ public class Preprocessor {
 				}
 			}
 			
+			// resolve with operator
+			
+			// in case the term is assignment to a prim var
+			// we need to update the name for the lhs
 			if (cp == Comparator.APV) {
+				// get old name
 				Variable lhs = (Variable) ct.getExp1();
 				String oldLhsName = lhs.toString();
 				
+				// get new name
 				Variable tmp = new Variable(oldLhsName);
 				String newLhsName = Utilities.freshVar(tmp).getName();
 				
+				// update
 				lhs.setName(newLhsName);
 								
-				nameMap.put(oldLhsName, newLhsName);
-			} else if (cp == Comparator.ARF || cp == Comparator.ARV) {
+				// update nameMap because the name of lhs is changed
+				updateNameMapWithAssignPrim(nameMap, oldLhsName, newLhsName);
+			}
+			
+			
+			else if (cp == Comparator.ARF || cp == Comparator.ARV) {
 				Variable lhs = (Variable) ct.getExp1();
 				String oldLhsName = lhs.toString();
 				
@@ -352,12 +377,36 @@ public class Preprocessor {
 				if (rhs.equals("null")) {
 					noNullSet.add(lhs);
 				}
-			}
-			
+			}			
 		}
 		
 		fs.add(f);
 		return fs;
+	}
+
+	// nameMap contains information in form of original name -> new name
+	private static void updateNameMapWithAssignPrim(Map<String, String> nameMap,
+			String oldName, String newName) {
+		Map<String, String> newMap = new HashMap<String, String>();
+		
+		Iterator<String> it = nameMap.keySet().iterator();
+		
+		while (it.hasNext()) {
+			String key = it.next();
+			String value = nameMap.get(key);
+			
+			// in case original name -> some name already
+			// we have to remove the old map and prepare the new map
+			if (value.equals(oldName)) {
+				newMap.put(key, newName);
+				it.remove();
+			}
+		}
+		
+		// in case we do NOT have original name -> some name
+		if (newMap.isEmpty()) newMap.put(oldName, newName);
+		
+		nameMap.putAll(newMap);
 	}
 
 }
