@@ -85,10 +85,6 @@ public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
 			String name = className + "." + fname;
 			
 			Variable var = new Variable(className + "." + fname);
-//			Variable newVar = Utilities.freshVar(var);
-//			
-//			Map<String, String> nameMap = analysis.getNameMap();
-//			nameMap.put(name, newVar.getName());
 			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
@@ -98,7 +94,7 @@ public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
 			if (isReferenceField)
 				formula.addComparisonTerm(Comparator.ARF, var, exp);
 			else
-				formula.addComparisonTerm(Comparator.ARV, var, exp);
+				formula.addComparisonTerm(Comparator.APF, var, exp);
 		}
 
 		return nextIns;

@@ -54,7 +54,7 @@ public class ISTORE extends gov.nasa.jpf.jvm.bytecode.ISTORE {
 		
 		Variable var = new Variable(name);
 				
-		formula.addComparisonTerm(Comparator.AP, var, exp);
+		formula.addComparisonTerm(Comparator.APV, var, exp);
 		
 		return super.execute(ti);
 	}

@@ -83,10 +83,6 @@ public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 			}
 			
 			Variable var = new Variable(name);
-//			Variable newVar = Utilities.freshVar(var);
-//			
-//			Map<String, String> nameMap = analysis.getNameMap();
-//			nameMap.put(var.getName(), newVar.getName());
 			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
@@ -96,44 +92,9 @@ public class PUTFIELD extends gov.nasa.jpf.jvm.bytecode.PUTFIELD {
 			if (isReferenceField)
 				formula.addComparisonTerm(Comparator.ARF, var, exp);
 			else
-				formula.addComparisonTerm(Comparator.AP, var, exp);
+				formula.addComparisonTerm(Comparator.APF, var, exp);
 		}
 		
-//		if (objVar != null && exp != null) {
-//			String objName = objVar.getName();
-//			String tmp = "";
-//			
-//			if (objName.contains("this_")) {
-//				objName = objName.substring(5, objName.length());
-//				tmp = "this_";
-//			}
-//			
-//			if (objName.contains("_")) {
-//				objName = objName.substring(0, objName.lastIndexOf('_'));
-//			}
-//			
-//			objName = tmp + objName;
-//			
-//			String name = objName.equals("this") ? objName + "_" + fname : objName + "." + fname;
-//			
-//			Variable var = null;
-//			if (objName.equals("this"))
-//				var = new Variable(name);
-//			else
-//				var = new Variable(objVar.getName() + "." + fname);
-//					
-//			Variable newVar = Utilities.freshVar(var);
-//			
-//			Map<String, String> nameMap = analysis.getNameMap();
-//			nameMap.put(var.getName(), newVar.getName());
-//			
-//			CoStarConstrainstTree tree = analysis.getConstrainstTree();
-//			CoStarNode current = tree.getCurrent();
-//	
-//			Formula formula = current.formula;
-//			formula.addComparisonTerm(Comparator.EQ, newVar, exp);
-//		}
-
 		return nextIns;
 	}
 
