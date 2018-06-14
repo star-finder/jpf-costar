@@ -138,8 +138,6 @@ public class Preprocessor {
 //		}
 //	}
 	
-	
-	
 	public static List<Formula> preprocess(Formula pre, Formula pc, Formula f) {
 		// list of returned formulas after resolving 
 		List<Formula> fs = new ArrayList<Formula>();
@@ -162,12 +160,7 @@ public class Preprocessor {
 		PureFormula pf = f.getPureFormula();
 		
 		// resolve pure term one by one
-		for (PureTerm pt : pf.getPureTerms()) {
-			if (pt.toString().equals("this_x.elem < this_y.elem")) {
-				int iii = 0;
-				iii++;
-			}
-			
+		for (PureTerm pt : pf.getPureTerms()) {			
 			// all pure term should be ComparisonTerm
 			ComparisonTerm ct = (ComparisonTerm) pt;
 			Comparator cp = ct.getComparator();
@@ -245,7 +238,7 @@ public class Preprocessor {
 //						updateAliasMapWithRename(f.getAliasMap(), oldName, newName);
 						updateNameMapForAlias(nameMap, f.getAlias(rootName), fieldName, newName);
 						
-						updateNoNullSet(noNullSet, oldName, newName);
+//						updateNoNullSet(noNullSet, oldName, newName);
 						
 						rootName = newName;
 						
@@ -301,8 +294,12 @@ public class Preprocessor {
 				if (cp == Comparator.ARV) {
 					String rhsName = ((Variable) ct.getExp2()).getName();
 					
+					// if rhs.f is f1 then newLhs.f should be f1 too
 					updateNameMapForFields(nameMap, newLhsName, rhsName);
+					// update aliasMap
 					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
+					// if rhs is not null, so is newLhs
+					updateNoNullSet(noNullSet, newLhsName, rhsName);
 				}
 			} else if (cp == Comparator.APF || cp == Comparator.ARF) {
 				Variable lhs = (Variable) ct.getExp1();
@@ -336,8 +333,12 @@ public class Preprocessor {
 					rhsName = ct.getExp2().toString();
 					// update alias because now lhs is alias with rhs
 					
+					// if rhs.f is f1 then newLhs.f should be f1 too
 					updateNameMapForFields(nameMap, newLhsName, rhsName);
+					// update aliasMap
 					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
+					// if rhs is not null, so is newLhs
+					updateNoNullSet(noNullSet, newLhsName, rhsName);
 				}
 				
 //				updateNameMapWithAssign(nameMap, oldLhsName, newLhsName, rhsName);
@@ -350,19 +351,39 @@ public class Preprocessor {
 				Set<String> aliasLhs = f.getAlias(lhs);
 				Set<String> aliasRhs = f.getAlias(rhs);
 				
-				if (aliasLhs != null && aliasRhs != null) {
-					if (aliasLhs.contains("null")) {
-						for (String alias : aliasRhs) {
-							if (noNullSet.contains(alias))
-								return fs;
+				Set<String> tmp = new HashSet<String>();
+				
+				if (aliasLhs != null) tmp.addAll(aliasLhs);
+				if (aliasRhs != null) tmp.addAll(aliasRhs);
+				
+				if (tmp.contains("null")) {
+					for (String alias : tmp) {
+						if (noNullSet.contains(alias)) {
+							return fs;
 						}
-					} else if (aliasRhs.contains("null")) {
-						for (String alias : aliasLhs) {
-							if (noNullSet.contains(alias))
-								return fs;
+					}
+				} else {
+					for (String alias : tmp) {
+						if (noNullSet.contains(alias)) {
+							noNullSet.addAll(tmp);
+							break;
 						}
 					}
 				}
+				
+//				if (aliasLhs != null && aliasRhs != null) {
+//					if (aliasLhs.contains("null")) {
+//						for (String alias : aliasRhs) {
+//							if (noNullSet.contains(alias))
+//								return fs;
+//						}
+//					} else if (aliasRhs.contains("null")) {
+//						for (String alias : aliasLhs) {
+//							if (noNullSet.contains(alias))
+//								return fs;
+//						}
+//					}
+//				}
 			} else if (cp == Comparator.NE) {
 				String lhs = ct.getExp1().toString();
 				String rhs = ct.getExp2().toString();
@@ -463,19 +484,10 @@ public class Preprocessor {
 		}
 	}
 	
-	private static void updateNoNullSet(Set<String> noNullSet, String oldName, String newName) {
-		Iterator<String> it = noNullSet.iterator();
-		boolean removed = false;
-		
-		while (it.hasNext()) {
-			String name = it.next();
-			if (name.equals(oldName)) {
-				it.remove();
-				removed = true;
-			}
-		}
-		
-		if (removed) noNullSet.add(newName);
+	private static void updateNoNullSet(Set<String> noNullSet,
+			String newLhsName, String rhsName) {
+		if (noNullSet.contains(rhsName))
+			noNullSet.add(newLhsName);
 	}
 	
 	private static String getName(PointToTerm pt, String root, String field) {
