@@ -37,6 +37,7 @@ import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.IINC;
 import costar.bytecode.ILOAD;
 import costar.bytecode.INVOKESPECIAL;
+import costar.bytecode.INVOKESTATIC;
 import costar.bytecode.INVOKEVIRTUAL;
 import costar.bytecode.IRETURN;
 import costar.bytecode.ISTORE;
@@ -515,6 +516,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction invokespecial(String clsName, String methodName, String methodSignature) {
 		return new INVOKESPECIAL(clsName, methodName, methodSignature);
+	}
+	
+	@Override
+	public Instruction invokestatic(String clsName, String methodName, String methodSignature) {
+		return new INVOKESTATIC(clsName, methodName, methodSignature);
 	}
 
 	@Override

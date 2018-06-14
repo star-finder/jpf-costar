@@ -220,8 +220,8 @@ public class Preprocessor {
 				
 				// update nameMap because the name of lhs is changed
 				if (lastFieldName.isEmpty()) {
-					// this is the case when we assign to a field of "this" object
-					// no need to update alias because no alias with "this"
+					// this is the case when we assign to a field of "this" object or static field
+					// no need to update alias because no alias with "this" or class
 					updateNameMap(nameMap, lastVarName, newLhsName);
 				} else {
 					updateNameMap(nameMap, lastVarName + "." + lastFieldName, newLhsName);

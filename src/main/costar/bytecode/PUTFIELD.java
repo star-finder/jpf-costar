@@ -1,7 +1,5 @@
 package costar.bytecode;
 
-import java.util.Map;
-
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
@@ -12,7 +10,6 @@ import gov.nasa.jpf.vm.MJIEnv;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
-import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;

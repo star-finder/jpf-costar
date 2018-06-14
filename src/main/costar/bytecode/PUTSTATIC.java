@@ -1,7 +1,5 @@
 package costar.bytecode;
 
-import java.util.Map;
-
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
@@ -14,7 +12,6 @@ import gov.nasa.jpf.vm.LoadOnJPFRequired;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
-import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
@@ -82,9 +79,9 @@ public class PUTSTATIC extends gov.nasa.jpf.jvm.bytecode.PUTSTATIC {
 		Instruction nextIns = super.execute(ti);
 		
 		if (exp != null) {
-			String name = className + "." + fname;
+			String name = className + "_" + fname;
 			
-			Variable var = new Variable(className + "." + fname);
+			Variable var = new Variable(name);
 			
 			CoStarConstrainstTree tree = analysis.getConstrainstTree();
 			CoStarNode current = tree.getCurrent();
