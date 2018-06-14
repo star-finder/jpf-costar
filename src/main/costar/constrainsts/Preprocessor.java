@@ -144,7 +144,7 @@ public class Preprocessor {
 						}
 						
 						// update name map for alias here
-						updateNameMapForAlias(nameMap, f.getAlias(rootName), fieldName, newName);
+						updateNameMapForAliasField(nameMap, f.getAlias(rootName), fieldName, newName);
 						
 						// prepare to resolve next field
 						rootName = newName;
@@ -203,7 +203,7 @@ public class Preprocessor {
 					String rhsName = ((Variable) ct.getExp2()).getName();
 					
 					// if rhs.f is f1 then newLhs.f should be f1 too
-					updateNameMapForFields(nameMap, newLhsName, rhsName);
+					updateNameMapForLhsFields(nameMap, newLhsName, rhsName);
 					// update aliasMap
 					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
 					// if rhs is not null, so is newLhs
@@ -225,16 +225,15 @@ public class Preprocessor {
 					updateNameMap(nameMap, lastVarName, newLhsName);
 				} else {
 					updateNameMap(nameMap, lastVarName + "." + lastFieldName, newLhsName);
-					updateNameMapForAlias(nameMap, f.getAlias(lastVarName), lastFieldName, newLhsName);
+					updateNameMapForAliasField(nameMap, f.getAlias(lastVarName), lastFieldName, newLhsName);
 				}
 				
-				String rhsName = null;
 				if (cp == Comparator.ARF) {
-					rhsName = ct.getExp2().toString();
+					String rhsName = ct.getExp2().toString();
 					// update alias because now lhs is alias with rhs
 					
 					// if rhs.f is f1 then newLhs.f should be f1 too
-					updateNameMapForFields(nameMap, newLhsName, rhsName);
+					updateNameMapForLhsFields(nameMap, newLhsName, rhsName);
 					// update aliasMap
 					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
 					// if rhs is not null, so is newLhs
@@ -310,7 +309,7 @@ public class Preprocessor {
 		nameMap.put(oldName, newName);
 	}
 	
-	private static void updateNameMapForAlias(Map<String,String> nameMap,
+	private static void updateNameMapForAliasField(Map<String,String> nameMap,
 			Set<String> alias, String fieldName, String newName) {
 		if (alias == null) return;
 		
@@ -320,7 +319,7 @@ public class Preprocessor {
 		}
 	}
 	
-	private static void updateNameMapForFields(Map<String,String> nameMap,
+	private static void updateNameMapForLhsFields(Map<String,String> nameMap,
 			String newLhsName, String rhsName) {
 		Map<String, String>	tmp = new HashMap<String, String>();
 		Iterator<String> keysIt = nameMap.keySet().iterator();
