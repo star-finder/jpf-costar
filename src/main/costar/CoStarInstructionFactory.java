@@ -1,6 +1,7 @@
 package costar;
 
 import costar.bytecode.ALOAD;
+import costar.bytecode.ARETURN;
 import costar.bytecode.ASTORE;
 import costar.bytecode.ATHROW;
 import costar.bytecode.BASTORE;
@@ -35,6 +36,7 @@ import costar.bytecode.IF_ICMPLT;
 import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.IINC;
 import costar.bytecode.ILOAD;
+import costar.bytecode.INVOKESPECIAL;
 import costar.bytecode.INVOKEVIRTUAL;
 import costar.bytecode.IRETURN;
 import costar.bytecode.ISTORE;
@@ -109,11 +111,16 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction aload(int localVarIndex) {
 		return new ALOAD(localVarIndex);
 	}
+	
+	@Override
+	public Instruction areturn() {
+		return new ARETURN();
+	}
 
-	 @Override
-	 public Instruction astore(int localVarIndex) {
-		 return new ASTORE(localVarIndex);
-	 }
+	@Override
+	public Instruction astore(int localVarIndex) {
+		return new ASTORE(localVarIndex);
+	}
 
 	@Override
 	public Instruction d2f() {
@@ -503,6 +510,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	@Override
 	public Instruction invokevirtual(String clsName, String methodName, String methodSignature) {
 		return new INVOKEVIRTUAL(clsName, methodName, methodSignature);
+	}
+	
+	@Override
+	public Instruction invokespecial(String clsName, String methodName, String methodSignature) {
+		return new INVOKESPECIAL(clsName, methodName, methodSignature);
 	}
 
 	@Override

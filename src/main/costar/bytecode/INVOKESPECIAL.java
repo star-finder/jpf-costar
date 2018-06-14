@@ -20,9 +20,9 @@ import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 import starlib.formula.expression.NullExpression;
 
-public class INVOKEVIRTUAL extends gov.nasa.jpf.jvm.bytecode.INVOKEVIRTUAL {
+public class INVOKESPECIAL extends gov.nasa.jpf.jvm.bytecode.INVOKESPECIAL {
 
-	public INVOKEVIRTUAL(String clsDescriptor, String methodName, String signature) {
+	public INVOKESPECIAL(String clsDescriptor, String methodName, String signature) {
 		super(clsDescriptor, methodName, signature);
 	}
 	
@@ -58,7 +58,7 @@ public class INVOKEVIRTUAL extends gov.nasa.jpf.jvm.bytecode.INVOKEVIRTUAL {
 		} else {
 			newMap.put(lvis[0], syms[0].toString());
 		}
-		
+				
 		for (int i = 1; i < sf.getMethodInfo().getArgumentsSize(); i++) {
 			Expression exp = null;
 			Object sym_v = syms[i];
@@ -86,5 +86,5 @@ public class INVOKEVIRTUAL extends gov.nasa.jpf.jvm.bytecode.INVOKEVIRTUAL {
 		
 		return nextIns;
 	}
-	
+
 }

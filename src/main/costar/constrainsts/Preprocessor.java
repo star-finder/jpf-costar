@@ -47,22 +47,6 @@ public class Preprocessor {
 		return result;
 	}
 	
-	private static String getName(PointToTerm pt, String root, String field) {
-		DataNode dn = DataNodeMap.find(pt.getType());
-		Variable[] fields = dn.getFields();
-
-		int i = 0;
-		for (i = 0; i < fields.length; i++) {
-			String fieldName = fields[i].getName();
-			
-			if (field.equals(fieldName)) {
-				return pt.getVarsNoRoot()[i].getName();
-			}
-		}
-		
-		return null;
-	}
-	
 //	private static void updateAliasMapWithRename(Map<String,Set<String>> aliasMap, String oldName, String newName) {
 //		// update keys
 //		Map<String,Set<String>> tmp = new HashMap<String,Set<String>>();
@@ -154,20 +138,7 @@ public class Preprocessor {
 //		}
 //	}
 	
-	private static void updateNoNullSet(Set<String> noNullSet, String oldName, String newName) {
-		Iterator<String> it = noNullSet.iterator();
-		boolean removed = false;
-		
-		while (it.hasNext()) {
-			String name = it.next();
-			if (name.equals(oldName)) {
-				it.remove();
-				removed = true;
-			}
-		}
-		
-		if (removed) noNullSet.add(newName);
-	}
+	
 	
 	public static List<Formula> preprocess(Formula pre, Formula pc, Formula f) {
 		// list of returned formulas after resolving 
@@ -191,7 +162,12 @@ public class Preprocessor {
 		PureFormula pf = f.getPureFormula();
 		
 		// resolve pure term one by one
-		for (PureTerm pt : pf.getPureTerms()) {			
+		for (PureTerm pt : pf.getPureTerms()) {
+			if (pt.toString().equals("this_x.elem < this_y.elem")) {
+				int iii = 0;
+				iii++;
+			}
+			
 			// all pure term should be ComparisonTerm
 			ComparisonTerm ct = (ComparisonTerm) pt;
 			Comparator cp = ct.getComparator();
@@ -304,9 +280,9 @@ public class Preprocessor {
 			
 			// resolve with operator
 			
-			// in case the term is assignment to a prim var
+			// in case the term is assignment
 			// we need to update the name for the lhs
-			if (cp == Comparator.APV) {
+			if (cp == Comparator.APV || cp == Comparator.ARV) {
 				// get old name
 				Variable lhs = (Variable) ct.getExp1();
 				String oldLhsName = lhs.toString();
@@ -320,30 +296,15 @@ public class Preprocessor {
 								
 				// update nameMap because the name of lhs is changed
 				updateNameMap(nameMap, lastVarName, newLhsName);
-			}
-			// with assigment to ref var we have to update name and alias
-			else if (cp == Comparator.ARV) {
-				// get old name
-				Variable lhs = (Variable) ct.getExp1();
-				String oldLhsName = lhs.toString();
 				
-				// get new name
-				Variable tmp = new Variable(oldLhsName);
-				String newLhsName = Utilities.freshVar(tmp).getName();
-				
-				// update
-				lhs.setName(newLhsName);
-				
-				String rhsName = ((Variable) ct.getExp2()).getName();
-								
-				// update nameMap because the name of lhs is changed
-				updateNameMap(nameMap, lastVarName, newLhsName);
-				// update alias because now lhs is alias with rhs
-				updateAliasMap(f.getAliasMap(), oldLhsName, newLhsName, rhsName);
-			}
-			
-			
-			else if (cp == Comparator.APF || cp == Comparator.ARF) {
+				// in case we have assign ref var update alias because now lhs is alias with rhs
+				if (cp == Comparator.ARV) {
+					String rhsName = ((Variable) ct.getExp2()).getName();
+					
+					updateNameMapForFields(nameMap, newLhsName, rhsName);
+					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
+				}
+			} else if (cp == Comparator.APF || cp == Comparator.ARF) {
 				Variable lhs = (Variable) ct.getExp1();
 				String oldLhsName = lhs.toString();
 				
@@ -361,14 +322,22 @@ public class Preprocessor {
 				lhs.setName(newLhsName);
 				
 				// update nameMap because the name of lhs is changed
-				updateNameMap(nameMap, lastVarName + "." + lastFieldName, newLhsName);
-				updateNameMapForAlias(nameMap, f.getAlias(lastVarName), lastFieldName, newLhsName);
+				if (lastFieldName.isEmpty()) {
+					// this is the case when we assign to a field of "this" object
+					// no need to update alias because no alias with "this"
+					updateNameMap(nameMap, lastVarName, newLhsName);
+				} else {
+					updateNameMap(nameMap, lastVarName + "." + lastFieldName, newLhsName);
+					updateNameMapForAlias(nameMap, f.getAlias(lastVarName), lastFieldName, newLhsName);
+				}
 				
 				String rhsName = null;
 				if (cp == Comparator.ARF) {
 					rhsName = ct.getExp2().toString();
 					// update alias because now lhs is alias with rhs
-					updateAliasMap(f.getAliasMap(), oldLhsName, newLhsName, rhsName);
+					
+					updateNameMapForFields(nameMap, newLhsName, rhsName);
+					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
 				}
 				
 //				updateNameMapWithAssign(nameMap, oldLhsName, newLhsName, rhsName);
@@ -448,16 +417,35 @@ public class Preprocessor {
 		}
 	}
 	
+	private static void updateNameMapForFields(Map<String,String> nameMap,
+			String newLhsName, String rhsName) {
+		Map<String, String>	tmp = new HashMap<String, String>();
+		Iterator<String> keysIt = nameMap.keySet().iterator();
+			
+		while (keysIt.hasNext()) {
+			String key = keysIt.next();
+				
+			if (key.startsWith(rhsName + ".")) {
+				String suffix = key.substring(rhsName.length());
+				String value = nameMap.get(key);
+					
+				tmp.put(newLhsName + suffix, value);
+			}
+		}
+		
+		nameMap.putAll(tmp);
+	}
+	
 	// aliasMap contains alias information
 	private static void updateAliasMap(Map<String,Set<String>> aliasMap,
-			String oldLhsName, String newLhsName, String rhsName) {
+			String newLhsName, String rhsName) {
 		// remove old lhs from its own alias
-		Set<String> oldLhsAlias = aliasMap.get(oldLhsName);
-		
-		if (oldLhsAlias != null) {
-			oldLhsAlias.remove(oldLhsName);
-			if (oldLhsAlias.size() <= 1) aliasMap.remove(oldLhsAlias);
-		}
+//		Set<String> oldLhsAlias = aliasMap.get(oldLhsName);
+//		
+//		if (oldLhsAlias != null) {
+//			oldLhsAlias.remove(oldLhsName);
+//			if (oldLhsAlias.size() <= 1) aliasMap.remove(oldLhsAlias);
+//		}
 		
 		// get alias for rhs
 		Set<String> rhsAlias = aliasMap.get(rhsName);
@@ -473,6 +461,37 @@ public class Preprocessor {
 			rhsAlias.add(newLhsName);
 			aliasMap.put(newLhsName, rhsAlias);
 		}
+	}
+	
+	private static void updateNoNullSet(Set<String> noNullSet, String oldName, String newName) {
+		Iterator<String> it = noNullSet.iterator();
+		boolean removed = false;
+		
+		while (it.hasNext()) {
+			String name = it.next();
+			if (name.equals(oldName)) {
+				it.remove();
+				removed = true;
+			}
+		}
+		
+		if (removed) noNullSet.add(newName);
+	}
+	
+	private static String getName(PointToTerm pt, String root, String field) {
+		DataNode dn = DataNodeMap.find(pt.getType());
+		Variable[] fields = dn.getFields();
+
+		int i = 0;
+		for (i = 0; i < fields.length; i++) {
+			String fieldName = fields[i].getName();
+			
+			if (field.equals(fieldName)) {
+				return pt.getVarsNoRoot()[i].getName();
+			}
+		}
+		
+		return null;
 	}
 
 }
