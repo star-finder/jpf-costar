@@ -47,97 +47,6 @@ public class Preprocessor {
 		return result;
 	}
 	
-//	private static void updateAliasMapWithRename(Map<String,Set<String>> aliasMap, String oldName, String newName) {
-//		// update keys
-//		Map<String,Set<String>> tmp = new HashMap<String,Set<String>>();
-//		Iterator<String> keysIt = aliasMap.keySet().iterator();
-//			
-//		while (keysIt.hasNext()) {
-//			String key = keysIt.next();
-//			if (key.equals(oldName)) {
-//				Set<String> values = aliasMap.get(key);
-//				tmp.put(newName, values);
-//				keysIt.remove();
-//			}
-//		}
-//		
-//		aliasMap.putAll(tmp);
-//		
-//		// update values
-//		for (String key : aliasMap.keySet()) {
-//			Set<String> values = aliasMap.get(key);
-//			if (values.contains(oldName)) {
-//				values.remove(oldName);
-//				values.add(newName);
-//			}
-//		}
-//	}
-	
-//	private static void updateNameMapWithAssign(Map<String,String> nameMap, String oldLhsName,
-//			String newLhsName, String rhsName) {
-//		// update value from old name to new name
-//		Map<String,String> tmp = new HashMap<String,String>();
-//		Iterator<String> keysIt = nameMap.keySet().iterator();
-//		
-//		while (keysIt.hasNext()) {
-//			String key = keysIt.next();
-//			String value = nameMap.get(key);
-//			
-//			if (value.equals(oldLhsName)) {
-//				tmp.put(key, newLhsName);
-//				keysIt.remove();
-//			}
-//		}
-//		
-//		nameMap.putAll(tmp);
-//		
-//		// in case reference assignment, update field references
-//		if (rhsName != null) {
-//			tmp = new HashMap<String,String>();
-//			keysIt = nameMap.keySet().iterator();
-//			
-//			while (keysIt.hasNext()) {
-//				String key = keysIt.next();
-//				
-//				if (key.startsWith(rhsName + ".")) {
-//					String suffix = key.substring(rhsName.length());
-//					String value = nameMap.get(key);
-//					
-//					tmp.put(newLhsName + suffix, value);
-//				}
-//			}
-//			
-//			nameMap.putAll(tmp);
-//		}
-//	}
-	
-//	private static void updateAliasMapWithAssign(Map<String,Set<String>> aliasMap, String oldLhsName,
-//			String newLhsName, String rhsName) {
-//		Set<String> rhsAlias = aliasMap.get(rhsName);
-//		
-//		if (rhsAlias == null) {
-//			Set<String> set = new HashSet<String>();
-//			set.add(newLhsName); set.add(rhsName);
-//			
-//			aliasMap.put(newLhsName, set);
-//			aliasMap.put(rhsName, set);
-//		} else {
-//			rhsAlias.add(newLhsName);
-//			aliasMap.put(newLhsName, rhsAlias);
-//		}
-//	}
-	
-//	private static void removeOldNameMap(String name, Map<String,String> nameMap) {
-//		Iterator<String> it = nameMap.keySet().iterator();
-//		while (it.hasNext()) {
-//			String key = it.next();
-//			
-//			if (name.equals(key)) {
-//				it.remove();
-//			}
-//		}
-//	}
-	
 	public static List<Formula> preprocess(Formula pre, Formula pc, Formula f) {
 		// list of returned formulas after resolving 
 		List<Formula> fs = new ArrayList<Formula>();
@@ -234,12 +143,10 @@ public class Preprocessor {
 							updateNameMap(nameMap, oldName, newName);
 						}
 						
-						// update alias here
-//						updateAliasMapWithRename(f.getAliasMap(), oldName, newName);
+						// update name map for alias here
 						updateNameMapForAlias(nameMap, f.getAlias(rootName), fieldName, newName);
 						
-//						updateNoNullSet(noNullSet, oldName, newName);
-						
+						// prepare to resolve next field
 						rootName = newName;
 						
 						for (int j = i + 1; j < varNameSplit.length; j++) {
@@ -248,6 +155,7 @@ public class Preprocessor {
 						
 						var.setName(newName);
 					} else if (ht instanceof InductiveTerm) {
+						// inductive term, need to unfold, then preprocess with new unfolded formula
 						InductiveTerm it = (InductiveTerm) ht;
 						Formula preCopy = pre.copy();
 						Formula pcCopy = pc.copy();
@@ -308,14 +216,6 @@ public class Preprocessor {
 				Variable tmp = new Variable(oldLhsName);
 				String newLhsName = Utilities.freshVar(tmp).getName();
 				
-//				if (oldLhsName.startsWith("this_")) {
-//					String root = "this_";
-//					String suffix = oldLhsName.substring(5);
-//					if (suffix.contains("_")) suffix = suffix.substring(0, suffix.indexOf('_'));
-//					
-//					nameMap.put(root + suffix, newLhsName);
-//				}
-				
 				lhs.setName(newLhsName);
 				
 				// update nameMap because the name of lhs is changed
@@ -340,60 +240,62 @@ public class Preprocessor {
 					// if rhs is not null, so is newLhs
 					updateNoNullSet(noNullSet, newLhsName, rhsName);
 				}
-				
-//				updateNameMapWithAssign(nameMap, oldLhsName, newLhsName, rhsName);
 			} else if (cp == Comparator.EQ) {
 				String lhs = ct.getExp1().toString();
 				String rhs = ct.getExp2().toString();
 				
 				f.getPureFormula().updateAlias(ct);
 				
+				// above update alias should make lhs and rhs alias
 				Set<String> aliasLhs = f.getAlias(lhs);
-				Set<String> aliasRhs = f.getAlias(rhs);
 				
-				Set<String> tmp = new HashSet<String>();
-				
-				if (aliasLhs != null) tmp.addAll(aliasLhs);
-				if (aliasRhs != null) tmp.addAll(aliasRhs);
-				
-				if (tmp.contains("null")) {
-					for (String alias : tmp) {
-						if (noNullSet.contains(alias)) {
-							return fs;
+				if (aliasLhs != null) {
+					// in this case at least lhs and rhs are alias
+					// create a tmp alias set
+					Set<String> tmp = new HashSet<String>();
+					tmp.addAll(aliasLhs);
+					
+					// if tmp contains null and noNullSet contains alias
+					// the formula is wrong
+					if (tmp.contains("null")) {
+						for (String alias : tmp) {
+							if (noNullSet.contains(alias)) {
+								return fs;
+							}
 						}
-					}
-				} else {
-					for (String alias : tmp) {
-						if (noNullSet.contains(alias)) {
-							noNullSet.addAll(tmp);
-							break;
+					} else {
+						// otherwise, if noNullSet contains alias
+						// add the whole tmp set into nuNullSet
+						for (String alias : tmp) {
+							if (noNullSet.contains(alias)) {
+								noNullSet.addAll(tmp);
+								break;
+							}
 						}
 					}
 				}
-				
-//				if (aliasLhs != null && aliasRhs != null) {
-//					if (aliasLhs.contains("null")) {
-//						for (String alias : aliasRhs) {
-//							if (noNullSet.contains(alias))
-//								return fs;
-//						}
-//					} else if (aliasRhs.contains("null")) {
-//						for (String alias : aliasLhs) {
-//							if (noNullSet.contains(alias))
-//								return fs;
-//						}
-//					}
-//				}
 			} else if (cp == Comparator.NE) {
 				String lhs = ct.getExp1().toString();
 				String rhs = ct.getExp2().toString();
 				
-				Set<String> alias = f.getAlias(lhs);
-				if (alias != null && alias.contains(rhs))
-					return fs;
+				// clearly wrong
+				if (lhs.equals(rhs)) return fs;
 				
-				if (rhs.equals("null")) {
-					noNullSet.add(lhs);
+				Set<String> aliasLhs = f.getAlias(lhs);
+				Set<String> aliasRhs = f.getAlias(rhs);
+				
+				// in case alias of lhs or rhs contains any alias of the other
+				if (aliasLhs != null && aliasRhs != null) {
+					for (String alias : aliasRhs) {
+						if (aliasLhs.contains(alias))
+							return fs;
+					}
+				}
+				
+				// in case rhs is null
+				if (rhs.equals("null") || (aliasRhs != null && aliasRhs.contains("null"))) {
+					if (aliasLhs == null) noNullSet.add(lhs);
+					else noNullSet.addAll(aliasLhs);
 				}
 			}			
 		}
@@ -406,26 +308,6 @@ public class Preprocessor {
 	private static void updateNameMap(Map<String, String> nameMap,
 			String oldName, String newName) {
 		nameMap.put(oldName, newName);
-//		Map<String, String> newMap = new HashMap<String, String>();
-//
-//		Iterator<String> it = nameMap.keySet().iterator();
-//
-//		while (it.hasNext()) {
-//			String key = it.next();
-//			String value = nameMap.get(key);
-//
-//			// in case original name -> some name already
-//			// we have to remove the old map and prepare the new map
-//			if (value.equals(oldName)) {
-//				newMap.put(key, newName);
-//				it.remove();
-//			}
-//		}
-//
-//		// in case we do NOT have original name -> some name
-//		if (newMap.isEmpty()) newMap.put(oldName, newName);
-//
-//		nameMap.putAll(newMap);
 	}
 	
 	private static void updateNameMapForAlias(Map<String,String> nameMap,
@@ -460,14 +342,6 @@ public class Preprocessor {
 	// aliasMap contains alias information
 	private static void updateAliasMap(Map<String,Set<String>> aliasMap,
 			String newLhsName, String rhsName) {
-		// remove old lhs from its own alias
-//		Set<String> oldLhsAlias = aliasMap.get(oldLhsName);
-//		
-//		if (oldLhsAlias != null) {
-//			oldLhsAlias.remove(oldLhsName);
-//			if (oldLhsAlias.size() <= 1) aliasMap.remove(oldLhsAlias);
-//		}
-		
 		// get alias for rhs
 		Set<String> rhsAlias = aliasMap.get(rhsName);
 		
