@@ -50,10 +50,20 @@ public class Preprocessor {
 	public static List<Formula> preprocess(Formula pre, Formula pc, Formula f) {
 		// list of returned formulas after resolving 
 		List<Formula> fs = new ArrayList<Formula>();
+		
 		// map the original variable name to new name in the process
-		Map<String,String> nameMap = new HashMap<String,String>();
+		Map<String, String> nameMap = new HashMap<String, String>();
+		
+		// map the ref var/field to address
+		Map<String, Integer> addressMap = new HashMap<String, Integer>();
+		
+		// map address to node
+		Map<Integer, Map<String, String>> nodeMap = new HashMap<Integer, Map<String, String>>();
+		
 		// contains not null vars, help to quick check unsat
 		Set<String> noNullSet = new HashSet<String>();
+		
+		Utilities.resetAddress();
 		
 		// add initial not null vars from heap formula
 		HeapFormula hf = f.getHeapFormula();
@@ -61,7 +71,14 @@ public class Preprocessor {
 		for (HeapTerm ht : hf.getHeapTerms()) {
 			if (ht instanceof PointToTerm) {
 				PointToTerm pt = (PointToTerm) ht;
-				noNullSet.add(pt.getRoot().getName());
+				String rootName = pt.getRoot().getName();
+				
+				noNullSet.add(rootName);
+				
+				int address = Utilities.freshAddress();
+				addressMap.put(rootName, address);
+				
+				fillInFields(nodeMap, address, pt);
 			}
 		}
 		
@@ -131,24 +148,26 @@ public class Preprocessor {
 					if (ht == null) {
 						return fs;
 					} else if (ht instanceof PointToTerm) {
-						String newName = null;
-						String oldName = rootName + "." + varNameSplit[i];
-						
 						String fieldName = varNameSplit[i];
-
-						if (nameMap.containsKey(oldName)) {
-							newName = nameMap.get(oldName);
-						} else {
-							newName = getName((PointToTerm) ht, rootName, fieldName);
-							if (newName == null) {
-								return fs;
+						
+						// get new name via address and node map
+						Integer address = addressMap.get(rootName);
+						if (address == null) {
+							for (String alias : f.getAlias(rootName)) {
+								address = addressMap.get(alias);
+								if (address != null) {
+									addressMap.put(rootName, address);
+									break;
+								}
 							}
-							
-							updateNameMap(nameMap, oldName, newName);
 						}
 						
-						// update name map for alias here
-						updateNameMapForAliasField(nameMap, f.getAlias(rootName), fieldName, newName);
+						Map<String, String> node = nodeMap.get(address);
+						String newName = node == null ? null : node.get(fieldName);
+						
+						if (newName == null) {
+							return fs;
+						}
 						
 						// prepare to resolve next field
 						rootName = newName;
@@ -200,14 +219,12 @@ public class Preprocessor {
 				lhs.setName(newLhsName);
 								
 				// update nameMap because the name of lhs is changed
-				updateNameMap(nameMap, lastVarName, newLhsName);
+				nameMap.put(lastVarName, newLhsName);
 				
 				// in case we have assign ref var update alias because now lhs is alias with rhs
 				if (cp == Comparator.ARV) {
-					String rhsName = ((Variable) ct.getExp2()).getName();
+					String rhsName = ct.getExp2().toString();
 					
-					// if rhs.f is f1 then newLhs.f should be f1 too
-					updateNameMapForLhsFields(nameMap, newLhsName, rhsName);
 					// update aliasMap
 					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
 					// if rhs is not null, so is newLhs
@@ -226,18 +243,17 @@ public class Preprocessor {
 				if (lastFieldName.isEmpty()) {
 					// this is the case when we assign to a field of "this" object or static field
 					// no need to update alias because no alias with "this" or class
-					updateNameMap(nameMap, lastVarName, newLhsName);
+					nameMap.put(lastVarName, newLhsName);
 				} else {
-					updateNameMap(nameMap, lastVarName + "." + lastFieldName, newLhsName);
-					updateNameMapForAliasField(nameMap, f.getAlias(lastVarName), lastFieldName, newLhsName);
+					Integer address = addressMap.get(lastVarName);
+					Map<String, String> node = nodeMap.get(address);
+					node.put(lastFieldName, newLhsName);
 				}
 				
 				if (cp == Comparator.ARF) {
 					String rhsName = ct.getExp2().toString();
 					// update alias because now lhs is alias with rhs
 					
-					// if rhs.f is f1 then newLhs.f should be f1 too
-					updateNameMapForLhsFields(nameMap, newLhsName, rhsName);
 					// update aliasMap
 					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
 					// if rhs is not null, so is newLhs
@@ -245,7 +261,6 @@ public class Preprocessor {
 				}
 			} else if (cp == Comparator.EQ) {
 				String lhs = ct.getExp1().toString();
-				String rhs = ct.getExp2().toString();
 				
 				f.getPureFormula().updateAlias(ct);
 				
@@ -306,42 +321,7 @@ public class Preprocessor {
 		fs.add(f);
 		return fs;
 	}
-	
-	// nameMap contains information in form of original name -> new name
-	private static void updateNameMap(Map<String, String> nameMap,
-			String oldName, String newName) {
-		nameMap.put(oldName, newName);
-	}
-	
-	private static void updateNameMapForAliasField(Map<String,String> nameMap,
-			Set<String> alias, String fieldName, String newName) {
-		if (alias == null) return;
 		
-		for (String name : alias) {
-			String oldName = name + "." + fieldName;
-			nameMap.put(oldName, newName);			
-		}
-	}
-	
-	private static void updateNameMapForLhsFields(Map<String,String> nameMap,
-			String newLhsName, String rhsName) {
-		Map<String, String>	tmp = new HashMap<String, String>();
-		Iterator<String> keysIt = nameMap.keySet().iterator();
-			
-		while (keysIt.hasNext()) {
-			String key = keysIt.next();
-				
-			if (key.startsWith(rhsName + ".")) {
-				String suffix = key.substring(rhsName.length());
-				String value = nameMap.get(key);
-					
-				tmp.put(newLhsName + suffix, value);
-			}
-		}
-		
-		nameMap.putAll(tmp);
-	}
-	
 	// aliasMap contains alias information
 	private static void updateAliasMap(Map<String,Set<String>> aliasMap,
 			String newLhsName, String rhsName) {
@@ -367,20 +347,21 @@ public class Preprocessor {
 			noNullSet.add(newLhsName);
 	}
 	
-	private static String getName(PointToTerm pt, String root, String field) {
+	private static void fillInFields(Map<Integer, Map<String, String>> nodeMap,
+			int address, PointToTerm pt) {
 		DataNode dn = DataNodeMap.find(pt.getType());
 		Variable[] fields = dn.getFields();
+		
+		Map<String, String> newMap = new HashMap<String, String>();
 
-		int i = 0;
-		for (i = 0; i < fields.length; i++) {
+		for (int i = 0; i < fields.length; i++) {
 			String fieldName = fields[i].getName();
+			String symName = pt.getVarsNoRoot()[i].getName();
 			
-			if (field.equals(fieldName)) {
-				return pt.getVarsNoRoot()[i].getName();
-			}
+			newMap.put(fieldName, symName);
 		}
 		
-		return null;
+		nodeMap.put(address, newMap);
 	}
 
 }
