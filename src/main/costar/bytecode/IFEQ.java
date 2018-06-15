@@ -19,13 +19,13 @@ public class IFEQ extends gov.nasa.jpf.jvm.bytecode.IFEQ {
 	public void addToStack(ThreadInfo ti, CoStarConstrainstTree tree,
 			int conditionValue, Formula f0, Formula f1, Formula f2) {
 		if (conditionValue == 0) {
-			int index = IFInstrSymbHelper.getIndex(ti, getNext(ti));
+			int index = IFInstrHelper.getIndex(ti, getNext(ti));
 			if (index >= 0) {
 				tree.addToStack(f0, index);
 				tree.addToStack(f2, index);
 			}
 		} else {
-			int index = IFInstrSymbHelper.getIndex(ti, getTarget());
+			int index = IFInstrHelper.getIndex(ti, getTarget());
 			if (index >= 0) {
 				tree.addToStack(f1, index);
 			}
@@ -47,7 +47,7 @@ public class IFEQ extends gov.nasa.jpf.jvm.bytecode.IFEQ {
 	
 		LiteralExpression litExp = new LiteralExpression(0);
 		
-		Instruction nxtInstr = IFInstrSymbHelper.
+		Instruction nxtInstr = IFInstrHelper.
 				getNextInstructionAndSetPCChoice(ti, this, exp, litExp, Comparator.EQ, Comparator.NE);
 		
 		if (nxtInstr == getTarget())

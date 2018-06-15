@@ -29,7 +29,7 @@ public class IF_ICMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ICMPEQ {
 			return super.execute(ti);
 		}
 		
-		Instruction nxtInstr = IFInstrSymbHelper.
+		Instruction nxtInstr = IFInstrHelper.
 				getNextInstructionAndSetPCChoice(ti, this, exp1, exp2, Comparator.EQ, Comparator.NE);
 		
 		if (nxtInstr == getTarget())

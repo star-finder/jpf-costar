@@ -18,7 +18,7 @@ public class FCMPL extends gov.nasa.jpf.jvm.bytecode.FCMPL {
 		if (sym_v1 == null && sym_v2 == null)
 			return super.execute(ti);// we'll still do the concrete execution
 		else
-			return CMPInstrSymbHelper.getNextInstructionAndSetPCChoiceFloat(ti, this, sym_v1, sym_v2,
+			return CMPInstrHelper.getNextInstructionAndSetPCChoiceFloat(ti, this, sym_v1, sym_v2,
 					Comparator.LT, Comparator.EQ, Comparator.GT);
 	}
 

@@ -49,9 +49,11 @@ public class INVOKESTATIC extends gov.nasa.jpf.jvm.bytecode.INVOKESTATIC {
 		Formula formula = current.formula;
 		
 		MethodInfo mi = sf.getMethodInfo();
+		String[] types = mi.getArgumentTypeNames();
 		
 		LocalVarInfo[] lvis = mi.getLocalVars();
 				
+		// no "this"
 		for (int i = 0; i < sf.getMethodInfo().getArgumentsSize(); i++) {
 			Expression exp = null;
 			Object sym_v = syms[i];
@@ -73,8 +75,11 @@ public class INVOKESTATIC extends gov.nasa.jpf.jvm.bytecode.INVOKESTATIC {
 			newMap.put(lvis[i], name);
 			
 			Variable var = new Variable(name);
-			// eq or assign ?
-			formula.addComparisonTerm(Comparator.EQ, var, exp);
+			
+			if (INVOKEInstrHelper.isPrimitiveType(types[i]))
+				formula.addComparisonTerm(Comparator.APV, var, exp);
+			else
+				formula.addComparisonTerm(Comparator.ARV, var, exp);
 		}
 		
 		return nextIns;

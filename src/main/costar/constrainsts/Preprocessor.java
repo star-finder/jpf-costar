@@ -113,7 +113,9 @@ public class Preprocessor {
 				
 				for (int i = 1; i < varNameSplit.length; i++) {
 					// should handle the case rootName points to null first
-					if (Utilities.isNull(f, rootName)) return fs;
+					if (Utilities.isNull(f, rootName)) {
+						return fs;
+					}
 					
 					// get last var and last field
 					if (indexVar == vars.size() - 1) {
@@ -138,7 +140,9 @@ public class Preprocessor {
 							newName = nameMap.get(oldName);
 						} else {
 							newName = getName((PointToTerm) ht, rootName, fieldName);
-							if (newName == null) return fs;
+							if (newName == null) {
+								return fs;
+							}
 							
 							updateNameMap(nameMap, oldName, newName);
 						}

@@ -59,7 +59,7 @@ public class IFNULL extends gov.nasa.jpf.jvm.bytecode.IFNULL {
 			
 			if (objRef == 0) {
 				if (isInstrument) {
-					int index = IFInstrSymbHelper.getIndex(ti, getNext(ti));
+					int index = IFInstrHelper.getIndex(ti, getNext(ti));
 					if (index >= 0) tree.addToStack(f1, index);
 				}
 				
@@ -67,7 +67,7 @@ public class IFNULL extends gov.nasa.jpf.jvm.bytecode.IFNULL {
 				return getTarget();
 			} else {
 				if (isInstrument) {
-					int index = IFInstrSymbHelper.getIndex(ti, getTarget());
+					int index = IFInstrHelper.getIndex(ti, getTarget());
 					if (index >= 0) tree.addToStack(f0, index);
 				}
 				

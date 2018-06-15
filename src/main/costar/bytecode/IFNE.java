@@ -19,12 +19,12 @@ public class IFNE extends gov.nasa.jpf.jvm.bytecode.IFNE {
 	public void addToStack(ThreadInfo ti, CoStarConstrainstTree tree,
 			int conditionValue, Formula f0, Formula f1, Formula f2) {
 		if (conditionValue != 0) {
-			int index = IFInstrSymbHelper.getIndex(ti, getNext(ti));
+			int index = IFInstrHelper.getIndex(ti, getNext(ti));
 			if (index >= 0) {
 				tree.addToStack(f1, index);
 			}
 		} else {
-			int index = IFInstrSymbHelper.getIndex(ti, getTarget());
+			int index = IFInstrHelper.getIndex(ti, getTarget());
 			if (index >= 0) {
 				tree.addToStack(f0, index);
 				tree.addToStack(f2, index);
@@ -47,7 +47,7 @@ public class IFNE extends gov.nasa.jpf.jvm.bytecode.IFNE {
 	
 		LiteralExpression litExp = new LiteralExpression(0);
 		
-		Instruction nxtInstr = IFInstrSymbHelper.
+		Instruction nxtInstr = IFInstrHelper.
 				getNextInstructionAndSetPCChoice(ti, this, exp, litExp, Comparator.NE, Comparator.EQ);
 		
 		if (nxtInstr == getTarget())

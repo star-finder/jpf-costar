@@ -29,7 +29,7 @@ public class IF_ICMPLE extends gov.nasa.jpf.jvm.bytecode.IF_ICMPLE {
 			return super.execute(ti);
 		}
 		
-		Instruction nxtInstr = IFInstrSymbHelper.
+		Instruction nxtInstr = IFInstrHelper.
 				getNextInstructionAndSetPCChoice(ti, this, exp1, exp2, Comparator.LE, Comparator.GT);
 		
 		if (nxtInstr == getTarget())

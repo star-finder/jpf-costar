@@ -29,7 +29,7 @@ public class IF_ICMPLT extends gov.nasa.jpf.jvm.bytecode.IF_ICMPLT {
 			return super.execute(ti);
 		}
 		
-		Instruction nxtInstr = IFInstrSymbHelper.
+		Instruction nxtInstr = IFInstrHelper.
 				getNextInstructionAndSetPCChoice(ti, this, exp1, exp2, Comparator.LT, Comparator.GE);
 		
 		if (nxtInstr == getTarget())

@@ -49,11 +49,12 @@ public class INVOKESPECIAL extends gov.nasa.jpf.jvm.bytecode.INVOKESPECIAL {
 		Formula formula = current.formula;
 		
 		MethodInfo mi = sf.getMethodInfo();
+		String[] types = mi.getArgumentTypeNames();
 		
 		LocalVarInfo[] lvis = mi.getLocalVars();
 		
 		// index 0 is "this"
-		if (syms[0] == null) {
+		if (syms == null || syms[0] == null) {
 			newMap.put(lvis[0], "this");
 		} else {
 			newMap.put(lvis[0], syms[0].toString());
@@ -80,8 +81,11 @@ public class INVOKESPECIAL extends gov.nasa.jpf.jvm.bytecode.INVOKESPECIAL {
 			newMap.put(lvis[i], name);
 			
 			Variable var = new Variable(name);
-			// eq or assign ?
-			formula.addComparisonTerm(Comparator.EQ, var, exp);
+			
+			if (INVOKEInstrHelper.isPrimitiveType(types[i - 1]))
+				formula.addComparisonTerm(Comparator.APV, var, exp);
+			else
+				formula.addComparisonTerm(Comparator.ARV, var, exp);
 		}
 		
 		return nextIns;

@@ -17,7 +17,7 @@ import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 import starlib.formula.expression.NullExpression;
 
-public class CMPInstrSymbHelper {
+public class CMPInstrHelper {
 	
 	private static void addToStack(ThreadInfo ti, Instruction instr, CoStarConstrainstTree tree,
 			int conditionValue, Formula f0, Formula f1, Formula f2) {

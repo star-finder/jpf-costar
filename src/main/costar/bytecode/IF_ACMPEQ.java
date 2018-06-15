@@ -50,8 +50,8 @@ public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 			Formula f0 = formula.copy();
 			Formula f1 = formula.copy();
 				
-			Expression exp1 = CMPInstrSymbHelper.makeExpression(sym_v1, v1);
-			Expression exp2 = CMPInstrSymbHelper.makeExpression(sym_v2, v2);
+			Expression exp1 = CMPInstrHelper.makeExpression(sym_v1, v1);
+			Expression exp2 = CMPInstrHelper.makeExpression(sym_v2, v2);
 				
 			f0.addComparisonTerm(Comparator.EQ, exp1, exp2);
 			f1.addComparisonTerm(Comparator.NE, exp1, exp2);
@@ -61,7 +61,7 @@ public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 			
 			if (v1 == v2) {
 				if (isInstrument) {
-					int index = IFInstrSymbHelper.getIndex(ti, getNext(ti));
+					int index = IFInstrHelper.getIndex(ti, getNext(ti));
 					if (index >= 0) tree.addToStack(f1, index);
 				}
 				
@@ -69,7 +69,7 @@ public class IF_ACMPEQ extends gov.nasa.jpf.jvm.bytecode.IF_ACMPEQ {
 				return getTarget();
 			} else {
 				if (isInstrument) {
-					int index = IFInstrSymbHelper.getIndex(ti, getTarget());
+					int index = IFInstrHelper.getIndex(ti, getTarget());
 					if (index >= 0) tree.addToStack(f0, index);
 				}
 				

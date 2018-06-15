@@ -29,7 +29,7 @@ public class IF_ICMPGE extends gov.nasa.jpf.jvm.bytecode.IF_ICMPGE {
 			return super.execute(ti);
 		}
 		
-		Instruction nxtInstr = IFInstrSymbHelper.
+		Instruction nxtInstr = IFInstrHelper.
 				getNextInstructionAndSetPCChoice(ti, this, exp1, exp2, Comparator.GE, Comparator.LT);
 		
 		if (nxtInstr == getTarget())

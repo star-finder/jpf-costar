@@ -18,7 +18,7 @@ public class LCMP extends gov.nasa.jpf.jvm.bytecode.LCMP {
 		if (sym_v1 == null && sym_v2 == null)
 			return super.execute(ti);// we'll still do the concrete execution
 		else
-			return CMPInstrSymbHelper.getNextInstructionAndSetPCChoiceLong(ti, this, sym_v1, sym_v2,
+			return CMPInstrHelper.getNextInstructionAndSetPCChoiceLong(ti, this, sym_v1, sym_v2,
 					Comparator.LT, Comparator.EQ, Comparator.GT);
 	}
 

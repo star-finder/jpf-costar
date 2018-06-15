@@ -18,7 +18,7 @@ public class DCMPG extends gov.nasa.jpf.jvm.bytecode.DCMPG {
 		if (sym_v1 == null && sym_v2 == null)
 			return super.execute(ti);// we'll still do the concrete execution
 		else
-			return CMPInstrSymbHelper.getNextInstructionAndSetPCChoiceDouble(ti, this, sym_v1, sym_v2,
+			return CMPInstrHelper.getNextInstructionAndSetPCChoiceDouble(ti, this, sym_v1, sym_v2,
 					Comparator.LT, Comparator.EQ, Comparator.GT);
 	}
 

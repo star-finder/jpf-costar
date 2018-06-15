@@ -18,7 +18,7 @@ import starlib.formula.expression.Comparator;
 import starlib.formula.expression.Expression;
 import starlib.formula.expression.LiteralExpression;
 
-public class IFInstrSymbHelper {
+public class IFInstrHelper {
 	
 	public static int getIndex(ThreadInfo ti, Instruction instr) {
 		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
