@@ -10,6 +10,7 @@ import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Formula;
+import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.BinaryExpression;
 import starlib.formula.expression.Comparator;
@@ -40,16 +41,13 @@ public class IINC extends gov.nasa.jpf.jvm.bytecode.IINC {
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
-		String name = "";
-		if (map.containsKey(lvi)) {
-			name = map.get(lvi);
-		} else {
-			name = lvi.getName() + "_" + map.get(index);
-			map.put(lvi, name);
-		}
+		String oldName = map.get(lvi);
+		String newName = lvi.getName() + "_" + Utilities.freshIndex();
 		
-		Expression exp = new BinaryExpression(Operator.PLUS, new Variable(name), new LiteralExpression(increment));
-		formula.addComparisonTerm(Comparator.APV, new Variable(name), exp);
+		map.put(lvi, newName);
+		
+		Expression exp = new BinaryExpression(Operator.PLUS, new Variable(oldName), new LiteralExpression(increment));
+		formula.addComparisonTerm(Comparator.APV, new Variable(newName), exp);
 				
 		return super.execute(ti);
 	}

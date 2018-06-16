@@ -7,7 +7,6 @@ import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
-import starlib.formula.Utilities;
 import starlib.formula.Variable;
 import starlib.formula.expression.Expression;
 
@@ -29,13 +28,7 @@ public class DLOAD extends gov.nasa.jpf.jvm.bytecode.FLOAD {
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
-		String name = "";
-		if (map.containsKey(lvi)) {
-			name = map.get(lvi);
-		} else {
-			name = lvi.getName() + "_" + Utilities.freshIndex();
-			map.put(lvi, name);
-		}
+		String name = map.get(lvi);
 		
 		Expression exp = new Variable(name);
 		sf.setLongLocalAttr(index, exp);

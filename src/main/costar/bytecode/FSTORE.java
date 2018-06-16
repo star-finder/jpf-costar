@@ -44,13 +44,8 @@ public class FSTORE extends gov.nasa.jpf.jvm.bytecode.FSTORE {
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
-		String name = "";
-		if (map.containsKey(lvi)) {
-			name = map.get(lvi);
-		} else {
-			name = lvi.getName() + "_" + Utilities.freshIndex();
-			map.put(lvi, name);
-		}	
+		String name = lvi.getName() + "_" + Utilities.freshIndex();
+		map.put(lvi, name);
 		
 		Variable var = new Variable(name);
 				

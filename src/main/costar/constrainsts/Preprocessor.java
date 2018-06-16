@@ -51,7 +51,7 @@ public class Preprocessor {
 		// list of returned formulas after resolving 
 		List<Formula> fs = new ArrayList<Formula>();
 		
-		// map the original variable name to new name in the process
+		// map the original "this"/static field name to new name in the process
 		Map<String, String> nameMap = new HashMap<String, String>();
 		
 		// map the ref var/field to address
@@ -204,32 +204,17 @@ public class Preprocessor {
 			
 			// resolve with operator
 			
-			// in case the term is assignment
-			// we need to update the name for the lhs
-			if (cp == Comparator.APV || cp == Comparator.ARV) {
+			// in case the term is assignment to ref var
+			// we need to update aliasMap and noNullSet
+			if (cp == Comparator.ARV) {
 				// get old name
-				Variable lhs = (Variable) ct.getExp1();
-				String oldLhsName = lhs.toString();
-				
-				// get new name
-				Variable tmp = new Variable(oldLhsName);
-				String newLhsName = Utilities.freshVar(tmp).getName();
-				
-				// update
-				lhs.setName(newLhsName);
-								
-				// update nameMap because the name of lhs is changed
-				nameMap.put(lastVarName, newLhsName);
-				
-				// in case we have assign ref var update alias because now lhs is alias with rhs
-				if (cp == Comparator.ARV) {
-					String rhsName = ct.getExp2().toString();
+				String lhsName = ct.getExp1().toString();
+				String rhsName = ct.getExp2().toString();
 					
-					// update aliasMap
-					updateAliasMap(f.getAliasMap(), newLhsName, rhsName);
-					// if rhs is not null, so is newLhs
-					updateNoNullSet(noNullSet, newLhsName, rhsName);
-				}
+				// update aliasMap
+				updateAliasMap(f.getAliasMap(), lhsName, rhsName);
+				// if rhs is not null, so is newLhs
+				updateNoNullSet(noNullSet, lhsName, rhsName);
 			} else if (cp == Comparator.APF || cp == Comparator.ARF) {
 				Variable lhs = (Variable) ct.getExp1();
 				String oldLhsName = lhs.toString();
