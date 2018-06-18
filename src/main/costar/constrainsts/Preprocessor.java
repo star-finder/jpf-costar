@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import starlib.GlobalVariables;
 import starlib.data.DataNode;
 import starlib.data.DataNodeMap;
 import starlib.formula.Formula;
@@ -179,6 +180,8 @@ public class Preprocessor {
 						var.setName(newName);
 					} else if (ht instanceof InductiveTerm) {
 						// inductive term, need to unfold, then preprocess with new unfolded formula
+						if (pre.getDepth() >= GlobalVariables.MAX_DEPTH) return fs;
+						
 						InductiveTerm it = (InductiveTerm) ht;
 						Formula preCopy = pre.copy();
 						Formula pcCopy = pc.copy();

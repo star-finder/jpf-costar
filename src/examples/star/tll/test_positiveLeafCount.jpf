@@ -11,4 +11,4 @@ costar.dest=${jpf-star}/build/examples/tll/tmp/
 costar.class=Tll.class
 
 #star.test_init=${jpf-costar}/src/init/star/tll/test_positiveLeafCount.txt
-star.max_depth=2
+star.max_depth=3
