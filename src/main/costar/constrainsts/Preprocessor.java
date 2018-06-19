@@ -249,6 +249,14 @@ public class Preprocessor {
 				}
 			} else if (cp == Comparator.EQ) {
 				String lhs = ct.getExp1().toString();
+				String rhs = ct.getExp2().toString();
+				
+				Integer address1 = addressMap.get(lhs);
+				Integer address2 = addressMap.get(rhs);
+				
+				if (address1 != null && address2 != null && !address1.equals(address2)) {
+					return fs;
+				}
 				
 				f.getPureFormula().updateAlias(ct);
 				
