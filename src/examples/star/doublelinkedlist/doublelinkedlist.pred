@@ -8,4 +8,11 @@ pred dll2(header,size) == header::doublelinkedlist_DoubleLinkedList__Entry<ele,n
   header::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,nextE,prevE,next,size) & prevE = header & nextE = header;
 
 pred nndll2(curr,next,prevE,nextH,size) == curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prevE> & nextH=curr & size=1 ||
-  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,curr,prevE,nextH,size1) & size=size1+1
+  curr::doublelinkedlist_DoubleLinkedList__Entry<ele,next,prev> * nndll2(prev,curr,prevE,nextH,size1) & size=size1+1;
+  
+pred list(root) == root::doublelinkedlist_DoubleLinkedList<modCount,header,size> * header::doublelinkedlist_DoubleLinkedList__Entry<ele,header,header> & size=0 ||
+  root::doublelinkedlist_DoubleLinkedList<modCount,header,size> * header::doublelinkedlist_DoubleLinkedList__Entry<eleH,first,last> * first::doublelinkedlist_DoubleLinkedList__Entry<ele1,header,header> & first=last & size=1 ||
+  root::doublelinkedlist_DoubleLinkedList<modCount,header,size> * header::doublelinkedlist_DoubleLinkedList__Entry<eleH,first,last> * first::doublelinkedlist_DoubleLinkedList__Entry<ele1,nextF,prevF> * last::doublelinkedlist_DoubleLinkedList__Entry<ele2,nextL,prevL> * lseg(nextF,first,last,prevL,size1) & prevF=header & nextL=header & size=2+size1;
+		
+pred lseg(next,first,last,prev,size) == next=last & prev=first & size=0 ||
+  next::doublelinkedlist_DoubleLinkedList__Entry<item,next1,prev1> * lseg(next1,next,last,prev,size1) & prev1=first & size=size1+1

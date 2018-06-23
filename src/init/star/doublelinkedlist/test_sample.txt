@@ -1,0 +1,7 @@
+@Test
+public void test_add0() throws Exception {
+	DoubleLinkedList list = new DoubleLinkedList();
+	Object o = new Object();
+	Main main = new Main();
+	main.sample(list, o);
+}

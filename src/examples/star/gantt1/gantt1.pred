@@ -1,0 +1,1 @@
+pred cond(trans,myData) == trans::ganttproject_Transaction<isRunning,_> * myData::ganttproject_GraphData<_,_,_>

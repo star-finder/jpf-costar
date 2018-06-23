@@ -1,0 +1,7 @@
+pred cond(trajSynth,track,route) == trajSynth::tsafe_TrajectorySynthesizer<calc,params> * calc::tsafe_SimpleCalculator<minLat,minLon> * 
+	params::tsafe_EngineParameters<latWtOn,verWtOn,angWtOn,speWtOn,latThres,verThres,angThres,speThres,resThres,tsTime> *
+	track::tsafe_RouteTrack<lat,lon,alt,speed,heading,mTime,prevFix,nextFix> * prevFix::tsafe_Fix<lat1,lon1,_> * nextFix::tsafe_Fix<lat2,lon2,_> *
+	route::tsafe_Route<fixes> * fixes::tsafe_LinkedList<_,header,size> * dll(header,size);
+	
+pred dll(header,size) == header::tsafe_LinkedList__Entry<_,header,header> & size=0 || header::tsafe_LinkedList__Entry<_,next,prev> * nndll(next,header,header,prev,size);
+pred nndll(curr,prev,header,prevH,size) == curr::tsafe_LinkedList__Entry<_,header,prev> & prevH=curr & size=1 || curr::tsafe_LinkedList__Entry<_,next,prev> * nndll(next,curr,header,prevH,size1) & size=size1+1

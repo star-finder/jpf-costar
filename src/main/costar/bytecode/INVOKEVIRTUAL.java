@@ -32,8 +32,8 @@ public class INVOKEVIRTUAL extends gov.nasa.jpf.jvm.bytecode.INVOKEVIRTUAL {
 		if (analysis == null)
 			return super.execute(ti);
 		
-		Object[] syms = getArgumentAttrs(ti);
-		Object[] vals = getArgumentValues(ti);
+		Object[] syms = getArgumentAttrs(ti); // this + args
+		Object[] vals = getArgumentValues(ti); // only args
 		
 		Instruction nextIns = super.execute(ti);
 		
@@ -51,16 +51,20 @@ public class INVOKEVIRTUAL extends gov.nasa.jpf.jvm.bytecode.INVOKEVIRTUAL {
 		MethodInfo mi = sf.getMethodInfo();
 		String[] types = mi.getArgumentTypeNames();
 		
-		LocalVarInfo[] lvis = mi.getLocalVars();
+		LocalVarInfo[] lvis = mi.getLocalVars(); // this + args
 		
 		// index 0 is "this"
-		if (syms == null || syms[0] == null) {
+		if (lvis == null || lvis.length == 0) {
+			return nextIns;
+		} else if (syms == null || syms[0] == null) {
 			newMap.put(lvis[0], "this");
 		} else {
 			newMap.put(lvis[0], syms[0].toString());
 		}
 		
-		for (int i = 1; i < sf.getMethodInfo().getArgumentsSize(); i++) {
+		int numOfArgs = sf.getMethodInfo().getNumberOfArguments();
+		
+		for (int i = 1; i <= numOfArgs; i++) {
 			Expression exp = null;
 			Object sym_v = syms[i];
 			

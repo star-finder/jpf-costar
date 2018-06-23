@@ -1,0 +1,15 @@
+@include=../star.jpf
+
+target=star.gantt2.Driver
+
+costar.data=data ganttproject_Transaction {boolean isRunning; ganttproject_LinkedListNode myTouchedNodes};data ganttproject_GraphData {void myLayers; ganttproject_GraphData myBackup; ganttproject_Transaction myTxn};data ganttproject_LinkedListNode {void modCount; ganttproject_LinkedListNode__EntryNode header; int size};data ganttproject_Node {void myTask; ganttproject_NodeData myData};data ganttproject_NodeData {void myLevel; void myIncoming; void myOutgoing; void myNode; void myTxn; ganttproject_NodeData myBackup};data ganttproject_LinkedListNode__EntryNode {ganttproject_Node element; ganttproject_LinkedListNode__EntryNode next; ganttproject_LinkedListNode__EntryNode previous}
+
+costar.predicate.file=${jpf-costar}/src/examples/star/gantt2/gantt2.pred
+  
+star.test_path=${test.path}/ganttproject
+star.test_package=ganttproject
+
+classpath=${jpf-costar}/lib/ganttproject-guava.jar
+
+concolic.method.rollbackTransaction=ganttproject.DependencyGraph.rollbackTransaction()
+concolic.method.rollbackTransaction.config=all_fields_symbolic

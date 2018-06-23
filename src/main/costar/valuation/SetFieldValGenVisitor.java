@@ -32,6 +32,8 @@ public class SetFieldValGenVisitor extends ValGenVisitor {
 			String fiType = fi.getType();
 			String name = vars[i].getName();
 			
+			if (name.startsWith("Anon")) continue;
+			
 			if (fiType.equals("boolean")) {
 				ei.setBooleanField(fi, (Boolean) valuation.getValue(name));
 			} else if (fiType.equals("byte")) {

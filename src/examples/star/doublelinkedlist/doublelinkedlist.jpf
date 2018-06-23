@@ -2,7 +2,7 @@
 
 target=star.doublelinkedlist.Driver
 
-costar.data=data java_lang_Object {}; data doublelinkedlist_DoubleLinkedList__Entry {java_lang_Object element; doublelinkedlist_DoubleLinkedList__Entry next; doublelinkedlist_DoubleLinkedList__Entry previous}
+costar.data=data java_lang_Object {}; data doublelinkedlist_DoubleLinkedList{int modCount; doublelinkedlist_DoubleLinkedList__Entry header; int size}; data doublelinkedlist_DoubleLinkedList__Entry {java_lang_Object element; doublelinkedlist_DoubleLinkedList__Entry next; doublelinkedlist_DoubleLinkedList__Entry previous}
 
 costar.predicate.file=${jpf-costar}/src/examples/star/doublelinkedlist/doublelinkedlist.pred
   
@@ -68,3 +68,6 @@ concolic.method.size.config=all_fields_symbolic
 
 concolic.method.toArray=doublelinkedlist.DoubleLinkedList.toArray()
 concolic.method.toArray.config=all_fields_symbolic
+
+concolic.method.sample=doublelinkedlist.Main.sample(dll:doublelinkedlist.DoubleLinkedList,o:java.lang.Object)
+concolic.method.sample.config=all_fields_symbolic

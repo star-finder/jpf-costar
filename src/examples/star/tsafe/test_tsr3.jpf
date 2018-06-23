@@ -1,0 +1,15 @@
+@include=./tsr3.jpf
+
+target.args=TS_R_3
+
+concolic.method=TS_R_3
+
+costar.precondition=pre TS_R_3 == cond(trajSynth,track,route)
+#costar.instrument=true
+costar.source=${jpf-star}/build/examples/tsafe/
+costar.dest=${jpf-star}/build/examples/tsafe/tmp/
+costar.class=Driver_TS_R.class
+costar.root=trajSynth
+
+#star.test_init=${jpf-costar}/src/init/star//.txt
+star.max_depth=1

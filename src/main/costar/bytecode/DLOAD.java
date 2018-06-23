@@ -10,7 +10,7 @@ import gov.nasa.jpf.vm.ThreadInfo;
 import starlib.formula.Variable;
 import starlib.formula.expression.Expression;
 
-public class DLOAD extends gov.nasa.jpf.jvm.bytecode.FLOAD {
+public class DLOAD extends gov.nasa.jpf.jvm.bytecode.DLOAD {
 	
 	public DLOAD(int localVarIndex) {
 		super(localVarIndex);

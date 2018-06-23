@@ -54,7 +54,11 @@ public class GETFIELD extends gov.nasa.jpf.jvm.bytecode.GETFIELD {
 				name = objName + "." + fname;
 			}
 			
-			sf.setOperandAttr(new Variable(name));
+			if (fi.isLongField() || fi.isDoubleField()) {
+				sf.setLongOperandAttr(new Variable(name));
+			} else {
+				sf.setOperandAttr(new Variable(name));
+			}
 		}
 
 		return nextIns;

@@ -1,0 +1,5 @@
+pred cond(trans,myData) == trans::ganttproject_Transaction<isRunning,myTouchedNodes> * backupPred(myData) * myTouchedNodes::ganttproject_LinkedListNode<_,header,size> * dll(header,size);
+pred backupPred(myData) == myData::ganttproject_GraphData<_,backup,trans> * trans::ganttproject_Transaction<isRunning,_> & backup=null || myData::ganttproject_GraphData<_,backup,trans> * trans::ganttproject_Transaction<isRunning,_> * backupPred(backup);
+		
+pred dll(header,size) == header::ganttproject_LinkedListNode__EntryNode<ele,header,header> & size=0 || header::ganttproject_LinkedListNode__EntryNode<ele,next,prev> * nndll(next,header,header,prev,size);
+pred nndll(curr,prev,header,prevH,size) == curr::ganttproject_LinkedListNode__EntryNode<ele,header,prev> * ele::ganttproject_Node<_,myData1> * myData1::ganttproject_NodeData<_,_,_,_,_,myBackup> & prevH=curr & size=1 || curr::ganttproject_LinkedListNode__EntryNode<ele,next,prev> * ele::ganttproject_Node<_,myData1> * myData1::ganttproject_NodeData<_,_,_,_,_,myBackup> * nndll(next,curr,header,prevH,size1) & size=size1+1

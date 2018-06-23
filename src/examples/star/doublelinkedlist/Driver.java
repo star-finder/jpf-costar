@@ -1,6 +1,7 @@
 package star.doublelinkedlist;
 
 import doublelinkedlist.DoubleLinkedList;
+import doublelinkedlist.Main;
 
 public class Driver {
 	
@@ -69,6 +70,10 @@ public class Driver {
 		case "toArray":
 			list.toArray();
 			break;
+		case "sample":
+			Main main = new Main();
+			Object o = new Object();
+			main.sample(list, o);
 		default:
 			// do nothing
 		}

@@ -1,0 +1,15 @@
+@include=../star.jpf
+
+target=star.gantt1.Driver
+
+costar.data=data ganttproject_Transaction {boolean isRunning; void myTouchedNodes}; data ganttproject_GraphData {void myLayers; void myBackup; void myTxn}
+
+costar.predicate.file=${jpf-costar}/src/examples/star/gantt1/gantt1.pred
+  
+star.test_path=${test.path}/ganttproject
+star.test_package=ganttproject
+
+classpath=${jpf-costar}/lib/ganttproject-guava.jar
+
+concolic.method.startTransaction=ganttproject.DependencyGraph.startTransaction()
+concolic.method.startTransaction.config=all_fields_symbolic

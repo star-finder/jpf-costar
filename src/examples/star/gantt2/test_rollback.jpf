@@ -1,0 +1,15 @@
+@include=./gantt2.jpf
+
+target.args=rollbackTransaction
+
+concolic.method=rollbackTransaction
+
+costar.precondition=pre rollbackTransaction == cond(this_myTxn,this_myData)
+#costar.instrument=true
+costar.source=${jpf-star}/build/examples/ganttproject/
+costar.dest=${jpf-star}/build/examples/ganttproject/tmp/
+costar.class=DependencyGraph.class
+costar.root=this_myTxn
+
+#star.test_init=${jpf-costar}/src/init/star//.txt
+star.max_depth=4

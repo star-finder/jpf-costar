@@ -12,4 +12,4 @@ costar.class=AAtree.class
 
 #star.test_init=${jpf-costar}/src/init/star/aatree/test_remove.txt
 star.max_depth=3
-#star.max_time=10
+star.max_time=3

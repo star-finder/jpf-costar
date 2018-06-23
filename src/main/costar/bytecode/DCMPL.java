@@ -1,5 +1,6 @@
 package costar.bytecode;
 
+import costar.CoStarMethodExplorer;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -10,6 +11,11 @@ public class DCMPL extends gov.nasa.jpf.jvm.bytecode.DCMPL {
 	
 	@Override
 	public Instruction execute(ThreadInfo ti) {
+		CoStarMethodExplorer analysis = CoStarMethodExplorer.getCurrentAnalysis(ti);
+		
+		if (analysis == null)
+			return super.execute(ti);	
+		
 		StackFrame sf = ti.getModifiableTopFrame();
 		
 		Expression sym_v1 = (Expression) sf.getOperandAttr(3);
