@@ -98,7 +98,6 @@ public class CoStarMethodExplorer {
 	public void prepareInitModels() {
 		Config conf = VM.getVM().getConfig();
 		boolean isInstrument = Boolean.parseBoolean(conf.getProperty("costar.instrument", "false"));
-		if (!isInstrument) return;
 		
 		Precondition pre = PreconditionMap.find(methodInfo.getName());
 		Formula preF = new Formula();
@@ -117,7 +116,9 @@ public class CoStarMethodExplorer {
 			InductiveTerm it = (InductiveTerm) ht;
 			
 			Formula[] fs = it.unfold();
-			for (int i = 0; i < fs.length; i++) {
+			int length = isInstrument ? fs.length : 1;
+			
+			for (int i = 0; i < length; i++) {
 				Formula preFCopy = preF.copy();
 				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, root);
 				

@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="lib/asm-util-6.0.jar"/>
 	<classpathentry kind="lib" path="lib/asm-xml-6.0.jar"/>
 	<classpathentry kind="lib" path="lib/org.jacoco.core-0.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/ganttproject-guava.jar"/>
 	<classpathentry kind="output" path="build/output"/>
 </classpath>
