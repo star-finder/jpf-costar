@@ -10,7 +10,6 @@ import costar.bytecode.DCMPL;
 import costar.bytecode.DLOAD;
 import costar.bytecode.DRETURN;
 import costar.bytecode.DSTORE;
-import costar.bytecode.EXECUTENATIVE;
 import costar.bytecode.FCMPG;
 import costar.bytecode.FCMPL;
 import costar.bytecode.FLOAD;
@@ -36,6 +35,7 @@ import costar.bytecode.IF_ICMPLT;
 import costar.bytecode.IF_ICMPNE;
 import costar.bytecode.IINC;
 import costar.bytecode.ILOAD;
+import costar.bytecode.INVOKEINTERFACE;
 import costar.bytecode.INVOKESPECIAL;
 import costar.bytecode.INVOKESTATIC;
 import costar.bytecode.INVOKEVIRTUAL;
@@ -46,6 +46,7 @@ import costar.bytecode.LLOAD;
 import costar.bytecode.LOOKUPSWITCH;
 import costar.bytecode.LRETURN;
 import costar.bytecode.LSTORE;
+import costar.bytecode.NATIVERETURN;
 import costar.bytecode.NEW;
 import costar.bytecode.PUTFIELD;
 import costar.bytecode.PUTSTATIC;
@@ -53,7 +54,6 @@ import costar.bytecode.RETURN;
 import costar.bytecode.TABLESWITCH;
 import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
 import gov.nasa.jpf.vm.Instruction;
-import gov.nasa.jpf.vm.NativeMethodInfo;
 import star.bytecode.D2F;
 import star.bytecode.D2I;
 import star.bytecode.D2L;
@@ -507,6 +507,11 @@ public class CoStarInstructionFactory extends InstructionFactory {
 	public Instruction ineg() {
 		return new INEG();
 	}
+	
+	@Override
+	public Instruction invokeinterface(String clsName, String methodName, String methodSignature) {
+		return new INVOKEINTERFACE(clsName, methodName, methodSignature);
+	}
 
 	@Override
 	public Instruction invokevirtual(String clsName, String methodName, String methodSignature) {
@@ -773,9 +778,14 @@ public class CoStarInstructionFactory extends InstructionFactory {
 		return new NEW(clsName);
 	}
 
+//	@Override
+//	public Instruction executenative(NativeMethodInfo mi) {
+//		return new EXECUTENATIVE(mi);
+//	}
+	
 	@Override
-	public Instruction executenative(NativeMethodInfo mi) {
-		return new EXECUTENATIVE(mi);
+	public Instruction nativereturn() {
+		return new NATIVERETURN();
 	}
 
 }

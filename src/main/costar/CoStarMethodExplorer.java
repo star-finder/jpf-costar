@@ -108,8 +108,8 @@ public class CoStarMethodExplorer {
 		
 		String root = conf.getProperty("costar.root", "this_root");
 		
-		System.out.println(preF);
-		System.out.println(root);
+		System.out.println("Precondition = " + preF);
+//		System.out.println(root);
 		HeapTerm ht = Utilities.findHeapTerm(preF, root);
 		
 		if (ht != null && ht instanceof InductiveTerm) {
