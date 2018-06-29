@@ -1,0 +1,324 @@
+package tll;
+
+import org.junit.Test;
+
+import common.Utilities;
+import gov.nasa.jpf.util.test.TestJPF;
+
+public class Tll_positiveLeafCount1 extends TestJPF {
+
+	@Test
+	public void test_positiveLeafCount1() throws Exception {
+		Tll obj = new Tll();
+		obj.root = new tll.Node();
+		tll.Node l_11 = new tll.Node();
+		tll.Node r_9 = new tll.Node();
+		tll.Node ll = l_11;
+		tll.Node r_16 = null;
+		tll.Node z_13 = r_9;
+		tll.Node r_23 = null;
+		tll.Node ll_2 = obj.root;
+		tll.Node ll_3 = l_11;
+		tll.Node lr_4 = obj.root;
+		tll.Node lr_5 = r_9;
+		tll.Node this_root_87 = obj.root;
+		int dv_14 = 1;
+		tll.Node n_17 = z_13;
+		tll.Node n_24 = new tll.Node();
+		tll.Node lr = n_24;
+		tll.Node dn_12 = null;
+		tll.Node dl_22 = null;
+		int dv_7 = 0;
+		tll.Node dl_15 = null;
+		tll.Node p = null;
+		int dv_21 = 0;
+		obj.root.val = dv_7;
+		obj.root.parent = p;
+		obj.root.left = l_11;
+		obj.root.right = r_9;
+		obj.root.next = dn_12;
+		l_11.val = dv_14;
+		l_11.parent = obj.root;
+		l_11.left = dl_15;
+		l_11.right = r_16;
+		l_11.next = n_17;
+		r_9.val = dv_21;
+		r_9.parent = this_root_87;
+		r_9.left = dl_22;
+		r_9.right = r_23;
+		r_9.next = n_24;
+		//System.out.println(Utilities.repOK(obj));
+		obj.positiveLeafCount();
+	}
+
+	@Test
+	public void test_positiveLeafCount2() throws Exception {
+		Tll obj = new Tll();
+		obj.root = new tll.Node();
+		tll.Node l_5 = new tll.Node();
+		tll.Node r_3 = new tll.Node();
+		tll.Node this_root_87 = obj.root;
+		tll.Node ll = l_5;
+		tll.Node r_107 = null;
+		tll.Node z_88 = r_3;
+		tll.Node r_115 = null;
+		tll.Node z_7 = z_88;
+		tll.Node dl_108 = null;
+		int dv_109 = 0;
+		int dv_117 = 0;
+		tll.Node lr = null;
+		int dv_1 = 0;
+		tll.Node dn_6 = null;
+		tll.Node p = null;
+		tll.Node dl_116 = null;
+		obj.root.val = dv_1;
+		obj.root.parent = p;
+		obj.root.left = l_5;
+		obj.root.right = r_3;
+		obj.root.next = dn_6;
+		l_5.val = dv_109;
+		l_5.parent = obj.root;
+		l_5.left = dl_108;
+		l_5.right = r_107;
+		l_5.next = z_7;
+		r_3.val = dv_117;
+		r_3.parent = this_root_87;
+		r_3.left = dl_116;
+		r_3.right = r_115;
+		r_3.next = lr;
+		//System.out.println(Utilities.repOK(obj));
+		obj.positiveLeafCount();
+	}
+
+	@Test
+	public void test_positiveLeafCount3() throws Exception {
+		Tll obj = new Tll();
+		obj.root = new tll.Node();
+		tll.Node l_12 = new tll.Node();
+		tll.Node r_10 = new tll.Node();
+		tll.Node l_26 = new tll.Node();
+		tll.Node r_24 = new tll.Node();
+		tll.Node ll = l_12;
+		tll.Node r_17 = null;
+		tll.Node ll_2 = obj.root;
+		tll.Node ll_3 = l_12;
+		tll.Node lr_4 = obj.root;
+		tll.Node lr_5 = r_10;
+		tll.Node this_root_87 = obj.root;
+		tll.Node r_88 = r_10;
+		tll.Node r_89 = r_10;
+		tll.Node z_14 = l_26;
+		tll.Node r_157 = null;
+		tll.Node z_90 = r_24;
+		tll.Node r_165 = null;
+		tll.Node n_18 = z_14;
+		tll.Node z_28 = z_90;
+		tll.Node dn_13 = null;
+		tll.Node lr = null;
+		int dv_15 = 0;
+		int dv_167 = 0;
+		tll.Node dl_16 = null;
+		tll.Node dl_158 = null;
+		int dv_8 = 0;
+		int dv_159 = 0;
+		tll.Node dn_27 = null;
+		tll.Node p = null;
+		int dv_22 = 0;
+		tll.Node dl_166 = null;
+		obj.root.val = dv_8;
+		obj.root.parent = p;
+		obj.root.left = l_12;
+		obj.root.right = r_10;
+		obj.root.next = dn_13;
+		l_12.val = dv_15;
+		l_12.parent = obj.root;
+		l_12.left = dl_16;
+		l_12.right = r_17;
+		l_12.next = n_18;
+		r_10.val = dv_22;
+		r_10.parent = this_root_87;
+		r_10.left = l_26;
+		r_10.right = r_24;
+		r_10.next = dn_27;
+		l_26.val = dv_159;
+		l_26.parent = r_88;
+		l_26.left = dl_158;
+		l_26.right = r_157;
+		l_26.next = z_28;
+		r_24.val = dv_167;
+		r_24.parent = r_89;
+		r_24.left = dl_166;
+		r_24.right = r_165;
+		r_24.next = lr;
+		//System.out.println(Utilities.repOK(obj));
+		obj.positiveLeafCount();
+	}
+
+	@Test
+	public void test_positiveLeafCount4() throws Exception {
+		Tll obj = new Tll();
+		obj.root = new tll.Node();
+		tll.Node ll = obj.root;
+		tll.Node r_3 = null;
+		tll.Node n_4 = new tll.Node();
+		tll.Node lr = n_4;
+		tll.Node p = null;
+		tll.Node dl_2 = null;
+		int dv_1 = 0;
+		obj.root.val = dv_1;
+		obj.root.parent = p;
+		obj.root.left = dl_2;
+		obj.root.right = r_3;
+		obj.root.next = n_4;
+		//System.out.println(Utilities.repOK(obj));
+		obj.positiveLeafCount();
+	}
+
+	@Test
+	public void test_positiveLeafCount5() throws Exception {
+		Tll obj = new Tll();
+		obj.root = new tll.Node();
+		tll.Node l_13 = new tll.Node();
+		tll.Node r_11 = new tll.Node();
+		tll.Node l_20 = new tll.Node();
+		tll.Node r_18 = new tll.Node();
+		tll.Node ll_2 = obj.root;
+		tll.Node ll_3 = l_13;
+		tll.Node this_root_87 = obj.root;
+		tll.Node l_88 = l_13;
+		tll.Node l_89 = l_13;
+		tll.Node z_15 = r_11;
+		tll.Node r_143 = null;
+		tll.Node ll = l_20;
+		tll.Node r_151 = null;
+		tll.Node z_91 = r_18;
+		tll.Node r_159 = null;
+		tll.Node z_90 = z_15;
+		tll.Node z_22 = z_91;
+		tll.Node lr = null;
+		int dv_16 = 0;
+		int dv_145 = 0;
+		tll.Node dn_14 = null;
+		tll.Node dl_152 = null;
+		tll.Node dn_21 = null;
+		int dv_9 = 0;
+		int dv_153 = 0;
+		tll.Node p = null;
+		int dv_161 = 0;
+		tll.Node dl_160 = null;
+		tll.Node dl_144 = null;
+		obj.root.val = dv_9;
+		obj.root.parent = p;
+		obj.root.left = l_13;
+		obj.root.right = r_11;
+		obj.root.next = dn_14;
+		l_13.val = dv_16;
+		l_13.parent = this_root_87;
+		l_13.left = l_20;
+		l_13.right = r_18;
+		l_13.next = dn_21;
+		r_11.val = dv_145;
+		r_11.parent = obj.root;
+		r_11.left = dl_144;
+		r_11.right = r_143;
+		r_11.next = lr;
+		l_20.val = dv_153;
+		l_20.parent = l_88;
+		l_20.left = dl_152;
+		l_20.right = r_151;
+		l_20.next = z_22;
+		r_18.val = dv_161;
+		r_18.parent = l_89;
+		r_18.left = dl_160;
+		r_18.right = r_159;
+		r_18.next = z_90;
+		//System.out.println(Utilities.repOK(obj));
+		obj.positiveLeafCount();
+	}
+
+	@Test
+	public void test_positiveLeafCount6() throws Exception {
+		Tll obj = new Tll();
+		obj.root = new tll.Node();
+		tll.Node l_13 = new tll.Node();
+		tll.Node l_20 = new tll.Node();
+		tll.Node r_11 = new tll.Node();
+		tll.Node r_18 = new tll.Node();
+		tll.Node l_27 = new tll.Node();
+		tll.Node r_25 = new tll.Node();
+		tll.Node ll_2 = obj.root;
+		tll.Node ll_3 = l_13;
+		tll.Node ll_4 = l_20;
+		tll.Node this_root_87 = obj.root;
+		tll.Node l_88 = l_13;
+		tll.Node l_90 = l_13;
+		tll.Node l_91 = l_20;
+		tll.Node l_92 = l_20;
+		tll.Node z_15 = r_11;
+		tll.Node r_164 = null;
+		tll.Node z_22 = r_18;
+		tll.Node r_172 = null;
+		tll.Node ll = l_27;
+		tll.Node r_180 = null;
+		tll.Node z_94 = r_25;
+		tll.Node r_188 = null;
+		tll.Node z_89 = z_15;
+		tll.Node z_93 = z_22;
+		tll.Node z_29 = z_94;
+		tll.Node lr = null;
+		int dv_16 = 0;
+		int dv_166 = 0;
+		tll.Node dn_14 = null;
+		tll.Node dl_173 = null;
+		int dv_190 = 0;
+		tll.Node dn_21 = null;
+		int dv_9 = 0;
+		int dv_174 = 0;
+		tll.Node dn_28 = null;
+		tll.Node p = null;
+		int dv_182 = 0;
+		tll.Node dl_181 = null;
+		int dv_23 = 0;
+		tll.Node dl_189 = null;
+		tll.Node dl_165 = null;
+		obj.root.val = dv_9;
+		obj.root.parent = p;
+		obj.root.left = l_13;
+		obj.root.right = r_11;
+		obj.root.next = dn_14;
+		l_13.val = dv_16;
+		l_13.parent = this_root_87;
+		l_13.left = l_20;
+		l_13.right = r_18;
+		l_13.next = dn_21;
+		l_20.val = dv_23;
+		l_20.parent = l_90;
+		l_20.left = l_27;
+		l_20.right = r_25;
+		l_20.next = dn_28;
+		r_11.val = dv_166;
+		r_11.parent = obj.root;
+		r_11.left = dl_165;
+		r_11.right = r_164;
+		r_11.next = lr;
+		r_18.val = dv_174;
+		r_18.parent = l_88;
+		r_18.left = dl_173;
+		r_18.right = r_172;
+		r_18.next = z_89;
+		l_27.val = dv_182;
+		l_27.parent = l_91;
+		l_27.left = dl_181;
+		l_27.right = r_180;
+		l_27.next = z_29;
+		r_25.val = dv_190;
+		r_25.parent = l_92;
+		r_25.left = dl_189;
+		r_25.right = r_188;
+		r_25.next = z_93;
+		//System.out.println(Utilities.repOK(obj));
+		obj.positiveLeafCount();
+	}
+
+}
+
