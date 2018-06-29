@@ -10,5 +10,5 @@ costar.source=${jpf-star}/build/examples/bst/
 costar.dest=${jpf-star}/build/examples/bst/tmp/
 costar.class=BinarySearchTree.class
 
-star.test_init=${jpf-costar}/src/init/star/bst/test_remove.txt
+#star.test_init=${jpf-costar}/src/init/star/bst/test_remove.txt
 star.max_depth=2

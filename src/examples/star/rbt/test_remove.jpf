@@ -11,5 +11,5 @@ costar.dest=${jpf-star}/build/examples/rbt/tmp/
 costar.class=TreeMap.class
 
 #star.test_init=${jpf-costar}/src/init/star/rbt/test_remove.txt
-star.max_depth=3
+star.max_depth=4
 star.max_time=10

@@ -1,0 +1,15 @@
+@include=./linkedlist.jpf
+
+target.args=insert
+
+concolic.method=insert
+
+costar.precondition=pre insert == this__header::linkedlist_MyListNode<element,next> * sllItr(p) & next=null
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/linkedlist/
+costar.dest=${jpf-star}/build/examples/linkedlist/tmp/
+costar.class=MyLinkedList.class
+costar.root=p
+
+#star.test_init=${jpf-costar}/src/init/star/linkedlist/.txt
+star.max_depth=1

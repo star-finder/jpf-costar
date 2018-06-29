@@ -2,7 +2,7 @@
 
 target=star.linkedlist.Driver
 
-costar.data=data java_lang_Object {}; data linkedlist_MyListNode {java_lang_Object _element; linkedlist_MyListNode _next}
+costar.data=data java_lang_Object {}; data linkedlist_MyListNode {java_lang_Object _element; linkedlist_MyListNode _next}; data linkedlist_MyLinkedList{linkedlist_MyListNode _header; int _maxsize}; data linkedlist_MyLinkedListItr{linkedlist_MyListNode _current}
 
 costar.predicate.file=${jpf-costar}/src/examples/star/linkedlist/linkedlist.pred
   
@@ -24,8 +24,14 @@ concolic.method.find.config=all_fields_symbolic
 concolic.method.first=linkedlist.MyLinkedList.first()
 concolic.method.first.config=all_fields_symbolic
 
+concolic.method.insert=linkedlist.MyLinkedList.insert(x:java.lang.Object,p:linkedlist.MyLinkedListItr)
+concolic.method.insert.config=all_fields_symbolic
+
 concolic.method.isEmpty=linkedlist.MyLinkedList.isEmpty()
 concolic.method.isEmpty.config=all_fields_symbolic
+
+concolic.method.printList=linkedlist.MyLinkedList.printList(theList:linkedlist.MyLinkedList)
+concolic.method.printList.config=all_fields_symbolic
 
 concolic.method.remove=linkedlist.MyLinkedList.remove(x:java.lang.Object)
 concolic.method.remove.config=all_fields_symbolic

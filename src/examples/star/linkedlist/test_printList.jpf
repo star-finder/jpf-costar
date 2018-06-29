@@ -1,0 +1,15 @@
+@include=./linkedlist.jpf
+
+target.args=printList
+
+concolic.method=printList
+
+costar.precondition=pre printList == this__header::linkedlist_MyListNode<element,nextH> * theList::linkedlist_MyLinkedList<header,size> * header::linkedlist_MyListNode<element,next> * sll(next) & nextH=null
+costar.instrument=true
+costar.source=${jpf-star}/build/examples/linkedlist/
+costar.dest=${jpf-star}/build/examples/linkedlist/tmp/
+costar.class=MyLinkedList.class
+costar.root=next
+
+#star.test_init=${jpf-costar}/src/init/star/linkedlist/.txt
+star.max_depth=1

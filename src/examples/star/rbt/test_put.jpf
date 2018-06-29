@@ -12,5 +12,4 @@ costar.class=TreeMap.class
 
 #star.test_init=${jpf-costar}/src/init/star/rbt/test_put.txt
 star.max_depth=4
-# or 5
 star.max_time=10

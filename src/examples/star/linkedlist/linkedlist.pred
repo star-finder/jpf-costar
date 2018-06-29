@@ -1,1 +1,3 @@
-pred sll(root) == root = null || root::linkedlist_MyListNode<element,next> * element::java_lang_Object<> * sll(next)
+pred sll(root) == root = null || root::linkedlist_MyListNode<element,next> * element::java_lang_Object<> * sll(next);
+
+pred sllItr(root) == root = null || root::linkedlist_MyLinkedListItr<current> & current = null || root::linkedlist_MyLinkedListItr<current> * current::linkedlist_MyListNode<element,next> * element::java_lang_Object<> & next = null

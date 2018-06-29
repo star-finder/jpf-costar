@@ -1,6 +1,10 @@
 package star.linkedlist;
 
+import java.io.IOException;
+
 import linkedlist.MyLinkedList;
+import linkedlist.MyLinkedListItr;
+import linkedlist.MyListNode;
 
 public class Driver {
 	
@@ -24,8 +28,23 @@ public class Driver {
 		case "first":
 			list.first();
 			break;
+		case "insert":
+			Object x = new Object();
+			MyListNode node = new MyListNode();
+			MyLinkedListItr itr = new MyLinkedListItr(node);
+			list.insert(x, itr);
+			break;
 		case "isEmpty":
 			list.isEmpty();
+			break;
+		case "printList":
+			try {
+				MyLinkedList theList = new MyLinkedList();
+				list.printList(theList);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case "remove":
 			list.remove(null);

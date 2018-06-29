@@ -11,5 +11,5 @@ costar.dest=${jpf-star}/build/examples/doublelinkedlist/tmp/
 costar.class=Main.class
 costar.root=dll
 
-star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_sample.txt
+#star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_sample.txt
 star.max_depth=5

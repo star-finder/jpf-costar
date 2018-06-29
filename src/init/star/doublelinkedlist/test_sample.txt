@@ -1,5 +1,5 @@
 @Test
-public void test_add0() throws Exception {
+public void test_sample0() throws Exception {
 	DoubleLinkedList list = new DoubleLinkedList();
 	Object o = new Object();
 	Main main = new Main();
