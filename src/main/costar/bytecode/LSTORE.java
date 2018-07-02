@@ -42,6 +42,9 @@ public class LSTORE extends gov.nasa.jpf.jvm.bytecode.LSTORE {
 		Expression exp = sym_v != null ? (Expression) sym_v : new LiteralExpression(v);
 		
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
+		if (lvi == null)
+			return super.execute(ti);
+		
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
 		String name = lvi.getName() + "_" + Utilities.freshIndex();

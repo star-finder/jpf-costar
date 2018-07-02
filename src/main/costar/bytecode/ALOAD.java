@@ -25,13 +25,14 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		
 		StackFrame sf = ti.getModifiableTopFrame();
 		
+		// when calling external library, somehow we cannot accesss lvi
 		LocalVarInfo lvi = sf.getLocalVarInfo(index);
+		if (lvi == null)
+			return super.execute(ti);
+		
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
 		String name = map.get(lvi);
-		
-		if (name == null)
-			return super.execute(ti);
 		
 		Expression exp = new Variable(name);
 		sf.setLocalAttr(index, exp);

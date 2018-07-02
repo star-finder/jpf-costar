@@ -12,5 +12,5 @@ costar.class=Driver_TS_R.class
 costar.root=trajSynth
 
 #star.test_init=${jpf-costar}/src/init/star//.txt
-star.max_depth=7
-star.max_time=3
+star.max_depth=3
+star.max_time=5
