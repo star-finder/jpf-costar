@@ -53,6 +53,7 @@ public class INVOKESPECIAL extends gov.nasa.jpf.jvm.bytecode.INVOKESPECIAL {
 		
 		String[] types = mi.getArgumentTypeNames();
 		
+		// FIXME: there are problems with init iteration, we miss one local var info here
 		LocalVarInfo[] lvis = mi.getLocalVars(); // this + args
 		
 		// index 0 is "this"
