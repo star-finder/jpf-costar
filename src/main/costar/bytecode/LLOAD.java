@@ -32,6 +32,8 @@ public class LLOAD extends gov.nasa.jpf.jvm.bytecode.LLOAD {
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
 		String name = map.get(lvi);
+		if (name == null)
+			return super.execute(ti);
 		
 		Expression exp = new Variable(name);
 		sf.setLongLocalAttr(index, exp);

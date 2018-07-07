@@ -32,6 +32,8 @@ public class FLOAD extends gov.nasa.jpf.jvm.bytecode.FLOAD {
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
 		String name = map.get(lvi);
+		if (name == null)
+			return super.execute(ti);
 		
 		Expression exp = new Variable(name);
 		sf.setLocalAttr(index, exp);

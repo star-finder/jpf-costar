@@ -33,6 +33,8 @@ public class ALOAD extends gov.nasa.jpf.jvm.bytecode.ALOAD {
 		Map<LocalVarInfo, String> map = analysis.getNameMap().peek();
 		
 		String name = map.get(lvi);
+		if (name == null)
+			return super.execute(ti);
 		
 		Expression exp = new Variable(name);
 		sf.setLocalAttr(index, exp);
