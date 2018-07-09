@@ -8,7 +8,7 @@ costar.precondition=pre makeEmpty == aat(this_root, this_nullNode)
 costar.instrument=true
 costar.source=${jpf-star}/build/examples/aatree/
 costar.dest=${jpf-star}/build/examples/aatree/tmp/
-costar.class=AAtree.class
+costar.class=AATree.class
 
 #star.test_init=${jpf-costar}/src/init/star/aatree/test_makeEmpty.txt
 star.max_depth=1
