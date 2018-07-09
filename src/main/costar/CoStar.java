@@ -102,8 +102,11 @@ public class CoStar implements JPFShell {
 		final String clazz = conf.getProperty("costar.class");
 
 		try {
-			(new File(dest + clazz)).delete();
+			new File(dest + clazz).delete();
 			FileUtils.copyFile(new File(source + clazz), new File(dest));
+			
+			new File(source + clazz).delete();
+			new File(source).delete();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
