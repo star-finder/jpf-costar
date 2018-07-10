@@ -23,25 +23,33 @@ public class ClassInstrumenter {
 	
 	private String initMethodDesc = "()V";
 	
-	private int count = 0;
+	private static int count = 0;
 	
-	public void transform(ClassNode cn, String className) {
+	public void transform(ClassNode cn, String className, boolean isLast) {
 		this.className = className;
 		
-		MethodInstrumenter mi = new MethodInstrumenter();
-		for (MethodNode mn : cn.methods) {
-			String name = mn.name;
-			if (!name.equals("<init>") && !name.equals("<clinit>")) {
-				mi.transform(mn, this);
+//		if (!isLast) {
+			MethodInstrumenter mi = new MethodInstrumenter();
+			for (MethodNode mn : cn.methods) {
+				String name = mn.name;
+				if (!name.equals("<init>") && !name.equals("<clinit>")) {
+					mi.transform(mn, this);
+				}
 			}
-		}
+//		}
 		
-		createBitMapField(cn);
-		createBitMapInitMethod(cn);
+		if (isLast) {
+//			cn.version = Opcodes.V1_8;
+//		    cn.access = Opcodes.ACC_PUBLIC;
+//		    cn.name = "aatree/BitMap";
+			
+			createBitMapField(cn);
+			createBitMapInitMethod(cn);
+		}
 	}
 	
 	private void createBitMapField(ClassNode cn) {
-		FieldNode bitMap = new FieldNode(Opcodes.ACC_PRIVATE | Opcodes.ACC_STATIC, fieldName,
+		FieldNode bitMap = new FieldNode(Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC, fieldName,
 				fieldDesc, null, null);
 		cn.fields.add(bitMap);
 	}

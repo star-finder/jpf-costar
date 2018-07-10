@@ -225,11 +225,15 @@ public class CoStarConstrainstTree {
 //		if (executedSequences.contains(sequence)) return false;
 		
 		for (String executedSequence : executedSequences) {
-			if (executedSequence.startsWith(sequence)) return false;
+			if (executedSequence.startsWith(sequence)) {
+				return false;
+			}
 		}
 		
 		for (String invalidSequence : invalidSequences) {
-			if (sequence.startsWith(invalidSequence)) return false;
+			if (sequence.startsWith(invalidSequence)) {
+				return false;
+			}
 		}
 		
 		return true;

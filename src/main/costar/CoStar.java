@@ -99,53 +99,88 @@ public class CoStar implements JPFShell {
 	public static void revert(Config conf) {
 		final String source = conf.getProperty("costar.dest");
 		final String dest = conf.getProperty("costar.source");
-		final String clazz = conf.getProperty("costar.class");
+		final String[] clazzes = conf.getProperty("costar.class").split(";");
 
-		try {
-			new File(dest + clazz).delete();
-			FileUtils.copyFile(new File(source + clazz), new File(dest));
-			
-			new File(source + clazz).delete();
-			new File(source).delete();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (String clazz : clazzes) {
+			try {
+				new File(dest + clazz).delete();
+				FileUtils.copyFile(new File(source + clazz), new File(dest));
+				
+				new File(source + clazz).delete();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+		new File(source).delete();
 	}
 
 	public static void instrument(Config conf) {
 		final String source = conf.getProperty("costar.source");
 		final String dest = conf.getProperty("costar.dest");
-		final String clazz = conf.getProperty("costar.class");
+		final String[] clazzes = conf.getProperty("costar.class").split(";");
 		
 		new File(dest).mkdirs();
+		
+		int length = clazzes.length;
+		boolean isLast = false;
+		
+		String pack = conf.getProperty("star.test_package");
+		String className = clazzes[length - 1];
+		className = pack + "/" + className.substring(0, className.indexOf("."));
 
-		try {
-			FileUtils.copyFile(new File(source + clazz), new File(dest));
-
-			InputStream stream = new FileInputStream(source + clazz);
-			byte[] original = InputStreams.readFully(stream);
-
-			ClassNode cn = new ClassNode();
-			ClassReader cr = new ClassReader(original);
-			cr.accept(cn, 0);
+		for (int i = 0; i < length; i++) {
+			String clazz = clazzes[i];
+			isLast = i == length - 1;
 			
-			ClassInstrumenter ci = new ClassInstrumenter();
-			ci.transform(cn, cr.getClassName());
-			
-			ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
-		    cn.accept(cw);
-		    byte[] instrumented = cw.toByteArray();
-
-			Files.write(Paths.get(source + clazz), instrumented);
-			int count = ((ClassInstrumenter) ci).getCount();
-			System.out.println("Count = " + count);
-
-			conf.setProperty("costar.bitmap_size", count + "");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			try {
+				FileUtils.copyFile(new File(source + clazz), new File(dest));
+	
+				InputStream stream = new FileInputStream(source + clazz);
+				byte[] original = InputStreams.readFully(stream);
+	
+				ClassNode cn = new ClassNode();
+				ClassReader cr = new ClassReader(original);
+				cr.accept(cn, 0);
+				
+				ClassInstrumenter ci = new ClassInstrumenter();
+				ci.transform(cn, className, isLast);
+				
+				ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+			    cn.accept(cw);
+			    byte[] instrumented = cw.toByteArray();
+	
+				Files.write(Paths.get(source + clazz), instrumented);
+				int count = ci.getCount();
+				System.out.println("Count = " + count);
+	
+				conf.setProperty("costar.bitmap_size", count + "");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+//		ClassNode cn = new ClassNode();
+//		
+//		ClassInstrumenter ci = new ClassInstrumenter();
+//		ci.transform(cn, className, true);
+//		
+//		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+//	    cn.accept(cw);
+//	    byte[] instrumented = cw.toByteArray();
+//
+//	    int count = ci.getCount();
+//		System.out.println("Count = " + count);
+//	    conf.setProperty("costar.bitmap_size", count + "");
+//	    
+//		try {
+//			Files.write(Paths.get(source + "BitMap.class"), instrumented);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	public static void initialize(Config jpfConf) {

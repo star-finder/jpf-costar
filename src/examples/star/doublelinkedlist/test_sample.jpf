@@ -5,10 +5,10 @@ target.args=sample
 concolic.method=sample
 
 costar.precondition=pre sample == list(dll) * o::java_lang_Object<>
-#costar.instrument=true
+costar.instrument=true
 costar.source=${jpf-star}/build/examples/doublelinkedlist/
 costar.dest=${jpf-star}/build/examples/doublelinkedlist/tmp/
-costar.class=Main.class
+costar.class=Main.class;DoubleLinkedList.class
 costar.root=dll
 
 #star.test_init=${jpf-costar}/src/init/star/doublelinkedlist/test_sample.txt
