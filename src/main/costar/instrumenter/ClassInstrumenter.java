@@ -28,18 +28,28 @@ public class ClassInstrumenter {
 	public void transform(ClassNode cn, String className, boolean isLast) {
 		this.className = className;
 		
-		MethodInstrumenter mi = new MethodInstrumenter();
-		for (MethodNode mn : cn.methods) {
-			String name = mn.name;
-			if (!name.equals("<init>") && !name.equals("<clinit>")) {
-				mi.transform(mn, this);
+		if (!isLast) {
+			MethodInstrumenter mi = new MethodInstrumenter();
+			for (MethodNode mn : cn.methods) {
+				String name = mn.name;
+				if (!name.equals("<init>") && !name.equals("<clinit>")) {
+					mi.transform(mn, this);
+				}
 			}
 		}
 		
 		if (isLast) {
+			initClassNode(cn);
 			createBitMapField(cn);
 			createBitMapInitMethod(cn);
 		}
+	}
+	
+	private void initClassNode(ClassNode cn) {
+		cn.version = Opcodes.V1_8;
+		cn.access = Opcodes.ACC_PUBLIC;
+		cn.name = className;
+		cn.superName = "java/lang/Object";
 	}
 	
 	private void createBitMapField(ClassNode cn) {

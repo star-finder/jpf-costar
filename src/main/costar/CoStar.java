@@ -113,6 +113,7 @@ public class CoStar implements JPFShell {
 			}
 		}
 		
+		new File(dest + "BitMap.class").delete();
 		new File(source).delete();
 	}
 
@@ -128,11 +129,13 @@ public class CoStar implements JPFShell {
 		
 		String pack = conf.getProperty("star.test_package");
 		String className = clazzes[length - 1];
-		className = pack + "/" + className.substring(0, className.indexOf("."));
+//		className = pack + "/" + className.substring(0, className.indexOf("."));
+		className = pack + "/" + "BitMap";
 
 		for (int i = 0; i < length; i++) {
 			String clazz = clazzes[i];
-			isLast = i == length - 1;
+//			isLast = i == length - 1;
+			isLast = false;
 			
 			try {
 				FileUtils.copyFile(new File(source + clazz), new File(dest));
@@ -160,6 +163,22 @@ public class CoStar implements JPFShell {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		
+		ClassNode cn = new ClassNode();
+		
+		ClassInstrumenter ci = new ClassInstrumenter();
+		ci.transform(cn, className, true);
+		
+		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+	    cn.accept(cw);
+	    byte[] instrumented = cw.toByteArray();
+
+		try {
+			Files.write(Paths.get(source + "BitMap.class"), instrumented);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
