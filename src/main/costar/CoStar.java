@@ -161,26 +161,6 @@ public class CoStar implements JPFShell {
 				e.printStackTrace();
 			}
 		}
-		
-//		ClassNode cn = new ClassNode();
-//		
-//		ClassInstrumenter ci = new ClassInstrumenter();
-//		ci.transform(cn, className, true);
-//		
-//		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
-//	    cn.accept(cw);
-//	    byte[] instrumented = cw.toByteArray();
-//
-//	    int count = ci.getCount();
-//		System.out.println("Count = " + count);
-//	    conf.setProperty("costar.bitmap_size", count + "");
-//	    
-//		try {
-//			Files.write(Paths.get(source + "BitMap.class"), instrumented);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 
 	public static void initialize(Config jpfConf) {

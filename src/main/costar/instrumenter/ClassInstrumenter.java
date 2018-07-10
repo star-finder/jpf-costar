@@ -28,28 +28,22 @@ public class ClassInstrumenter {
 	public void transform(ClassNode cn, String className, boolean isLast) {
 		this.className = className;
 		
-//		if (!isLast) {
-			MethodInstrumenter mi = new MethodInstrumenter();
-			for (MethodNode mn : cn.methods) {
-				String name = mn.name;
-				if (!name.equals("<init>") && !name.equals("<clinit>")) {
-					mi.transform(mn, this);
-				}
+		MethodInstrumenter mi = new MethodInstrumenter();
+		for (MethodNode mn : cn.methods) {
+			String name = mn.name;
+			if (!name.equals("<init>") && !name.equals("<clinit>")) {
+				mi.transform(mn, this);
 			}
-//		}
+		}
 		
 		if (isLast) {
-//			cn.version = Opcodes.V1_8;
-//		    cn.access = Opcodes.ACC_PUBLIC;
-//		    cn.name = "aatree/BitMap";
-			
 			createBitMapField(cn);
 			createBitMapInitMethod(cn);
 		}
 	}
 	
 	private void createBitMapField(ClassNode cn) {
-		FieldNode bitMap = new FieldNode(Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC, fieldName,
+		FieldNode bitMap = new FieldNode(Opcodes.ACC_PROTECTED | Opcodes.ACC_STATIC, fieldName,
 				fieldDesc, null, null);
 		cn.fields.add(bitMap);
 	}
