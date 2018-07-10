@@ -125,17 +125,13 @@ public class CoStar implements JPFShell {
 		new File(dest).mkdirs();
 		
 		int length = clazzes.length;
-		boolean isLast = false;
 		
 		String pack = conf.getProperty("star.test_package");
 		String className = clazzes[length - 1];
-//		className = pack + "/" + className.substring(0, className.indexOf("."));
 		className = pack + "/" + "BitMap";
 
 		for (int i = 0; i < length; i++) {
 			String clazz = clazzes[i];
-//			isLast = i == length - 1;
-			isLast = false;
 			
 			try {
 				FileUtils.copyFile(new File(source + clazz), new File(dest));
@@ -148,7 +144,7 @@ public class CoStar implements JPFShell {
 				cr.accept(cn, 0);
 				
 				ClassInstrumenter ci = new ClassInstrumenter();
-				ci.transform(cn, className, isLast);
+				ci.transform(cn, className, false);
 				
 				ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 			    cn.accept(cw);

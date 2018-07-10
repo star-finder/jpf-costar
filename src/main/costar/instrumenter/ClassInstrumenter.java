@@ -13,20 +13,21 @@ import org.objectweb.asm.tree.MethodNode;
 
 public class ClassInstrumenter {
 	
-	private String className;
+	private static String className;
 	
-	private String fieldName = "$bitMap";
+	private static String fieldName = "$bitMap";
 	
-	private String fieldDesc = "[Z";
+	private static String fieldDesc = "[Z";
 	
-	private String initMethodName = "$initBitMap";
+	private static String initMethodName = "$initBitMap";
 	
-	private String initMethodDesc = "()V";
+	private static String initMethodDesc = "()V";
 	
 	private static int count = 0;
 	
 	public void transform(ClassNode cn, String className, boolean isLast) {
-		this.className = className;
+		if (ClassInstrumenter.className == null)
+			ClassInstrumenter.className = className;
 		
 		if (!isLast) {
 			MethodInstrumenter mi = new MethodInstrumenter();
