@@ -1,0 +1,12 @@
+@include=./parser.jpf
+
+target.args=numericUnaryOperation
+
+concolic.method=numericUnaryOperation
+
+costar.precondition=pre numericUnaryOperation == nonull2(_t,this_ASTNULL,parent)
+costar.instrument=false
+costar.class=PlexilTreeParser.class
+costar.root=_t
+
+star.max_depth=1

@@ -1,0 +1,12 @@
+@include=./parser.jpf
+
+target.args=booleanComparison
+
+concolic.method=booleanComparison
+
+costar.precondition=pre booleanComparison == nonull2(_t,parent,this_ASTNULL)
+costar.instrument=false
+costar.class=PlexilTreeParser.class
+costar.root=_t
+
+star.max_depth=1

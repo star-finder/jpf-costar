@@ -1,0 +1,12 @@
+############################################################################### 
+#
+# example from plexil
+#
+############################################################################### 
+
+@include=../config/costar.jpf
+
+plexil=/Users/HongLongPham/Workspace/JPF_HOME/PLEXIL5-0.0/plexil5
+
+classpath=${plexil}/bin;${jpf-star}/build/examples;${jpf-costar}/build/examples;${plexil}/lib/antlr-3.3-complete.jar;${plexil}/lib/nanoxml.jar
+sourcepath=${plexil}/src;${jpf-star}/src/examples;${jpf-costar}/src/examples

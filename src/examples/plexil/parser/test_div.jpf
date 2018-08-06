@@ -1,0 +1,12 @@
+@include=./parser.jpf
+
+target.args=div
+
+concolic.method=div
+
+costar.precondition=pre div == nonull2(_t,this_ASTNULL,parent)
+costar.instrument=false
+costar.class=PlexilTreeParser.class
+costar.root=_t
+
+star.max_depth=1

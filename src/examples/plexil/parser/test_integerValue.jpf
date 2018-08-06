@@ -1,0 +1,13 @@
+@include=./parser.jpf
+
+target.args=integerValue
+
+concolic.method=integerValue
+
+#costar.precondition=pre integerValue == integerValue(_t)
+costar.precondition=pre integerValue == nonull(_t,this_ASTNULL)
+costar.instrument=false
+costar.class=PlexilTreeParser.class
+costar.root=_t
+
+star.max_depth=1

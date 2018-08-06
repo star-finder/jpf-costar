@@ -1,0 +1,22 @@
+pred nonull(root) == root::plexil_PlexilASTNode<ttype,down,right>;
+
+pred booleanValue(root) == root::plexil_LiteralASTNode<ttype,down,right> & ttype=39;
+
+pred booleanTerm(root,parent) == root::plexil_LiteralASTNode<ttype,down,right> * parent::net_n3_nanoxml_XMLElement<> & ttype=39;
+
+pred booleanExpression(root,parent) == root::plexil_LiteralASTNode<ttype,down,right> * parent::net_n3_nanoxml_XMLElement<> & ttype=39 ||
+	root::plexil_LiteralASTNode<ttype,down,right> * down::plexil_LiteralASTNode<ttype1,down1,right1> * right1::plexil_LiteralASTNode<ttype2,down2,right2> * parent::net_n3_nanoxml_XMLElement<> & ttype=46 & ttype1=39 & ttype2=39;
+
+pred integerValue(root) == root::plexil_LiteralASTNode<ttype,down,right> & ttype=108;
+
+pred numericTerm(root,parent) == root::plexil_LiteralASTNode<ttype,down,right> * parent::net_n3_nanoxml_XMLElement<> & ttype=108;
+
+pred numericExpression(root,parent) == root::plexil_LiteralASTNode<ttype,down,right> * parent::net_n3_nanoxml_XMLElement<> & ttype=108 ||
+	root::plexil_LiteralASTNode<ttype,down,right> * down::plexil_LiteralASTNode<ttype1,down1,right1> * right1::plexil_LiteralASTNode<ttype2,down2,right2> * parent::net_n3_nanoxml_XMLElement<> & ttype=186 & ttype1=108 & ttype2=108 ||
+	root::plexil_LiteralASTNode<ttype,down,right> * right::plexil_LiteralASTNode<ttype1,down1,right1> * right1::plexil_LiteralASTNode<ttype2,down2,right2> * parent::net_n3_nanoxml_XMLElement<> & ttype=166 & ttype1=108 & ttype2=168;
+	
+pred absValue(root,parent) == root::plexil_LiteralASTNode<ttype,down,right> * down::plexil_LiteralASTNode<ttype1,down1,right1> * parent::net_n3_nanoxml_XMLElement<> & ttype=80 & ttype1=108;
+
+pred sqrt(root,parent) == root::plexil_LiteralASTNode<ttype,down,right> * down::plexil_LiteralASTNode<ttype1,down1,right1> * parent::net_n3_nanoxml_XMLElement<> & ttype=79 & ttype1=108;
+
+pred add(root,parent) == root::plexil_LiteralASTNode<ttype,down,right> * down::plexil_LiteralASTNode<ttype1,down1,right1> * right1::plexil_LiteralASTNode<ttype2,down2,right2> * parent::net_n3_nanoxml_XMLElement<> & ttype=186 & ttype1=108 & ttype2=108

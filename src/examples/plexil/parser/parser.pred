@@ -1,0 +1,3 @@
+pred nonull(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred nonull2(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>
