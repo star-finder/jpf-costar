@@ -9,8 +9,88 @@ costar.predicate.file=${jpf-costar}/src/examples/plexil/parser/parser.pred
 star.test_path=${test.path}/plexil
 star.test_package=plexil
 
+concolic.method.absValue=plexil.PlexilTreeParser.absValue(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.absValue.config=all_fields_symbolic
+
+concolic.method.add=plexil.PlexilTreeParser.add(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.add.config=all_fields_symbolic
+
+concolic.method.argument=plexil.PlexilTreeParser.argument(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.argument.config=all_fields_symbolic
+
+concolic.method.arrayAssignment=plexil.PlexilTreeParser.arrayAssignment(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.arrayAssignment.config=all_fields_symbolic
+
+concolic.method.arrayExpression=plexil.PlexilTreeParser.arrayExpression(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.arrayExpression.config=all_fields_symbolic
+
+concolic.method.arrayRHS=plexil.PlexilTreeParser.arrayRHS(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.arrayRHS.config=all_fields_symbolic
+
+concolic.method.arrayVariable=plexil.PlexilTreeParser.arrayVariable(_t:antlr.collections.AST)
+concolic.method.arrayVariable.config=all_fields_symbolic
+
+concolic.method.blobVariable=plexil.PlexilTreeParser.blobVariable(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.blobVariable.config=all_fields_symbolic
+
+concolic.method.booleanComparison=plexil.PlexilTreeParser.booleanComparison(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.booleanComparison.config=all_fields_symbolic
+
 concolic.method.booleanValue=plexil.PlexilTreeParser.booleanValue(_t:antlr.collections.AST)
 concolic.method.booleanValue.config=all_fields_symbolic
+
+concolic.method.booleanVariable=plexil.PlexilTreeParser.booleanVariable(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.booleanVariable.config=all_fields_symbolic
+
+concolic.method.comment=plexil.PlexilTreeParser.comment(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.comment.config=all_fields_symbolic
+
+concolic.method.comparison=plexil.PlexilTreeParser.comparison(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.comparison.config=all_fields_symbolic
+
+concolic.method.constAlias=plexil.PlexilTreeParser.constAlias(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.constAlias.config=all_fields_symbolic
+
+concolic.method.div=plexil.PlexilTreeParser.div(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.div.config=all_fields_symbolic
+
+concolic.method.endCondition=plexil.PlexilTreeParser.endCondition(_t:antlr.collections.AST,node:net.n3.nanoxml.IXMLElement)
+concolic.method.endCondition.config=all_fields_symbolic
+
+concolic.method.externalStructName=plexil.PlexilTreeParser.externalStructName(_t:antlr.collections.AST)
+concolic.method.externalStructName.config=all_fields_symbolic
+
+concolic.method.globalDeclaration=plexil.PlexilTreeParser.globalDeclaration(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.globalDeclaration.config=all_fields_symbolic
+
+concolic.method.ifBody=plexil.PlexilTreeParser.ifBody(_t:antlr.collections.AST,xaction:net.n3.nanoxml.IXMLElement)
+concolic.method.ifBody.config=all_fields_symbolic
+
+concolic.method.integerValue=plexil.PlexilTreeParser.integerValue(_t:antlr.collections.AST)
+concolic.method.integerValue.config=all_fields_symbolic
+
+concolic.method.integerVariable=plexil.PlexilTreeParser.integerVariable(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.integerVariable.config=all_fields_symbolic
+
+concolic.method.interfaceDeclaration=plexil.PlexilTreeParser.interfaceDeclaration(_t:antlr.collections.AST)
+concolic.method.interfaceDeclaration.config=all_fields_symbolic
+
+concolic.method.invariantCondition=plexil.PlexilTreeParser.invariantCondition(_t:antlr.collections.AST,node:net.n3.nanoxml.IXMLElement)
+concolic.method.invariantCondition.config=all_fields_symbolic
+
+concolic.method.libraryNodeDeclaration=plexil.PlexilTreeParser.libraryNodeDeclaration(_t:antlr.collections.AST)
+concolic.method.libraryNodeDeclaration.config=all_fields_symbolic
+
+
+
+
+
+
+
+
+
+
+
 
 concolic.method.booleanTerm=plexil.PlexilTreeParser.booleanTerm(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.booleanTerm.config=all_fields_symbolic
@@ -18,14 +98,12 @@ concolic.method.booleanTerm.config=all_fields_symbolic
 concolic.method.booleanExpression=plexil.PlexilTreeParser.booleanExpression(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.booleanExpression.config=all_fields_symbolic
 
-concolic.method.booleanComparison=plexil.PlexilTreeParser.booleanComparison(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
-concolic.method.booleanComparison.config=all_fields_symbolic
+
 
 concolic.method.not=plexil.PlexilTreeParser.not(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.not.config=all_fields_symbolic
 
-concolic.method.integerValue=plexil.PlexilTreeParser.integerValue(_t:antlr.collections.AST)
-concolic.method.integerValue.config=all_fields_symbolic
+
 
 concolic.method.realValue=plexil.PlexilTreeParser.realValue(_t:antlr.collections.AST)
 concolic.method.realValue.config=all_fields_symbolic
@@ -39,14 +117,12 @@ concolic.method.numericExpression.config=all_fields_symbolic
 concolic.method.numericUnaryOperation=plexil.PlexilTreeParser.numericUnaryOperation(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.numericUnaryOperation.config=all_fields_symbolic
 
-concolic.method.absValue=plexil.PlexilTreeParser.absValue(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
-concolic.method.absValue.config=all_fields_symbolic
+
 
 concolic.method.sqrt=plexil.PlexilTreeParser.sqrt(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.sqrt.config=all_fields_symbolic
 
-concolic.method.add=plexil.PlexilTreeParser.add(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
-concolic.method.add.config=all_fields_symbolic
+
 
 concolic.method.sub=plexil.PlexilTreeParser.sub(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.sub.config=all_fields_symbolic
@@ -54,8 +130,7 @@ concolic.method.sub.config=all_fields_symbolic
 concolic.method.mul=plexil.PlexilTreeParser.mul(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.mul.config=all_fields_symbolic
 
-concolic.method.div=plexil.PlexilTreeParser.div(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
-concolic.method.div.config=all_fields_symbolic
+
 
 concolic.method.stringValue=plexil.PlexilTreeParser.stringValue(_t:antlr.collections.AST)
 concolic.method.stringValue.config=all_fields_symbolic
@@ -63,11 +138,9 @@ concolic.method.stringValue.config=all_fields_symbolic
 concolic.method.pointsTo=plexil.PlexilTreeParser.pointsTo(_t:antlr.collections.AST)
 concolic.method.pointsTo.config=all_fields_symbolic
 
-concolic.method.booleanVariable=plexil.PlexilTreeParser.booleanVariable(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
-concolic.method.booleanVariable.config=all_fields_symbolic
 
-concolic.method.integerVariable=plexil.PlexilTreeParser.integerVariable(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
-concolic.method.integerVariable.config=all_fields_symbolic
+
+
 
 concolic.method.realVariable=plexil.PlexilTreeParser.realVariable(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.realVariable.config=all_fields_symbolic
@@ -75,8 +148,7 @@ concolic.method.realVariable.config=all_fields_symbolic
 concolic.method.stringVariable=plexil.PlexilTreeParser.stringVariable(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.stringVariable.config=all_fields_symbolic
 
-concolic.method.arrayVariable=plexil.PlexilTreeParser.arrayVariable(_t:antlr.collections.AST)
-concolic.method.arrayVariable.config=all_fields_symbolic
+
 
 concolic.method.variableName=plexil.PlexilTreeParser.variableName(_t:antlr.collections.AST)
 concolic.method.variableName.config=all_fields_symbolic

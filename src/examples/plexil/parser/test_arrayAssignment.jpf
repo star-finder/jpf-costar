@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=add
+target.args=arrayAssignment
 
-concolic.method=add
+concolic.method=arrayAssignment
 
-costar.precondition=pre add == add(_t,this_ASTNULL,parent)
+costar.precondition=pre arrayAssignment == arrayAssignment(_t,this_ASTNULL,parent)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

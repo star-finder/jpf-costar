@@ -12,11 +12,84 @@ public class Driver {
 		PlexilTreeParser tree = new PlexilTreeParser();
 		
 		switch (args[0]) {
-		case "booleanValue":
-			PlexilASTNode tBV = new PlexilASTNode();
-			tree.booleanValue(tBV);
-			
+		case "absValue":
+			tree.absValue(null, null);
 			break;
+		case "add":
+			tree.add(null, null);
+			break;
+		case "argument":
+			tree.argument(null, null);
+			break;
+		case "arrayAssignment":
+			tree.arrayAssignment(null, null);
+			break;
+		case "arrayExpression":
+			tree.arrayExpression(null, null);
+			break;
+		case "arrayRHS":
+			tree.arrayRHS(null, null);
+			break;
+		case "arrayVariable":
+			tree.arrayVariable(null);
+			break;
+		case "blobVariable":
+			tree.blobVariable(null, null);
+			break;
+		case "booleanComparison":
+			tree.booleanComparison(null, null);
+			break;
+		case "booleanValue":
+			tree.booleanValue(null);
+			break;
+		case "booleanVariable":
+			tree.booleanVariable(null, null);
+			break;
+		case "comment":
+			tree.comment(null, null);
+			break;
+		case "comparison":
+			tree.comparison(null, null);
+			break;
+		case "constAlias":
+			tree.constAlias(null, null);
+			break;
+		case "div":
+			tree.div(null, null);
+			break;
+		case "endCondition":
+			tree.endCondition(null, null);
+			break;
+		case "externalStructName":
+			tree.externalStructName(null);
+			break;
+		case "globalDeclaration":
+			tree.globalDeclaration(null, null);
+			break;
+		case "ifBody":
+			tree.ifBody(null, null);
+			break;
+		case "integerValue":
+			tree.integerValue(null);
+			break;
+		case "integerVariable":
+			tree.integerVariable(null, null);
+			break;
+		case "interfaceDeclaration":
+			tree.interfaceDeclaration(null);
+			break;
+		case "invariantCondition":
+			tree.invariantCondition(null,null);
+			break;
+		case "libraryNodeDeclaration":
+			tree.libraryNodeDeclaration(null);
+			break;
+			
+			
+			
+		
+		
+		
 		case "booleanTerm":
 			PlexilASTNode tBT = new PlexilASTNode();
 			tree.booleanTerm(tBT, null);
@@ -27,21 +100,12 @@ public class Driver {
 			tree.booleanExpression(tBE, null);
 			
 			break;
-		case "booleanComparison":
-			PlexilASTNode tBC = new PlexilASTNode();
-			tree.booleanComparison(tBC, null);
-			
-			break;
 		case "not":
 			PlexilASTNode tNot = new PlexilASTNode();
 			tree.not(tNot, null);
 			
 			break;
-		case "integerValue":
-			PlexilASTNode tIV = new PlexilASTNode();
-			tree.integerValue(tIV);
-			
-			break;
+		
 		case "realValue":
 			PlexilASTNode tRV = new PlexilASTNode();
 			tree.realValue(tRV);
@@ -62,21 +126,13 @@ public class Driver {
 			tree.numericUnaryOperation(tNUO, null);
 			
 			break;
-		case "absValue":
-			PlexilASTNode tAV = new PlexilASTNode();
-			tree.absValue(tAV, null);
-			
-			break;
+		
 		case "sqrt":
 			PlexilASTNode tSQRT = new PlexilASTNode();
 			tree.sqrt(tSQRT, null);
 			
 			break;
-		case "add":
-			PlexilASTNode tAdd = new PlexilASTNode();
-			tree.add(tAdd, null);
-			
-			break;
+		
 		case "sub":
 			PlexilASTNode tSub = new PlexilASTNode();
 			tree.sub(tSub, null);
@@ -87,11 +143,7 @@ public class Driver {
 			tree.mul(tMul, null);
 			
 			break;
-		case "div":
-			PlexilASTNode tDiv = new PlexilASTNode();
-			tree.div(tDiv, null);
-			
-			break;
+		
 		case "stringValue":
 			PlexilASTNode tSV = new PlexilASTNode();
 			tree.stringValue(tSV);
@@ -102,16 +154,8 @@ public class Driver {
 			tree.pointsTo(tPt);
 			
 			break;
-		case "booleanVariable":
-			PlexilASTNode tBVar = new PlexilASTNode();
-			tree.booleanVariable(tBVar, null);
-			
-			break;
-		case "integerVariable":
-			PlexilASTNode tIVar = new PlexilASTNode();
-			tree.integerVariable(tIVar, null);
-			
-			break;
+		
+		
 		case "realVariable":
 			PlexilASTNode tRVar = new PlexilASTNode();
 			tree.realVariable(tRVar, null);
@@ -122,11 +166,7 @@ public class Driver {
 			tree.stringVariable(tSVar, null);
 			
 			break;
-		case "arrayVariable":
-			PlexilASTNode tAVar = new PlexilASTNode();
-			tree.arrayVariable(tAVar);
-			
-			break;
+		
 		case "variableName":
 			PlexilASTNode tVN = new PlexilASTNode();
 			tree.variableName(tVN);

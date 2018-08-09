@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=booleanValue
+target.args=globalDeclaration
 
-concolic.method=booleanValue
+concolic.method=globalDeclaration
 
-costar.precondition=pre booleanValue == booleanValue(_t,this_ASTNULL)
+costar.precondition=pre globalDeclaration == globalDeclaration(_t,this_ASTNULL,parent)
 costar.instrument=true
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

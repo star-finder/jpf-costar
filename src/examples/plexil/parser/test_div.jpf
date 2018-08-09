@@ -4,8 +4,10 @@ target.args=div
 
 concolic.method=div
 
-costar.precondition=pre div == nonull2(_t,this_ASTNULL,parent)
+costar.precondition=pre div == div(_t,this_ASTNULL,parent)
 costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class
 costar.root=_t
 

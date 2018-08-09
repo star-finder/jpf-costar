@@ -4,8 +4,10 @@ target.args=booleanComparison
 
 concolic.method=booleanComparison
 
-costar.precondition=pre booleanComparison == nonull2(_t,parent,this_ASTNULL)
+costar.precondition=pre booleanComparison == booleanComparison(_t,this_ASTNULL,parent)
 costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class
 costar.root=_t
 

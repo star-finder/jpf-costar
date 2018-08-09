@@ -4,8 +4,10 @@ target.args=absValue
 
 concolic.method=absValue
 
-costar.precondition=pre absValue == nonull2(_t,this_ASTNULL,parent)
+costar.precondition=pre absValue == absValue(_t,this_ASTNULL,parent)
 costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class
 costar.root=_t
 

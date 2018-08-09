@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=add
+target.args=ifBody
 
-concolic.method=add
+concolic.method=ifBody
 
-costar.precondition=pre add == add(_t,this_ASTNULL,parent)
+costar.precondition=pre ifBody == ifBody(_t,this_ASTNULL,xaction)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

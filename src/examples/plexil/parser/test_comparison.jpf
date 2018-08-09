@@ -1,11 +1,11 @@
 @include=./parser.jpf
 
-target.args=add
+target.args=comparison
 
-concolic.method=add
+concolic.method=comparison
 
-costar.precondition=pre add == add(_t,this_ASTNULL,parent)
-costar.instrument=false
+costar.precondition=pre comparison == comparison(_t,this_ASTNULL,parent)
+costar.instrument=true
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class

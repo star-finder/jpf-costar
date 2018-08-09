@@ -4,8 +4,10 @@ target.args=integerVariable
 
 concolic.method=integerVariable
 
-costar.precondition=pre integerVariable == nonull2(_t,this_ASTNULL,parent)
+costar.precondition=pre integerVariable == integerVariable(_t,this_ASTNULL,parent)
 costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class
 costar.root=_t
 

@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=add
+target.args=endCondition
 
-concolic.method=add
+concolic.method=endCondition
 
-costar.precondition=pre add == add(_t,this_ASTNULL,parent)
+costar.precondition=pre endCondition == endCondition(_t,this_ASTNULL,node)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/
