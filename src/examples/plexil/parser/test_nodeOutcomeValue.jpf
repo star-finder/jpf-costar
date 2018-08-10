@@ -1,0 +1,14 @@
+@include=./parser.jpf
+
+target.args=nodeOutcomeValue
+
+concolic.method=nodeOutcomeValue
+
+costar.precondition=pre nodeOutcomeValue == nodeOutcomeValue(_t,this_ASTNULL,parent)
+costar.instrument=true
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
+costar.class=PlexilTreeParser.class
+costar.root=_t
+
+star.max_depth=1

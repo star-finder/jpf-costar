@@ -44,4 +44,62 @@ pred interfaceDeclaration(root,astnull) == astnull::antlr_ASTNULLType<> & root=n
 
 pred invariantCondition(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
 
-pred libraryNodeDeclaration(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>
+pred libraryNodeDeclaration(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred libraryNodeIdRef(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred libraryParamSpec(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred lookupExpr(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred loopVariableDeclaration(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred messageReceivedExp(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred name(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nameExp(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nameLiteral(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeCommandHandle(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeCommandHandleValue(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeCommandHandleVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeDeclaration(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeFailure(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeFailureValue(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeFailureVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeIdRef(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeList(root,astnull,node,nodeBody) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * node::net_n3_nanoxml_XMLElement<> * nodeBody::net_n3_nanoxml_XMLElement<>;
+
+pred nodeNameRef(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeOutcome(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeOutcomeValue(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeOutcomeVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeParameter(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeRef(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeState(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeStatePredicateExp(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeStateValue(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeStateVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nodeTimepointValue(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred nonNegativeInteger(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>
