@@ -148,4 +148,26 @@ pred stringValue(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> *
 
 pred stringVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
 
-pred sub(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>
+pred sub(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred timeExpression(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred timeRHS(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred timeValue(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred timeVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred timepoint(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred tolerance(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred typeName(root,astnull) == astnull::antlr_ASTNULLType<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred varAlias(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred variable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred variableName(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred whileBody(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>
