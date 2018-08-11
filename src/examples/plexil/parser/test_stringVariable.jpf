@@ -4,8 +4,10 @@ target.args=stringVariable
 
 concolic.method=stringVariable
 
-costar.precondition=pre stringVariable == nonull2(_t,this_ASTNULL,parent)
+costar.precondition=pre stringVariable == stringVariable(_t,this_ASTNULL,parent)
 costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class
 costar.root=_t
 

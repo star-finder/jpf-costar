@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=stringValue
+target.args=stateNameLiteral
 
-concolic.method=stringValue
+concolic.method=stateNameLiteral
 
-costar.precondition=pre stringValue == stringValue(_t,this_ASTNULL)
+costar.precondition=pre stateNameLiteral == stateNameLiteral(_t,this_ASTNULL,parent)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

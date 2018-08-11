@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=stringValue
+target.args=startCondition
 
-concolic.method=stringValue
+concolic.method=startCondition
 
-costar.precondition=pre stringValue == stringValue(_t,this_ASTNULL)
+costar.precondition=pre startCondition == startCondition(_t,this_ASTNULL,node)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

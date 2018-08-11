@@ -210,47 +210,35 @@ public class Driver {
 		case "realVariable":
 			tree.realVariable(null, null);
 			break;
-			
-			
-			
-		
-		
-		
+		case "repeatCondition":
+			tree.repeatCondition(null, null);
+			break;
+		case "resourcePriority":
+			tree.resourcePriority(null);
+			break;
+		case "skipCondition":
+			tree.skipCondition(null, null);
+			break;
 		case "sqrt":
-			PlexilASTNode tSQRT = new PlexilASTNode();
-			tree.sqrt(tSQRT, null);
-			
+			tree.sqrt(null, null);
 			break;
-		
-		case "sub":
-			PlexilASTNode tSub = new PlexilASTNode();
-			tree.sub(tSub, null);
-			
+		case "startCondition":
+			tree.startCondition(null, null);
 			break;
-		case "mul":
-			PlexilASTNode tMul = new PlexilASTNode();
-			tree.mul(tMul, null);
-			
+		case "stateNameLiteral":
+			tree.stateNameLiteral(null, null);
 			break;
-		
+		case "stringRHS":
+			tree.stringRHS(null, null);
+			break;
 		case "stringValue":
-			PlexilASTNode tSV = new PlexilASTNode();
-			tree.stringValue(tSV);
-			
+			tree.stringValue(null);
 			break;
-		
-		
-		
 		case "stringVariable":
-			PlexilASTNode tSVar = new PlexilASTNode();
-			tree.stringVariable(tSVar, null);
-			
+			tree.stringVariable(null, null);
 			break;
-		
-		case "variableName":
-			PlexilASTNode tVN = new PlexilASTNode();
-			tree.variableName(tVN);
-			
+		case "sub":
+			tree.sub(null, null);
 			break;
 		default:
 			// do nothing

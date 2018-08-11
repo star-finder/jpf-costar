@@ -4,7 +4,7 @@ target.args=nodeNameRef
 
 concolic.method=nodeNameRef
 
-costar.precondition=pre nodeNameRef == nodeNameRef(_t,this_ASTNULL,node,nodeBody)
+costar.precondition=pre nodeNameRef == nodeNameRef(_t,this_ASTNULL,parent)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

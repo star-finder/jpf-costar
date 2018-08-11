@@ -128,4 +128,24 @@ pred preCondition(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,
 
 pred realValue(root,astnull) == astnull::antlr_ASTNULLType<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
 
-pred realVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>
+pred realVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred repeatCondition(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred resourcePriority(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred skipCondition(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred sqrt(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred startCondition(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred stateNameLiteral(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred stringRHS(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred stringValue(root,astnull) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<>;
+
+pred stringVariable(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
+pred sub(root,astnull,parent) == root::plexil_PlexilASTNode<ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>

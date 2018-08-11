@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=stringValue
+target.args=repeatCondition
 
-concolic.method=stringValue
+concolic.method=repeatCondition
 
-costar.precondition=pre stringValue == stringValue(_t,this_ASTNULL)
+costar.precondition=pre repeatCondition == repeatCondition(_t,this_ASTNULL,parent)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/
