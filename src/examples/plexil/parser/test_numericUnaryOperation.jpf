@@ -4,8 +4,10 @@ target.args=numericUnaryOperation
 
 concolic.method=numericUnaryOperation
 
-costar.precondition=pre numericUnaryOperation == nonull2(_t,this_ASTNULL,parent)
-costar.instrument=false
+costar.precondition=pre numericUnaryOperation == numericUnaryOperation(_t,this_ASTNULL,parent)
+costar.instrument=true
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class
 costar.root=_t
 

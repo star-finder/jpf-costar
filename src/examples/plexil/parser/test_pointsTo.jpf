@@ -4,8 +4,10 @@ target.args=pointsTo
 
 concolic.method=pointsTo
 
-costar.precondition=pre pointsTo == nonull(_t,this_ASTNULL)
+costar.precondition=pre pointsTo == pointsTo(_t,this_ASTNULL)
 costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
 costar.class=PlexilTreeParser.class
 costar.root=_t
 

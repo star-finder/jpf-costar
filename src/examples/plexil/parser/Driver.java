@@ -171,54 +171,50 @@ public class Driver {
 		case "nonNegativeInteger":
 			tree.nonNegativeInteger(null);
 			break;
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		
-		
-		
-		case "booleanTerm":
-			PlexilASTNode tBT = new PlexilASTNode();
-			tree.booleanTerm(tBT, null);
-			
-			break;
-		case "booleanExpression":
-			PlexilASTNode tBE = new PlexilASTNode();
-			tree.booleanExpression(tBE, null);
-			
-			break;
 		case "not":
-			PlexilASTNode tNot = new PlexilASTNode();
-			tree.not(tNot, null);
-			
+			tree.not(null, null);
 			break;
-		
-		case "realValue":
-			PlexilASTNode tRV = new PlexilASTNode();
-			tree.realValue(tRV);
-			
-			break;
-		case "numericTerm":
-			PlexilASTNode tNT = new PlexilASTNode();
-			tree.numericTerm(tNT, null);
-			
-			break;
-		case "numericExpression":
-			PlexilASTNode tNE = new PlexilASTNode();
-			tree.numericExpression(tNE, null);
-			
+		case "numericRHS":
+			tree.numericRHS(null, null);
 			break;
 		case "numericUnaryOperation":
-			PlexilASTNode tNUO = new PlexilASTNode();
-			tree.numericUnaryOperation(tNUO, null);
-			
+			tree.numericUnaryOperation(null, null);
 			break;
+		case "onMessageBody":
+			tree.onMessageBody(null, null);
+			break;
+		case "paramName":
+			tree.paramName(null);
+			break;
+		case "paramsSpec":
+			tree.paramsSpec(null, null);
+			break;
+		case "permissions":
+			tree.permissions(null, null);
+			break;
+		case "pointerInitialValue":
+			tree.pointerInitialValue(null);
+			break;
+		case "pointsTo":
+			tree.pointsTo(null);
+			break;
+		case "postCondition":
+			tree.postCondition(null, null);
+			break;
+		case "preCondition":
+			tree.preCondition(null, null);
+			break;
+		case "realValue":
+			tree.realValue(null);
+			break;
+		case "realVariable":
+			tree.realVariable(null, null);
+			break;
+			
+			
+			
+		
+		
 		
 		case "sqrt":
 			PlexilASTNode tSQRT = new PlexilASTNode();
@@ -242,18 +238,9 @@ public class Driver {
 			tree.stringValue(tSV);
 			
 			break;
-		case "pointsTo":
-			PlexilASTNode tPt = new PlexilASTNode();
-			tree.pointsTo(tPt);
-			
-			break;
 		
 		
-		case "realVariable":
-			PlexilASTNode tRVar = new PlexilASTNode();
-			tree.realVariable(tRVar, null);
-			
-			break;
+		
 		case "stringVariable":
 			PlexilASTNode tSVar = new PlexilASTNode();
 			tree.stringVariable(tSVar, null);

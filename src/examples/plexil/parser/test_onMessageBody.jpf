@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=not
+target.args=onMessageBody
 
-concolic.method=not
+concolic.method=onMessageBody
 
-costar.precondition=pre not == not(_t,this_ASTNULL,parent)
+costar.precondition=pre onMessageBody == onMessageBody(_t,this_ASTNULL,xaction)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=not
+target.args=permissions
 
-concolic.method=not
+concolic.method=permissions
 
-costar.precondition=pre not == not(_t,this_ASTNULL,parent)
+costar.precondition=pre permissions == permissions(_t,this_ASTNULL,node)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

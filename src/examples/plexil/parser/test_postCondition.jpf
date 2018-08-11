@@ -1,10 +1,10 @@
 @include=./parser.jpf
 
-target.args=not
+target.args=postCondition
 
-concolic.method=not
+concolic.method=postCondition
 
-costar.precondition=pre not == not(_t,this_ASTNULL,parent)
+costar.precondition=pre postCondition == postCondition(_t,this_ASTNULL,node)
 costar.instrument=false
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/
