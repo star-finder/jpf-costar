@@ -18,7 +18,7 @@ public class RETURN extends gov.nasa.jpf.jvm.bytecode.RETURN {
 			return super.execute(ti);
 		
 		Stack<Map<LocalVarInfo, String>> indexMap = analysis.getNameMap();
-		if (!indexMap.isEmpty()) indexMap.pop(); // indexMap will be empty at the last return in main method
+		if (!indexMap.isEmpty() && !mi.getFullName().contains("<clinit>()V")) indexMap.pop(); // indexMap will be empty at the last return in main method
 		
 		return super.execute(ti);
 	}

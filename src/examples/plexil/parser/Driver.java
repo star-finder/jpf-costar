@@ -228,6 +228,9 @@ public class Driver {
 		case "stateNameLiteral":
 			tree.stateNameLiteral(null, null);
 			break;
+		case "stringExpression":
+			tree.stringExpression(null, null);
+			break;
 		case "stringRHS":
 			tree.stringRHS(null, null);
 			break;

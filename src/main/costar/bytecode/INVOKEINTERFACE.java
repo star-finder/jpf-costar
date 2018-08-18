@@ -7,8 +7,11 @@ import java.util.Stack;
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
+import gov.nasa.jpf.JPF;
+import gov.nasa.jpf.util.JPFLogger;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.LocalVarInfo;
+import gov.nasa.jpf.vm.MJIEnv;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -21,6 +24,8 @@ import starlib.formula.expression.LiteralExpression;
 import starlib.formula.expression.NullExpression;
 
 public class INVOKEINTERFACE extends gov.nasa.jpf.jvm.bytecode.INVOKEINTERFACE {
+	
+	private JPFLogger logger = JPF.getLogger("costar");
 
 	public INVOKEINTERFACE(String clsDescriptor, String methodName, String signature) {
 		super(clsDescriptor, methodName, signature);
@@ -32,6 +37,16 @@ public class INVOKEINTERFACE extends gov.nasa.jpf.jvm.bytecode.INVOKEINTERFACE {
 		if (analysis == null)
 			return super.execute(ti);
 		
+		int objRef = ti.getCalleeThis(getArgSize());
+
+		if (objRef == MJIEnv.NULL) {
+			lastObj = MJIEnv.NULL;
+			logger.info("Calling '" + mname + "' on null object");
+			
+			ti.getVM().getSystemState().setIgnored(true);
+			return getNext(ti);
+		}
+
 		Object[] syms = getArgumentAttrs(ti); // this + args
 		Object[] vals = getArgumentValues(ti); // only args
 		

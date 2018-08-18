@@ -72,6 +72,7 @@ public class CoStarConstrainstTree {
 		this.explorer = explorer;
 		this.methodInfo = mi;
 		
+		Preprocessor.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
 		ValuationGenerator.setClassAndMethodInfo(methodInfo.getClassInfo(), methodInfo, config);
 		
 		this.initModels = new LinkedList<String>();
@@ -159,15 +160,16 @@ public class CoStarConstrainstTree {
 					current.childrend[i].hasVisited = true;
 					
 					Formula f = current.childrend[i].formula;
-					logger.info("New constraint = " + f.toString());
+//					logger.info("New constraint = " + f.toString());
 					
 					Utilities.setIndex(temp);
 					boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
 					
-					logger.info(isSat);
+//					logger.info(isSat);
 					
 					if (isSat) {
 						String model = Solver.getModel();
+//						System.out.println("model = " + model );
 						addModel(model);
 						Valuation val = ValuationGenerator.toValuation(model);
 						
@@ -257,14 +259,14 @@ public class CoStarConstrainstTree {
 			int index = indexStack.pop();
 			String sequence = sequenceStack.pop();
 			
-			logger.info("New constraint = " + f.toString());
+//			logger.info("New constraint = " + f.toString());
 			
 			if (!shouldExecute(sequence)) continue;
 			
 			Utilities.setIndex(temp);
 			boolean isSat = Solver.checkSat(Preprocessor.preprocess(preF, f));
 			
-			logger.info(isSat);
+//			logger.info(isSat);
 			
 			if (isSat) {
 				String model = Solver.getModel();
@@ -272,7 +274,7 @@ public class CoStarConstrainstTree {
 				Valuation val = ValuationGenerator.toValuation(model);
 				
 				// build new valuation based on the model
-//				logger.info("New model = " + model);
+				logger.info("New model = " + model);
 //				logger.info("New constraint = " + f.toString());
 //				logger.info("New valuation = " + val);
 				

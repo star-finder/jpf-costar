@@ -1,0 +1,14 @@
+@include=./parser.jpf
+
+target.args=nodeNameRef
+
+concolic.method=nodeNameRef
+
+costar.precondition=pre nodeNameRef == eqNull(_t,this_ASTNULL,parent)
+costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
+costar.class=PlexilTreeParser.class
+costar.root=_t
+
+star.max_depth=1

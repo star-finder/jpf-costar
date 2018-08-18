@@ -20,6 +20,31 @@ import starlib.formula.expression.NullExpression;
 public class CMPInstrHelper {
 	
 	private static void addToStack(ThreadInfo ti, Instruction instr, CoStarConstrainstTree tree,
+			int conditionValue, Formula f, Expression sym_v1, Expression sym_v2) {
+		Instruction condInstr = instr.getNext(ti);
+		
+		if (condInstr instanceof IFEQ) {
+			IFEQ ifeqInstr = (IFEQ) condInstr;
+			ifeqInstr.addToStack(ti, tree, conditionValue, f, sym_v1, sym_v2);
+		} else if (condInstr instanceof IFNE) {
+			IFNE ifneInstr = (IFNE) condInstr;
+			ifneInstr.addToStack(ti, tree, conditionValue, f, sym_v1, sym_v2);
+		} else if (condInstr instanceof IFGT) {
+			IFGT ifgtInstr = (IFGT) condInstr;
+			ifgtInstr.addToStack(ti, tree, conditionValue, f, sym_v1, sym_v2);
+		} else if (condInstr instanceof IFGE) {
+			IFGE ifgeInstr = (IFGE) condInstr;
+			ifgeInstr.addToStack(ti, tree, conditionValue, f, sym_v1, sym_v2);
+		} else if (condInstr instanceof IFLT) {
+			IFLT ifltInstr = (IFLT) condInstr;
+			ifltInstr.addToStack(ti, tree, conditionValue, f, sym_v1, sym_v2);
+		} else if (condInstr instanceof IFLE) {
+			IFLE ifleInstr = (IFLE) condInstr;
+			ifleInstr.addToStack(ti, tree, conditionValue, f, sym_v1, sym_v2);
+		}
+	}
+	
+	private static void addToStack(ThreadInfo ti, Instruction instr, CoStarConstrainstTree tree,
 			int conditionValue, Formula f0, Formula f1, Formula f2) {
 		Instruction condInstr = instr.getNext(ti);
 		
@@ -79,14 +104,18 @@ public class CMPInstrHelper {
 				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
 				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			} else {
-				f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
-				f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
-				f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
+				sym_v2 = new LiteralExpression(v2);
+				
+				f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			}
 		} else {
-			f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
-			f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
-			f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
+			sym_v1 = new LiteralExpression(v1);
+			
+			f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+			f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+			f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 		}
 		
 		constraints.add(f0);
@@ -101,7 +130,7 @@ public class CMPInstrHelper {
 			analysis.decision(ti, instr, 2, constraints);
 		}
 		
-		if (isInstrument) addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
+		if (isInstrument) addToStack(ti, instr, tree, conditionValue, formula.copy(), sym_v1, sym_v2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);
@@ -150,14 +179,18 @@ public class CMPInstrHelper {
 				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
 				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			} else {
-				f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
-				f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
-				f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
+				sym_v2 = new LiteralExpression(v2);
+				
+				f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			}
 		} else {
-			f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
-			f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
-			f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
+			sym_v1 = new LiteralExpression(v1);
+			
+			f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+			f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+			f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 		}
 		
 		constraints.add(f0);
@@ -172,7 +205,7 @@ public class CMPInstrHelper {
 			analysis.decision(ti, instr, 2, constraints);
 		}
 		
-		if (isInstrument) addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
+		if (isInstrument) addToStack(ti, instr, tree, conditionValue, formula.copy(), sym_v1, sym_v2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);
@@ -221,14 +254,18 @@ public class CMPInstrHelper {
 				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
 				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			} else {
-				f0.addComparisonTerm(fstComparator, sym_v1, new LiteralExpression(v2));
-				f1.addComparisonTerm(sndComparator, sym_v1, new LiteralExpression(v2));
-				f2.addComparisonTerm(trdComparator, sym_v1, new LiteralExpression(v2));
+				sym_v2 = new LiteralExpression(v2);
+				
+				f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+				f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+				f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);
 			}
 		} else {
-			f0.addComparisonTerm(fstComparator, new LiteralExpression(v1), sym_v2);
-			f1.addComparisonTerm(sndComparator, new LiteralExpression(v1), sym_v2);
-			f2.addComparisonTerm(trdComparator, new LiteralExpression(v1), sym_v2);
+			sym_v1 = new LiteralExpression(v1);
+			
+			f0.addComparisonTerm(fstComparator, sym_v1, sym_v2);
+			f1.addComparisonTerm(sndComparator, sym_v1, sym_v2);
+			f2.addComparisonTerm(trdComparator, sym_v1, sym_v2);	
 		}
 		
 		constraints.add(f0);
@@ -243,7 +280,7 @@ public class CMPInstrHelper {
 			analysis.decision(ti, instr, 2, constraints);
 		}
 				
-		if (isInstrument) addToStack(ti, instr, tree, conditionValue, f0, f1, f2);
+		if (isInstrument) addToStack(ti, instr, tree, conditionValue, formula.copy(), sym_v1, sym_v2);
 		
 		sf.push(conditionValue);
 		return instr.getNext(ti);

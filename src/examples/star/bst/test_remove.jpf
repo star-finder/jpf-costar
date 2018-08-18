@@ -4,7 +4,7 @@ target.args=remove
 
 concolic.method=remove
 
-costar.precondition=pre remove == bst(this_root)
+costar.precondition=pre remove == bstE(this_root,minRoot,maxRoot)
 costar.instrument=true
 costar.source=${jpf-star}/build/examples/bst/
 costar.dest=${jpf-star}/build/examples/bst/tmp/

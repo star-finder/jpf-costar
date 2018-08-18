@@ -30,7 +30,7 @@ public class LSTORE extends gov.nasa.jpf.jvm.bytecode.LSTORE {
 			return super.execute(ti);
 		
 		StackFrame sf = ti.getModifiableTopFrame();
-		Object sym_v = sf.getOperandAttr();
+		Object sym_v = sf.getLongOperandAttr();
 		
 		long v = sf.peekLong();
 		

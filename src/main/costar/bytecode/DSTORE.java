@@ -30,7 +30,7 @@ public class DSTORE extends gov.nasa.jpf.jvm.bytecode.DSTORE {
 			return super.execute(ti);
 		
 		StackFrame sf = ti.getModifiableTopFrame();
-		Object sym_v = sf.getOperandAttr();
+		Object sym_v = sf.getLongOperandAttr();
 		
 		double v = sf.peekDouble();
 		

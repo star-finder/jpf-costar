@@ -27,7 +27,8 @@ public class SetFieldValGenVisitor extends ValGenVisitor {
 		
 		if (ei == null) return;
 		
-		assert ei.getNumberOfFields() == vars.length;
+//		System.out.println(ei.getNumberOfFields());
+//		assert ei.getNumberOfFields() == vars.length;
 		
 		for (int i = 0; i < vars.length; i++) {
 			FieldInfo fi = ei.getFieldInfo(i);

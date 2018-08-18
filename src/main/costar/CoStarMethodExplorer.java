@@ -1,5 +1,6 @@
 package costar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -29,6 +30,7 @@ import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.Types;
 import gov.nasa.jpf.vm.VM;
 import starlib.formula.Formula;
+import starlib.formula.HeapFormula;
 import starlib.formula.Utilities;
 import starlib.formula.heap.HeapTerm;
 import starlib.formula.heap.InductiveTerm;
@@ -108,8 +110,12 @@ public class CoStarMethodExplorer {
 		
 		String root = conf.getProperty("costar.root", "this_root");
 		
-		System.out.println("Precondition = " + preF);
+//		System.out.println("Precondition = " + preF);
 //		System.out.println(root);
+		
+//		int n = 2;
+//		generateInitModels(preF, n);
+		
 		HeapTerm ht = Utilities.findHeapTerm(preF, root);
 		
 		if (ht != null && ht instanceof InductiveTerm) {
@@ -123,12 +129,45 @@ public class CoStarMethodExplorer {
 				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, root);
 				
 				preFCopy.unfold(itCopy, i);
-				System.out.println(preFCopy);
+//				System.out.println(preFCopy);
 				
 				Solver.checkSat(preFCopy);
 				String model = Solver.getModel();
 				
 				constraintsTree.addInitModel(model);
+			}
+		}
+	}
+	
+	public void generateInitModels(Formula pre, int n) {
+		if (n <= 0) return;
+		
+		HeapFormula hf = pre.getHeapFormula();
+		List<InductiveTerm> its = new ArrayList<InductiveTerm>();
+		
+		for (HeapTerm ht : hf.getHeapTerms()) {
+			if (ht instanceof InductiveTerm) {
+				its.add((InductiveTerm) ht);
+			}
+		}
+		
+		for (InductiveTerm it : its) {
+			String root = it.getRoot().getName();
+			Formula[] fs = it.unfold();
+			
+			for (int i = 0; i < fs.length; i++) {
+				Formula preCopy = pre.copy();
+				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preCopy, root);
+				
+				preCopy.unfold(itCopy, i);
+				
+				System.out.println("preCopy = " + preCopy);
+				Solver.checkSat(preCopy, false);
+				String model = Solver.getModel();
+				
+				constraintsTree.addInitModel(model);
+				
+				generateInitModels(preCopy, n - 1);
 			}
 		}
 	}
@@ -161,6 +200,7 @@ public class CoStarMethodExplorer {
 				}
 			}
 		} else {
+//			System.out.println("Number of init model = " + constraintsTree.getInitModels().size());
 			initValuation = constraintsTree.findNext();
 			
 			for (SymbolicVariable<?> sv : symContext.getSymbolicVars()) {
@@ -245,16 +285,21 @@ public class CoStarMethodExplorer {
 			int numOfFields = thisEi.getNumberOfFields();
 			for (int i = 0; i < numOfFields; i++) {
 				FieldInfo fi = thisEi.getFieldInfo(i);
-				String name = "this_" + fi.getName();
-				starlib.formula.Variable attr = new starlib.formula.Variable(name);
-				thisEi.setFieldAttr(fi, attr);
 				
-				byte tc = fi.getTypeCode();
-				Type<?> t = ConcolicUtil.forTypeCode(tc);
+				if (fi.getName().equals("ASTNULL")) {
 				
-				Variable<?> var = Variable.create(t, name);
-				SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
-				symContext.addSymbolicVar(symf);
+					String name = "this_" + fi.getName();
+					starlib.formula.Variable attr = new starlib.formula.Variable(name);
+					thisEi.setFieldAttr(fi, attr);
+					
+					byte tc = fi.getTypeCode();
+					Type<?> t = ConcolicUtil.forTypeCode(tc);
+					
+					Variable<?> var = Variable.create(t, name);
+					SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
+					symContext.addSymbolicVar(symf);
+					
+				}
 			}
 		}
 

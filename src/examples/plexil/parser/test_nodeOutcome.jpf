@@ -4,7 +4,7 @@ target.args=nodeOutcome
 
 concolic.method=nodeOutcome
 
-costar.precondition=pre nodeOutcome == nodeOutcome(_t,this_ASTNULL,node,nodeBody)
+costar.precondition=pre nodeOutcome == nodeOutcome(_t,this_ASTNULL,parent)
 costar.instrument=true
 costar.source=${plexil}/bin/plexil/
 costar.dest=${plexil}/bin/plexil/tmp/

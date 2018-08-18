@@ -37,7 +37,7 @@ public class ValuationGenerator {
 		first = true;
 	}
 
-	public static Valuation toValuation(String model) {		
+	public static Valuation toValuation(String model) {
 		Model m = new Model(model);
 		return toValuation(m.getFormula(), m.getPure());
 	}

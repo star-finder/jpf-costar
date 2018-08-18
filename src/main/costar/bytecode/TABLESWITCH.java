@@ -6,6 +6,7 @@ import java.util.List;
 import costar.CoStarMethodExplorer;
 import costar.constrainsts.CoStarConstrainstTree;
 import costar.constrainsts.CoStarNode;
+import gov.nasa.jpf.Config;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
@@ -37,12 +38,29 @@ public class TABLESWITCH extends gov.nasa.jpf.jvm.bytecode.TABLESWITCH
 			return super.execute(ti);
 		}
 		
+		Config config = ti.getVM().getConfig();
+		boolean isInstrument = Boolean.parseBoolean(config.getProperty("costar.instrument", "false"));
+		
 		CoStarConstrainstTree tree = analysis.getConstrainstTree();
 		CoStarNode current = tree.getCurrent();
 		
 		List<Formula> constraints = new ArrayList<Formula>();
 		
 		Formula formula = current.formula;
+		
+		int[] indexes = new int[targets.length + 1];
+		
+		if (isInstrument) {
+			for (int i = 0; i <= targets.length; i++) {
+				if (i == targets.length) {
+					int index = IFInstrHelper.getIndex(ti, mi.getInstructionAt(target));
+					indexes[i] = index;
+				} else {
+					int index = IFInstrHelper.getIndex(ti, mi.getInstructionAt(targets[i]));
+					indexes[i] = index;
+				}
+			}
+		}
 		
 		for (int i = 0; i <= targets.length; i++) {
 			Formula f = formula.copy();
@@ -66,9 +84,27 @@ public class TABLESWITCH extends gov.nasa.jpf.jvm.bytecode.TABLESWITCH
 		
 		for (int i = 0; i < targets.length; i++) {
 			if (v - getMin() == i) {
+				if (isInstrument) {
+					for (int j = 0; j <= targets.length; j++) {
+						if (j != i) {
+							int index = indexes[j];
+							Formula f = constraints.get(j);
+							if (index >= 0) tree.addToStack(f, index);
+						}
+					}
+				}
+				
 				lastIdx = i;
 				analysis.decision(ti, this, i, constraints);
 				return mi.getInstructionAt(targets[i]);
+			}
+		}
+		
+		if (isInstrument) {
+			for (int j = 0; j < targets.length; j++) {
+				int index = indexes[j];
+				Formula f = constraints.get(j);
+				if (index >= 0) tree.addToStack(f, index);
 			}
 		}
 		

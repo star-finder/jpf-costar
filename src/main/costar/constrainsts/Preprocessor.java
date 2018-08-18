@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import costar.valuation.ValuationGenerator;
+import gov.nasa.jpf.Config;
+import gov.nasa.jpf.vm.ClassInfo;
+import gov.nasa.jpf.vm.MethodInfo;
 import starlib.GlobalVariables;
 import starlib.data.DataNode;
 import starlib.data.DataNodeMap;
@@ -22,8 +26,27 @@ import starlib.formula.heap.InductiveTerm;
 import starlib.formula.heap.PointToTerm;
 import starlib.formula.pure.ComparisonTerm;
 import starlib.formula.pure.PureTerm;
+import starlib.jpf.PathFinderUtils;
 
 public class Preprocessor {
+	
+	private static ClassInfo ci;
+	
+	private static MethodInfo mi;
+	
+	private static boolean first = true;
+	
+	public static void setClassAndMethodInfo(ClassInfo ci, MethodInfo mi, Config conf) {
+		if(first) {
+			Preprocessor.ci = ci;
+			Preprocessor.mi = mi;
+			first = false;
+		}
+	}
+	
+	public static void reset() {
+		first = true;
+	}
 	
 	public static List<Formula> preprocess(Formula pre, Formula pc) {
 		Formula preCopy = pre.copy();
@@ -148,6 +171,45 @@ public class Preprocessor {
 					
 					if (ht == null) {
 						return fs;
+						
+						// enumeration here
+//						HashMap<String,String> knownTypeVars = PathFinderUtils.initTypeVarMap(ci,mi);
+//						
+//						f.updateType(knownTypeVars);
+//						String type = knownTypeVars.get(rootName);
+//						
+//						if (type == null)
+//							return fs;
+//						else {
+//							HeapFormula hff = f.getHeapFormula();
+//							HeapTerm[] hts = hff.getHeapTerms();
+//							
+//							List<Variable> sameType = new ArrayList<Variable>();
+//							
+//							for (HeapTerm htt : hts) {
+//								if (htt instanceof PointToTerm && ((PointToTerm) htt).getType().equals(type)) {
+//									sameType.add(((PointToTerm) htt).getRoot());
+//								}
+//							}
+//							
+//							for (int j = 0; j <= sameType.size(); j++) {
+//								if (j == sameType.size()) {
+//									// new node here
+//									Formula preCopy = pre.copy();
+//									
+//									preCopy.addPointToTerm(new Variable(rootName), type);
+//									
+//									preprocess(preCopy, pc);
+//								} else {
+//									// old node here
+//									Formula preCopy = pre.copy();
+//									
+//									preCopy.addComparisonTerm(Comparator.EQ, new Variable(rootName), sameType.get(j));
+//									
+//									preprocess(preCopy, pc);
+//								}
+//							}
+//						}
 					} else if (ht instanceof PointToTerm) {
 						String fieldName = varNameSplit[i];
 						

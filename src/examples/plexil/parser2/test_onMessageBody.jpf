@@ -1,0 +1,14 @@
+@include=./parser.jpf
+
+target.args=onMessageBody
+
+concolic.method=onMessageBody
+
+costar.precondition=pre onMessageBody == eqNull(_t,this_ASTNULL,xaction)
+costar.instrument=false
+costar.source=${plexil}/bin/plexil/
+costar.dest=${plexil}/bin/plexil/tmp/
+costar.class=PlexilTreeParser.class
+costar.root=_t
+
+star.max_depth=1

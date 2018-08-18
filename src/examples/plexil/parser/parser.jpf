@@ -2,7 +2,7 @@
 
 target=plexil.parser.Driver
 
-costar.data=data plexil_PlexilASTNode {int ttype; plexil_PlexilASTNode down; plexil_PlexilASTNode right}; data net_n3_nanoxml_XMLElement{}; data antlr_ASTNULLType{}
+costar.data=data plexil_PlexilASTNode {void f1; void f2; void f3; void f4; void f5; void f6; void f7; void f8; int ttype; plexil_PlexilASTNode down; plexil_PlexilASTNode right}; data net_n3_nanoxml_XMLElement{}; data antlr_ASTNULLType{}
 
 costar.predicate.file=${jpf-costar}/src/examples/plexil/parser/parser.pred
   
@@ -224,6 +224,9 @@ concolic.method.startCondition.config=all_fields_symbolic
 
 concolic.method.stateNameLiteral=plexil.PlexilTreeParser.stateNameLiteral(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.stateNameLiteral.config=all_fields_symbolic
+
+concolic.method.stringExpression=plexil.PlexilTreeParser.stringExpression(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
+concolic.method.stringExpression.config=all_fields_symbolic
 
 concolic.method.stringRHS=plexil.PlexilTreeParser.stringRHS(_t:antlr.collections.AST,parent:net.n3.nanoxml.IXMLElement)
 concolic.method.stringRHS.config=all_fields_symbolic

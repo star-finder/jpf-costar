@@ -17,6 +17,27 @@ public class IFGT extends gov.nasa.jpf.jvm.bytecode.IFGT {
 	}
 	
 	public void addToStack(ThreadInfo ti, CoStarConstrainstTree tree,
+			int conditionValue, Formula f, Expression sym_v1, Expression sym_v2) {
+		Formula f0 = f.copy();
+		Formula f1 = f.copy();
+		
+		f0.addComparisonTerm(Comparator.GT, sym_v1, sym_v2);
+		f1.addComparisonTerm(Comparator.LE, sym_v1, sym_v2);
+		
+		if (conditionValue > 0) {
+			int index = IFInstrHelper.getIndex(ti, getNext(ti));
+			if (index >= 0) {
+				tree.addToStack(f1, index);
+			}
+		} else {
+			int index = IFInstrHelper.getIndex(ti, getTarget());
+			if (index >= 0) {
+				tree.addToStack(f0, index);
+			}
+		}
+	}
+	
+	public void addToStack(ThreadInfo ti, CoStarConstrainstTree tree,
 			int conditionValue, Formula f0, Formula f1, Formula f2) {
 		if (conditionValue > 0) {
 			int index = IFInstrHelper.getIndex(ti, getNext(ti));
