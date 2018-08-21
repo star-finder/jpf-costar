@@ -1,8 +1,6 @@
 package doublelinkedlist;
 
 import org.junit.Test;
-
-import common.Utilities;
 import gov.nasa.jpf.util.test.TestJPF;
 
 public class Main_sample1 extends TestJPF {
@@ -24,7 +22,6 @@ public class Main_sample1 extends TestJPF {
 		header_2.element = ele_4;
 		header_2.next = header_326;
 		header_2.previous = header_327;
-		//System.out.println(Utilities.repOK(dll));
 		obj.sample(dll,o);
 	}
 
@@ -33,10 +30,44 @@ public class Main_sample1 extends TestJPF {
 		Main obj = new Main();
 		java.lang.Object o = new java.lang.Object();
 		doublelinkedlist.DoubleLinkedList dll = new doublelinkedlist.DoubleLinkedList();
+		doublelinkedlist.DoubleLinkedList.Entry header_2 = new doublelinkedlist.DoubleLinkedList.Entry();
+		doublelinkedlist.DoubleLinkedList.Entry first_6 = new doublelinkedlist.DoubleLinkedList.Entry();
+		doublelinkedlist.DoubleLinkedList.Entry last_7 = new doublelinkedlist.DoubleLinkedList.Entry();
+		doublelinkedlist.DoubleLinkedList.Entry prevF_10 = header_2;
+		doublelinkedlist.DoubleLinkedList.Entry nextL_12 = header_2;
+		doublelinkedlist.DoubleLinkedList.Entry first_326 = first_6;
+		doublelinkedlist.DoubleLinkedList.Entry last_327 = last_7;
+		doublelinkedlist.DoubleLinkedList.Entry nextF_9 = last_327;
+		doublelinkedlist.DoubleLinkedList.Entry prevL_328 = first_326;
+		int size_3 = 2;
+		doublelinkedlist.DoubleLinkedList.Entry prevL_13 = prevL_328;
+		java.lang.Object ele2_11 = null;
+		int modCount_1 = 0;
+		java.lang.Object ele1_8 = null;
+		java.lang.Object eleH_5 = null;
+		dll.modCount = modCount_1;
+		dll.header = header_2;
+		dll.size = size_3;
+		header_2.element = eleH_5;
+		header_2.next = first_6;
+		header_2.previous = last_7;
+		first_6.element = ele1_8;
+		first_6.next = nextF_9;
+		first_6.previous = prevF_10;
+		last_7.element = ele2_11;
+		last_7.next = nextL_12;
+		last_7.previous = prevL_13;
+		obj.sample(dll,o);
+	}
+
+	@Test
+	public void test_sample3() throws Exception {
+		Main obj = new Main();
+		java.lang.Object o = new java.lang.Object();
+		doublelinkedlist.DoubleLinkedList dll = new doublelinkedlist.DoubleLinkedList();
 		doublelinkedlist.DoubleLinkedList.Entry header_20 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry first_24 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry last_25 = new doublelinkedlist.DoubleLinkedList.Entry();
-		doublelinkedlist.DoubleLinkedList.Entry newNode_7 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry nextF_27 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry next1_410 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry prevF_28 = header_20;
@@ -52,9 +83,6 @@ public class Main_sample1 extends TestJPF {
 		java.lang.Object element_47 = element_11;
 		doublelinkedlist.DoubleLinkedList.Entry next_48 = next_12;
 		doublelinkedlist.DoubleLinkedList.Entry previous_49 = previous_13;
-		doublelinkedlist.DoubleLinkedList.Entry newEntry_14 = newNode_7;
-		doublelinkedlist.DoubleLinkedList.Entry nextL_50 = newEntry_14;
-		doublelinkedlist.DoubleLinkedList.Entry last_51 = newEntry_14;
 		doublelinkedlist.DoubleLinkedList.Entry first_326 = first_24;
 		doublelinkedlist.DoubleLinkedList.Entry last_327 = last_25;
 		doublelinkedlist.DoubleLinkedList.Entry next1_413 = last_327;
@@ -62,6 +90,10 @@ public class Main_sample1 extends TestJPF {
 		int size_21 = 4;
 		int modCount_19 = 0;
 		doublelinkedlist.DoubleLinkedList.Entry prevL_31 = prevL_328;
+		doublelinkedlist.DoubleLinkedList.Entry newEntry_14 = new doublelinkedlist.DoubleLinkedList.Entry();
+		doublelinkedlist.DoubleLinkedList.Entry newNode_7 = newEntry_14;
+		doublelinkedlist.DoubleLinkedList.Entry nextL_50 = newEntry_14;
+		doublelinkedlist.DoubleLinkedList.Entry last_51 = newEntry_14;
 		doublelinkedlist.DoubleLinkedList.Entry next_9 = null;
 		java.lang.Object item_414 = null;
 		java.lang.Object ele2_29 = null;
@@ -82,21 +114,17 @@ public class Main_sample1 extends TestJPF {
 		last_25.element = ele2_29;
 		last_25.next = nextL_30;
 		last_25.previous = prevL_31;
-		newNode_7.element = element_8;
-		newNode_7.next = next_9;
-		newNode_7.previous = previous_10;
 		nextF_27.element = item_411;
 		nextF_27.next = next1_410;
 		nextF_27.previous = first_326;
 		next1_410.element = item_414;
 		next1_410.next = next1_413;
 		next1_410.previous = nextF_27;
-		//System.out.println(Utilities.repOK(dll));
 		obj.sample(dll,o);
 	}
 
 	@Test
-	public void test_sample3() throws Exception {
+	public void test_sample4() throws Exception {
 		Main obj = new Main();
 		java.lang.Object o = new java.lang.Object();
 		doublelinkedlist.DoubleLinkedList dll = new doublelinkedlist.DoubleLinkedList();
@@ -106,7 +134,6 @@ public class Main_sample1 extends TestJPF {
 		doublelinkedlist.DoubleLinkedList.Entry nextF_40 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry next1_76 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry next1_98 = new doublelinkedlist.DoubleLinkedList.Entry();
-		doublelinkedlist.DoubleLinkedList.Entry newNode_7 = new doublelinkedlist.DoubleLinkedList.Entry();
 		doublelinkedlist.DoubleLinkedList.Entry prevF_41 = header_33;
 		doublelinkedlist.DoubleLinkedList.Entry nextL_43 = header_33;
 		doublelinkedlist.DoubleLinkedList.Entry prev1_77 = first_37;
@@ -125,9 +152,6 @@ public class Main_sample1 extends TestJPF {
 		java.lang.Object element_141 = element_11;
 		doublelinkedlist.DoubleLinkedList.Entry next_142 = next_12;
 		doublelinkedlist.DoubleLinkedList.Entry previous_143 = previous_13;
-		doublelinkedlist.DoubleLinkedList.Entry newEntry_14 = newNode_7;
-		doublelinkedlist.DoubleLinkedList.Entry nextL_144 = newEntry_14;
-		doublelinkedlist.DoubleLinkedList.Entry last_145 = newEntry_14;
 		doublelinkedlist.DoubleLinkedList.Entry e_17 = header_33;
 		doublelinkedlist.DoubleLinkedList.Entry e_19 = first_37;
 		doublelinkedlist.DoubleLinkedList.Entry e_21 = nextF_40;
@@ -136,10 +160,14 @@ public class Main_sample1 extends TestJPF {
 		doublelinkedlist.DoubleLinkedList.Entry e_27 = next1_116;
 		doublelinkedlist.DoubleLinkedList.Entry e_29 = e_27;
 		doublelinkedlist.DoubleLinkedList.Entry e_30 = e_29;
-		doublelinkedlist.DoubleLinkedList.Entry next1_148 = nextL_144;
 		doublelinkedlist.DoubleLinkedList.Entry previous_149 = prevL_44;
 		int size_34 = 5;
 		int modCount_32 = -1;
+		doublelinkedlist.DoubleLinkedList.Entry newEntry_14 = new doublelinkedlist.DoubleLinkedList.Entry();
+		doublelinkedlist.DoubleLinkedList.Entry newNode_7 = newEntry_14;
+		doublelinkedlist.DoubleLinkedList.Entry nextL_144 = newEntry_14;
+		doublelinkedlist.DoubleLinkedList.Entry last_145 = newEntry_14;
+		doublelinkedlist.DoubleLinkedList.Entry next1_148 = nextL_144;
 		java.lang.Object o2_31 = new java.lang.Object();
 		java.lang.Object ele2_42 = o2_31;
 		java.lang.Object eleH_36 = null;
@@ -171,10 +199,32 @@ public class Main_sample1 extends TestJPF {
 		next1_98.element = item_115;
 		next1_98.next = next1_116;
 		next1_98.previous = prev1_117;
-		newNode_7.element = element_8;
-		newNode_7.next = next_9;
-		newNode_7.previous = previous_10;
-		//System.out.println(Utilities.repOK(dll));
+		obj.sample(dll,o);
+	}
+
+	@Test
+	public void test_sample5() throws Exception {
+		Main obj = new Main();
+		java.lang.Object o = new java.lang.Object();
+		doublelinkedlist.DoubleLinkedList dll = new doublelinkedlist.DoubleLinkedList();
+		doublelinkedlist.DoubleLinkedList.Entry header_2 = new doublelinkedlist.DoubleLinkedList.Entry();
+		doublelinkedlist.DoubleLinkedList.Entry first_6 = new doublelinkedlist.DoubleLinkedList.Entry();
+		doublelinkedlist.DoubleLinkedList.Entry last_7 = first_6;
+		doublelinkedlist.DoubleLinkedList.Entry header_326 = header_2;
+		doublelinkedlist.DoubleLinkedList.Entry header_327 = header_2;
+		int size_3 = 1;
+		java.lang.Object ele1_8 = null;
+		int modCount_1 = 0;
+		java.lang.Object eleH_5 = null;
+		dll.modCount = modCount_1;
+		dll.header = header_2;
+		dll.size = size_3;
+		header_2.element = eleH_5;
+		header_2.next = first_6;
+		header_2.previous = last_7;
+		first_6.element = ele1_8;
+		first_6.next = header_326;
+		first_6.previous = header_327;
 		obj.sample(dll,o);
 	}
 

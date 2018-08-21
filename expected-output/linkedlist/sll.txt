@@ -1,0 +1,132 @@
+real	0m13.457s
+user	0m32.336s
+sys		0m3.188s
+
+======================================================
+Testing src/examples/star/linkedlist/test_find.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.find(Ljava/lang/Object;)Llinkedlist/MyLinkedListItr;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1205
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_insert.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.insert(Ljava/lang/Object;Llinkedlist/MyLinkedListItr;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1069
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_addLast.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.addLast(Ljava/lang/Object;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1144
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_first.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.first()Llinkedlist/MyLinkedListItr;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 971
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_findPrevious.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.findPrevious(Ljava/lang/Object;)Llinkedlist/MyLinkedListItr;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1210
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_remove.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.remove(Ljava/lang/Object;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1204
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_size.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.size()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1088
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_printList.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.printList(Llinkedlist/MyLinkedList;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 972
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_isEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.isEmpty()Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 936
+
+
+======================================================
+Testing src/examples/star/linkedlist/test_clear.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 53
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of linkedlist.MyLinkedList.clear()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 933

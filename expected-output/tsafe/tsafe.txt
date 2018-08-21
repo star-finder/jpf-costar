@@ -1,0 +1,14 @@
+real	19m50.516s
+user	19m28.121s
+sys		0m25.944s
+
+======================================================
+Testing src/examples/star/tsafe/test_tsr3.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of tsafe.Driver_TS_R.TS_R_3(Ltsafe/TrajectorySynthesizer;Ltsafe/RouteTrack;Ltsafe/Route;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 596
+[INFO:costar] Time = 1190234

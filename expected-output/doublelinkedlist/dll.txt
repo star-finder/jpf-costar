@@ -1,0 +1,277 @@
+real	0m45.081s
+user	1m26.513s
+sys		0m9.483s
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_removeI.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.removeI(I)Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 10
+[INFO:costar] Time = 2448
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_get.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.get(I)Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 1949
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_getFirst.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.getFirst()Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1099
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_add.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.add(Ljava/lang/Object;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1088
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_inList.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.inList(Ldoublelinkedlist/DoubleLinkedList$Entry;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1443
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_contains.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.contains(Ljava/lang/Object;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 12
+[INFO:costar] Time = 2799
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_addLast.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.addLast(Ljava/lang/Object;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1075
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_removeLast.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.removeLast()Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1105
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_removeFirst.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.removeFirst()Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1086
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_addFirst.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.addFirst(Ljava/lang/Object;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1085
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_sample.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2
+Count = 92
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.Main.sample(Ldoublelinkedlist/DoubleLinkedList;Ljava/lang/Object;)V
+Error
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 41
+[INFO:costar] Time = 8464
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_getLast.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.getLast()Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1089
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_remove.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.remove(Ljava/lang/Object;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 12
+[INFO:costar] Time = 2732
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_set.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.set(ILjava/lang/Object;)Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 1926
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_toArray.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.toArray()[Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1081
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_size.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.size()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1073
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_addI.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.addI(ILjava/lang/Object;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 8
+[INFO:costar] Time = 2105
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_clear.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.clear()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1071
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_indexOf.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.indexOf(Ljava/lang/Object;)I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 8
+[INFO:costar] Time = 2118
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_lastIndexOf.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.lastIndexOf(Ljava/lang/Object;)I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 8
+[INFO:costar] Time = 2123
+
+
+======================================================
+Testing src/examples/star/doublelinkedlist/test_clone.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 90
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of doublelinkedlist.DoubleLinkedList.clone()Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1087

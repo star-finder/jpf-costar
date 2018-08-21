@@ -1,0 +1,112 @@
+real	0m15.774s
+user	0m32.713s
+sys		0m3.645s
+
+======================================================
+Testing src/examples/star/bst/test_findMax.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.findMax()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1136
+
+
+======================================================
+Testing src/examples/star/bst/test_find.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.find(I)I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 1629
+
+
+======================================================
+Testing src/examples/star/bst/test_printTree.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.printTree()V
+Empty tree
+1
+-1
+0
+0
+1
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1312
+
+
+======================================================
+Testing src/examples/star/bst/test_insert.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.insert(I)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 1598
+
+
+======================================================
+Testing src/examples/star/bst/test_makeEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.makeEmpty()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 957
+
+
+======================================================
+Testing src/examples/star/bst/test_findMin.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.findMin()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1120
+
+
+======================================================
+Testing src/examples/star/bst/test_remove.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.remove(I)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 23
+[INFO:costar] Time = 4936
+
+
+======================================================
+Testing src/examples/star/bst/test_isEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 65
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of bst.BinarySearchTree.isEmpty()Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 971

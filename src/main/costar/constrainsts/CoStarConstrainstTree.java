@@ -125,7 +125,7 @@ public class CoStarConstrainstTree {
 				executedSequences.add(new String(currentSequence));
 			
 			String model = initModels.poll();
-			logger.info("New init model = " + model);
+//			logger.info("New init model = " + model);
 			
 			addModel(model);
 			Valuation val = ValuationGenerator.toValuation(model);
@@ -174,7 +174,7 @@ public class CoStarConstrainstTree {
 						Valuation val = ValuationGenerator.toValuation(model);
 						
 						// build new valuation based on the model
-						logger.info("New model = " + model);
+//						logger.info("New model = " + model);
 //						logger.info("New constraint = " + f.toString());
 //						logger.info("New valuation = " + val);
 						
@@ -274,7 +274,7 @@ public class CoStarConstrainstTree {
 				Valuation val = ValuationGenerator.toValuation(model);
 				
 				// build new valuation based on the model
-				logger.info("New model = " + model);
+//				logger.info("New model = " + model);
 //				logger.info("New constraint = " + f.toString());
 //				logger.info("New valuation = " + val);
 				

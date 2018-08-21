@@ -1,0 +1,15 @@
+real	0m2.050s
+user	0m5.196s
+sys		0m0.494s
+
+======================================================
+Testing src/examples/star/tll/test_positiveLeafCount.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 27
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of tll.Tll.positiveLeafCount()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 1769

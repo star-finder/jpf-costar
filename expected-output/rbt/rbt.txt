@@ -1,0 +1,93 @@
+real	40m4.985s
+user	37m29.354s
+sys		0m47.405s
+
+======================================================
+Testing src/examples/star/rbt/test_get.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 163
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of rbt.TreeMap.get(I)Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 9
+[INFO:costar] Time = 3013
+
+
+======================================================
+Testing src/examples/star/rbt/test_lastKey.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 163
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of rbt.TreeMap.lastKey()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1711
+
+
+======================================================
+Testing src/examples/star/rbt/test_put.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 163
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of rbt.TreeMap.put(ILjava/lang/Object;)Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 327
+[INFO:costar] Time = 626737
+
+
+======================================================
+Testing src/examples/star/rbt/test_firstKey.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 163
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of rbt.TreeMap.firstKey()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1417
+
+
+======================================================
+Testing src/examples/star/rbt/test_remove.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 163
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of rbt.TreeMap.remove(I)Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 738
+[INFO:costar] Time = 1746110
+
+
+======================================================
+Testing src/examples/star/rbt/test_containsKey.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 163
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of rbt.TreeMap.containsKey(I)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 2513
+
+
+======================================================
+Testing src/examples/star/rbt/test_containsValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 163
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of rbt.TreeMap.containsValue(Ljava/lang/Object;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 34
+[INFO:costar] Time = 21722

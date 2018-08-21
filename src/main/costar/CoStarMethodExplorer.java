@@ -286,7 +286,7 @@ public class CoStarMethodExplorer {
 			for (int i = 0; i < numOfFields; i++) {
 				FieldInfo fi = thisEi.getFieldInfo(i);
 				
-				if (fi.getName().equals("ASTNULL")) {
+//				if (fi.getName().equals("ASTNULL")) {
 				
 					String name = "this_" + fi.getName();
 					starlib.formula.Variable attr = new starlib.formula.Variable(name);
@@ -299,7 +299,7 @@ public class CoStarMethodExplorer {
 					SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
 					symContext.addSymbolicVar(symf);
 					
-				}
+//				}
 			}
 		}
 

@@ -1,0 +1,93 @@
+real	4m39.098s
+user	4m46.495s
+sys		0m14.635s
+
+======================================================
+Testing src/examples/star/aatree/test_findMax.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 110
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of aatree.AATree.findMax()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1430
+
+
+======================================================
+Testing src/examples/star/aatree/test_insert.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 110
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of aatree.AATree.insert(I)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 35
+[INFO:costar] Time = 17537
+
+
+======================================================
+Testing src/examples/star/aatree/test_contains.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 110
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of aatree.AATree.contains(I)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 9
+[INFO:costar] Time = 2655
+
+
+======================================================
+Testing src/examples/star/aatree/test_makeEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 110
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of aatree.AATree.makeEmpty()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1395
+
+
+======================================================
+Testing src/examples/star/aatree/test_findMin.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 110
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of aatree.AATree.findMin()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 3461
+
+
+======================================================
+Testing src/examples/star/aatree/test_remove.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 110
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of aatree.AATree.remove(I)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 316
+[INFO:costar] Time = 249482
+
+
+======================================================
+Testing src/examples/star/aatree/test_isEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 110
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of aatree.AATree.isEmpty()Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 1383

@@ -1,0 +1,107 @@
+real	0m9.147s
+user	0m18.757s
+sys		0m2.041s
+
+
+======================================================
+Testing src/examples/star/stack/test_push.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.push(Ljava/lang/Object;)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 863
+
+
+======================================================
+Testing src/examples/star/stack/test_contains.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.contains(Ljava/lang/Object;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1074
+
+
+======================================================
+Testing src/examples/star/stack/test_makeEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.makeEmpty()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 863
+
+
+======================================================
+Testing src/examples/star/stack/test_topAndPop.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.topAndPop()Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 860
+
+
+======================================================
+Testing src/examples/star/stack/test_pop.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.pop()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 870
+
+
+======================================================
+Testing src/examples/star/stack/test_isFull.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.isFull()Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 877
+
+
+======================================================
+Testing src/examples/star/stack/test_top.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.top()Ljava/lang/Object;
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 882
+
+
+======================================================
+Testing src/examples/star/stack/test_isEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 20
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of stack.StackLi.isEmpty()Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 857

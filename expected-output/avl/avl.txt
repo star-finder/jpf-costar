@@ -1,0 +1,125 @@
+real	4m35.989s
+user	4m16.764s
+sys		0m25.315s
+
+======================================================
+Testing src/examples/star/avl/test_findMax.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.findMax()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1704
+
+
+======================================================
+Testing src/examples/star/avl/test_find.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.find(I)I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 2075
+
+
+======================================================
+Testing src/examples/star/avl/test_printTree.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.printTree()V
+Empty tree
+3
+0
+1
+-1
+0
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1684
+
+
+======================================================
+Testing src/examples/star/avl/test_minElement.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.minElement(I)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 54
+[INFO:costar] Time = 37066
+
+
+======================================================
+Testing src/examples/star/avl/test_insert.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.insert(I)V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 604
+[INFO:costar] Time = 223454
+
+
+======================================================
+Testing src/examples/star/avl/test_makeEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.makeEmpty()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1676
+
+
+======================================================
+Testing src/examples/star/avl/test_findMin.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.findMin()I
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1684
+
+
+======================================================
+Testing src/examples/star/avl/test_maxElement.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.maxElement(I)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 2734
+
+
+======================================================
+Testing src/examples/star/avl/test_isEmpty.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 79
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of avl.AvlTree.isEmpty()Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 4
+[INFO:costar] Time = 1677

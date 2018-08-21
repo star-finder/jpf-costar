@@ -1,0 +1,14 @@
+real	0m1.128s
+user	0m2.225s
+sys		0m0.266s
+
+======================================================
+Testing src/examples/star/gantt1/test_start.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of ganttproject.DependencyGraph.startTransaction()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 858

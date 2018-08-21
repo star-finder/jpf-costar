@@ -93,7 +93,7 @@ public class CoStar implements JPFShell {
 
 		long endTime = System.currentTimeMillis();
 		logger.info("Call = " + Solver.getCount());
-		logger.info("Time = " + ((endTime - startTime) / 1000));
+		logger.info("Time = " + ((endTime - startTime)));
 	}
 
 	public static void revert(Config conf) {

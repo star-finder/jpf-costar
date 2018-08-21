@@ -154,13 +154,13 @@ pred sub(root,astnull,parent) == root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttyp
 
 pred timeExpression(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
 
+pred timepoint(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
+
 pred timeRHS(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
 
 pred timeValue(root,astnull) == root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttype,down,right> * astnull::antlr_ASTNULLType<>;
 
 pred timeVariable(root,astnull,parent) == root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
-
-pred timepoint(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
 
 pred tolerance(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=null || root::plexil_PlexilASTNode<_,_,_,_,_,_,_,_,ttype,down,right> * astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<>;
 

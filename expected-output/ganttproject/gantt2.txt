@@ -1,0 +1,15 @@
+real	0m24.539s
+user	0m24.776s
+sys		0m5.529s
+	
+
+======================================================
+Testing src/examples/star/gantt2/test_rollback.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of ganttproject.DependencyGraph.rollbackTransaction()V
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 156
+[INFO:costar] Time = 24256

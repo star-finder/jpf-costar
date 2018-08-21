@@ -1,3 +1,1333 @@
-real	4m42.956s
-user	10m11.929s
-sys		0m41.906s
+real	4m46.743s
+user	10m19.358s
+sys		0m42.209s
+
+======================================================
+Testing src/examples/plexil/parser/test_resourcePriority.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.resourcePriority(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1586
+
+
+======================================================
+Testing src/examples/plexil/parser/test_numericRHS.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.numericRHS(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2069
+
+
+======================================================
+Testing src/examples/plexil/parser/test_sub.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.sub(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1595
+
+
+======================================================
+Testing src/examples/plexil/parser/test_libraryParamSpec.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.libraryParamSpec(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_10,down_11,right_12>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & libraryParamSpec_AST_in_2=_t_1 &  __t43_3=_t_1 & tmp22_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=118 &  paramAST_5!=null & paramAST_5!=this_ASTNULL & ttype_10=paramInt_6;Pure Assigment: Sat[(libraryParamSpec_AST_in_2,1),(ttype_10,118),(_t,1),(paramAST_5,1),(tmp22_AST_in_4,1),(paramInt_6,118),(this_ASTNULL,0),(__t43_3,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_13,down_14,right_15>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & libraryParamSpec_AST_in_2=_t_1 &  __t43_3=_t_1 & tmp22_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=118 &  paramAST_5!=null & paramAST_5!=this_ASTNULL & ttype_13=paramInt_6 &  _t_7=down_14 & _t_8=_t_7 & _t_8!=this_ASTNULL & typeName_AST_in_9=_t_8 &  _t_8!=null;Pure Assigment: Sat[(libraryParamSpec_AST_in_2,1),(typeName_AST_in_9,1),(_t_7,1),(_t,1),(paramAST_5,1),(_t_8,1),(tmp22_AST_in_4,1),(paramInt_6,118),(down_14,1),(this_ASTNULL,0),(__t43_3,1),(_t_1,1),(ttype_13,118)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_12,down_13,right_14>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & libraryParamSpec_AST_in_2=_t_1 &  __t43_3=_t_1 & tmp22_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=118 &  paramAST_5!=null & paramAST_5!=this_ASTNULL & ttype_12=paramInt_6 &  _t_7=down_13 & _t_8=_t_7 & _t_8=this_ASTNULL;Pure Assigment: Sat[(libraryParamSpec_AST_in_2,1),(_t_7,0),(_t,1),(paramAST_5,1),(_t_8,0),(tmp22_AST_in_4,1),(paramInt_6,118),(down_13,0),(this_ASTNULL,0),(__t43_3,1),(_t_1,1),(ttype_12,118)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3554
+
+
+======================================================
+Testing src/examples/plexil/parser/test_postCondition.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.postCondition(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1610
+
+
+======================================================
+Testing src/examples/plexil/parser/test_paramsSpec.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.paramsSpec(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & paramsSpec_AST_in_3=_t_1 &  __t20_4=_t_1 & tmp10_AST_in_5=_t_1 & paramAST_6=_t_1 & paramInt_7=117 &  paramAST_6!=null & paramAST_6!=this_ASTNULL & ttype_11=paramInt_7;Pure Assigment: Sat[(ttype_11,117),(__t20_4,1),(_t,1),(parent_2,0),(paramsSpec_AST_in_3,1),(tmp10_AST_in_5,1),(paramAST_6,1),(this_ASTNULL,2),(parent,0),(paramInt_7,117),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_12,down_13,right_14>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & paramsSpec_AST_in_3=_t_1 &  __t20_4=_t_1 & tmp10_AST_in_5=_t_1 & paramAST_6=_t_1 & paramInt_7=117 &  paramAST_6!=null & paramAST_6!=this_ASTNULL & ttype_12=paramInt_7 &  _t_8=down_13 & _t_8!=null;Pure Assigment: Sat[(ttype_12,117),(down_13,1),(__t20_4,1),(_t,1),(parent_2,0),(paramsSpec_AST_in_3,1),(_t_8,1),(tmp10_AST_in_5,1),(paramAST_6,1),(this_ASTNULL,2),(parent,0),(paramInt_7,117),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 3139
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeIdRef.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeIdRef(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1575
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeDeclaration.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeDeclaration(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & node_2=node & _t_1!=this_ASTNULL &  nodeDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_6=121;Pure Assigment: Sat[(node,0),(nodeDeclaration_AST_in_3,1),(node_2,0),(ttype_6,121),(_t,1),(_t_1,1),(this_ASTNULL,2)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_15,down_16,right_17>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & node_2=node & _t_1!=this_ASTNULL &  nodeDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_15=121 & _t_4=_t_1 &  _t_4!=this_ASTNULL & variableDeclaration_AST_in_5=_t_4 & __t99_6=_t_4 &  tmp29_AST_in_7=_t_4 & paramAST_8=_t_4 & paramInt_9=121 & paramAST_8!=null &  paramAST_8!=this_ASTNULL & ttype_15=paramInt_9 & _t_10=down_16 & _t_10!=null;Pure Assigment: Sat[(paramInt_9,121),(variableDeclaration_AST_in_5,1),(_t,1),(nodeDeclaration_AST_in_3,1),(tmp29_AST_in_7,1),(node_2,2),(_t_4,1),(__t99_6,1),(ttype_15,121),(paramAST_8,1),(node,2),(down_16,1),(this_ASTNULL,3),(_t_10,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_14,down_15,right_16>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & node_2=node & _t_1!=this_ASTNULL &  nodeDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_14=32;Pure Assigment: Sat[(node,0),(nodeDeclaration_AST_in_3,1),(node_2,0),(this_ASTNULL,2),(_t,1),(ttype_14,32),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_21,down_22,right_23>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & node_2=node & _t_1!=this_ASTNULL &  nodeDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_21=32 & _t_4=_t_1 &  _t_4!=this_ASTNULL & interfaceDeclaration_AST_in_5=_t_4 & _t_4!=null &  ttype_21=1+31 & _t_6=_t_4 & _t_6!=this_ASTNULL & inOut_AST_in_7=_t_6 &  tn_8=0 & __t94_9=_t_6 & tmp39_AST_in_10=_t_6 & paramAST_11=_t_6 &  paramInt_12=32 & paramAST_11!=null & paramAST_11!=this_ASTNULL &  ttype_21=paramInt_12 & _t_13=down_22 & _t_13!=null;Pure Assigment: Sat[(ttype_21,32),(down_22,1),(_t,1),(nodeDeclaration_AST_in_3,1),(tn_8,0),(_t_6,1),(tmp39_AST_in_10,1),(node_2,2),(_t_4,1),(interfaceDeclaration_AST_in_5,1),(__t94_9,1),(inOut_AST_in_7,1),(paramAST_11,1),(_t_13,1),(node,2),(paramInt_12,32),(this_ASTNULL,3),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 15
+[INFO:costar] Time = 6750
+
+
+======================================================
+Testing src/examples/plexil/parser/test_libraryNodeIdRef.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.libraryNodeIdRef(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1573
+
+
+======================================================
+Testing src/examples/plexil/parser/test_add.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.add(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1576
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeStateValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeStateValue(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2046
+
+
+======================================================
+Testing src/examples/plexil/parser/test_timeExpression.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.timeExpression(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  timeExpression_AST_in_3=_t_1 & tv_4=0 & _t_1!=null & ttype_7=153;Pure Assigment: Sat[(timeExpression_AST_in_3,1),(ttype_7,153),(tv_4,0),(parent_2,2),(_t,1),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_20,down_21,right_22>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  timeExpression_AST_in_3=_t_1 & tv_4=0 & _t_1!=null & ttype_20=153 &  _t_1!=this_ASTNULL & tv_5=_t_1 & _t_6=_t_1 & _t_6!=this_ASTNULL &  timeValue_AST_in_7=_t_6 & __t164_8=_t_6 & tmp67_AST_in_9=_t_6 &  paramAST_10=_t_6 & paramInt_11=153 & paramAST_10!=null &  paramAST_10!=this_ASTNULL & ttype_20=paramInt_11 & _t_12=down_21 &  _t_13=_t_12 & _t_13!=this_ASTNULL & integerValue_AST_in_14=_t_13 &  tmp57_AST_in_15=_t_13 & paramAST_16=_t_13 & paramInt_17=108 &  paramAST_16!=null;Pure Assigment: Sat[(ttype_20,153),(integerValue_AST_in_14,1),(_t,1),(parent_2,2),(paramInt_17,108),(_t_6,1),(timeValue_AST_in_7,1),(tv_5,1),(down_21,1),(tmp57_AST_in_15,1),(parent,2),(__t164_8,1),(paramInt_11,153),(timeExpression_AST_in_3,1),(_t_13,1),(paramAST_10,1),(tv_4,0),(tmp67_AST_in_9,1),(_t_12,1),(paramAST_16,1),(this_ASTNULL,3),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_21,down_22,right_23>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  timeExpression_AST_in_3=_t_1 & tv_4=0 & _t_1!=null & ttype_21=153 &  _t_1!=this_ASTNULL & tv_5=_t_1 & _t_6=_t_1 & _t_6!=this_ASTNULL &  timeValue_AST_in_7=_t_6 & __t164_8=_t_6 & tmp67_AST_in_9=_t_6 &  paramAST_10=_t_6 & paramInt_11=153 & paramAST_10!=null &  paramAST_10!=this_ASTNULL & ttype_21=paramInt_11 & _t_12=down_22 &  _t_13=_t_12 & _t_12=down_22 & _t_13=_t_12 & _t_13=this_ASTNULL;Pure Assigment: Sat[(ttype_21,153),(down_22,3),(_t,1),(parent_2,2),(_t_6,1),(timeValue_AST_in_7,1),(tv_5,1),(parent,2),(__t164_8,1),(paramInt_11,153),(timeExpression_AST_in_3,1),(_t_13,3),(paramAST_10,1),(tv_4,0),(tmp67_AST_in_9,1),(_t_12,3),(this_ASTNULL,3),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_20,down_21,right_22>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  timeExpression_AST_in_3=_t_1 & tv_4=0 & _t_1!=null & ttype_20=120;Pure Assigment: Sat[(ttype_20,120),(timeExpression_AST_in_3,1),(tv_4,0),(parent_2,2),(_t,1),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_23,down_24,right_25>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  timeExpression_AST_in_3=_t_1 & tv_4=0 & _t_1!=null & ttype_23=78;Pure Assigment: Sat[(timeExpression_AST_in_3,1),(_t,1),(parent_2,2),(tv_4,0),(ttype_23,78),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 19
+[INFO:costar] Time = 8261
+
+
+======================================================
+Testing src/examples/plexil/parser/test_arrayRHS.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.arrayRHS(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2073
+
+
+======================================================
+Testing src/examples/plexil/parser/test_libraryNodeDeclaration.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.libraryNodeDeclaration(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_10,down_11,right_12>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & libraryNodeDeclaration_AST_in_2=_t_1 &  __t36_3=_t_1 & tmp7_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=7 &  paramAST_5!=null & paramAST_5!=this_ASTNULL & ttype_10=paramInt_6;Pure Assigment: Sat[(libraryNodeDeclaration_AST_in_2,1),(ttype_10,7),(__t36_3,1),(_t,1),(paramAST_5,1),(tmp7_AST_in_4,1),(paramInt_6,7),(this_ASTNULL,0),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_13,down_14,right_15>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & libraryNodeDeclaration_AST_in_2=_t_1 &  __t36_3=_t_1 & tmp7_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=7 &  paramAST_5!=null & paramAST_5!=this_ASTNULL & ttype_13=paramInt_6 &  _t_7=down_14 & tmp8_AST_in_8=_t_7 & paramAST_9=_t_7 & paramInt_10=112 &  paramAST_9!=null;Pure Assigment: Sat[(libraryNodeDeclaration_AST_in_2,1),(paramAST_9,1),(_t,1),(tmp7_AST_in_4,1),(down_14,1),(paramInt_10,112),(ttype_13,7),(_t_7,1),(__t36_3,1),(tmp8_AST_in_8,1),(paramAST_5,1),(paramInt_6,7),(this_ASTNULL,0),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_14,down_15,right_16>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & libraryNodeDeclaration_AST_in_2=_t_1 &  __t36_3=_t_1 & tmp7_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=7 &  paramAST_5!=null & paramAST_5!=this_ASTNULL & ttype_14=paramInt_6 &  _t_7=down_15 & tmp8_AST_in_8=_t_7 & paramAST_9=_t_7 & paramInt_10=112 &  paramAST_9!=null & paramAST_9=this_ASTNULL;Pure Assigment: Sat[(libraryNodeDeclaration_AST_in_2,1),(paramAST_9,2),(_t,1),(ttype_14,7),(tmp7_AST_in_4,1),(down_15,2),(paramInt_10,112),(_t_7,2),(__t36_3,1),(tmp8_AST_in_8,2),(paramAST_5,1),(paramInt_6,7),(this_ASTNULL,2),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3559
+
+
+======================================================
+Testing src/examples/plexil/parser/test_endCondition.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.endCondition(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1572
+
+
+======================================================
+Testing src/examples/plexil/parser/test_realValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.realValue(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_5,down_6,right_7>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & realValue_AST_in_2=_t_1 & _t_1!=null &  ttype_5=1+108;Pure Assigment: Sat[(realValue_AST_in_2,1),(this_ASTNULL,0),(_t,1),(_t_1,1),(ttype_5,109)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_56,down_57,right_58>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & realValue_AST_in_2=_t_1 & _t_1!=null &  ttype_56=0+108;Pure Assigment: Sat[(realValue_AST_in_2,1),(ttype_56,108),(_t,1),(_t_1,1),(this_ASTNULL,0)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 9
+[INFO:costar] Time = 4354
+
+
+======================================================
+Testing src/examples/plexil/parser/test_timeValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.timeValue(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_10,down_11,right_12>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & timeValue_AST_in_2=_t_1 & __t164_3=_t_1 &  tmp67_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=153 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_10=paramInt_6;Pure Assigment: Sat[(timeValue_AST_in_2,1),(tmp67_AST_in_4,1),(ttype_10,153),(_t,1),(__t164_3,1),(paramAST_5,1),(paramInt_6,153),(this_ASTNULL,0),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_15,down_16,right_17>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & timeValue_AST_in_2=_t_1 & __t164_3=_t_1 &  tmp67_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=153 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_15=paramInt_6 & _t_7=down_16 & _t_8=_t_7 &  _t_8!=this_ASTNULL & integerValue_AST_in_9=_t_8 & tmp57_AST_in_10=_t_8 &  paramAST_11=_t_8 & paramInt_12=108 & paramAST_11!=null;Pure Assigment: Sat[(_t,1),(__t164_3,1),(integerValue_AST_in_9,1),(timeValue_AST_in_2,1),(tmp67_AST_in_4,1),(ttype_15,153),(_t_7,1),(paramAST_5,1),(_t_8,1),(down_16,1),(paramInt_6,153),(paramInt_12,108),(paramAST_11,1),(this_ASTNULL,0),(tmp57_AST_in_10,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_16,down_17,right_18>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & timeValue_AST_in_2=_t_1 & __t164_3=_t_1 &  tmp67_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=153 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_16=paramInt_6 & _t_7=down_17 & _t_8=_t_7 &  _t_8=this_ASTNULL;Pure Assigment: Sat[(timeValue_AST_in_2,1),(tmp67_AST_in_4,1),(ttype_16,153),(_t,1),(__t164_3,1),(paramAST_5,1),(_t_7,0),(paramInt_6,153),(down_17,0),(_t_8,0),(this_ASTNULL,0),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 8
+[INFO:costar] Time = 4043
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeFailureVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeFailureVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1622
+
+
+======================================================
+Testing src/examples/plexil/parser/test_timepoint.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.timepoint(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2217
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeRef.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeRef(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1712
+
+
+======================================================
+Testing src/examples/plexil/parser/test_timeVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.timeVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  timeVariable_AST_in_3=_t_1 & n_4=0 & n_5=_t_1 & paramAST_6=_t_1 &  paramInt_7=120 & paramAST_6!=null & paramAST_6!=this_ASTNULL &  ttype_11=paramInt_7;Pure Assigment: Sat[(timeVariable_AST_in_3,1),(ttype_11,120),(_t,1),(parent_2,2),(n_5,1),(n_4,0),(paramAST_6,1),(this_ASTNULL,3),(parent,2),(paramInt_7,120),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 3206
+
+
+======================================================
+Testing src/examples/plexil/parser/test_constAlias.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.constAlias(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1642
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeOutcome.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeOutcome(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeOutcome_AST_in_3=_t_1 & _t_1!=null & ttype_6=155;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(nodeOutcome_AST_in_3,1),(ttype_6,155),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_39,down_40,right_41>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeOutcome_AST_in_3=_t_1 & _t_1!=null & ttype_39=62;Pure Assigment: Sat[(parent_2,0),(parent,0),(nodeOutcome_AST_in_3,1),(this_ASTNULL,2),(ttype_39,62),(_t_1,1),(_t,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3875
+
+
+======================================================
+Testing src/examples/plexil/parser/test_ifBody.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.ifBody(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, xaction::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1579
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeFailure.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeFailure(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeFailure_AST_in_3=_t_1 & _t_1!=null & ttype_6=157;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(nodeFailure_AST_in_3,1),(ttype_6,157),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_39,down_40,right_41>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeFailure_AST_in_3=_t_1 & _t_1!=null & ttype_39=74;Pure Assigment: Sat[(parent_2,0),(parent,0),(nodeFailure_AST_in_3,1),(this_ASTNULL,2),(ttype_39,74),(_t_1,1),(_t,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3710
+
+
+======================================================
+Testing src/examples/plexil/parser/test_comparison.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.comparison(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_6=7+143;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(comparison_AST_in_3,1),(ttype_6,150),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_24,down_25,right_26>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_24=6+143;Pure Assigment: Sat[(parent_2,0),(parent,0),(comparison_AST_in_3,1),(this_ASTNULL,2),(ttype_24,149),(_t_1,1),(_t,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_24,down_25,right_26>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_24=5+143;Pure Assigment: Sat[(parent_2,0),(parent,0),(comparison_AST_in_3,1),(this_ASTNULL,2),(ttype_24,148),(_t_1,1),(_t,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_24,down_25,right_26>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_24=4+143;Pure Assigment: Sat[(parent_2,0),(parent,0),(comparison_AST_in_3,1),(this_ASTNULL,2),(ttype_24,147),(_t_1,1),(_t,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_24,down_25,right_26>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_24=3+143;Pure Assigment: Sat[(parent_2,0),(parent,0),(comparison_AST_in_3,1),(this_ASTNULL,2),(ttype_24,146),(_t_1,1),(_t,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_24,down_25,right_26>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_24=2+143;Pure Assigment: Sat[(parent_2,0),(parent,0),(comparison_AST_in_3,1),(this_ASTNULL,2),(ttype_24,145),(_t_1,1),(_t,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_24,down_25,right_26>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_24=1+143;Pure Assigment: Sat[(parent_2,0),(parent,0),(comparison_AST_in_3,1),(this_ASTNULL,2),(ttype_24,144),(_t_1,1),(_t,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_24,down_25,right_26>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & comparison_AST_in_3=_t_1 &  _t_1!=null & ttype_24=0+143;Pure Assigment: Sat[(parent_2,0),(parent,0),(comparison_AST_in_3,1),(this_ASTNULL,2),(ttype_24,143),(_t_1,1),(_t,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 19
+[INFO:costar] Time = 8294
+
+
+======================================================
+Testing src/examples/plexil/parser/test_startCondition.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.startCondition(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1600
+
+
+======================================================
+Testing src/examples/plexil/parser/test_absValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.absValue(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1630
+
+
+======================================================
+Testing src/examples/plexil/parser/test_interfaceDeclaration.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.interfaceDeclaration(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_5,down_6,right_7>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & interfaceDeclaration_AST_in_2=_t_1 &  _t_1!=null & ttype_5=1+31;Pure Assigment: Sat[(interfaceDeclaration_AST_in_2,1),(this_ASTNULL,0),(_t,1),(_t_1,1),(ttype_5,32)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_17,down_18,right_19>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & interfaceDeclaration_AST_in_2=_t_1 &  _t_1!=null & ttype_17=1+31 & _t_3=_t_1 & _t_3!=this_ASTNULL &  inOut_AST_in_4=_t_3 & tn_5=0 & __t94_6=_t_3 & tmp39_AST_in_7=_t_3 &  paramAST_8=_t_3 & paramInt_9=32 & paramAST_8!=null &  paramAST_8!=this_ASTNULL & ttype_17=paramInt_9 & _t_10=down_18 & _t_10!=null;Pure Assigment: Sat[(paramInt_9,32),(interfaceDeclaration_AST_in_2,1),(_t,1),(__t94_6,1),(ttype_17,32),(tmp39_AST_in_7,1),(inOut_AST_in_4,1),(tn_5,0),(paramAST_8,1),(_t_3,1),(down_18,1),(this_ASTNULL,2),(_t_10,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_13,down_14,right_15>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & interfaceDeclaration_AST_in_2=_t_1 &  _t_1!=null & ttype_13=0+31;Pure Assigment: Sat[(interfaceDeclaration_AST_in_2,1),(this_ASTNULL,0),(_t,1),(_t_1,1),(ttype_13,31)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_17,down_18,right_19>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & interfaceDeclaration_AST_in_2=_t_1 &  _t_1!=null & ttype_17=0+31 & _t_3=_t_1 & _t_3!=this_ASTNULL &  in_AST_in_4=_t_3 & tn_5=0 & __t89_6=_t_3 & tmp37_AST_in_7=_t_3 &  paramAST_8=_t_3 & paramInt_9=31 & paramAST_8!=null &  paramAST_8!=this_ASTNULL & ttype_17=paramInt_9 & _t_10=down_18 & _t_10!=null;Pure Assigment: Sat[(__t89_6,1),(paramInt_9,31),(interfaceDeclaration_AST_in_2,1),(_t,1),(in_AST_in_4,1),(ttype_17,31),(tn_5,0),(paramAST_8,1),(_t_3,1),(tmp37_AST_in_7,1),(down_18,1),(this_ASTNULL,2),(_t_10,1),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 13
+[INFO:costar] Time = 5964
+
+
+======================================================
+Testing src/examples/plexil/parser/test_blobVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.blobVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  blobVariable_AST_in_3=_t_1 & n_4=0 & n_5=_t_1 & paramAST_6=_t_1 &  paramInt_7=120 & paramAST_6!=null & paramAST_6!=this_ASTNULL &  ttype_11=paramInt_7;Pure Assigment: Sat[(ttype_11,120),(blobVariable_AST_in_3,1),(_t,1),(parent_2,2),(n_5,1),(n_4,0),(paramAST_6,1),(this_ASTNULL,3),(parent,2),(paramInt_7,120),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2856
+
+
+======================================================
+Testing src/examples/plexil/parser/test_name.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.name(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1757
+
+
+======================================================
+Testing src/examples/plexil/parser/test_stringExpression.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.stringExpression(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stringExpression_AST_in_3=_t_1 & sv_4=0 & _t_1!=null & ttype_7=162;Pure Assigment: Sat[(sv_4,0),(ttype_7,162),(_t,1),(parent_2,2),(stringExpression_AST_in_3,1),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_29,down_30,right_31>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stringExpression_AST_in_3=_t_1 & sv_4=0 & _t_1!=null & ttype_29=137;Pure Assigment: Sat[(sv_4,0),(ttype_29,137),(parent_2,2),(_t,1),(stringExpression_AST_in_3,1),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_34,down_35,right_36>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stringExpression_AST_in_3=_t_1 & sv_4=0 & _t_1!=null & ttype_34=120;Pure Assigment: Sat[(sv_4,0),(_t,1),(parent_2,2),(ttype_34,120),(stringExpression_AST_in_3,1),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_23,down_24,right_25>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stringExpression_AST_in_3=_t_1 & sv_4=0 & _t_1!=null & ttype_23=110;Pure Assigment: Sat[(sv_4,0),(_t,1),(parent_2,2),(ttype_23,110),(stringExpression_AST_in_3,1),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_65,down_66,right_67>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stringExpression_AST_in_3=_t_1 & sv_4=0 & _t_1!=null & ttype_65=78;Pure Assigment: Sat[(sv_4,0),(_t,1),(parent_2,2),(ttype_65,78),(stringExpression_AST_in_3,1),(this_ASTNULL,3),(parent,2),(_t_1,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 21
+[INFO:costar] Time = 9550
+
+
+======================================================
+Testing src/examples/plexil/parser/test_booleanComparison.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.booleanComparison(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1596
+
+
+======================================================
+Testing src/examples/plexil/parser/test_div.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.div(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1658
+
+
+======================================================
+Testing src/examples/plexil/parser/test_numericUnaryOperation.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.numericUnaryOperation(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  numericUnaryOperation_AST_in_3=_t_1 & _t_1!=null & ttype_6=1+79;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(numericUnaryOperation_AST_in_3,1),(ttype_6,80),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_27,down_28,right_29>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  numericUnaryOperation_AST_in_3=_t_1 & _t_1!=null & ttype_27=0+79;Pure Assigment: Sat[(ttype_27,79),(parent,0),(numericUnaryOperation_AST_in_3,1),(this_ASTNULL,2),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3749
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeNameRef.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeNameRef(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeNameRef_AST_in_3=_t_1 & n_4=0 & n_5=_t_1 & paramAST_6=_t_1 &  paramInt_7=112 & paramAST_6!=null & paramAST_6!=this_ASTNULL &  ttype_11=paramInt_7;Pure Assigment: Sat[(paramAST_6,1),(ttype_11,112),(_t,1),(parent_2,2),(nodeNameRef_AST_in_3,1),(n_4,0),(n_5,1),(this_ASTNULL,3),(parent,2),(paramInt_7,112),(_t_1,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2765
+
+
+======================================================
+Testing src/examples/plexil/parser/test_onMessageBody.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.onMessageBody(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, xaction::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1577
+
+
+======================================================
+Testing src/examples/plexil/parser/test_sqrt.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.sqrt(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1594
+
+
+======================================================
+Testing src/examples/plexil/parser/test_stringRHS.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.stringRHS(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2073
+
+
+======================================================
+Testing src/examples/plexil/parser/test_invariantCondition.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.invariantCondition(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1594
+
+
+======================================================
+Testing src/examples/plexil/parser/test_pointerInitialValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.pointerInitialValue(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & pointerInitialValue_AST_in_2=_t_1 &  tmp61_AST_in_3=_t_1 & paramAST_4=_t_1 & paramInt_5=108 & paramAST_4!=null &  paramAST_4!=this_ASTNULL & ttype_9=paramInt_5;Pure Assigment: Sat[(ttype_9,108),(paramInt_5,108),(_t,1),(tmp61_AST_in_3,1),(pointerInitialValue_AST_in_2,1),(this_ASTNULL,0),(_t_1,1),(paramAST_4,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2741
+
+
+======================================================
+Testing src/examples/plexil/parser/test_lookupExpr.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.lookupExpr(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & lookupExpr_AST_in_3=_t_1 &  _t_1!=null & ttype_6=78;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(lookupExpr_AST_in_3,1),(ttype_6,78),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_17,down_18,right_19>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & lookupExpr_AST_in_3=_t_1 &  _t_1!=null & ttype_17=77;Pure Assigment: Sat[(parent,0),(ttype_17,77),(lookupExpr_AST_in_3,1),(this_ASTNULL,2),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_19,down_20,right_21>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & lookupExpr_AST_in_3=_t_1 &  _t_1!=null & ttype_19=6;Pure Assigment: Sat[(parent,0),(lookupExpr_AST_in_3,1),(ttype_19,6),(this_ASTNULL,2),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 9
+[INFO:costar] Time = 4359
+
+
+======================================================
+Testing src/examples/plexil/parser/test_typeName.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.typeName(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_5,down_6,right_7>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & typeName_AST_in_2=_t_1 & _t_1!=null &  ttype_5=205;Pure Assigment: Sat[(typeName_AST_in_2,1),(this_ASTNULL,0),(_t,1),(_t_1,1),(ttype_5,205)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & typeName_AST_in_2=_t_1 & _t_1!=null &  ttype_7=38;Pure Assigment: Sat[(typeName_AST_in_2,1),(ttype_7,38),(this_ASTNULL,0),(_t,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & typeName_AST_in_2=_t_1 & _t_1!=null &  ttype_7=37;Pure Assigment: Sat[(typeName_AST_in_2,1),(ttype_7,37),(this_ASTNULL,0),(_t,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & typeName_AST_in_2=_t_1 & _t_1!=null &  ttype_7=36;Pure Assigment: Sat[(typeName_AST_in_2,1),(ttype_7,36),(this_ASTNULL,0),(_t,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & typeName_AST_in_2=_t_1 & _t_1!=null &  ttype_7=35;Pure Assigment: Sat[(typeName_AST_in_2,1),(ttype_7,35),(this_ASTNULL,0),(_t,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & typeName_AST_in_2=_t_1 & _t_1!=null &  ttype_7=34;Pure Assigment: Sat[(typeName_AST_in_2,1),(ttype_7,34),(this_ASTNULL,0),(_t,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_7,down_8,right_9>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & typeName_AST_in_2=_t_1 & _t_1!=null &  ttype_7=33;Pure Assigment: Sat[(typeName_AST_in_2,1),(ttype_7,33),(this_ASTNULL,0),(_t,1),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 24
+[INFO:costar] Time = 10233
+
+
+======================================================
+Testing src/examples/plexil/parser/test_booleanVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.booleanVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  booleanVariable_AST_in_3=_t_1 & n_4=0 & n_5=_t_1 & paramAST_6=_t_1 &  paramInt_7=120 & paramAST_6!=null & paramAST_6!=this_ASTNULL &  ttype_11=paramInt_7;Pure Assigment: Sat[(ttype_11,120),(_t,1),(parent_2,2),(booleanVariable_AST_in_3,1),(n_5,1),(n_4,0),(paramAST_6,1),(this_ASTNULL,3),(parent,2),(paramInt_7,120),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2913
+
+
+======================================================
+Testing src/examples/plexil/parser/test_arrayExpression.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.arrayExpression(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  arrayExpression_AST_in_3=_t_1 & _t_4=_t_1 & parent_5=parent_2 &  _t_4!=this_ASTNULL & lookupExpr_AST_in_6=_t_4 & _t_4!=null & ttype_9=78;Pure Assigment: Sat[(_t,1),(parent_2,0),(lookupExpr_AST_in_6,1),(arrayExpression_AST_in_3,1),(parent_5,0),(_t_4,1),(this_ASTNULL,2),(parent,0),(_t_1,1),(ttype_9,78)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_20,down_21,right_22>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  arrayExpression_AST_in_3=_t_1 & _t_4=_t_1 & parent_5=parent_2 &  _t_4!=this_ASTNULL & lookupExpr_AST_in_6=_t_4 & _t_4!=null & ttype_20=77;Pure Assigment: Sat[(ttype_20,77),(_t,1),(parent_2,0),(lookupExpr_AST_in_6,1),(arrayExpression_AST_in_3,1),(parent_5,0),(_t_4,1),(this_ASTNULL,2),(parent,0),(_t_1,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_22,down_23,right_24>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  arrayExpression_AST_in_3=_t_1 & _t_4=_t_1 & parent_5=parent_2 &  _t_4!=this_ASTNULL & lookupExpr_AST_in_6=_t_4 & _t_4!=null & ttype_22=6;Pure Assigment: Sat[(ttype_22,6),(_t,1),(parent_2,0),(lookupExpr_AST_in_6,1),(arrayExpression_AST_in_3,1),(parent_5,0),(_t_4,1),(this_ASTNULL,2),(parent,0),(_t_1,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 10
+[INFO:costar] Time = 5053
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeFailureValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeFailureValue(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2179
+
+
+======================================================
+Testing src/examples/plexil/parser/test_pointsTo.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.pointsTo(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_10,down_11,right_12>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & pointsTo_AST_in_2=_t_1 & __t129_3=_t_1 &  tmp59_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=152 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_10=paramInt_6;Pure Assigment: Sat[(ttype_10,152),(_t,1),(paramAST_5,1),(__t129_3,1),(paramInt_6,152),(tmp59_AST_in_4,1),(this_ASTNULL,0),(pointsTo_AST_in_2,1),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_15,down_16,right_17>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & pointsTo_AST_in_2=_t_1 & __t129_3=_t_1 &  tmp59_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=152 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_15=paramInt_6 & _t_7=down_16 & _t_8=_t_7 &  _t_8!=this_ASTNULL & externalStructName_AST_in_9=_t_8 &  tmp60_AST_in_10=_t_8 & paramAST_11=_t_8 & paramInt_12=111 &  paramAST_11!=null;Pure Assigment: Sat[(_t,1),(externalStructName_AST_in_9,1),(ttype_15,152),(_t_7,1),(tmp60_AST_in_10,1),(paramAST_11,1),(paramAST_5,1),(_t_8,1),(__t129_3,1),(paramInt_6,152),(paramInt_12,111),(tmp59_AST_in_4,1),(this_ASTNULL,0),(pointsTo_AST_in_2,1),(_t_1,1),(down_16,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_16,down_17,right_18>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & pointsTo_AST_in_2=_t_1 & __t129_3=_t_1 &  tmp59_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=152 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_16=paramInt_6 & _t_7=down_17 & _t_8=_t_7 &  _t_8=this_ASTNULL;Pure Assigment: Sat[(ttype_16,152),(_t_7,0),(down_17,0),(_t,1),(paramAST_5,1),(_t_8,0),(__t129_3,1),(paramInt_6,152),(tmp59_AST_in_4,1),(this_ASTNULL,0),(pointsTo_AST_in_2,1),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 8
+[INFO:costar] Time = 4360
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeOutcomeVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeOutcomeVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1961
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nameLiteral.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nameLiteral(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1760
+
+
+======================================================
+Testing src/examples/plexil/parser/test_externalStructName.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.externalStructName(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & externalStructName_AST_in_2=_t_1 &  tmp60_AST_in_3=_t_1 & paramAST_4=_t_1 & paramInt_5=111 & paramAST_4!=null &  paramAST_4!=this_ASTNULL & ttype_9=paramInt_5;Pure Assigment: Sat[(ttype_9,111),(paramInt_5,111),(tmp60_AST_in_3,1),(_t,1),(externalStructName_AST_in_2,1),(this_ASTNULL,0),(_t_1,1),(paramAST_4,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2948
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeState.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeState(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & nodeState_AST_in_3=_t_1 &  _t_1!=null & ttype_6=154;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(nodeState_AST_in_3,1),(ttype_6,154),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_39,down_40,right_41>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & nodeState_AST_in_3=_t_1 &  _t_1!=null & ttype_39=59;Pure Assigment: Sat[(parent_2,0),(parent,0),(nodeState_AST_in_3,1),(this_ASTNULL,2),(ttype_39,59),(_t_1,1),(_t,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3624
+
+
+======================================================
+Testing src/examples/plexil/parser/test_paramName.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.paramName(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & paramName_AST_in_2=_t_1 &  tmp19_AST_in_3=_t_1 & paramAST_4=_t_1 & paramInt_5=111 & paramAST_4!=null &  paramAST_4!=this_ASTNULL & ttype_9=paramInt_5;Pure Assigment: Sat[(tmp19_AST_in_3,1),(ttype_9,111),(paramInt_5,111),(_t,1),(paramName_AST_in_2,1),(this_ASTNULL,0),(_t_1,1),(paramAST_4,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2780
+
+
+======================================================
+Testing src/examples/plexil/parser/test_stringVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.stringVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stringVariable_AST_in_3=_t_1 & n_4=0 & n_5=_t_1 & paramAST_6=_t_1 &  paramInt_7=120 & paramAST_6!=null & paramAST_6!=this_ASTNULL &  ttype_11=paramInt_7;Pure Assigment: Sat[(paramAST_6,1),(ttype_11,120),(_t,1),(parent_2,2),(n_5,1),(n_4,0),(stringVariable_AST_in_3,1),(this_ASTNULL,3),(parent,2),(paramInt_7,120),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2756
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nameExp.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nameExp(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2041
+
+
+======================================================
+Testing src/examples/plexil/parser/test_permissions.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.permissions(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1597
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeTimepointValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeTimepointValue(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1575
+
+
+======================================================
+Testing src/examples/plexil/parser/test_preCondition.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.preCondition(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1620
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nonNegativeInteger.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nonNegativeInteger(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & nonNegativeInteger_AST_in_2=_t_1 &  tmp36_AST_in_3=_t_1 & paramAST_4=_t_1 & paramInt_5=108 & paramAST_4!=null &  paramAST_4!=this_ASTNULL & ttype_9=paramInt_5;Pure Assigment: Sat[(paramAST_4,1),(nonNegativeInteger_AST_in_2,1),(paramInt_5,108),(ttype_9,108),(_t,1),(this_ASTNULL,0),(_t_1,1),(tmp36_AST_in_3,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2734
+
+
+======================================================
+Testing src/examples/plexil/parser/test_tolerance.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.tolerance(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2048
+
+
+======================================================
+Testing src/examples/plexil/parser/test_variableName.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.variableName(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & variableName_AST_in_2=_t_1 &  tmp53_AST_in_3=_t_1 & paramAST_4=_t_1 & paramInt_5=111 & paramAST_4!=null &  paramAST_4!=this_ASTNULL & ttype_9=paramInt_5;Pure Assigment: Sat[(variableName_AST_in_2,1),(ttype_9,111),(paramInt_5,111),(_t,1),(this_ASTNULL,0),(tmp53_AST_in_3,1),(_t_1,1),(paramAST_4,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2845
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeCommandHandle.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeCommandHandle(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeCommandHandle_AST_in_3=_t_1 & _t_1!=null & ttype_6=156;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(nodeCommandHandle_AST_in_3,1),(ttype_6,156),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_39,down_40,right_41>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeCommandHandle_AST_in_3=_t_1 & _t_1!=null & ttype_39=70;Pure Assigment: Sat[(parent_2,0),(parent,0),(nodeCommandHandle_AST_in_3,1),(this_ASTNULL,2),(ttype_39,70),(_t_1,1),(_t,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3712
+
+
+======================================================
+Testing src/examples/plexil/parser/test_integerVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.integerVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  integerVariable_AST_in_3=_t_1 & n_4=0 & n_5=_t_1 & paramAST_6=_t_1 &  paramInt_7=120 & paramAST_6!=null & paramAST_6!=this_ASTNULL &  ttype_11=paramInt_7;Pure Assigment: Sat[(paramAST_6,1),(ttype_11,120),(_t,1),(parent_2,2),(integerVariable_AST_in_3,1),(n_4,0),(n_5,1),(this_ASTNULL,3),(parent,2),(paramInt_7,120),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2857
+
+
+======================================================
+Testing src/examples/plexil/parser/test_arrayAssignment.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.arrayAssignment(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_12,down_13,right_14>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  arrayAssignment_AST_in_3=_t_1 & var_4=0 & __t240_5=_t_1 &  tmp103_AST_in_6=_t_1 & paramAST_7=_t_1 & paramInt_8=125 &  paramAST_7!=null & paramAST_7!=this_ASTNULL & ttype_12=paramInt_8;Pure Assigment: Sat[(paramAST_7,1),(ttype_12,125),(__t240_5,1),(_t,1),(parent_2,2),(paramInt_8,125),(arrayAssignment_AST_in_3,1),(var_4,0),(this_ASTNULL,3),(parent,2),(_t_1,1),(tmp103_AST_in_6,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_19,down_20,right_21>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  arrayAssignment_AST_in_3=_t_1 & var_4=0 & __t240_5=_t_1 &  tmp103_AST_in_6=_t_1 & paramAST_7=_t_1 & paramInt_8=125 &  paramAST_7!=null & paramAST_7!=this_ASTNULL & ttype_19=paramInt_8 &  _t_9=down_20 & _t_9!=this_ASTNULL & var_10=_t_9 & _t_11=_t_9 &  _t_11!=this_ASTNULL & arrayVariable_AST_in_12=_t_11 & n_13=0 & n_14=_t_11 &  paramAST_15=_t_11 & paramInt_16=120 & paramAST_15!=null;Pure Assigment: Sat[(arrayVariable_AST_in_12,1),(ttype_19,125),(__t240_5,1),(_t,1),(parent_2,2),(paramInt_8,125),(var_10,1),(var_4,0),(parent,2),(paramAST_7,1),(_t_9,1),(paramInt_16,120),(_t_11,1),(n_13,0),(n_14,1),(arrayAssignment_AST_in_3,1),(down_20,1),(this_ASTNULL,3),(tmp103_AST_in_6,1),(_t_1,1),(paramAST_15,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_20,down_21,right_22>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  arrayAssignment_AST_in_3=_t_1 & var_4=0 & __t240_5=_t_1 &  tmp103_AST_in_6=_t_1 & paramAST_7=_t_1 & paramInt_8=125 &  paramAST_7!=null & paramAST_7!=this_ASTNULL & ttype_20=paramInt_8 &  _t_9=down_21 & _t_9=this_ASTNULL;Pure Assigment: Sat[(ttype_20,125),(__t240_5,1),(_t,1),(parent_2,2),(paramInt_8,125),(var_4,0),(down_21,3),(_t_9,3),(paramAST_7,1),(parent,2),(arrayAssignment_AST_in_3,1),(this_ASTNULL,3),(tmp103_AST_in_6,1),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 9
+[INFO:costar] Time = 4339
+
+
+======================================================
+Testing src/examples/plexil/parser/test_varAlias.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.varAlias(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1580
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeCommandHandleVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeCommandHandleVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1615
+
+
+======================================================
+Testing src/examples/plexil/parser/test_skipCondition.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.skipCondition(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1740
+
+
+======================================================
+Testing src/examples/plexil/parser/test_argument.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.argument(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & argument_AST_in_3=_t_1 &  _t_1!=null & ttype_6=153;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(argument_AST_in_3,1),(ttype_6,153),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_27,down_28,right_29>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & argument_AST_in_3=_t_1 &  _t_1!=null & ttype_27=153 & _t_4=_t_1 & parent_5=parent_2 &  _t_4!=this_ASTNULL & argValue_AST_in_6=_t_4 & iv_7=0 & rv_8=0 & sv_9=0 &  tv_10=0 & bv_11=0 & _t_4!=null & ttype_27=153 & _t_4!=this_ASTNULL &  tv_12=_t_4 & _t_13=_t_4 & _t_13!=this_ASTNULL & timeValue_AST_in_14=_t_13 &  __t164_15=_t_13 & tmp67_AST_in_16=_t_13 & paramAST_17=_t_13 &  paramInt_18=153 & paramAST_17!=null & paramAST_17!=this_ASTNULL &  ttype_27=paramInt_18 & _t_19=down_28 & _t_20=_t_19 & _t_20!=this_ASTNULL &  integerValue_AST_in_21=_t_20 & tmp57_AST_in_22=_t_20 & paramAST_23=_t_20 &  paramInt_24=108 & paramAST_23!=null;Pure Assigment: Sat[(_t,1),(tv_12,1),(tmp57_AST_in_22,1),(_t_4,1),(_t_19,1),(down_28,1),(_t_20,1),(argValue_AST_in_6,1),(paramInt_24,108),(iv_7,0),(argument_AST_in_3,1),(parent_2,2),(bv_11,0),(parent_5,2),(paramAST_17,1),(parent,2),(rv_8,0),(ttype_27,153),(__t164_15,1),(_t_13,1),(tv_10,0),(sv_9,0),(paramInt_18,153),(integerValue_AST_in_21,1),(timeValue_AST_in_14,1),(tmp67_AST_in_16,1),(this_ASTNULL,3),(_t_1,1),(paramAST_23,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_28,down_29,right_30>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & argument_AST_in_3=_t_1 &  _t_1!=null & ttype_28=153 & _t_4=_t_1 & parent_5=parent_2 &  _t_4!=this_ASTNULL & argValue_AST_in_6=_t_4 & iv_7=0 & rv_8=0 & sv_9=0 &  tv_10=0 & bv_11=0 & _t_4!=null & ttype_28=153 & _t_4!=this_ASTNULL &  tv_12=_t_4 & _t_13=_t_4 & _t_13!=this_ASTNULL & timeValue_AST_in_14=_t_13 &  __t164_15=_t_13 & tmp67_AST_in_16=_t_13 & paramAST_17=_t_13 &  paramInt_18=153 & paramAST_17!=null & paramAST_17!=this_ASTNULL &  ttype_28=paramInt_18 & _t_19=down_29 & _t_20=_t_19 & _t_19=down_29 &  _t_20=_t_19 & _t_20=this_ASTNULL;Pure Assigment: Sat[(argument_AST_in_3,1),(_t_20,3),(_t,1),(parent_2,2),(tv_12,1),(bv_11,0),(parent_5,2),(_t_4,1),(paramAST_17,1),(parent,2),(ttype_28,153),(rv_8,0),(__t164_15,1),(_t_19,3),(_t_13,1),(tv_10,0),(sv_9,0),(down_29,3),(paramInt_18,153),(timeValue_AST_in_14,1),(argValue_AST_in_6,1),(this_ASTNULL,3),(tmp67_AST_in_16,1),(iv_7,0),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_27,down_28,right_29>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & argument_AST_in_3=_t_1 &  _t_1!=null & ttype_27=137;Pure Assigment: Sat[(ttype_27,137),(parent,0),(argument_AST_in_3,1),(this_ASTNULL,2),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_30,down_31,right_32>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & argument_AST_in_3=_t_1 &  _t_1!=null & ttype_30=120;Pure Assigment: Sat[(parent_2,0),(parent,0),(argument_AST_in_3,1),(this_ASTNULL,2),(ttype_30,120),(_t_1,1),(_t,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 14
+[INFO:costar] Time = 6432
+
+
+======================================================
+Testing src/examples/plexil/parser/test_arrayVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.arrayVariable(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_10,down_11,right_12>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & arrayVariable_AST_in_2=_t_1 & n_3=0 &  n_4=_t_1 & paramAST_5=_t_1 & paramInt_6=120 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_10=paramInt_6;Pure Assigment: Sat[(ttype_10,120),(_t,1),(paramAST_5,1),(arrayVariable_AST_in_2,1),(paramInt_6,120),(n_4,1),(this_ASTNULL,2),(n_3,0),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2871
+
+
+======================================================
+Testing src/examples/plexil/parser/test_integerValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.integerValue(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & integerValue_AST_in_2=_t_1 &  tmp57_AST_in_3=_t_1 & paramAST_4=_t_1 & paramInt_5=108 & paramAST_4!=null &  paramAST_4!=this_ASTNULL & ttype_9=paramInt_5;Pure Assigment: Sat[(_t_1,1),(integerValue_AST_in_2,1),(paramInt_5,108),(ttype_9,108),(_t,1),(this_ASTNULL,0),(tmp57_AST_in_3,1),(paramAST_4,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 3146
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeList.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeList(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, node::net_n3_nanoxml_XMLElement<>@M, nodeBody::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1593
+
+
+======================================================
+Testing src/examples/plexil/parser/test_booleanValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.booleanValue(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & booleanValue_AST_in_2=_t_1 & i_3=_t_1 &  _t_1!=null & ttype_6=108;Pure Assigment: Sat[(booleanValue_AST_in_2,1),(i_3,1),(ttype_6,108),(_t,1),(_t_1,1),(this_ASTNULL,0)]
+[INFO:costar] Calling 'equals(Ljava/lang/Object;)Z' on null object
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_8,down_9,right_10>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & booleanValue_AST_in_2=_t_1 & i_3=_t_1 &  _t_1!=null & ttype_8=40;Pure Assigment: Sat[(booleanValue_AST_in_2,1),(i_3,1),(ttype_8,40),(_t,1),(_t_1,1),(this_ASTNULL,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_57,down_58,right_59>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & booleanValue_AST_in_2=_t_1 & i_3=_t_1 &  _t_1!=null & ttype_57=39;Pure Assigment: Sat[(booleanValue_AST_in_2,1),(i_3,1),(this_ASTNULL,0),(ttype_57,39),(_t_1,1),(_t,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 12
+[INFO:costar] Time = 5611
+
+
+======================================================
+Testing src/examples/plexil/parser/test_variable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.variable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_10,down_11,right_12>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL & variable_AST_in_3=_t_1 &  tmp69_AST_in_4=_t_1 & paramAST_5=_t_1 & paramInt_6=120 & paramAST_5!=null &  paramAST_5!=this_ASTNULL & ttype_10=paramInt_6;Pure Assigment: Sat[(variable_AST_in_3,1),(ttype_10,120),(_t,1),(parent_2,0),(tmp69_AST_in_4,1),(paramAST_5,1),(paramInt_6,120),(this_ASTNULL,2),(parent,0),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1711
+
+
+======================================================
+Testing src/examples/plexil/parser/test_loopVariableDeclaration.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.loopVariableDeclaration(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  loopVariableDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_6=1+34;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(loopVariableDeclaration_AST_in_3,1),(ttype_6,35),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_22,down_23,right_24>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  loopVariableDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_22=1+34 &  _t_4=_t_1 & parent_5=parent_2 & _t_4!=this_ASTNULL &  realLoopVariableDeclaration_AST_in_6=_t_4 & vn_7=0 & iv_8=0 &  __t296_9=_t_4 & tmp110_AST_in_10=_t_4 & paramAST_11=_t_4 & paramInt_12=35 &  paramAST_11!=null & paramAST_11!=this_ASTNULL & ttype_22=paramInt_12 &  _t_13=down_23 & _t_13!=this_ASTNULL & vn_14=_t_13 & _t_15=_t_13 &  _t_15!=this_ASTNULL & variableName_AST_in_16=_t_15 &  tmp53_AST_in_17=_t_15 & paramAST_18=_t_15 & paramInt_19=111 &  paramAST_18!=null;Pure Assigment: Sat[(realLoopVariableDeclaration_AST_in_6,1),(__t296_9,1),(paramAST_18,1),(vn_7,0),(_t,1),(parent_2,2),(_t_15,1),(tmp110_AST_in_10,1),(parent_5,2),(_t_4,1),(vn_14,1),(parent,2),(tmp53_AST_in_17,1),(iv_8,0),(paramAST_11,1),(_t_13,1),(ttype_22,35),(loopVariableDeclaration_AST_in_3,1),(variableName_AST_in_16,1),(paramInt_12,35),(paramInt_19,111),(this_ASTNULL,3),(_t_1,1),(down_23,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_23,down_24,right_25>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  loopVariableDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_23=1+34 &  _t_4=_t_1 & parent_5=parent_2 & _t_4!=this_ASTNULL &  realLoopVariableDeclaration_AST_in_6=_t_4 & vn_7=0 & iv_8=0 &  __t296_9=_t_4 & tmp110_AST_in_10=_t_4 & paramAST_11=_t_4 & paramInt_12=35 &  paramAST_11!=null & paramAST_11!=this_ASTNULL & ttype_23=paramInt_12 &  _t_13=down_24 & _t_13=down_24 & _t_13=this_ASTNULL;Pure Assigment: Sat[(realLoopVariableDeclaration_AST_in_6,1),(__t296_9,1),(vn_7,0),(_t,1),(parent_2,2),(ttype_23,35),(tmp110_AST_in_10,1),(parent_5,2),(_t_4,1),(parent,2),(iv_8,0),(paramAST_11,1),(_t_13,3),(loopVariableDeclaration_AST_in_3,1),(down_24,3),(paramInt_12,35),(this_ASTNULL,3),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_22,down_23,right_24>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  loopVariableDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_22=0+34;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(loopVariableDeclaration_AST_in_3,1),(ttype_22,34),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_22,down_23,right_24>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  loopVariableDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_22=0+34 &  _t_4=_t_1 & parent_5=parent_2 & _t_4!=this_ASTNULL &  integerLoopVariableDeclaration_AST_in_6=_t_4 & vn_7=0 & iv_8=0 &  __t293_9=_t_4 & tmp109_AST_in_10=_t_4 & paramAST_11=_t_4 & paramInt_12=34 &  paramAST_11!=null & paramAST_11!=this_ASTNULL & ttype_22=paramInt_12 &  _t_13=down_23 & _t_13!=this_ASTNULL & vn_14=_t_13 & _t_15=_t_13 &  _t_15!=this_ASTNULL & variableName_AST_in_16=_t_15 &  tmp53_AST_in_17=_t_15 & paramAST_18=_t_15 & paramInt_19=111 &  paramAST_18!=null;Pure Assigment: Sat[(integerLoopVariableDeclaration_AST_in_6,1),(paramAST_18,1),(vn_7,0),(_t,1),(parent_2,2),(_t_15,1),(parent_5,2),(_t_4,1),(vn_14,1),(parent,2),(tmp53_AST_in_17,1),(tmp109_AST_in_10,1),(iv_8,0),(__t293_9,1),(paramAST_11,1),(ttype_22,34),(loopVariableDeclaration_AST_in_3,1),(_t_13,1),(variableName_AST_in_16,1),(paramInt_12,34),(paramInt_19,111),(this_ASTNULL,3),(_t_1,1),(down_23,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_23,down_24,right_25>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  loopVariableDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_23=0+34 &  _t_4=_t_1 & parent_5=parent_2 & _t_4!=this_ASTNULL &  integerLoopVariableDeclaration_AST_in_6=_t_4 & vn_7=0 & iv_8=0 &  __t293_9=_t_4 & tmp109_AST_in_10=_t_4 & paramAST_11=_t_4 & paramInt_12=34 &  paramAST_11!=null & paramAST_11!=this_ASTNULL & ttype_23=paramInt_12 &  _t_13=down_24 & _t_13=down_24 & _t_13=this_ASTNULL;Pure Assigment: Sat[(integerLoopVariableDeclaration_AST_in_6,1),(vn_7,0),(_t,1),(parent_2,2),(ttype_23,34),(parent_5,2),(_t_4,1),(parent,2),(tmp109_AST_in_10,1),(iv_8,0),(__t293_9,1),(paramAST_11,1),(_t_13,3),(loopVariableDeclaration_AST_in_3,1),(down_24,3),(paramInt_12,34),(this_ASTNULL,3),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 19
+[INFO:costar] Time = 8527
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeCommandHandleValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeCommandHandleValue(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2149
+
+
+======================================================
+Testing src/examples/plexil/parser/test_not.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.not(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1626
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeParameter.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeParameter(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_14,down_15,right_16>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  nodeParameter_AST_in_3=_t_1 & vn_4=0 & _t_1!=this_ASTNULL & vn_5=_t_1 &  _t_6=_t_1 & _t_6!=this_ASTNULL & variableName_AST_in_7=_t_6 &  tmp53_AST_in_8=_t_6 & paramAST_9=_t_6 & paramInt_10=111 &  paramAST_9!=null & paramAST_9!=this_ASTNULL & ttype_14=paramInt_10;Pure Assigment: Sat[(tmp53_AST_in_8,1),(vn_4,0),(nodeParameter_AST_in_3,1),(paramAST_9,1),(_t,1),(parent_2,2),(vn_5,1),(_t_6,1),(ttype_14,111),(parent,2),(paramInt_10,111),(this_ASTNULL,3),(_t_1,1),(variableName_AST_in_7,1)]
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 7
+[INFO:costar] Time = 3664
+
+
+======================================================
+Testing src/examples/plexil/parser/test_stateNameLiteral.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.stateNameLiteral(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stateNameLiteral_AST_in_3=_t_1 & __t436_4=_t_1 & tmp200_AST_in_5=_t_1 &  paramAST_6=_t_1 & paramInt_7=161 & paramAST_6!=null &  paramAST_6!=this_ASTNULL & ttype_11=paramInt_7;Pure Assigment: Sat[(ttype_11,161),(_t,1),(parent_2,0),(__t436_4,1),(tmp200_AST_in_5,1),(paramAST_6,1),(stateNameLiteral_AST_in_3,1),(this_ASTNULL,2),(parent,0),(paramInt_7,161),(_t_1,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_27,down_28,right_29>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  stateNameLiteral_AST_in_3=_t_1 & __t436_4=_t_1 & tmp200_AST_in_5=_t_1 &  paramAST_6=_t_1 & paramInt_7=161 & paramAST_6!=null &  paramAST_6!=this_ASTNULL & ttype_27=paramInt_7 & _t_8=down_28 & _t_9=_t_8 &  parent_10=parent_2 & _t_9=this_ASTNULL;Pure Assigment: Sat[(_t,1),(parent_2,0),(__t436_4,1),(tmp200_AST_in_5,1),(paramAST_6,1),(parent,0),(_t_9,2),(ttype_27,161),(down_28,2),(_t_8,2),(stateNameLiteral_AST_in_3,1),(this_ASTNULL,2),(paramInt_7,161),(_t_1,1),(parent_10,0)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 6
+[INFO:costar] Time = 3361
+
+
+======================================================
+Testing src/examples/plexil/parser/test_stringValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.stringValue(Lantlr/collections/AST;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_9,down_10,right_11>@M, this_ASTNULL::antlr_ASTNULLType<>@M] _t_1=_t & _t_1!=this_ASTNULL & stringValue_AST_in_2=_t_1 &  tmp65_AST_in_3=_t_1 & paramAST_4=_t_1 & paramInt_5=110 & paramAST_4!=null &  paramAST_4!=this_ASTNULL & ttype_9=paramInt_5;Pure Assigment: Sat[(ttype_9,110),(stringValue_AST_in_2,1),(paramInt_5,110),(_t,1),(tmp65_AST_in_3,1),(this_ASTNULL,0),(_t_1,1),(paramAST_4,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 2891
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeStatePredicateExp.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeStatePredicateExp(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1695
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeStateVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeStateVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1704
+
+
+======================================================
+Testing src/examples/plexil/parser/test_messageReceivedExp.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.messageReceivedExp(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1607
+
+
+======================================================
+Testing src/examples/plexil/parser/test_repeatCondition.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.repeatCondition(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1840
+
+
+======================================================
+Testing src/examples/plexil/parser/test_comment.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.comment(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1862
+
+
+======================================================
+Testing src/examples/plexil/parser/test_whileBody.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.whileBody(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Calling 'addElement(Ljava/lang/Object;)V' on null object
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 2
+[INFO:costar] Time = 1646
+
+
+======================================================
+Testing src/examples/plexil/parser/test_realVariable.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.realVariable(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_11,down_12,right_13>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  realVariable_AST_in_3=_t_1 & n_4=0 & n_5=_t_1 & paramAST_6=_t_1 &  paramInt_7=120 & paramAST_6!=null & paramAST_6!=this_ASTNULL &  ttype_11=paramInt_7;Pure Assigment: Sat[(ttype_11,120),(_t,1),(parent_2,2),(realVariable_AST_in_3,1),(n_5,1),(n_4,0),(paramAST_6,1),(this_ASTNULL,3),(parent,2),(paramInt_7,120),(_t_1,1)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 5
+[INFO:costar] Time = 3091
+
+
+======================================================
+Testing src/examples/plexil/parser/test_nodeOutcomeValue.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.nodeOutcomeValue(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2227
+
+
+======================================================
+Testing src/examples/plexil/parser/test_globalDeclaration.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.globalDeclaration(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_6,down_7,right_8>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  globalDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_6=2+5;Pure Assigment: Sat[(parent,0),(this_ASTNULL,2),(globalDeclaration_AST_in_3,1),(ttype_6,7),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_16,down_17,right_18>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  globalDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_16=2+5 & _t_4=_t_1 &  _t_4!=this_ASTNULL & libraryNodeDeclaration_AST_in_5=_t_4 & __t36_6=_t_4 &  tmp7_AST_in_7=_t_4 & paramAST_8=_t_4 & paramInt_9=7 & paramAST_8!=null &  paramAST_8!=this_ASTNULL & ttype_16=paramInt_9 & _t_10=down_17 &  tmp8_AST_in_11=_t_10 & paramAST_12=_t_10 & paramInt_13=112 &  paramAST_12!=null;Pure Assigment: Sat[(paramAST_12,1),(ttype_16,7),(paramInt_9,7),(_t,1),(parent_2,2),(tmp7_AST_in_7,1),(_t_4,1),(tmp8_AST_in_11,1),(parent,2),(paramInt_13,112),(paramAST_8,1),(down_17,1),(libraryNodeDeclaration_AST_in_5,1),(__t36_6,1),(this_ASTNULL,3),(_t_10,1),(_t_1,1),(globalDeclaration_AST_in_3,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_17,down_18,right_19>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  globalDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_17=2+5 & _t_4=_t_1 &  _t_4!=this_ASTNULL & libraryNodeDeclaration_AST_in_5=_t_4 & __t36_6=_t_4 &  tmp7_AST_in_7=_t_4 & paramAST_8=_t_4 & paramInt_9=7 & paramAST_8!=null &  paramAST_8!=this_ASTNULL & ttype_17=paramInt_9 & _t_10=down_18 &  tmp8_AST_in_11=_t_10 & paramAST_12=_t_10 & paramInt_13=112 &  paramAST_12!=null & paramAST_12=this_ASTNULL;Pure Assigment: Sat[(paramAST_12,2),(paramInt_9,7),(_t,1),(parent_2,3),(tmp7_AST_in_7,1),(ttype_17,7),(_t_4,1),(tmp8_AST_in_11,2),(parent,3),(paramInt_13,112),(paramAST_8,1),(libraryNodeDeclaration_AST_in_5,1),(down_18,2),(__t36_6,1),(this_ASTNULL,2),(_t_10,2),(_t_1,1),(globalDeclaration_AST_in_3,1)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_16,down_17,right_18>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  globalDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_16=1+5;Pure Assigment: Sat[(parent,0),(globalDeclaration_AST_in_3,1),(ttype_16,6),(this_ASTNULL,2),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] New model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_43,down_44,right_45>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t_1=_t & parent_2=parent & _t_1!=this_ASTNULL &  globalDeclaration_AST_in_3=_t_1 & _t_1!=null & ttype_43=0+5;Pure Assigment: Sat[(parent,0),(ttype_43,5),(globalDeclaration_AST_in_3,1),(this_ASTNULL,2),(_t,1),(_t_1,1),(parent_2,0)]
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 13
+[INFO:costar] Time = 6536
+
+
+======================================================
+Testing src/examples/plexil/parser/test_timeRHS.jpf
+
+[INFO:costar] CoStar.run() -- begin
+Count = 2334
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of plexil.PlexilTreeParser.timeRHS(Lantlr/collections/AST;Lnet/n3/nanoxml/IXMLElement;)V
+[INFO:costar] New init model = cex: [][ this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M] _t=null;Pure Assigment: Sat[(_t,0)]
+[INFO:costar] New init model = cex: [][ _t::plexil_PlexilASTNode<Anon_725,Anon_726,Anon_727,Anon_728,Anon_729,Anon_730,Anon_731,Anon_732,ttype_1,down_2,right_3>@M, this_ASTNULL::antlr_ASTNULLType<>@M, parent::net_n3_nanoxml_XMLElement<>@M];Pure Assigment: 
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 3
+[INFO:costar] Time = 2121
