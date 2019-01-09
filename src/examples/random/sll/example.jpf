@@ -1,0 +1,9 @@
+@include=../../config/costar.jpf
+
+target=random.sll.Input
+
+concolic.method.isContainPrime=random.sll.Input.isContainPrime(root:Lrandom/sll/Node;)
+concolic.method.isContainPrime.config=all_fields_symbolic
+
+star.test_path=${test.path}/random/sll
+star.test_package=random.sll

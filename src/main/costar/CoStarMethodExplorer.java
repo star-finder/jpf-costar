@@ -113,30 +113,30 @@ public class CoStarMethodExplorer {
 //		System.out.println("Precondition = " + preF);
 //		System.out.println(root);
 		
-//		int n = 2;
-//		generateInitModels(preF, n);
+		int n = 5;
+		generateInitModels(preF, n);
 		
-		HeapTerm ht = Utilities.findHeapTerm(preF, root);
-		
-		if (ht != null && ht instanceof InductiveTerm) {
-			InductiveTerm it = (InductiveTerm) ht;
-			
-			Formula[] fs = it.unfold();
-			int length = isInstrument ? fs.length : 1;
-			
-			for (int i = 0; i < length; i++) {
-				Formula preFCopy = preF.copy();
-				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, root);
-				
-				preFCopy.unfold(itCopy, i);
-//				System.out.println(preFCopy);
-				
-				Solver.checkSat(preFCopy);
-				String model = Solver.getModel();
-				
-				constraintsTree.addInitModel(model);
-			}
-		}
+//		HeapTerm ht = Utilities.findHeapTerm(preF, root);
+//		
+//		if (ht != null && ht instanceof InductiveTerm) {
+//			InductiveTerm it = (InductiveTerm) ht;
+//			
+//			Formula[] fs = it.unfold();
+//			int length = isInstrument ? fs.length : 1;
+//			
+//			for (int i = 0; i < length; i++) {
+//				Formula preFCopy = preF.copy();
+//				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, root);
+//				
+//				preFCopy.unfold(itCopy, i);
+////				System.out.println(preFCopy);
+//				
+//				Solver.checkSat(preFCopy);
+//				String model = Solver.getModel();
+//				
+//				constraintsTree.addInitModel(model);
+//			}
+//		}
 	}
 	
 	public void generateInitModels(Formula pre, int n) {
