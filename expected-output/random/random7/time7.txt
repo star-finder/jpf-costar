@@ -1,0 +1,396 @@
+
+
+======================================================
+Testing src/examples/random/sll/test_withExp.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withExp(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2272
+
+
+======================================================
+Testing src/examples/random/sll/test_withGetExponent.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withGetExponent(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2278
+
+
+======================================================
+Testing src/examples/random/sll/test_withTan.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withTan(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2242
+
+
+======================================================
+Testing src/examples/random/sll/test_withExpm1.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withExpm1(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2162
+
+
+======================================================
+Testing src/examples/random/sll/test_withAcos.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withAcos(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2242
+
+
+======================================================
+Testing src/examples/random/sll/test_withRint.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withRint(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2205
+
+
+======================================================
+Testing src/examples/random/sll/test_withAsin.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withAsin(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2210
+
+
+======================================================
+Testing src/examples/random/sll/test_withLog10.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withLog10(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2185
+
+
+======================================================
+Testing src/examples/random/sll/test_withToRadians.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withToRadians(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2217
+
+
+======================================================
+Testing src/examples/random/sll/test_withLog1p.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withLog1p(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2365
+
+
+======================================================
+Testing src/examples/random/sll/test_withRound.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withRound(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2279
+
+
+======================================================
+Testing src/examples/random/sll/test_withLog.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withLog(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2234
+
+
+======================================================
+Testing src/examples/random/sll/test_withDecrementExact.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withDecrementExact(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2199
+
+
+======================================================
+Testing src/examples/random/sll/test_withSinh.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withSinh(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2249
+
+
+======================================================
+Testing src/examples/random/sll/test_withTanh.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withTanh(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2228
+
+
+======================================================
+Testing src/examples/random/sll/test_withNextUp.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withNextUp(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2295
+
+
+======================================================
+Testing src/examples/random/sll/test_withIncrementExact.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withIncrementExact(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2258
+
+
+======================================================
+Testing src/examples/random/sll/test_withSignum.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withSignum(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2644
+
+
+======================================================
+Testing src/examples/random/sll/test_withSqrt.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withSqrt(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2341
+
+
+======================================================
+Testing src/examples/random/sll/test_withToDegrees.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withToDegrees(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2359
+
+
+======================================================
+Testing src/examples/random/sll/test_withCosh.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withCosh(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2366
+
+
+======================================================
+Testing src/examples/random/sll/test_withCeil.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withCeil(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2255
+
+
+======================================================
+Testing src/examples/random/sll/test_withToIntExact.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withToIntExact(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2283
+
+
+======================================================
+Testing src/examples/random/sll/test_withUlp.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withUlp(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2435
+
+
+======================================================
+Testing src/examples/random/sll/test_withFloor.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withFloor(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2410
+
+
+======================================================
+Testing src/examples/random/sll/test_withAbs.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withAbs(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2268
+
+
+======================================================
+Testing src/examples/random/sll/test_withNextDown.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withNextDown(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2222
+
+
+======================================================
+Testing src/examples/random/sll/test_withCbrt.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withCbrt(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2168
+
+
+======================================================
+Testing src/examples/random/sll/test_isContainPrime.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.isContainPrime(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2209
+
+
+======================================================
+Testing src/examples/random/sll/test_withNegateExact.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withNegateExact(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2227
+
+
+======================================================
+Testing src/examples/random/sll/test_withAtan.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withAtan(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2315
+
+
+======================================================
+Testing src/examples/random/sll/test_withCos.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withCos(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2210
+
+
+======================================================
+Testing src/examples/random/sll/test_withSin.jpf
+
+[INFO:costar] CoStar.run() -- begin
+[WARNING:class] unknown classpath element: /Users/HongLongPham/Workspace/JPF_HOME/jpf-nhandler/build/jpf-nhandler-classes.jar
+[INFO:costar] Initializing concolic execution of random.sll.Input.withSin(Lrandom/sll/Node;)Z
+[INFO:costar] Test generation completed.
+[INFO:costar] CoStar.run() -- end
+[INFO:costar] Call = 18
+[INFO:costar] Time = 2520

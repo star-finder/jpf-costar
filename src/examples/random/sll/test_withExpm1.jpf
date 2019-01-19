@@ -1,0 +1,12 @@
+@include=./example.jpf
+
+target.args=withExpm1
+concolic.method=withExpm1
+
+costar.data=data random_sll_Node {int elem; random_sll_Node next}
+costar.predicate=pred sll(root) == root = null || root::random_sll_Node<elem,next> * sll(next)
+
+costar.precondition=pre withExpm1 == sll(root)
+costar.root=root
+
+star.max_depth=0
