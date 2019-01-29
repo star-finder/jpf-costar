@@ -1,0 +1,8 @@
+PlexilTreeParser_endCondition1.class,
+PlexilTreeParser_invariantCondition1.class,
+PlexilTreeParser_permissions1.class,
+PlexilTreeParser_postCondition1.class,
+PlexilTreeParser_preCondition1.class,
+PlexilTreeParser_repeatCondition1.class,
+PlexilTreeParser_skipCondition1.class,
+PlexilTreeParser_timeValue1.class,
