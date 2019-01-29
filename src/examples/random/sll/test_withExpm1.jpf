@@ -8,5 +8,6 @@ costar.predicate=pred sll(root) == root = null || root::random_sll_Node<elem,nex
 
 costar.precondition=pre withExpm1 == sll(root)
 costar.root=root
+costar.init_depth=9
 
 star.max_depth=0

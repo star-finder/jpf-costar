@@ -2,6 +2,27 @@ package random.sll;
 
 public class Input {
 	
+	public boolean repOK(Node root) {
+		if (root == null) return true;
+		else return !hasLoop(root);
+	}
+	
+	private boolean hasLoop(Node start) {
+		Node slow = start;
+		Node fast1 = start.next;
+		Node fast2 = (fast1 != null) ? fast1.next : null;
+		
+		while (slow != null && fast1 != null && fast2 != null) {
+			if (slow == fast1 || slow == fast2) return true;
+			
+			fast1 = (fast2 != null) ? fast2.next : null;
+			fast2 = (fast1 != null) ? fast1.next : null;
+			slow = slow.next;
+		}
+		
+		return false;
+	}
+	
 	public boolean isPrime(int n) {
 		if (n < 2) return false;
 		

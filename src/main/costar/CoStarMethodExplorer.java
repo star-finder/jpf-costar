@@ -109,34 +109,36 @@ public class CoStarMethodExplorer {
 		}
 		
 		String root = conf.getProperty("costar.root", "this_root");
+		int initDepth = Integer.parseInt(conf.getProperty("costar.init_depth", "1"));
 		
-//		System.out.println("Precondition = " + preF);
-//		System.out.println(root);
+		if (initDepth == 1) {
+			generateInitModelsDefault(preF, root, isInstrument);
+		} else {
+			generateInitModels(preF, initDepth);
+		}
+	}
+	
+	public void generateInitModelsDefault(Formula pre, String root, boolean isInstrument) {
+		HeapTerm ht = Utilities.findHeapTerm(pre, root);
 		
-		int n = 5;
-		generateInitModels(preF, n);
+		if (ht != null && ht instanceof InductiveTerm) {
+			InductiveTerm it = (InductiveTerm) ht;
 		
-//		HeapTerm ht = Utilities.findHeapTerm(preF, root);
-//		
-//		if (ht != null && ht instanceof InductiveTerm) {
-//			InductiveTerm it = (InductiveTerm) ht;
-//			
-//			Formula[] fs = it.unfold();
-//			int length = isInstrument ? fs.length : 1;
-//			
-//			for (int i = 0; i < length; i++) {
-//				Formula preFCopy = preF.copy();
-//				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, root);
-//				
-//				preFCopy.unfold(itCopy, i);
-////				System.out.println(preFCopy);
-//				
-//				Solver.checkSat(preFCopy);
-//				String model = Solver.getModel();
-//				
-//				constraintsTree.addInitModel(model);
-//			}
-//		}
+			Formula[] fs = it.unfold();
+			int length = isInstrument ? fs.length : 1;
+		
+			for (int i = 0; i < length; i++) {
+				Formula preFCopy = pre.copy();
+				InductiveTerm itCopy = (InductiveTerm) Utilities.findHeapTerm(preFCopy, root);
+			
+				preFCopy.unfold(itCopy, i);
+			
+				Solver.checkSat(preFCopy);
+				String model = Solver.getModel();
+			
+				constraintsTree.addInitModel(model);
+			}
+		}
 	}
 	
 	public void generateInitModels(Formula pre, int n) {
@@ -161,7 +163,6 @@ public class CoStarMethodExplorer {
 				
 				preCopy.unfold(itCopy, i);
 				
-				System.out.println("preCopy = " + preCopy);
 				Solver.checkSat(preCopy, false);
 				String model = Solver.getModel();
 				
@@ -286,8 +287,8 @@ public class CoStarMethodExplorer {
 			for (int i = 0; i < numOfFields; i++) {
 				FieldInfo fi = thisEi.getFieldInfo(i);
 				
-//				if (fi.getName().equals("ASTNULL")) {
-				
+				// bug with plexil
+				if (!methodInfo.toString().contains("plexil") || fi.getName().equals("ASTNULL")) {
 					String name = "this_" + fi.getName();
 					starlib.formula.Variable attr = new starlib.formula.Variable(name);
 					thisEi.setFieldAttr(fi, attr);
@@ -299,7 +300,7 @@ public class CoStarMethodExplorer {
 					SymbolicField<?> symf = new SymbolicField<>(var, thisEi, fi);
 					symContext.addSymbolicVar(symf);
 					
-//				}
+				}
 			}
 		}
 

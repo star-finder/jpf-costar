@@ -1,9 +1,0 @@
-@include=./example.jpf
-
-target.args=bar3
-concolic.method=bar3
-
-costar.data=data features_sll_Node {int elem; features_sll_Node next}
-costar.predicate.file=${jpf-costar}/src/examples/features/sll/bar.pred
-
-costar.precondition=pre bar3 == bar(x,y)
