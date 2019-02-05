@@ -46,7 +46,7 @@ RUN echo "jpf-core = ${TOOLS_ROOT}/jpf-core" >> /root/.jpf/site.properties
 RUN echo "jpf-symbc = ${TOOLS_ROOT}/jpf-symbc" >> /root/.jpf/site.properties
 RUN echo "starlib = ${TOOLS_ROOT}/starlib" >> /root/.jpf/site.properties
 RUN echo "jpf-star = ${TOOLS_ROOT}/jpf-star" >> /root/.jpf/site.properties
-RUN echo "jpf-star = ${TOOLS_ROOT}/jpf-costar" >> /root/.jpf/site.properties
+RUN echo "jpf-costar = ${TOOLS_ROOT}/jpf-costar" >> /root/.jpf/site.properties
 
 # Set extensions var
 RUN echo "extensions=\${jpf-core},\${jpf-symbc},\${starlib},\${jpf-star},\${jpf-costar}" >> /root/.jpf/site.properties
