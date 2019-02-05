@@ -7,7 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/jpf-core"/>
 	<classpathentry kind="lib" path="lib/gson-2.2.4.jar"/>
 	<classpathentry kind="lib" path="lib/guava-14.0.1.jar"/>
-	<classpathentry kind="lib" path="lib/antlr-4.7-complete.jar"/>
 	<classpathentry kind="lib" path="lib/jconstraints-0.9.2-SNAPSHOT.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/starlib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jpf-star"/>
@@ -20,5 +19,8 @@
 	<classpathentry kind="lib" path="lib/asm-xml-6.0.jar"/>
 	<classpathentry kind="lib" path="lib/org.jacoco.core-0.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/ganttproject-guava.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-3.3-complete.jar"/>
+	<classpathentry kind="lib" path="jpf-costar/lib/nanoxml.jar"/>
+	<classpathentry kind="src" path="/Plexil5"/>
 	<classpathentry kind="output" path="build/output"/>
 </classpath>
