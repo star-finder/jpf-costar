@@ -90,6 +90,7 @@ RUN git clone https://github.com/star-finder/jpf-star
 WORKDIR ${TOOLS_ROOT}/jpf-star
 RUN ant
 RUN rm -rf .git
+RUN rm Dockerfile
 
 WORKDIR ${TOOLS_ROOT}
 RUN wget https://github.com/star-finder/benchmarks/raw/master/PLEXIL5-0.0.tar.gz
@@ -101,6 +102,7 @@ RUN git clone https://github.com/star-finder/jpf-costar -b artifact
 WORKDIR ${TOOLS_ROOT}/jpf-costar
 RUN ant
 RUN rm -rf .git
+RUN rm Dockerfile
 
 # Delete peer_packages in jpf-symbc
 WORKDIR ${TOOLS_ROOT}/jpf-symbc
