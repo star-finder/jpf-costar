@@ -49,7 +49,8 @@ RUN echo "jpf-star = ${TOOLS_ROOT}/jpf-star" >> /root/.jpf/site.properties
 RUN echo "jpf-costar = ${TOOLS_ROOT}/jpf-costar" >> /root/.jpf/site.properties
 
 RUN echo "export JPF_HOME=${TOOLS_ROOT}/jpf-core" >> /root/.bashrc
-RUN echo "export PATH=${JPF_HOME}/bin:$PATH" >> /root/.bashrc
+RUN echo "export PATH=\${JPF_HOME}/bin:$PATH" >> /root/.bashrc
+RUN /bin/bash -c "source /root/.bashrc"
 
 # Set extensions var
 RUN echo "extensions=\${jpf-core},\${jpf-symbc},\${starlib},\${jpf-star},\${jpf-costar}" >> /root/.jpf/site.properties
