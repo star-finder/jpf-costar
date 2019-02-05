@@ -181,6 +181,7 @@
            debug="${debug}" source="${src_level}" deprecation="${deprecation}">
       <classpath>
         <path refid="lib.path"/>
+		<pathelement location="/tools/PLEXIL5-0.0/plexil5/bin"/>
         <pathelement location="build/annotations"/>
       </classpath>
     </javac>             
