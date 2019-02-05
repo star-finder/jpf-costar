@@ -48,6 +48,9 @@ RUN echo "starlib = ${TOOLS_ROOT}/starlib" >> /root/.jpf/site.properties
 RUN echo "jpf-star = ${TOOLS_ROOT}/jpf-star" >> /root/.jpf/site.properties
 RUN echo "jpf-costar = ${TOOLS_ROOT}/jpf-costar" >> /root/.jpf/site.properties
 
+RUN echo "export JPF_HOME=${TOOLS_ROOT}/jpf-core" >> /root/.bashrc
+RUN echo "export PATH=${JPF_HOME}/bin:$PATH" >> /root/.bashrc
+
 # Set extensions var
 RUN echo "extensions=\${jpf-core},\${jpf-symbc},\${starlib},\${jpf-star},\${jpf-costar}" >> /root/.jpf/site.properties
 
@@ -79,12 +82,15 @@ RUN ant
 WORKDIR ${TOOLS_ROOT}
 RUN git clone https://github.com/star-finder/jpf-star
 
-# Finally, get jpf-star
-WORKDIR ${TOOLS_ROOT}
-RUN git clone https://github.com/star-finder/jpf-costar
-
 WORKDIR ${TOOLS_ROOT}/jpf-star
 RUN ant
+
+WORKDIR ${TOOLS_ROOT}
+RUN wget https://github.com/star-finder/benchmarks/raw/master/PLEXIL5-0.0.tar.gz
+RUN tar -xvzf PLEXIL5-0.0.tar.gz
+
+WORKDIR ${TOOLS_ROOT}
+RUN git clone https://github.com/star-finder/jpf-costar -b artifact
 
 WORKDIR ${TOOLS_ROOT}/jpf-costar
 RUN ant
