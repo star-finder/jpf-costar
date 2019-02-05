@@ -20,7 +20,7 @@
 	<classpathentry kind="lib" path="lib/org.jacoco.core-0.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/ganttproject-guava.jar"/>
 	<classpathentry kind="lib" path="lib/antlr-3.3-complete.jar"/>
-	<classpathentry kind="lib" path="jpf-costar/lib/nanoxml.jar"/>
+	<classpathentry kind="lib" path="lib/nanoxml.jar"/>
 	<classpathentry kind="src" path="/Plexil5"/>
 	<classpathentry kind="output" path="build/output"/>
 </classpath>
