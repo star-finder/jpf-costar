@@ -104,7 +104,7 @@ RUN rm -rf .git
 
 # Delete peer_packages in jpf-symbc
 WORKDIR ${TOOLS_ROOT}/jpf-symbc
-RUN sed '/peer_packages/d' jpf.properties
+RUN sed -i '/peer_packages/d' jpf.properties
 
 # Let's go!
 WORKDIR ${TOOLS_ROOT}/jpf-costar
