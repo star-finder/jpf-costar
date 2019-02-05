@@ -97,4 +97,4 @@ WORKDIR ${TOOLS_ROOT}/jpf-costar
 RUN ant
 
 # Let's go!
-WORKDIR ${TOOLS_ROOT}/jpf-star
+WORKDIR ${TOOLS_ROOT}/jpf-costar
