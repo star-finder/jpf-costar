@@ -60,6 +60,7 @@ WORKDIR ${TOOLS_ROOT}
 RUN git clone https://github.com/star-finder/jpf-core
 
 WORKDIR ${TOOLS_ROOT}/jpf-core
+RUN rm -rf .git
 RUN ant
 
 # Install jpf-symbc
@@ -68,9 +69,11 @@ RUN git clone https://github.com/star-finder/jpf-symbc
 
 WORKDIR ${TOOLS_ROOT}/jpf-symbc
 RUN ant
+RUN rm -rf .git
 # Install s2sat solver
 WORKDIR ${TOOLS_ROOT}
 RUN git clone https://github.com/star-finder/s2sat
+RUN rm -rf .git
 # The s2sat solver uses the absolute path
 RUN cp -a s2sat/. /usr/local/bin/
 
@@ -78,6 +81,7 @@ WORKDIR ${TOOLS_ROOT}
 RUN git clone https://github.com/star-finder/starlib
 
 WORKDIR ${TOOLS_ROOT}/starlib
+RUN rm -rf .git
 RUN ant
 
 WORKDIR ${TOOLS_ROOT}
@@ -85,6 +89,7 @@ RUN git clone https://github.com/star-finder/jpf-star
 
 WORKDIR ${TOOLS_ROOT}/jpf-star
 RUN ant
+RUN rm -rf .git
 
 WORKDIR ${TOOLS_ROOT}
 RUN wget https://github.com/star-finder/benchmarks/raw/master/PLEXIL5-0.0.tar.gz
@@ -95,6 +100,11 @@ RUN git clone https://github.com/star-finder/jpf-costar -b artifact
 
 WORKDIR ${TOOLS_ROOT}/jpf-costar
 RUN ant
+RUN rm -rf .git
+
+# Delete peer_packages in jpf-symbc
+WORKDIR ${TOOLS_ROOT}/jpf-symbc
+RUN sed '/peer_packages/d' jpf.properties
 
 # Let's go!
 WORKDIR ${TOOLS_ROOT}/jpf-costar
