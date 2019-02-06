@@ -57,7 +57,7 @@ RUN echo "extensions=\${jpf-core},\${jpf-symbc},\${starlib},\${jpf-star},\${jpf-
 
 # Install jpf-core
 WORKDIR ${TOOLS_ROOT}
-RUN git clone https://github.com/star-finder/jpf-core
+RUN git clone https://github.com/star-finder/jpf-core -b string-model
 
 WORKDIR ${TOOLS_ROOT}/jpf-core
 RUN rm -rf .git
