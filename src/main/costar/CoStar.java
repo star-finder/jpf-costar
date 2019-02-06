@@ -152,7 +152,7 @@ public class CoStar implements JPFShell {
 	
 				Files.write(Paths.get(source + clazz), instrumented);
 				int count = ci.getCount();
-				System.out.println("Count = " + count);
+//				System.out.println("Count = " + count);
 	
 				conf.setProperty("costar.bitmap_size", count + "");
 			} catch (Exception e) {
