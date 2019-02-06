@@ -1,5 +1,6 @@
 package costar.bytecode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -67,6 +68,14 @@ public class INVOKEINTERFACE extends gov.nasa.jpf.jvm.bytecode.INVOKEINTERFACE {
 		String[] types = mi.getArgumentTypeNames();
 		
 		LocalVarInfo[] lvis = mi.getLocalVars(); // this + args
+		if (lvis != null && lvis.length >= 2) {
+			Arrays.sort(lvis, new java.util.Comparator<LocalVarInfo>() {
+				@Override
+				public int compare(LocalVarInfo l1, LocalVarInfo l2) {
+					return Integer.compare(l1.getSlotIndex(), l2.getSlotIndex());
+				}
+			});
+		}
 		
 		// index 0 is "this"
 		if (lvis == null || lvis.length == 0) {

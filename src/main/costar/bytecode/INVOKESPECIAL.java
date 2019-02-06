@@ -55,6 +55,14 @@ public class INVOKESPECIAL extends gov.nasa.jpf.jvm.bytecode.INVOKESPECIAL {
 		
 		// FIXME: there are problems with init iteration, we miss one local var info here
 		LocalVarInfo[] lvis = mi.getLocalVars(); // this + args
+		if (lvis != null && lvis.length >= 2) {
+			Arrays.sort(lvis, new java.util.Comparator<LocalVarInfo>() {
+				@Override
+				public int compare(LocalVarInfo l1, LocalVarInfo l2) {
+					return Integer.compare(l1.getSlotIndex(), l2.getSlotIndex());
+				}
+			});
+		}
 		
 		// index 0 is "this"
 		if (lvis == null || lvis.length == 0) {
