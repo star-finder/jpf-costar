@@ -11,3 +11,4 @@ costar.root=root
 costar.init_depth=9
 
 star.max_depth=0
+star.random_default=true

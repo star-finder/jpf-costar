@@ -86,7 +86,8 @@ public class CoStarListener extends Perturbator {
 	    	return;
 	    CoStarConstrainstTree tree = ca.getConstrainstTree();
 	    TestGenerator.addModels(tree.getModels());
-	    TestGenerator.generateTests();
+	    Config conf = search.getVM().getConfig();
+	    TestGenerator.generateTests(Boolean.parseBoolean(conf.getProperty("star.random_default", "false")));
 		logger.info("Test generation completed.");	
 	}
 
