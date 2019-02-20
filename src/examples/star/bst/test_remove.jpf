@@ -12,3 +12,5 @@ costar.class=BinarySearchTree.class
 
 #star.test_init=${jpf-costar}/src/init/star/bst/test_remove.txt
 star.max_depth=2
+# to produce 22 test inputs as in motivation example, run with costar.init_depth = 3
+# costar.init_depth=3
