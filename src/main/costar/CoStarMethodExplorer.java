@@ -163,12 +163,15 @@ public class CoStarMethodExplorer {
 				
 				preCopy.unfold(itCopy, i);
 				
-				Solver.checkSat(preCopy, false);
-				String model = Solver.getModel();
+				boolean isSat = Solver.checkSat(preCopy, false);
 				
-				constraintsTree.addInitModel(model);
-				
-				generateInitModels(preCopy, n - 1);
+				if (isSat) {
+					String model = Solver.getModel();
+					
+					constraintsTree.addInitModel(model);
+					
+					generateInitModels(preCopy, n - 1);
+				}
 			}
 		}
 	}
