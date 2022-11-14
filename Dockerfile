@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Quoc-Sang Phan <phanquocsang@gmail.com>
+FROM adoptopenjdk/openjdk8
+MAINTAINER Kasper Luckow <kasper.luckow@sv.cmu.edu>
 
 #############################################################################
 # Setup base image 
@@ -7,27 +7,26 @@ MAINTAINER Quoc-Sang Phan <phanquocsang@gmail.com>
 RUN \
   apt-get update -y && \
   apt-get install software-properties-common -y && \
-  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  add-apt-repository ppa:webupd8team/java -y && \
   apt-get update -y && \
-  apt-get install -y oracle-java8-installer
-# Cut it in two---java takes a long time to install
-RUN  apt-get install -y \
-                        unzip \
-                        ant \
-                        build-essential \
-                        mercurial \
-                        git \
-                        vim && \
-  rm -rf /var/lib/apt/lists/* && \
-  rm -rf /var/cache/oracle-jdk8-installer
+  apt-get install -y ant \
+                maven \
+                git \
+                junit \
+                build-essential \
+                python \
+                antlr3 \
+                wget \
+                unzip \
+                mercurial \
+                vim && \
+  rm -rf /var/lib/apt/lists/* 
 
 #############################################################################
 # Environment 
 #############################################################################
 
 # set java env
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+# ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV JUNIT_HOME /usr/share/java
 
 # Make dir for distribution
@@ -81,7 +80,7 @@ RUN git clone https://github.com/star-finder/jpf-star
 
 # Finally, get jpf-star
 WORKDIR ${TOOLS_ROOT}
-RUN git clone https://github.com/star-finder/jpf-costar
+RUN git clone https://github.com/benjamin-hejl/jpf-costar.git
 
 WORKDIR ${TOOLS_ROOT}/jpf-star
 RUN ant

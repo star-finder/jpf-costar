@@ -175,7 +175,7 @@
     </javac>
   </target>
 
-  <target name="-compile-examples" if="have_examples" depends="-compile-annotations,-compile-main">
+<!--   <target name="-compile-examples" if="have_examples" depends="-compile-annotations,-compile-main">
     <mkdir dir="build/examples" />
     <javac srcdir="src/examples" destdir="build/examples" includeantruntime="false"
            debug="${debug}" source="${src_level}" deprecation="${deprecation}">
@@ -184,7 +184,7 @@
         <pathelement location="build/annotations"/>
       </classpath>
     </javac>             
-  </target>
+  </target> -->
 
   <target name="build-output">
     <mkdir dir="build/output"/>
