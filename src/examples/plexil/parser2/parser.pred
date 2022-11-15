@@ -1,5 +1,0 @@
-pred eqNull(root,astnull,parent) == astnull::antlr_ASTNULLType<> * parent::net_n3_nanoxml_XMLElement<> & root=astnull;
-
-pred eqNull2(root,astnull) == astnull::antlr_ASTNULLType<> & root=astnull;
-
-pred eqNull3(root,astnull,parent1,parent2) == astnull::antlr_ASTNULLType<> * parent1::net_n3_nanoxml_XMLElement<> * parent2::net_n3_nanoxml_XMLElement<> & root=astnull
